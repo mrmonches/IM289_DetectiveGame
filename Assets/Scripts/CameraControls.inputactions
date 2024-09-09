@@ -1,0 +1,54 @@
+{
+    "name": "CameraControls",
+    "maps": [
+        {
+            "name": "CameraMovement",
+            "id": "3a7824cb-54ce-44bd-ac15-26632cdada04",
+            "actions": [
+                {
+                    "name": "Left",
+                    "type": "Button",
+                    "id": "cf8eac58-658c-42dd-ab0b-72ae542b7d43",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Right",
+                    "type": "Button",
+                    "id": "50bb3908-780b-41c5-b446-592e1eb6e86d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2c009596-efc5-442e-b14d-a8f1e78afe19",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "212cccf6-71ff-415d-ba36-d12bdfa0081c",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
