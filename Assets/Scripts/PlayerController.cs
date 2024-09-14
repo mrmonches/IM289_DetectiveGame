@@ -61,6 +61,10 @@ public class PlayerController : MonoBehaviour
         mousePosition = mousePos.Get<Vector2>();
     }
 
+    /// <summary>
+    /// Calculates the player's last mouse position on the board
+    /// </summary>
+    /// <returns></returns>
     public Vector3 GetSelectedPosition()
     {
         mousePosition.z = SceneCamera.nearClipPlane;
@@ -74,6 +78,9 @@ public class PlayerController : MonoBehaviour
         return lastPosition;
     }
 
+    /// <summary>
+    /// Responsible for handling assigning references to evidence and handling hover functions
+    /// </summary>
     private void EvidenceSelect()
     {
         RaycastHit hit;
