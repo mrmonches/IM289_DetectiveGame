@@ -16,9 +16,11 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float CastDistance;
 
-    [SerializeField] private LayerMask LevelMask;
+    [SerializeField] private LayerMask LevelMask, EvidenceMask;
 
     private Vector3 mousePosition;
+
+    private EvidenceController _evidenceController;
 
     private void Awake()
     {
@@ -35,11 +37,23 @@ public class PlayerController : MonoBehaviour
     private void selectAction_started(InputAction.CallbackContext obj)
     {
         isSelecting = true;
+
+        if (_evidenceController != null )
+        {
+            _evidenceController.IsHeld = true;
+        }
     }
 
     private void selectAction_canceled(InputAction.CallbackContext obj)
     {
         isSelecting = false;
+
+        if (_evidenceController != null)
+        {
+            _evidenceController.IsHeld = false;
+
+            _evidenceController.RecordPlacedPos();
+        }
     }
 
     private void OnMouse(InputValue mousePos)
@@ -47,6 +61,10 @@ public class PlayerController : MonoBehaviour
         mousePosition = mousePos.Get<Vector2>();
     }
 
+    /// <summary>
+    /// Calculates the player's last mouse position on the board
+    /// </summary>
+    /// <returns></returns>
     public Vector3 GetSelectedPosition()
     {
         mousePosition.z = SceneCamera.nearClipPlane;
@@ -60,6 +78,36 @@ public class PlayerController : MonoBehaviour
         return lastPosition;
     }
 
+    /// <summary>
+    /// Responsible for handling assigning references to evidence and handling hover functions
+    /// </summary>
+    private void EvidenceSelect()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, EvidenceMask))
+        {
+            _evidenceController = hit.collider.gameObject.GetComponent<EvidenceController>();
+
+            if (!_evidenceController.IsHover)
+            {
+                _evidenceController.IsHover = true;
+            }
+        }
+        else
+        {
+            if (_evidenceController != null)
+            {
+                if (_evidenceController.IsHover)
+                {
+                    _evidenceController.IsHover = false;
+                }
+
+                _evidenceController = null;
+            }
+        }
+    }
+
     private void FixedUpdate()
     {
         switch (CurrentStation)
@@ -67,6 +115,10 @@ public class PlayerController : MonoBehaviour
             case PlayerLocation.Desk:
                 break;
             case PlayerLocation.EvidenceBoard:
+                if (!isSelecting)
+                {
+                    EvidenceSelect();
+                }
                 break;
             case PlayerLocation.FilingCabinet:
                 break;
