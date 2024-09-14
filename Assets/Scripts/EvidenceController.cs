@@ -6,6 +6,9 @@ public class EvidenceController : MonoBehaviour
 
     private PlayerController _playerController;
 
+    [SerializeField] private float CastDistance;
+    [SerializeField] private LayerMask EvidenceMask;
+
     [SerializeField] private Vector3 OffsetPos;
 
     [SerializeField, Tooltip("Change this to adjust hover distance")]
@@ -19,6 +22,8 @@ public class EvidenceController : MonoBehaviour
 
     private bool isHeld;
     private bool isHover;
+
+    private bool canPlace;
 
     private Vector3 placedPos;
 
@@ -54,6 +59,26 @@ public class EvidenceController : MonoBehaviour
             _playerController.GetSelectedPosition().z + OffsetPos.z);
     }
 
+    //private void OnDrawGizmos()
+    //{
+    //    RaycastHit hit;
+    //    if (Physics.BoxCast(transform.position,transform.lossyScale / 2, transform.forward, out hit, transform.rotation, CastDistance, EvidenceMask))
+    //    {
+    //        Gizmos.color = Color.red;
+    //        Gizmos.DrawRay(transform.position, transform.forward * hit.distance);
+    //        Gizmos.DrawWireCube(transform.position + transform.forward * hit.distance, transform.lossyScale);
+
+    //        canPlace = false;
+    //    }
+    //    else
+    //    {
+    //        Gizmos.color = Color.green;
+    //        Gizmos.DrawRay(transform.position, transform.forward * CastDistance);
+
+    //        canPlace = true;
+    //    }
+    //}
+
     /// <summary>
     /// Makes the evidence hover on mouse hover
     /// </summary>
@@ -81,18 +106,26 @@ public class EvidenceController : MonoBehaviour
 
     private void LateUpdate()
     {
+        //print(canPlace);
         if (IsHeld)
         {
-            FollowPlayerMouse();
-        }
+            if (IsHover)
+            {
+                IsHover = false;
+            }
 
-        if (IsHover && transform.position != placedPos + HoverPos)
+            FollowPlayerMouse();
+        } 
+        else
         {
-            OnHover();
-        }
-        else if (!IsHover && transform.position != placedPos)
-        {
-            OnUnhover();
+            if (IsHover && transform.position != placedPos + HoverPos)
+            {
+                OnHover();
+            }
+            else if (!IsHover && transform.position != placedPos)
+            {
+                OnUnhover();
+            }
         }
     }
 }

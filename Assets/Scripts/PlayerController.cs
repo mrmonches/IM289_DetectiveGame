@@ -87,6 +87,11 @@ public class PlayerController : MonoBehaviour
 
         if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, EvidenceMask))
         {
+            if (_evidenceController != null && _evidenceController != hit.collider.gameObject.GetComponent<EvidenceController>())
+            {
+                _evidenceController.IsHover = false;
+            }
+
             _evidenceController = hit.collider.gameObject.GetComponent<EvidenceController>();
 
             if (!_evidenceController.IsHover)
