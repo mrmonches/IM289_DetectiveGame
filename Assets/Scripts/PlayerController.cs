@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 
     private InputAction selectAction;
 
+    private bool isSelecting;
+
     [SerializeField] private PlayerLocation CurrentStation;
 
     [SerializeField] private Camera SceneCamera;
@@ -32,12 +34,12 @@ public class PlayerController : MonoBehaviour
 
     private void selectAction_started(InputAction.CallbackContext obj)
     {
-        throw new System.NotImplementedException();
+        isSelecting = true;
     }
 
     private void selectAction_canceled(InputAction.CallbackContext obj)
     {
-        throw new System.NotImplementedException();
+        isSelecting = false;
     }
 
     private void OnMouse(InputValue mousePos)
