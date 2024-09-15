@@ -1,5 +1,7 @@
 using UnityEngine;
 
+// By Nolan
+
 public class EvidenceController : MonoBehaviour
 {
     private BoxCollider _boxCollider;
@@ -30,11 +32,15 @@ public class EvidenceController : MonoBehaviour
     public bool IsHeld { get => isHeld; set => isHeld = value; }
     public bool IsHover { get => isHover; set => isHover = value; }
 
+    private EvidenceBoardManager _boardManager;
+
     private void Awake()
     {
         _boxCollider = GetComponent<BoxCollider>();
 
         _playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+
+        _boardManager = FindObjectOfType<EvidenceBoardManager>();
 
         RecordPlacedPos();
     }
@@ -59,26 +65,6 @@ public class EvidenceController : MonoBehaviour
             _playerController.GetSelectedPosition().z + OffsetPos.z);
     }
 
-    //private void OnDrawGizmos()
-    //{
-    //    RaycastHit hit;
-    //    if (Physics.BoxCast(transform.position,transform.lossyScale / 2, transform.forward, out hit, transform.rotation, CastDistance, EvidenceMask))
-    //    {
-    //        Gizmos.color = Color.red;
-    //        Gizmos.DrawRay(transform.position, transform.forward * hit.distance);
-    //        Gizmos.DrawWireCube(transform.position + transform.forward * hit.distance, transform.lossyScale);
-
-    //        canPlace = false;
-    //    }
-    //    else
-    //    {
-    //        Gizmos.color = Color.green;
-    //        Gizmos.DrawRay(transform.position, transform.forward * CastDistance);
-
-    //        canPlace = true;
-    //    }
-    //}
-
     /// <summary>
     /// Makes the evidence hover on mouse hover
     /// </summary>
@@ -95,6 +81,22 @@ public class EvidenceController : MonoBehaviour
         transform.position = Vector3.Slerp(transform.position, placedPos, HoverSpeed * Time.deltaTime);
     }
 
+    public void OnPlace()
+    {
+        IsHeld = false;
+
+        if (canPlace)
+        {
+            transform.position = new Vector3 (transform.position.x, transform.position.y, _boardManager.EvidencePlacePos1);
+
+            RecordPlacedPos();
+        }
+        else
+        {
+            transform.position = placedPos;
+        }
+    }
+
     /// <summary>
     /// Records last placed position
     /// Important for the hover functions
@@ -104,9 +106,21 @@ public class EvidenceController : MonoBehaviour
         placedPos = transform.position;
     }
 
+    private void CheckPlacePos()
+    {
+        RaycastHit hit;
+        if (Physics.BoxCast(transform.position, transform.lossyScale / 2, transform.forward, out hit, transform.rotation, CastDistance, EvidenceMask))
+        {
+            canPlace = false;
+        }
+        else
+        {
+            canPlace = true;
+        }
+    }
+
     private void LateUpdate()
     {
-        //print(canPlace);
         if (IsHeld)
         {
             if (IsHover)
@@ -115,6 +129,8 @@ public class EvidenceController : MonoBehaviour
             }
 
             FollowPlayerMouse();
+
+            CheckPlacePos();
         } 
         else
         {

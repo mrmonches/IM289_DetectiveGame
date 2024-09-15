@@ -1,18 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+//By Nolan
 
 public class EvidenceBoardManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private float EvidencePlacePos;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public float EvidencePlacePos1 { get => EvidencePlacePos; private set => EvidencePlacePos = value; }
 }
