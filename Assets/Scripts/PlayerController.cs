@@ -7,7 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     private PlayerInput _playerInput;
 
-    private InputAction selectAction;
+    private InputAction leftClickAction;
+    private InputAction rightClickAction;
 
     private bool isSelecting;
 
@@ -24,19 +25,24 @@ public class PlayerController : MonoBehaviour
 
     private EvidenceController _evidenceController;
 
+    [SerializeField] private YarnController _yarnController;
+
     private void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
 
         _playerInput.currentActionMap.Enable();
 
-        selectAction = _playerInput.currentActionMap.FindAction("Select");
+        leftClickAction = _playerInput.currentActionMap.FindAction("LeftClick");
+        rightClickAction = _playerInput.currentActionMap.FindAction("RightClick");
 
-        selectAction.started += selectAction_started;
-        selectAction.canceled += selectAction_canceled;
+        leftClickAction.started += leftClickAction_started;
+        leftClickAction.canceled += leftClickAction_canceled;
+
+        rightClickAction.started += rightClickAction_started;
     }
 
-    private void selectAction_started(InputAction.CallbackContext obj)
+    private void leftClickAction_started(InputAction.CallbackContext obj)
     {
         isSelecting = true;
 
@@ -46,13 +52,42 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void selectAction_canceled(InputAction.CallbackContext obj)
+    private void leftClickAction_canceled(InputAction.CallbackContext obj)
     {
         isSelecting = false;
 
         if (_evidenceController != null)
         {
             _evidenceController.OnPlace();
+        }
+    }
+
+    private void rightClickAction_started(InputAction.CallbackContext obj)
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, EvidenceMask))
+        {
+            if (_yarnController != null && _yarnController.IsConnecting)
+            {
+                _yarnController.GiveLinePosition(hit.collider.GetComponent<EvidenceController>().ChildTransform.position);
+
+                print(hit.collider.GetComponentInChildren<Transform>().position);
+            }
+            else
+            {
+                _yarnController = hit.collider.gameObject.GetComponent<YarnController>();
+
+                _yarnController.GiveLinePosition(hit.collider.GetComponent<EvidenceController>().ChildTransform.position);
+
+                print(hit.collider.GetComponentInChildren<Transform>().position);
+
+                _yarnController.IsConnecting = true;
+            }
+        }
+        else
+        {
+
         }
     }
 
