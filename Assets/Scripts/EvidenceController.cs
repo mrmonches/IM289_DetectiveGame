@@ -34,6 +34,9 @@ public class EvidenceController : MonoBehaviour
 
     private EvidenceBoardManager _boardManager;
 
+    [SerializeField] private Transform _childTransform;
+    public Transform ChildTransform { get => _childTransform; private set => _childTransform = value; }
+    
     private void Awake()
     {
         _boxCollider = GetComponent<BoxCollider>();
