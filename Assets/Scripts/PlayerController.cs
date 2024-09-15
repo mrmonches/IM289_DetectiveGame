@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+// By Nolan
+
 public class PlayerController : MonoBehaviour
 {
     private PlayerInput _playerInput;
@@ -50,9 +52,7 @@ public class PlayerController : MonoBehaviour
 
         if (_evidenceController != null)
         {
-            _evidenceController.IsHeld = false;
-
-            _evidenceController.RecordPlacedPos();
+            _evidenceController.OnPlace();
         }
     }
 
