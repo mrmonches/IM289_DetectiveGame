@@ -7,6 +7,10 @@ public class YarnController : MonoBehaviour
 
     [SerializeField] private List<Material> YarnMaterial;
 
+    [SerializeField] private List<ConnectionData> connectionData;
+
+    private GameObject firstObject, secondObject;
+
     private bool isConnecting;
 
     public bool IsConnecting { get => isConnecting; set => isConnecting = value; }
