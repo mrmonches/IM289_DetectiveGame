@@ -12,13 +12,16 @@ public class PlayerController : MonoBehaviour
     private bool isSelecting;
 
     [SerializeField] private PlayerLocation CurrentStation;
-
-    [SerializeField] private Camera SceneCamera;
+    //SceneCamera was renamed to CurrentCamera
+    [SerializeField] private Camera CurrentCamera;
+    [SerializeField] private Camera EvidenceCam;
+    [SerializeField] private Camera FilingCam;
+    [SerializeField] private Camera DeskCam;
     private Vector3 lastPosition;
 
     [SerializeField] private float CastDistance;
 
-    [SerializeField] private LayerMask LevelMask, EvidenceMask;
+    [SerializeField] private LayerMask LevelMask, EvidenceMask, CabinetMask;
 
     private Vector3 mousePosition;
 
@@ -67,10 +70,10 @@ public class PlayerController : MonoBehaviour
     /// <returns></returns>
     public Vector3 GetSelectedPosition()
     {
-        mousePosition.z = SceneCamera.nearClipPlane;
+        mousePosition.z = CurrentCamera.nearClipPlane;
 
         RaycastHit hit; 
-        if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, LevelMask))
+        if (Physics.Raycast(CurrentCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, LevelMask))
         {
             lastPosition = hit.point;
         }
@@ -85,7 +88,7 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, EvidenceMask))
+        if (Physics.Raycast(CurrentCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, EvidenceMask))
         {
             if (_evidenceController != null && _evidenceController != hit.collider.gameObject.GetComponent<EvidenceController>())
             {
@@ -126,6 +129,10 @@ public class PlayerController : MonoBehaviour
                 }
                 break;
             case PlayerLocation.FilingCabinet:
+                if (!isSelecting)
+                {
+
+                }
                 break;
         }
     }
