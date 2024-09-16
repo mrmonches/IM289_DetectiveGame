@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private YarnController _yarnController;
 
+    [SerializeField] private PlayerController _playerController;
+
     private void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
@@ -69,7 +71,7 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, EvidenceMask))
+        if (Physics.Raycast(CurrentCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, EvidenceMask))
         {
             if (_yarnController != null && _yarnController.IsConnecting)
             {

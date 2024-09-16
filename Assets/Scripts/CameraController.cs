@@ -1,6 +1,7 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Windows;
@@ -13,8 +14,10 @@ public class CameraController : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera LeftCamera;
     [SerializeField] private CinemachineVirtualCamera MiddleCamera;
     [SerializeField] private CinemachineVirtualCamera RightCamera;
-    //1= left camera 2=middle 3=right
+    //1= left camera MurderBoard | 2= middle Desk | 3= right Filing Cabinet
     private int activecamera = 2;
+    private string currentStation;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +30,8 @@ public class CameraController : MonoBehaviour
         LeftCamera.gameObject.SetActive(false);
         RightCamera.gameObject.SetActive(false);
         MiddleCamera.gameObject.SetActive(true);
+
+        currentStation = ("Desk");
     }
 
     
@@ -39,6 +44,8 @@ public class CameraController : MonoBehaviour
             MiddleCamera.gameObject.SetActive(true);
             RightCamera.gameObject.SetActive(false);
             activecamera = 2;
+            currentStation = ("Desk");
+            
         }
         else if(activecamera==2)
         {
@@ -46,6 +53,7 @@ public class CameraController : MonoBehaviour
             MiddleCamera.gameObject.SetActive(false);
             RightCamera.gameObject.SetActive(true);
             activecamera = 3;
+            currentStation = ("FilingCabinet");
         }
     }
 
@@ -58,6 +66,7 @@ public class CameraController : MonoBehaviour
             MiddleCamera.gameObject.SetActive(false);
             LeftCamera.gameObject.SetActive(true);
             activecamera = 1;
+            currentStation = ("EvidenceBoard");
         }
         else if(activecamera==3)
         {
@@ -65,6 +74,13 @@ public class CameraController : MonoBehaviour
             MiddleCamera.gameObject.SetActive(true);
             LeftCamera.gameObject.SetActive(false);
             activecamera = 2;
+            currentStation = ("Desk");
         }
     }
+    
+    public string GetCurrentStation()
+    {
+        return currentStation;
+    }
+    
 }

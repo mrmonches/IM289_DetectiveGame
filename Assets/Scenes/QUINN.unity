@@ -368,6 +368,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7877796183509932799, guid: 89d6b6aea78b0df459aa8b3f162a0a5a, type: 3}
+      propertyPath: m_Name
+      value: UsedCabinet
+      objectReference: {fileID: 0}
+    - target: {fileID: -7877796183509932799, guid: 89d6b6aea78b0df459aa8b3f162a0a5a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -7072539253365747797, guid: 89d6b6aea78b0df459aa8b3f162a0a5a, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -397,8 +405,28 @@ PrefabInstance:
     - {fileID: -5125008574678334257, guid: 89d6b6aea78b0df459aa8b3f162a0a5a, type: 3}
     - {fileID: 951655050498130991, guid: 89d6b6aea78b0df459aa8b3f162a0a5a, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -7877796183509932799, guid: 89d6b6aea78b0df459aa8b3f162a0a5a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2044084604}
   m_SourcePrefab: {fileID: 100100000, guid: 89d6b6aea78b0df459aa8b3f162a0a5a, type: 3}
+--- !u!1 &2044084603 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -7877796183509932799, guid: 89d6b6aea78b0df459aa8b3f162a0a5a, type: 3}
+  m_PrefabInstance: {fileID: 2044084602}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2044084604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2044084603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9dc211b8dc49374eaad8308660bf36f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
