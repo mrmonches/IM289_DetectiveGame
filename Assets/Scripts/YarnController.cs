@@ -29,8 +29,18 @@ public class YarnController : MonoBehaviour
 
     public void GiveLinePosition(Vector3 pos)
     {
+        if (true) { }
         lineRenderer.positionCount++;
 
         lineRenderer.SetPosition(lineRenderer.positionCount - 1, pos);
+    }
+
+    public void CheckLineStatus()
+    {
+        // If more than allowed connection, create and assign new LineController, reset 
+
+        // Check if evidence is connecting itself
+
+        // If second piece of evidence, has connection already been made
     }
 }
