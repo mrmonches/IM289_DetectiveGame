@@ -7,6 +7,8 @@ public class YarnController : MonoBehaviour
 
     [SerializeField] private List<Material> YarnMaterial;
 
+    private EvidenceBoardManager boardManager;
+
     private EvidenceID firstID, secondID;
 
     private bool isConnecting;
@@ -23,6 +25,8 @@ public class YarnController : MonoBehaviour
 
             lineRenderer.positionCount = 0;
         }
+
+        boardManager = GameObject.Find("EvidenceBoard").GetComponent<EvidenceBoardManager>();
     }
 
     // if line renderer positioncount = 2, clear references, create new line renderer, add another position, set position
@@ -34,6 +38,8 @@ public class YarnController : MonoBehaviour
     {
         if (lineRenderer.positionCount <= 2)
         {
+            boardManager.Connections.Add(new ConnectionData(lineRenderer, firstID, secondID));
+
             lineRenderer = null;
 
             firstID = EvidenceID.Null;
