@@ -1,3 +1,4 @@
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,11 +14,7 @@ public class PlayerController : MonoBehaviour
     private bool isSelecting;
 
     [SerializeField] private PlayerLocation CurrentStation;
-    //SceneCamera was renamed to CurrentCamera
-    [SerializeField] private Camera CurrentCamera;
-    [SerializeField] private Camera EvidenceCam;
-    [SerializeField] private Camera FilingCam;
-    [SerializeField] private Camera DeskCam;
+    [SerializeField] private Camera SceneCamera;
     private Vector3 lastPosition;
 
     [SerializeField] private float CastDistance;
@@ -32,19 +29,27 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private PlayerController _playerController;
 
+    [SerializeField] private GameObject _cabinetController;
+
+    private ClickControls _clickInputs;
+
     private void Awake()
     {
-        _playerInput = GetComponent<PlayerInput>();
+        /*_playerInput = GetComponent<PlayerInput>();
 
         _playerInput.currentActionMap.Enable();
 
         leftClickAction = _playerInput.currentActionMap.FindAction("LeftClick");
-        rightClickAction = _playerInput.currentActionMap.FindAction("RightClick");
+        rightClickAction = _playerInput.currentActionMap.FindAction("RightClick");*/
 
-        leftClickAction.started += leftClickAction_started;
-        leftClickAction.canceled += leftClickAction_canceled;
+        _clickInputs = new ClickControls();
+        _clickInputs.DefaultControls.Enable();
+        _clickInputs.DefaultControls.RightClick.started += rightClickAction_started;
 
-        rightClickAction.started += rightClickAction_started;
+       // leftClickAction.started += leftClickAction_started;
+        //leftClickAction.canceled += leftClickAction_canceled;
+
+        //rightClickAction.started += rightClickAction_started;
     }
 
     private void leftClickAction_started(InputAction.CallbackContext obj)
@@ -70,8 +75,8 @@ public class PlayerController : MonoBehaviour
     private void rightClickAction_started(InputAction.CallbackContext obj)
     {
         RaycastHit hit;
-
-        if (Physics.Raycast(CurrentCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, EvidenceMask))
+        //StartComment here
+        if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, EvidenceMask))
         {
             if (_yarnController != null && _yarnController.IsConnecting)
             {
@@ -90,9 +95,20 @@ public class PlayerController : MonoBehaviour
                 _yarnController.IsConnecting = true;
             }
         }
+        //End comment Here
+
+        //Quinn wrote this. For opening/closing the filing cabinet
+        Debug.Log("It ran the thing");
+        RaycastHit hitCabinet;
+        if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitCabinet, CastDistance, CabinetMask))
+        {
+            Debug.Log("Hit the Cabinet");
+            //_cabinetController.GetComponent<CabinetController>().GetOpenClose();
+            hitCabinet.collider.gameObject.GetComponent<CabinetController>().GetOpenClose();
+        }
         else
         {
-
+            Debug.DrawLine(SceneCamera.transform.position, SceneCamera.ScreenPointToRay(mousePosition).direction* CastDistance,Color.red,5);
         }
     }
 
@@ -107,10 +123,10 @@ public class PlayerController : MonoBehaviour
     /// <returns></returns>
     public Vector3 GetSelectedPosition()
     {
-        mousePosition.z = CurrentCamera.nearClipPlane;
+        mousePosition.z = SceneCamera.nearClipPlane;
 
         RaycastHit hit; 
-        if (Physics.Raycast(CurrentCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, LevelMask))
+        if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, LevelMask))
         {
             lastPosition = hit.point;
         }
@@ -125,7 +141,7 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(CurrentCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, EvidenceMask))
+        if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, EvidenceMask))
         {
             if (_evidenceController != null && _evidenceController != hit.collider.gameObject.GetComponent<EvidenceController>())
             {
@@ -173,6 +189,24 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
+    /// <summary>
+    /// Quinn - I don't know how switch statements work. This is fed through the Camera Controller
+    /// </summary>
+    public void StationSetDesk()
+    {
+        CurrentStation = PlayerLocation.Desk;
+    }
+
+    public void StationSetCabinet()
+    {
+        CurrentStation = PlayerLocation.FilingCabinet;
+    }
+
+    public void StationSetBoard()
+    {
+        CurrentStation = PlayerLocation.FilingCabinet;
+    }
+
 }
 
 public enum PlayerLocation
