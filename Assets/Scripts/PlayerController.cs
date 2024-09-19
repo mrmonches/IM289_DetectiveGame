@@ -74,9 +74,9 @@ public class PlayerController : MonoBehaviour
 
     private void rightClickAction_started(InputAction.CallbackContext obj)
     {
-        RaycastHit hit;
+        //RaycastHit hit;
         //StartComment here
-        if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, EvidenceMask))
+        /*if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, EvidenceMask))
         {
             if (_yarnController != null && _yarnController.IsConnecting)
             {
@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
 
                 _yarnController.IsConnecting = true;
             }
-        }
+        }*/
         //End comment Here
 
         //Quinn wrote this. For opening/closing the filing cabinet
