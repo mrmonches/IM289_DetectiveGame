@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera RightCamera;
     //1= left camera MurderBoard | 2= middle Desk | 3= right Filing Cabinet
     private int activecamera = 2;
-    private string currentStation;
+    [SerializeField] private GameObject _playerController;
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +31,7 @@ public class CameraController : MonoBehaviour
         RightCamera.gameObject.SetActive(false);
         MiddleCamera.gameObject.SetActive(true);
 
-        currentStation = ("Desk");
+        _playerController.GetComponent<PlayerController>().StationSetDesk();
     }
 
     
@@ -44,8 +44,9 @@ public class CameraController : MonoBehaviour
             MiddleCamera.gameObject.SetActive(true);
             RightCamera.gameObject.SetActive(false);
             activecamera = 2;
-            currentStation = ("Desk");
-            
+
+            _playerController.GetComponent<PlayerController>().StationSetDesk();
+
         }
         else if(activecamera==2)
         {
@@ -53,7 +54,8 @@ public class CameraController : MonoBehaviour
             MiddleCamera.gameObject.SetActive(false);
             RightCamera.gameObject.SetActive(true);
             activecamera = 3;
-            currentStation = ("FilingCabinet");
+
+            _playerController.GetComponent<PlayerController>().StationSetCabinet();
         }
     }
 
@@ -66,7 +68,8 @@ public class CameraController : MonoBehaviour
             MiddleCamera.gameObject.SetActive(false);
             LeftCamera.gameObject.SetActive(true);
             activecamera = 1;
-            currentStation = ("EvidenceBoard");
+
+            _playerController.GetComponent<PlayerController>().StationSetBoard();
         }
         else if(activecamera==3)
         {
@@ -74,13 +77,9 @@ public class CameraController : MonoBehaviour
             MiddleCamera.gameObject.SetActive(true);
             LeftCamera.gameObject.SetActive(false);
             activecamera = 2;
-            currentStation = ("Desk");
+
+            _playerController.GetComponent<PlayerController>().StationSetDesk();
         }
-    }
-    
-    public string GetCurrentStation()
-    {
-        return currentStation;
     }
     
 }
