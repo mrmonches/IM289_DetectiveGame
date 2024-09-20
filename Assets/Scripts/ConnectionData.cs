@@ -13,4 +13,7 @@ public class ConnectionData : MonoBehaviour
         this.firstID = firstID;
         this.secondID = secondID;
     }
+
+    public EvidenceID FirstID { get => firstID; set => firstID = value; }
+    public EvidenceID SecondID { get => secondID; set => secondID = value; }
 }

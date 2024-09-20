@@ -64,16 +64,16 @@ public class YarnController : MonoBehaviour
 
     public void CheckLineStatus(Vector3 pos, EvidenceID evidenceID)
     {
-        // if second part of connection, check if trying to connect to itself
         if (firstID != EvidenceID.Null)
         {
             CheckSelfConnection(evidenceID);
+
+            if (IsConnecting)
+            {
+                boardManager.CheckConnectionList(firstID, evidenceID, GetComponent<YarnController>());
+            }
         }
 
-        // if connection has been made, display message that connection has already been made
-
-
-        // else, call GiveLinePosition
         if (IsConnecting)
         {
             GiveLinePosition(pos, evidenceID);
@@ -92,6 +92,8 @@ public class YarnController : MonoBehaviour
         if (evidenceID == firstID)
         {
             IsConnecting = false;
+
+            firstID = EvidenceID.Null;
         }
     }
 }
