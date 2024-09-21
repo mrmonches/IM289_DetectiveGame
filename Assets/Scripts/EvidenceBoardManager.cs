@@ -14,11 +14,10 @@ public class EvidenceBoardManager : MonoBehaviour
 
     public void CheckConnectionList(EvidenceID firstID, EvidenceID secondID, YarnController yarn)
     {
-        List<ConnectionData> tempList = connections;
-
-        for (int i = 0; i < tempList.Count; i++)
+        for (int i = 0; i < connections.Count; i++)
         {
-            bool firstCheck, secondCheck;
+            bool firstCheck = false;
+            bool secondCheck = false;
 
             if (firstID == connections[i].FirstID || firstID == connections[i].SecondID)
             {
@@ -28,6 +27,8 @@ public class EvidenceBoardManager : MonoBehaviour
             {
                 firstCheck = false;
             }
+
+            print(firstCheck + " " + firstID + " " + connections[i].FirstID + " " + connections[i].SecondID);
 
             if (secondID == connections[i].FirstID || secondID == connections[i].SecondID)
             {
@@ -41,12 +42,17 @@ public class EvidenceBoardManager : MonoBehaviour
             if (firstCheck && secondCheck)
             {
                 yarn.IsConnecting = false;
+
+                i = connections.Count + 1;
             }
-            else
-            {
-                tempList.RemoveAt(i);
-                i--;
-            }
+        }
+    }
+
+    public void PrintList()
+    {
+        for (int i = 0; i < connections.Count;i++)
+        {
+            print(connections[i].FirstID + " " + connections[i].SecondID);
         }
     }
 }

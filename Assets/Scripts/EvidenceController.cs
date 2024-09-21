@@ -36,6 +36,10 @@ public class EvidenceController : MonoBehaviour
 
     [SerializeField] private Transform _childTransform;
     public Transform ChildTransform { get => _childTransform; private set => _childTransform = value; }
+    public EvidenceID ID { get => _id; set => _id = value; }
+
+    [SerializeField] private EvidenceID _id;
+
     
     private void Awake()
     {

@@ -161,7 +161,12 @@ MonoBehaviour:
   EvidenceMask:
     serializedVersion: 2
     m_Bits: 128
+  CabinetMask:
+    serializedVersion: 2
+    m_Bits: 0
   _yarnController: {fileID: 0}
+  _playerController: {fileID: 0}
+  _cabinetController: {fileID: 0}
 --- !u!114 &42833947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,6 +502,7 @@ MonoBehaviour:
   SlerpSpeed: 10
   HoverSpeed: 10
   _childTransform: {fileID: 66763715}
+  _id: 1
 --- !u!65 &1072737282
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -598,6 +604,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   YarnMaterial:
   - {fileID: 2100000, guid: 99361b83ba22d904cb22d13c2de3f6ea, type: 2}
+  LineObject: {fileID: 5477419112686885290, guid: a0541004dc2003249ae3bc3983ce6761, type: 3}
 --- !u!1 &1951495357
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,6 +737,7 @@ GameObject:
   - component: {fileID: 2144884509}
   - component: {fileID: 2144884508}
   - component: {fileID: 2144884507}
+  - component: {fileID: 2144884512}
   m_Layer: 7
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -758,6 +766,7 @@ MonoBehaviour:
   SlerpSpeed: 10
   HoverSpeed: 10
   _childTransform: {fileID: 740094338}
+  _id: 2
 --- !u!65 &2144884508
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -845,6 +854,21 @@ Transform:
   - {fileID: 740094338}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2144884512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144884506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15f6ea084837a29469984dd480a2b779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  YarnMaterial:
+  - {fileID: 2100000, guid: 99361b83ba22d904cb22d13c2de3f6ea, type: 2}
+  LineObject: {fileID: 5477419112686885290, guid: a0541004dc2003249ae3bc3983ce6761, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

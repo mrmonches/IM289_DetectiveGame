@@ -16,7 +16,7 @@ public enum EvidenceID
     // First letter which case, A-C
     // First set of numbers, which piece of evidence
     // Second set of numbers, ID for component of evidence
-    Null,
+    Default,
     A01_01,
     A01_02,
     A01_03,
