@@ -36,7 +36,13 @@ public class EvidenceController : MonoBehaviour
 
     [SerializeField] private Transform _childTransform;
     public Transform ChildTransform { get => _childTransform; private set => _childTransform = value; }
-    
+
+    [SerializeField] private EvidenceData _evidenceData;
+
+    private EvidenceID _id;
+    public EvidenceID ID { get => _id; set => _id = value; }
+    public EvidenceData EvidenceData { get => _evidenceData; set => _evidenceData = value; }
+
     private void Awake()
     {
         _boxCollider = GetComponent<BoxCollider>();
@@ -46,6 +52,8 @@ public class EvidenceController : MonoBehaviour
         _boardManager = FindObjectOfType<EvidenceBoardManager>();
 
         RecordPlacedPos();
+
+        _id = _evidenceData.EvidenceID;
     }
 
     /// <summary>

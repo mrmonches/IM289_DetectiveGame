@@ -74,31 +74,33 @@ public class PlayerController : MonoBehaviour
 
     private void rightClickAction_started(InputAction.CallbackContext obj)
     {
-        //RaycastHit hit;
-        //StartComment here
-        /*if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, EvidenceMask))
+        if (CurrentStation == PlayerLocation.EvidenceBoard) 
         {
-            if (_yarnController != null && _yarnController.IsConnecting)
+            RaycastHit hit;
+
+            if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, EvidenceMask))
             {
-                _yarnController.GiveLinePosition(hit.collider.GetComponent<EvidenceController>().ChildTransform.position);
+                EvidenceController hitObject = hit.collider.GetComponent<EvidenceController>();
 
-                print(hit.collider.GetComponentInChildren<Transform>().position);
+                if (_yarnController != null && _yarnController.IsConnecting)
+                {
+                    _yarnController.CheckLineStatus(hitObject.transform.position, hitObject.EvidenceData);
+
+                    _yarnController = null;
+                }
+                else
+                {
+                    _yarnController = hit.collider.gameObject.GetComponent<YarnController>();
+
+                    _yarnController.IsConnecting = true;
+
+                    _yarnController.CheckLineStatus(hitObject.transform.position, hitObject.EvidenceData);
+                }
             }
-            else
-            {
-                _yarnController = hit.collider.gameObject.GetComponent<YarnController>();
-
-                _yarnController.GiveLinePosition(hit.collider.GetComponent<EvidenceController>().ChildTransform.position);
-
-                print(hit.collider.GetComponentInChildren<Transform>().position);
-
-                _yarnController.IsConnecting = true;
-            }
-        }*/
-        //End comment Here
+        }
 
         //Quinn wrote this. For opening/closing the filing cabinet
-        Debug.Log("It ran the thing");
+        //Debug.Log("It ran the thing");
         RaycastHit hitCabinet;
         if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitCabinet, CastDistance, CabinetMask))
         {

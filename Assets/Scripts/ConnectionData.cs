@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ConnectionData : MonoBehaviour
+public class ConnectionData
 {
     private LineRenderer lineRenderer;
     private EvidenceID firstID, secondID;
