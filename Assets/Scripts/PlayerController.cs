@@ -46,6 +46,9 @@ public class PlayerController : MonoBehaviour
         _clickInputs.DefaultControls.Enable();
         _clickInputs.DefaultControls.RightClick.started += rightClickAction_started;
 
+        _clickInputs.DefaultControls.LeftClick.started += leftClickAction_started;
+        _clickInputs.DefaultControls.LeftClick.canceled += leftClickAction_canceled;
+
        // leftClickAction.started += leftClickAction_started;
         //leftClickAction.canceled += leftClickAction_canceled;
 
@@ -84,7 +87,7 @@ public class PlayerController : MonoBehaviour
 
                 if (_yarnController != null && _yarnController.IsConnecting)
                 {
-                    _yarnController.CheckLineStatus(hitObject.transform.position, hitObject.EvidenceData);
+                    _yarnController.CheckLineStatus(hitObject.transform.position, hitObject.EvidenceData, hitObject.gameObject);
 
                     _yarnController = null;
                 }
@@ -94,7 +97,7 @@ public class PlayerController : MonoBehaviour
 
                     _yarnController.IsConnecting = true;
 
-                    _yarnController.CheckLineStatus(hitObject.transform.position, hitObject.EvidenceData);
+                    _yarnController.CheckLineStatus(hitObject.transform.position, hitObject.EvidenceData, hitObject.gameObject);
                 }
             }
         }

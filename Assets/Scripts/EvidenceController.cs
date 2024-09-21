@@ -24,24 +24,26 @@ public class EvidenceController : MonoBehaviour
 
     private bool isHeld;
     private bool isHover;
+    private bool isConnected;
 
     private bool canPlace;
 
     private Vector3 placedPos;
 
-    public bool IsHeld { get => isHeld; set => isHeld = value; }
-    public bool IsHover { get => isHover; set => isHover = value; }
-
     private EvidenceBoardManager _boardManager;
 
     [SerializeField] private Transform _childTransform;
-    public Transform ChildTransform { get => _childTransform; private set => _childTransform = value; }
 
     [SerializeField] private EvidenceData _evidenceData;
 
     private EvidenceID _id;
+
+    public bool IsHeld { get => isHeld; set => isHeld = value; }
+    public bool IsHover { get => isHover; set => isHover = value; }
+    public Transform ChildTransform { get => _childTransform; private set => _childTransform = value; }
     public EvidenceID ID { get => _id; set => _id = value; }
     public EvidenceData EvidenceData { get => _evidenceData; set => _evidenceData = value; }
+    public bool IsConnected { get => isConnected; set => isConnected = value; }
 
     private void Awake()
     {
@@ -101,6 +103,11 @@ public class EvidenceController : MonoBehaviour
             transform.position = new Vector3 (transform.position.x, transform.position.y, _boardManager.EvidencePlacePos1);
 
             RecordPlacedPos();
+
+            if (isConnected)
+            {
+                _boardManager.UpdateLinePos(gameObject, _id);
+            }
         }
         else
         {
@@ -142,6 +149,11 @@ public class EvidenceController : MonoBehaviour
             FollowPlayerMouse();
 
             CheckPlacePos();
+
+            if (isConnected)
+            {
+                _boardManager.UpdateLinePos(gameObject, _id);
+            }
         } 
         else
         {
