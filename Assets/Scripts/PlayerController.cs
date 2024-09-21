@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float CastDistance;
 
-    [SerializeField] private LayerMask LevelMask, EvidenceMask, CabinetMask;
+    [SerializeField] private LayerMask LevelMask, EvidenceMask, CabinetMask, FoldersMask;
 
     private Vector3 mousePosition;
 
@@ -63,6 +63,29 @@ public class PlayerController : MonoBehaviour
         {
             _evidenceController.IsHeld = true;
         }
+
+        //Quinn wrote this.
+        //For opening/closing the filing cabinet
+        RaycastHit hitCabinet;
+        if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitCabinet, CastDistance, CabinetMask))
+        {
+            Debug.Log("Hit the Cabinet");
+
+            hitCabinet.collider.gameObject.GetComponent<CabinetController>().GetOpenClose();
+        }
+        else
+        {
+            Debug.DrawLine(SceneCamera.transform.position, SceneCamera.ScreenPointToRay(mousePosition).direction * CastDistance, Color.red, 5);
+        }
+
+        //For accessing folders
+        RaycastHit hitFolders;
+        if(Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitFolders, CastDistance, FoldersMask))
+        {
+            Debug.Log("Hit the Folders");
+            hitFolders.collider.gameObject.GetComponent<FolderController>().OpenCloseFile();
+            
+        }
     }
 
     private void leftClickAction_canceled(InputAction.CallbackContext obj)
@@ -102,19 +125,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        //Quinn wrote this. For opening/closing the filing cabinet
-        //Debug.Log("It ran the thing");
-        RaycastHit hitCabinet;
-        if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitCabinet, CastDistance, CabinetMask))
-        {
-            Debug.Log("Hit the Cabinet");
-            //_cabinetController.GetComponent<CabinetController>().GetOpenClose();
-            hitCabinet.collider.gameObject.GetComponent<CabinetController>().GetOpenClose();
-        }
-        else
-        {
-            Debug.DrawLine(SceneCamera.transform.position, SceneCamera.ScreenPointToRay(mousePosition).direction* CastDistance,Color.red,5);
-        }
+       
     }
 
     private void OnMouse(InputValue mousePos)

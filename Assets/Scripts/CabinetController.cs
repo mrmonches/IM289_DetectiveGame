@@ -5,15 +5,16 @@ using UnityEngine;
 
 public class CabinetController : MonoBehaviour
 {
+    //Quinn wrote this
     private bool _isOpened = false;
     private Vector3 _closedVector3;
     private Vector3 _openedVector3;
     [SerializeField] private float pullOutDistance;
+    [SerializeField] private GameObject folders;
 
     private void Start()
     {
         _closedVector3 = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-        //_openedTransform = transform;
         _openedVector3 = new Vector3(transform.position.x, transform.position.y, transform.position.z + pullOutDistance);
     }
     public void GetOpenClose()
@@ -36,11 +37,14 @@ public class CabinetController : MonoBehaviour
     {
         transform.position = _openedVector3;
         _isOpened = true;
+        folders.SetActive(true);
+
     }
 
     void CloseCabinet()
     {
         transform.position = _closedVector3;
         _isOpened = false;
+        folders.SetActive(false);
     }
 }
