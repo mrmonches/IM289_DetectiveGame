@@ -9,6 +9,23 @@ public class EvidenceData : ScriptableObject
     [SerializeField] private List<EvidenceID> correctConnections = new List<EvidenceID>();
 
     [SerializeField] private bool TypewriterEvidence;
+
+    public EvidenceID EvidenceID { get => _evidenceID; set => _evidenceID = value; }
+    public EvidenceType EvidenceType { get => _evidenceType; set => _evidenceType = value; }
+    public bool TypewriterEvidence1 { get => TypewriterEvidence; set => TypewriterEvidence = value; }
+
+    public bool CheckCorrectConnection(EvidenceID evidenceID)
+    {
+        for (int i = 0; i < correctConnections.Count; i++)
+        {
+            if (correctConnections[i] == evidenceID)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
 
 public enum EvidenceID

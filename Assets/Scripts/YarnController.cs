@@ -5,11 +5,12 @@ public class YarnController : MonoBehaviour
 {
     private LineRenderer lineRenderer;
 
-    [SerializeField] private List<Material> YarnMaterial;
+    [SerializeField] private List<Material> GoodConnectionMaterial;
+    [SerializeField] private List<Material> BadConnectionMaterial;
 
     private EvidenceBoardManager boardManager;
 
-    private EvidenceID firstID, secondID;
+    [SerializeField] private EvidenceID firstID, secondID;
 
     private bool isConnecting;
 
@@ -21,11 +22,6 @@ public class YarnController : MonoBehaviour
 
     private void Awake()
     {
-        if (gameObject.GetComponent<LineRenderer>() == null)
-        {
-            CreateLineRender();
-        }
-
         boardManager = GameObject.Find("Board").GetComponent<EvidenceBoardManager>();
 
         firstID = EvidenceID.Default;
@@ -40,28 +36,25 @@ public class YarnController : MonoBehaviour
 
         lineRenderer.gameObject.transform.parent = gameObject.transform;
 
-        lineRenderer.SetMaterials(YarnMaterial);
-
         lineRenderer.positionCount = 0;
+
+        IsConnecting = true;
+    }
+
+    private void ClearCurrentRef()
+    {
+        boardManager.Connections.Add(new ConnectionData(lineRenderer, firstID, secondID));
+
+        lineRenderer = null;
+
+        firstID = EvidenceID.Default;
+        secondID = EvidenceID.Default;
+
+        CreateLineRender();
     }
 
     public void GiveLinePosition(Vector3 pos, EvidenceID evidenceID)
     {
-        if (lineRenderer.positionCount >= 2)
-        {
-            boardManager.Connections.Add(new ConnectionData(lineRenderer, firstID, secondID));
-            //boardManager.PrintList();
-
-            lineRenderer = null;
-
-            firstID = EvidenceID.Default;
-            secondID = EvidenceID.Default;
-
-            //lineRenderer = gameObject.AddComponent<LineRenderer>();
-
-            CreateLineRender();
-        }
-
         lineRenderer.positionCount++;
 
         lineRenderer.SetPosition(lineRenderer.positionCount - 1, pos);
@@ -73,24 +66,60 @@ public class YarnController : MonoBehaviour
         else
         {
             secondID = evidenceID;
+
+            ClearCurrentRef();
         }
     }
 
-    public void CheckLineStatus(Vector3 pos, EvidenceID evidenceID)
+    private void CheckControllerStatus()
     {
+        if (lineRenderer == null)
+        {
+            CreateLineRender();
+        }
+
+        if (lineRenderer.positionCount >= 2)
+        {
+            ClearCurrentRef();
+        }
+    }
+
+    private void CheckConnectionStatus(EvidenceData evidenceID)
+    {
+        if (evidenceID.CheckCorrectConnection(firstID))
+        {
+            lineRenderer.SetMaterials(GoodConnectionMaterial);
+        }
+        else
+        {
+            lineRenderer.SetMaterials(BadConnectionMaterial);
+        }
+    }
+
+    public void CheckLineStatus(Vector3 pos, EvidenceData evidenceID)
+    {
+        EvidenceID _id = evidenceID.EvidenceID;
+
+        CheckControllerStatus();
+
         if (firstID != EvidenceID.Default)
         {
-            CheckSelfConnection(evidenceID);
+            CheckSelfConnection(_id);
 
-            if (IsConnecting && boardManager.Connections.Count > 1)
+            if (IsConnecting)
             {
-                boardManager.CheckConnectionList(firstID, evidenceID, GetComponent<YarnController>());
+                boardManager.CheckConnectionList(firstID, _id, GetComponent<YarnController>());
+            }
+
+            if (IsConnecting)
+            {
+                CheckConnectionStatus(evidenceID);
             }
         }
 
         if (IsConnecting)
         {
-            GiveLinePosition(pos, evidenceID);
+            GiveLinePosition(pos, _id);
         }
         else
         {
@@ -108,6 +137,10 @@ public class YarnController : MonoBehaviour
             IsConnecting = false;
 
             firstID = EvidenceID.Default;
+        }
+        else
+        {
+            IsConnecting = true;
         }
     }
 }

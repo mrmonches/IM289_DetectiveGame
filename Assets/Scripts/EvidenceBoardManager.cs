@@ -8,12 +8,15 @@ public class EvidenceBoardManager : MonoBehaviour
     [SerializeField] private float EvidencePlacePos;
     [SerializeField] private List<ConnectionData> connections = new List<ConnectionData>();
 
+    [SerializeField] private int ListCount;
+
     public float EvidencePlacePos1 { get => EvidencePlacePos; private set => EvidencePlacePos = value; }
     public List<ConnectionData> Connections { get => connections; set => connections = value; }
 
 
     public void CheckConnectionList(EvidenceID firstID, EvidenceID secondID, YarnController yarn)
     {
+        print(connections.Count);
         for (int i = 0; i < connections.Count; i++)
         {
             bool firstCheck = false;
@@ -22,23 +25,25 @@ public class EvidenceBoardManager : MonoBehaviour
             if (firstID == connections[i].FirstID || firstID == connections[i].SecondID)
             {
                 firstCheck = true;
+                
             }
             else
             {
                 firstCheck = false;
             }
-
+print(firstCheck);
             print(firstCheck + " " + firstID + " " + connections[i].FirstID + " " + connections[i].SecondID);
 
             if (secondID == connections[i].FirstID || secondID == connections[i].SecondID)
             {
                 secondCheck = true;
+                
             }
             else
             {
                 secondCheck = false;
             }
-
+print(secondCheck);
             if (firstCheck && secondCheck)
             {
                 yarn.IsConnecting = false;
@@ -46,6 +51,11 @@ public class EvidenceBoardManager : MonoBehaviour
                 i = connections.Count + 1;
             }
         }
+    }
+
+    public void CheckCount()
+    {
+        ListCount = connections.Count;
     }
 
     public void PrintList()

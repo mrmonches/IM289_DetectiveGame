@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
 
                 if (_yarnController != null && _yarnController.IsConnecting)
                 {
-                    _yarnController.CheckLineStatus(hitObject.transform.position, hitObject.ID);
+                    _yarnController.CheckLineStatus(hitObject.transform.position, hitObject.EvidenceData);
 
                     _yarnController = null;
                 }
@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
 
                     _yarnController.IsConnecting = true;
 
-                    _yarnController.CheckLineStatus(hitObject.transform.position, hitObject.ID);
+                    _yarnController.CheckLineStatus(hitObject.transform.position, hitObject.EvidenceData);
                 }
             }
         }
