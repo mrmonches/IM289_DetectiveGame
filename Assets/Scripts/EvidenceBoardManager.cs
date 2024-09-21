@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 
 //By Nolan
@@ -10,9 +11,11 @@ public class EvidenceBoardManager : MonoBehaviour
 
     [SerializeField] private int ListCount;
 
+    private bool hasShortList;
+
     public float EvidencePlacePos1 { get => EvidencePlacePos; private set => EvidencePlacePos = value; }
     public List<ConnectionData> Connections { get => connections; set => connections = value; }
-
+    public bool HasShortList { get => hasShortList; set => hasShortList = value; }
 
     public void CheckConnectionList(EvidenceID firstID, EvidenceID secondID, YarnController yarn)
     {
@@ -31,8 +34,6 @@ public class EvidenceBoardManager : MonoBehaviour
             {
                 firstCheck = false;
             }
-print(firstCheck);
-            print(firstCheck + " " + firstID + " " + connections[i].FirstID + " " + connections[i].SecondID);
 
             if (secondID == connections[i].FirstID || secondID == connections[i].SecondID)
             {
@@ -43,7 +44,7 @@ print(firstCheck);
             {
                 secondCheck = false;
             }
-print(secondCheck);
+
             if (firstCheck && secondCheck)
             {
                 yarn.IsConnecting = false;
@@ -63,6 +64,21 @@ print(secondCheck);
         for (int i = 0; i < connections.Count;i++)
         {
             print(connections[i].FirstID + " " + connections[i].SecondID);
+        }
+    }
+
+    public void UpdateLinePos(GameObject evidence, EvidenceID evidenceID)
+    {
+        for(int i = 0; i < connections.Count; i++)
+        {
+            if (connections[i].FirstID == evidenceID)
+            {
+                connections[i].LineRenderer.SetPosition(0, evidence.transform.position);
+            }
+            else if (connections[i].SecondID == evidenceID)
+            {
+                connections[i].LineRenderer.SetPosition(1, evidence.transform.position);
+            }
         }
     }
 }

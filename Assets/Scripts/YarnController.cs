@@ -11,6 +11,7 @@ public class YarnController : MonoBehaviour
     private EvidenceBoardManager boardManager;
 
     [SerializeField] private EvidenceID firstID, secondID;
+    [SerializeField] private GameObject firstObject, secondObject;
 
     private bool isConnecting;
 
@@ -43,17 +44,23 @@ public class YarnController : MonoBehaviour
 
     private void ClearCurrentRef()
     {
-        boardManager.Connections.Add(new ConnectionData(lineRenderer, firstID, secondID));
+        boardManager.Connections.Add(new ConnectionData(lineRenderer, firstID, secondID, firstObject, secondObject));
 
         lineRenderer = null;
 
         firstID = EvidenceID.Default;
         secondID = EvidenceID.Default;
 
+        firstObject.GetComponent<EvidenceController>().IsConnected = true;
+        secondObject.GetComponent<EvidenceController>().IsConnected = true;
+
+        firstObject = null;
+        secondObject = null;
+
         CreateLineRender();
     }
 
-    public void GiveLinePosition(Vector3 pos, EvidenceID evidenceID)
+    public void GiveLinePosition(Vector3 pos, EvidenceID evidenceID, GameObject evidence)
     {
         lineRenderer.positionCount++;
 
@@ -62,10 +69,14 @@ public class YarnController : MonoBehaviour
         if (firstID == EvidenceID.Default)
         {
             firstID = evidenceID;
+
+            firstObject = evidence;
         }
         else
         {
             secondID = evidenceID;
+
+            secondObject = evidence;
 
             ClearCurrentRef();
         }
@@ -96,7 +107,7 @@ public class YarnController : MonoBehaviour
         }
     }
 
-    public void CheckLineStatus(Vector3 pos, EvidenceData evidenceID)
+    public void CheckLineStatus(Vector3 pos, EvidenceData evidenceID, GameObject evidence)
     {
         EvidenceID _id = evidenceID.EvidenceID;
 
@@ -119,7 +130,7 @@ public class YarnController : MonoBehaviour
 
         if (IsConnecting)
         {
-            GiveLinePosition(pos, _id);
+            GiveLinePosition(pos, _id, evidence);
         }
         else
         {
