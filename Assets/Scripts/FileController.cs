@@ -6,10 +6,9 @@ public class FileController : MonoBehaviour
 {
     //Written by Quinn
     public EvidenceData heldDataFile;
-    
+
     public void CloseFile()
     {
         Destroy(gameObject);
     }
-
 }

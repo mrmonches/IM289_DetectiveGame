@@ -12,6 +12,8 @@ public class CabinetController : MonoBehaviour
     [SerializeField] private float pullOutDistance;
     [SerializeField] private GameObject folders;
 
+    public bool IsOpened { get => _isOpened; set => _isOpened = value; }
+
     private void Start()
     {
         _closedVector3 = new Vector3(transform.position.x, transform.position.y, transform.position.z);
@@ -22,9 +24,9 @@ public class CabinetController : MonoBehaviour
         OpenClose();
     }
 
-    void OpenClose()
+    private void OpenClose()
     {
-        if(_isOpened == true)
+        if(IsOpened == true)
         {
             CloseCabinet();
         }
@@ -33,18 +35,17 @@ public class CabinetController : MonoBehaviour
             OpenCabinet();
         }
     }
-   void OpenCabinet()
+    private void OpenCabinet()
     {
         transform.position = _openedVector3;
-        _isOpened = true;
+        IsOpened = true;
         folders.SetActive(true);
-
     }
 
-    void CloseCabinet()
+    private void CloseCabinet()
     {
         transform.position = _closedVector3;
-        _isOpened = false;
+        IsOpened = false;
         folders.SetActive(false);
     }
 }

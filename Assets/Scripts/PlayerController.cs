@@ -29,9 +29,13 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private PlayerController _playerController;
 
-    [SerializeField] private GameObject _cabinetController;
+    [SerializeField] private GameObject _cabinetObject;
 
     private ClickControls _clickInputs;
+
+    private CabinetController _cabinetController;
+
+    private FolderController _folderController;
 
     private void Awake()
     {
@@ -57,44 +61,64 @@ public class PlayerController : MonoBehaviour
 
     private void leftClickAction_started(InputAction.CallbackContext obj)
     {
-        isSelecting = true;
-
-        if (_evidenceController != null )
+        // Allows left-click to not call the following code if set to EvidenceBoard
+        if (CurrentStation == PlayerLocation.EvidenceBoard)
         {
-            _evidenceController.IsHeld = true;
+            isSelecting = true;
+
+            if (_evidenceController != null )
+            {
+                _evidenceController.IsHeld = true;
+            }
         }
 
         //Quinn wrote this.
         //For opening/closing the filing cabinet
-        RaycastHit hitCabinet;
-        if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitCabinet, CastDistance, CabinetMask))
+        if (CurrentStation == PlayerLocation.FilingCabinet)
         {
-            Debug.Log("Hit the Cabinet");
+            if (_cabinetController != null && _cabinetController.IsOpened)
+            {
+                RaycastHit hitFolders;
+                if(Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitFolders, CastDistance, FoldersMask))
+                {
+                    _folderController = hitFolders.collider.gameObject.GetComponent<FolderController>();
 
-            hitCabinet.collider.gameObject.GetComponent<CabinetController>().GetOpenClose();
-        }
-        else
-        {
-            Debug.DrawLine(SceneCamera.transform.position, SceneCamera.ScreenPointToRay(mousePosition).direction * CastDistance, Color.red, 5);
-        }
+                    _folderController.OpenCloseFile();
+                }
+            }
 
-        //For accessing folders
-        RaycastHit hitFolders;
-        if(Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitFolders, CastDistance, FoldersMask))
-        {
-            Debug.Log("Hit the Folders");
-            hitFolders.collider.gameObject.GetComponent<FolderController>().OpenCloseFile();
-            
+            if (_folderController != null && _folderController.FolderOpen)
+            {
+                RaycastHit hitCabinet;
+                if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitCabinet, CastDistance, CabinetMask))
+                {
+                    _cabinetController = hitCabinet.collider.gameObject.GetComponent<CabinetController>();
+
+                    _cabinetController.GetOpenClose();
+
+                    if (!_cabinetController.IsOpened)
+                    {
+                        _cabinetController = null;
+                    }
+                }
+                else
+                {
+                    Debug.DrawLine(SceneCamera.transform.position, SceneCamera.ScreenPointToRay(mousePosition).direction * CastDistance, Color.red, 5);
+                }
+            }
         }
     }
 
     private void leftClickAction_canceled(InputAction.CallbackContext obj)
     {
-        isSelecting = false;
-
-        if (_evidenceController != null)
+        if (CurrentStation == PlayerLocation.EvidenceBoard)
         {
-            _evidenceController.OnPlace();
+            isSelecting = false;
+
+            if (_evidenceController != null)
+            {
+                _evidenceController.OnPlace();
+            }
         }
     }
 
@@ -124,8 +148,6 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-
-       
     }
 
     private void OnMouse(InputValue mousePos)
