@@ -17,7 +17,5 @@ public class FolderController : MonoBehaviour
         openedFile.transform.SetParent(canvas.transform, false);
         
         openedFile.GetComponent<FileController>().heldDataFile = heldData;
-
-        folderOpen = true;
     }
 }

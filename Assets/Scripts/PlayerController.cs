@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private InputAction rightClickAction;
 
     private bool isSelecting;
+    private bool inItemViewer;
 
     [SerializeField] private PlayerLocation CurrentStation;
     [SerializeField] private Camera SceneCamera;
@@ -37,26 +38,16 @@ public class PlayerController : MonoBehaviour
 
     private FolderController _folderController;
 
+    public bool InItemViewer { get => inItemViewer; set => inItemViewer = value; }
+
     private void Awake()
     {
-        /*_playerInput = GetComponent<PlayerInput>();
-
-        _playerInput.currentActionMap.Enable();
-
-        leftClickAction = _playerInput.currentActionMap.FindAction("LeftClick");
-        rightClickAction = _playerInput.currentActionMap.FindAction("RightClick");*/
-
         _clickInputs = new ClickControls();
         _clickInputs.DefaultControls.Enable();
         _clickInputs.DefaultControls.RightClick.started += rightClickAction_started;
 
         _clickInputs.DefaultControls.LeftClick.started += leftClickAction_started;
         _clickInputs.DefaultControls.LeftClick.canceled += leftClickAction_canceled;
-
-       // leftClickAction.started += leftClickAction_started;
-        //leftClickAction.canceled += leftClickAction_canceled;
-
-        //rightClickAction.started += rightClickAction_started;
     }
 
     private void leftClickAction_started(InputAction.CallbackContext obj)
@@ -72,40 +63,35 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        //Quinn wrote this.
+        //Quinn wrote this. Nolan made edits (9/22/24)
         //For opening/closing the filing cabinet
-        if (CurrentStation == PlayerLocation.FilingCabinet)
+        if (CurrentStation == PlayerLocation.FilingCabinet && !InItemViewer)
         {
-            if (_cabinetController != null && _cabinetController.IsOpened)
+            RaycastHit hitCabinet, hitFolder;
+            
+            if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitCabinet, CastDistance, CabinetMask))
             {
-                RaycastHit hitFolders;
-                if(Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitFolders, CastDistance, FoldersMask))
-                {
-                    _folderController = hitFolders.collider.gameObject.GetComponent<FolderController>();
+                _cabinetController = hitCabinet.collider.gameObject.GetComponent<CabinetController>();
 
-                    _folderController.OpenCloseFile();
+                _cabinetController.GetOpenClose();
+
+                if (!_cabinetController.IsOpened)
+                {
+                    _cabinetController = null;
                 }
             }
-
-            if (_folderController != null && _folderController.FolderOpen)
+            else if(Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitFolder, CastDistance, FoldersMask))
             {
-                RaycastHit hitCabinet;
-                if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitCabinet, CastDistance, CabinetMask))
-                {
-                    _cabinetController = hitCabinet.collider.gameObject.GetComponent<CabinetController>();
+                _folderController = hitFolder.collider.gameObject.GetComponent<FolderController>();
 
-                    _cabinetController.GetOpenClose();
+                _folderController.OpenCloseFile();
 
-                    if (!_cabinetController.IsOpened)
-                    {
-                        _cabinetController = null;
-                    }
-                }
-                else
-                {
-                    Debug.DrawLine(SceneCamera.transform.position, SceneCamera.ScreenPointToRay(mousePosition).direction * CastDistance, Color.red, 5);
-                }
+                InItemViewer = true;
             }
+            //else
+            //{
+            //    Debug.DrawLine(SceneCamera.transform.position, SceneCamera.ScreenPointToRay(mousePosition).direction * CastDistance, Color.red, 5);
+            //}
         }
     }
 
