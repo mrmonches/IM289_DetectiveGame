@@ -1,13 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FolderController : MonoBehaviour
 {
     //Quinn wrote this
     public EvidenceData heldData;
-    [SerializeField] GameObject file;
-    [SerializeField] Canvas canvas;
+    [SerializeField] private GameObject file;
+    [SerializeField] private Canvas canvas;
+
+    private bool folderOpen;
+
+    public bool FolderOpen { get => folderOpen; set => folderOpen = value; }
 
     public void OpenCloseFile()
     {
@@ -16,5 +18,4 @@ public class FolderController : MonoBehaviour
         
         openedFile.GetComponent<FileController>().heldDataFile = heldData;
     }
-
 }

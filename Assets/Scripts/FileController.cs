@@ -6,10 +6,18 @@ public class FileController : MonoBehaviour
 {
     //Written by Quinn
     public EvidenceData heldDataFile;
-    
-    public void CloseFile()
+
+    private PlayerController _playerController;
+
+    private void Awake()
     {
-        Destroy(gameObject);
+        _playerController = FindObjectOfType<PlayerController>();
     }
 
+    public void CloseFile()
+    {
+        _playerController.InItemViewer = false;
+
+        Destroy(gameObject);
+    }
 }
