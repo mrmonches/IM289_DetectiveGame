@@ -48,4 +48,14 @@ public class CabinetController : MonoBehaviour
         IsOpened = false;
         folders.SetActive(false);
     }
+
+    public void GetOpen()
+    {
+        OpenCabinet();
+    }
+
+    public void GetClose()
+    {
+        CloseCabinet();
+    }
 }

@@ -17,6 +17,7 @@ public class CameraController : MonoBehaviour
     //1= left camera MurderBoard | 2= middle Desk | 3= right Filing Cabinet
     private int activecamera = 2;
     [SerializeField] private GameObject _playerController;
+    [SerializeField] private GameObject _cabinetController;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +57,7 @@ public class CameraController : MonoBehaviour
             activecamera = 3;
 
             _playerController.GetComponent<PlayerController>().StationSetCabinet();
+            _cabinetController.GetComponent<CabinetController>().GetOpen();
         }
         else if(activecamera==3)
         {
@@ -86,6 +88,7 @@ public class CameraController : MonoBehaviour
             activecamera = 2;
 
             _playerController.GetComponent<PlayerController>().StationSetDesk();
+            _cabinetController.GetComponent<CabinetController>().GetClose();
         }
         else if(activecamera==1)
         {
