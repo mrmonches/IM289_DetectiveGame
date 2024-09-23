@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
             if (_evidenceController != null )
             {
                 _evidenceController.IsHeld = true;
-            }
+            }  
         }
 
         //Quinn wrote this. Nolan made edits (9/22/24)
@@ -118,7 +118,7 @@ public class PlayerController : MonoBehaviour
 
                 if (_yarnController != null && _yarnController.IsConnecting)
                 {
-                    _yarnController.CheckLineStatus(hitObject.transform.position, hitObject.EvidenceData, hitObject.gameObject);
+                    _yarnController.CheckLineStatus(hitObject.ChildTransform.position, hitObject.EvidenceData, hitObject.gameObject);
 
                     _yarnController = null;
                 }
@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
 
                     _yarnController.IsConnecting = true;
 
-                    _yarnController.CheckLineStatus(hitObject.transform.position, hitObject.EvidenceData, hitObject.gameObject);
+                    _yarnController.CheckLineStatus(hitObject.ChildTransform.position, hitObject.EvidenceData, hitObject.gameObject);
                 }
             }
         }
@@ -226,7 +226,7 @@ public class PlayerController : MonoBehaviour
 
     public void StationSetBoard()
     {
-        CurrentStation = PlayerLocation.FilingCabinet;
+        CurrentStation = PlayerLocation.EvidenceBoard;
     }
 
 }

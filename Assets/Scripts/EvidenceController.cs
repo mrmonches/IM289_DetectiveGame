@@ -26,7 +26,7 @@ public class EvidenceController : MonoBehaviour
     private bool isHover;
     private bool isConnected;
 
-    private bool canPlace;
+    [SerializeField] private bool canPlace;
 
     private Vector3 placedPos;
 
@@ -35,6 +35,8 @@ public class EvidenceController : MonoBehaviour
     [SerializeField] private Transform _childTransform;
 
     [SerializeField] private EvidenceData _evidenceData;
+
+    [SerializeField] private Vector3 direction;
 
     private EvidenceID _id;
 
@@ -100,7 +102,7 @@ public class EvidenceController : MonoBehaviour
 
         if (canPlace)
         {
-            transform.position = new Vector3 (transform.position.x, transform.position.y, _boardManager.EvidencePlacePos1);
+            transform.position = new Vector3 (_boardManager.EvidencePlacePos1, transform.position.y, transform.position.z);
 
             RecordPlacedPos();
 
@@ -127,7 +129,7 @@ public class EvidenceController : MonoBehaviour
     private void CheckPlacePos()
     {
         RaycastHit hit;
-        if (Physics.BoxCast(transform.position, transform.lossyScale / 2, transform.forward, out hit, transform.rotation, CastDistance, EvidenceMask))
+        if (Physics.BoxCast(transform.position, transform.lossyScale, direction, out hit, transform.rotation, CastDistance, EvidenceMask))
         {
             canPlace = false;
         }
@@ -148,7 +150,7 @@ public class EvidenceController : MonoBehaviour
 
             FollowPlayerMouse();
 
-            CheckPlacePos();
+            //CheckPlacePos();
 
             if (isConnected)
             {

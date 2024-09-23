@@ -20,11 +20,15 @@ public class YarnController : MonoBehaviour
 
     private PlayerController _playerController;
 
+    // Preferences on line renderer, don't change unless you know what you want from the line renderer
+    [SerializeField, Tooltip("Sets width of the line renderer")] private float LineWidth;
+    [SerializeField, Tooltip("Adjusts texture stretch of line renderer")] private Vector2 LineScale;
+
     public bool IsConnecting { get => isConnecting; set => isConnecting = value; }
 
     private void Awake()
     {
-        boardManager = GameObject.Find("Board").GetComponent<EvidenceBoardManager>();
+        boardManager = FindObjectOfType<EvidenceBoardManager>();
 
         firstID = EvidenceID.Default;
         secondID = EvidenceID.Default;
@@ -39,6 +43,11 @@ public class YarnController : MonoBehaviour
         lineRenderer.gameObject.transform.parent = gameObject.transform;
 
         lineRenderer.positionCount = 0;
+
+        lineRenderer.startWidth = LineWidth;
+        lineRenderer.endWidth = LineWidth;
+
+        lineRenderer.textureScale = LineScale;
 
         IsConnecting = true;
     }
