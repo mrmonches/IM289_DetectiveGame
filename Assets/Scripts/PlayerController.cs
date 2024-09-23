@@ -20,11 +20,13 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float CastDistance;
 
-    [SerializeField] private LayerMask LevelMask, EvidenceMask, CabinetMask, FoldersMask;
+    [SerializeField] private LayerMask LevelMask, EvidenceMask, CabinetMask, FoldersMask, StackMask;
 
     private Vector3 mousePosition;
 
     private EvidenceController _evidenceController;
+
+    private EvidenceStackManager _stackManager;
 
     [SerializeField] private YarnController _yarnController;
 
