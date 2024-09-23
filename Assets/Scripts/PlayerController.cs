@@ -30,8 +30,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private YarnController _yarnController;
 
-    [SerializeField] private PlayerController _playerController;
-
     [SerializeField] private GameObject _cabinetObject;
 
     private ClickControls _clickInputs;
@@ -61,10 +59,15 @@ public class PlayerController : MonoBehaviour
         {
             isSelecting = true;
 
-            if (_evidenceController != null )
+            if (_evidenceController != null)
             {
                 _evidenceController.IsHeld = true;
             }  
+
+            if (_stackManager != null)
+            {
+                _stackManager.GivePlayerEvidence();
+            }
         }
 
         //Quinn wrote this. Nolan made edits (9/22/24)
@@ -181,14 +184,11 @@ public class PlayerController : MonoBehaviour
         }
         else if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, StackMask))
         {
-            if (_stackManager != null)
+            if (_stackManager == null)
             {
-
+                _stackManager = hit.collider.gameObject.GetComponent<EvidenceStackManager>();
             }
-
-            
         }
-
         else
         {
             if (_evidenceController != null)
@@ -199,6 +199,11 @@ public class PlayerController : MonoBehaviour
                 }
 
                 _evidenceController = null;
+            }
+
+            if (_stackManager != null)
+            {
+                _stackManager = null;
             }
         }
     }
