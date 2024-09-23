@@ -9,6 +9,9 @@ public class EvidenceData : ScriptableObject
     [SerializeField] private EvidenceType _evidenceType;
     [SerializeField] private List<EvidenceID> correctConnections = new List<EvidenceID>();
 
+    [SerializeField, Tooltip("This should only be filled out if the evidence is part of a document")]
+    private string CardInformation;
+
     [SerializeField] private bool TypewriterEvidence;
 
     public EvidenceID EvidenceID { get => _evidenceID; set => _evidenceID = value; }
@@ -34,12 +37,15 @@ public enum EvidenceID
     // First letter which case, A-C
     // First set of numbers, which piece of evidence
     // Second set of numbers, ID for component of evidence
+    // If ID ends in 00, means evidence does not have any other components, sent to board 'as is'
     Default,
     A01_01,
     A01_02,
     A01_03,
     A01_04,
-    A01_05
+    A01_05,
+    A02_00,
+    A03_00
 }
 
 public enum EvidenceType
