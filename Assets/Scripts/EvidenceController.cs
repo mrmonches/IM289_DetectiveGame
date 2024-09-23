@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 // By Nolan
 
@@ -38,6 +40,8 @@ public class EvidenceController : MonoBehaviour
 
     [SerializeField] private Vector3 direction;
 
+    [SerializeField] private TMP_Text CardText;
+
     private EvidenceID _id;
 
     public bool IsHeld { get => isHeld; set => isHeld = value; }
@@ -58,6 +62,11 @@ public class EvidenceController : MonoBehaviour
         RecordPlacedPos();
 
         _id = _evidenceData.EvidenceID;
+
+        if (_evidenceData.EvidenceType == EvidenceType.Document)
+        {
+            CardText.text = _evidenceData.GetCardInformation;
+        }
     }
 
     /// <summary>
@@ -100,8 +109,8 @@ public class EvidenceController : MonoBehaviour
     {
         IsHeld = false;
 
-        if (canPlace)
-        {
+        //if (canPlace)
+        //{
             transform.position = new Vector3 (_boardManager.EvidencePlacePos1, transform.position.y, transform.position.z);
 
             RecordPlacedPos();
@@ -110,11 +119,11 @@ public class EvidenceController : MonoBehaviour
             {
                 _boardManager.UpdateLinePos(gameObject, _id);
             }
-        }
-        else
-        {
-            transform.position = placedPos;
-        }
+        //}
+        //else
+        //{
+            //transform.position = placedPos;
+        //}
     }
 
     /// <summary>
