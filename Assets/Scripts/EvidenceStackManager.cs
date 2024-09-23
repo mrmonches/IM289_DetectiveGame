@@ -25,5 +25,7 @@ public class EvidenceStackManager : MonoBehaviour
         GameObject card = Instantiate(EvidenceCardObject, _playerController.GetSelectedPosition(), Quaternion.identity);
 
         _playerController.EvidenceController = card.GetComponent<EvidenceController>();
+
+        card.GetComponent<EvidenceController>().IsHeld = true;
     }
 }
