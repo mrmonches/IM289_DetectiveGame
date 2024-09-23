@@ -65,6 +65,7 @@ public class CameraController : MonoBehaviour
             MiddleCamera.gameObject.SetActive(false);
             RightCamera.gameObject.SetActive(false);
             activecamera = 1;
+            _playerController.GetComponent<PlayerController>().StationSetBoard();
         }
     }
 
@@ -96,6 +97,7 @@ public class CameraController : MonoBehaviour
             MiddleCamera.gameObject.SetActive(false);
             RightCamera.gameObject.SetActive(true);
             activecamera = 3;
+            _playerController.GetComponent<PlayerController>().StationSetCabinet();
         }
     }
     
