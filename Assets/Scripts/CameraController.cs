@@ -57,6 +57,13 @@ public class CameraController : MonoBehaviour
 
             _playerController.GetComponent<PlayerController>().StationSetCabinet();
         }
+        else if(activecamera==3)
+        {
+            LeftCamera.gameObject.SetActive(true);
+            MiddleCamera.gameObject.SetActive(false);
+            RightCamera.gameObject.SetActive(false);
+            activecamera = 1;
+        }
     }
 
     private void CameraLeft_started(InputAction.CallbackContext obj)
@@ -79,6 +86,13 @@ public class CameraController : MonoBehaviour
             activecamera = 2;
 
             _playerController.GetComponent<PlayerController>().StationSetDesk();
+        }
+        else if(activecamera==1)
+        {
+            LeftCamera.gameObject.SetActive(false);
+            MiddleCamera.gameObject.SetActive(false);
+            RightCamera.gameObject.SetActive(true);
+            activecamera = 3;
         }
     }
     
