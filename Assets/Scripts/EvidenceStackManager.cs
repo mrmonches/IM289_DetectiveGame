@@ -10,6 +10,8 @@ public class EvidenceStackManager : MonoBehaviour
 
     [SerializeField] private GameObject EvidenceCardObject;
 
+    [SerializeField] private Transform EvidenceRotation;
+
     private void Awake()
     {
         _playerController = FindObjectOfType<PlayerController>();
@@ -22,10 +24,19 @@ public class EvidenceStackManager : MonoBehaviour
 
     public void GivePlayerEvidence()
     {
-        GameObject card = Instantiate(EvidenceCardObject, _playerController.GetSelectedPosition(), Quaternion.identity);
+        if (StackList.Count > 0)
+        {
+            GameObject card = Instantiate(EvidenceCardObject, _playerController.GetSelectedPosition(), EvidenceRotation.rotation);
 
-        _playerController.EvidenceController = card.GetComponent<EvidenceController>();
+            EvidenceController evidenceController = card.GetComponent<EvidenceController>();
 
-        card.GetComponent<EvidenceController>().IsHeld = true;
+            _playerController.EvidenceController = evidenceController;
+
+            evidenceController.IsHeld = true;
+
+            evidenceController.GiveEvidenceData(StackList[0]);
+
+            StackList.RemoveAt(0);
+        }
     }
 }

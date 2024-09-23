@@ -60,13 +60,6 @@ public class EvidenceController : MonoBehaviour
         _boardManager = FindObjectOfType<EvidenceBoardManager>();
 
         RecordPlacedPos();
-
-        _id = _evidenceData.EvidenceID;
-
-        if (_evidenceData.EvidenceType == EvidenceType.Document)
-        {
-            CardText.text = _evidenceData.GetCardInformation;
-        }
     }
 
     /// <summary>
@@ -124,6 +117,18 @@ public class EvidenceController : MonoBehaviour
         //{
             //transform.position = placedPos;
         //}
+    }
+
+    public void GiveEvidenceData(EvidenceData data)
+    {
+        _evidenceData = data;
+
+        _id = _evidenceData.EvidenceID;
+
+        if (_evidenceData.EvidenceType == EvidenceType.Document)
+        {
+            CardText.text = _evidenceData.GetCardInformation;
+        }
     }
 
     /// <summary>
