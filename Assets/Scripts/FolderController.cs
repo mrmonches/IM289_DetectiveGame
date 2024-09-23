@@ -3,7 +3,7 @@ using UnityEngine;
 public class FolderController : MonoBehaviour
 {
     //Quinn wrote this
-    public EvidenceData heldData;
+    //public EvidenceData heldData;
     [SerializeField] private GameObject file;
     [SerializeField] private Canvas canvas;
 
@@ -16,6 +16,6 @@ public class FolderController : MonoBehaviour
         var openedFile = Instantiate(file);
         openedFile.transform.SetParent(canvas.transform, false);
         
-        openedFile.GetComponent<FileController>().heldDataFile = heldData;
+        //openedFile.GetComponent<FileController>().heldDataFile = heldData;
     }
 }

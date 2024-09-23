@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: A01_01
   m_EditorClassIdentifier: 
   _evidenceID: 1
-  _evidenceType: 0
+  _evidenceType: 4
   correctConnections: 02000000
-  TypewriterEvidence: 0
+  CardInformation: Darling "Queen Bee" King
+  TypewriterEvidence: 1

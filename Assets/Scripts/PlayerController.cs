@@ -48,6 +48,8 @@ public class PlayerController : MonoBehaviour
 
         _clickInputs.DefaultControls.LeftClick.started += leftClickAction_started;
         _clickInputs.DefaultControls.LeftClick.canceled += leftClickAction_canceled;
+
+        inItemViewer = false;
     }
 
     private void leftClickAction_started(InputAction.CallbackContext obj)
@@ -88,10 +90,6 @@ public class PlayerController : MonoBehaviour
 
                 InItemViewer = true;
             }
-            //else
-            //{
-            //    Debug.DrawLine(SceneCamera.transform.position, SceneCamera.ScreenPointToRay(mousePosition).direction * CastDistance, Color.red, 5);
-            //}
         }
     }
 
