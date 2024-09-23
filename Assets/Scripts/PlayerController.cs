@@ -179,6 +179,16 @@ public class PlayerController : MonoBehaviour
                 _evidenceController.IsHover = true;
             }
         }
+        else if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, StackMask))
+        {
+            if (_stackManager != null)
+            {
+
+            }
+
+            
+        }
+
         else
         {
             if (_evidenceController != null)
