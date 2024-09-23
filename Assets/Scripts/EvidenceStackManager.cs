@@ -10,4 +10,9 @@ public class EvidenceStackManager : MonoBehaviour
     {
         StackList.Add(evidenceData);
     }
+
+    public void GivePlayerEvidence()
+    {
+
+    }
 }
