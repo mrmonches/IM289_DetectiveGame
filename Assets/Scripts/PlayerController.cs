@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     private FolderController _folderController;
 
     public bool InItemViewer { get => inItemViewer; set => inItemViewer = value; }
+    public EvidenceController EvidenceController { get => _evidenceController; set => _evidenceController = value; }
 
     private void Awake()
     {
@@ -59,9 +60,9 @@ public class PlayerController : MonoBehaviour
         {
             isSelecting = true;
 
-            if (_evidenceController != null)
+            if (EvidenceController != null)
             {
-                _evidenceController.IsHeld = true;
+                EvidenceController.IsHeld = true;
             }  
 
             if (_stackManager != null)
@@ -104,9 +105,9 @@ public class PlayerController : MonoBehaviour
         {
             isSelecting = false;
 
-            if (_evidenceController != null)
+            if (EvidenceController != null)
             {
-                _evidenceController.OnPlace();
+                EvidenceController.OnPlace();
             }
         }
     }
@@ -170,16 +171,16 @@ public class PlayerController : MonoBehaviour
 
         if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, EvidenceMask))
         {
-            if (_evidenceController != null && _evidenceController != hit.collider.gameObject.GetComponent<EvidenceController>())
+            if (EvidenceController != null && EvidenceController != hit.collider.gameObject.GetComponent<EvidenceController>())
             {
-                _evidenceController.IsHover = false;
+                EvidenceController.IsHover = false;
             }
 
-            _evidenceController = hit.collider.gameObject.GetComponent<EvidenceController>();
+            EvidenceController = hit.collider.gameObject.GetComponent<EvidenceController>();
 
-            if (!_evidenceController.IsHover)
+            if (!EvidenceController.IsHover)
             {
-                _evidenceController.IsHover = true;
+                EvidenceController.IsHover = true;
             }
         }
         else if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, StackMask))
@@ -191,14 +192,14 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            if (_evidenceController != null)
+            if (EvidenceController != null)
             {
-                if (_evidenceController.IsHover)
+                if (EvidenceController.IsHover)
                 {
-                    _evidenceController.IsHover = false;
+                    EvidenceController.IsHover = false;
                 }
 
-                _evidenceController = null;
+                EvidenceController = null;
             }
 
             if (_stackManager != null)

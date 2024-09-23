@@ -17,6 +17,7 @@ public class EvidenceData : ScriptableObject
     public EvidenceID EvidenceID { get => _evidenceID; set => _evidenceID = value; }
     public EvidenceType EvidenceType { get => _evidenceType; set => _evidenceType = value; }
     public bool TypewriterEvidence1 { get => TypewriterEvidence; set => TypewriterEvidence = value; }
+    public string GetCardInformation { get => CardInformation; private set => CardInformation = value; }
 
     public bool CheckCorrectConnection(EvidenceID evidenceID)
     {

@@ -304,6 +304,7 @@ MonoBehaviour:
   _childTransform: {fileID: 5458507431264335783}
   _evidenceData: {fileID: 11400000, guid: cf978f8ace4ab7344aed6d56b2bf1855, type: 2}
   direction: {x: 1, y: 0, z: 0}
+  CardText: {fileID: 6181810085322036513}
 --- !u!114 &3972007679166344858
 MonoBehaviour:
   m_ObjectHideFlags: 0

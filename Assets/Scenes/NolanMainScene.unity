@@ -3310,7 +3310,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   _yarnController: {fileID: 0}
-  _playerController: {fileID: 1046648972}
   _cabinetObject: {fileID: 0}
 --- !u!4 &1046648973
 Transform:
@@ -3846,7 +3845,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pullOutDistance: 10
-  folders: {fileID: 0}
+  folders: {fileID: 1959243092}
 --- !u!65 &1343546299
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5505,6 +5504,7 @@ MonoBehaviour:
   MiddleCamera: {fileID: 2008714662}
   RightCamera: {fileID: 560460234}
   _playerController: {fileID: 1046648971}
+  _cabinetController: {fileID: 1343546295}
 --- !u!114 &1750113699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6706,8 +6706,9 @@ GameObject:
   - component: {fileID: 2355477341535260628}
   - component: {fileID: 1242060667509345771}
   - component: {fileID: 4665059628496194082}
-  m_Layer: 0
-  m_Name: FileBox_Black
+  - component: {fileID: 4665059628496194083}
+  m_Layer: 10
+  m_Name: EvidenceStack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6797,6 +6798,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4665059628496194083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3054398394041804486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a5ef014d77f30043a094889b1ab07e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StackList: []
+  EvidenceCardObject: {fileID: 1660322390839781985, guid: cd0a998fd71238c4c9ce8137037af907, type: 3}
 --- !u!1 &4759235045770564249
 GameObject:
   m_ObjectHideFlags: 0
@@ -6945,13 +6960,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: EvidenceCard
       objectReference: {fileID: 0}
+    - target: {fileID: 1660322390839781985, guid: cd0a998fd71238c4c9ce8137037af907, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 997989888161243501, guid: cd0a998fd71238c4c9ce8137037af907, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd0a998fd71238c4c9ce8137037af907, type: 3}
 --- !u!4 &7452038758756825587
 Transform:
