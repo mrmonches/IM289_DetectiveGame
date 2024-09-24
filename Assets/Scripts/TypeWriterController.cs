@@ -22,6 +22,10 @@ public class TypeWriterController : MonoBehaviour
     private bool correctCheck3=false;
     private bool finalCorrectCheck=false;
     [SerializeField] private EvidenceData _evidenceData;
+    //This is used to prevent moving between stations when in the typewriter 
+    [SerializeField] private GameObject _cameraController;
+    
+
     //Create a List of new Dropdown options
 
 
@@ -35,14 +39,26 @@ public class TypeWriterController : MonoBehaviour
         backToDesk.gameObject.SetActive(false);
         winLoseText.gameObject.SetActive(false);
     }
-    private void OnMouseDown()
+
+    /// <summary>
+    /// Changed this to new input system and moved it's activation to the PlayerController
+    /// </summary>
+    private void ShowCanvas()
     {
+        _cameraController.GetComponent<CameraController>().getCannotMove();
+
+        winLoseText.gameObject.SetActive(false);
         dropdown1.gameObject.SetActive(true);
         dropdown2.gameObject.SetActive(true);
         dropdown3.gameObject.SetActive(true);
         submit.gameObject.SetActive(true);
         backToDesk.gameObject.SetActive(true);
 
+    }
+
+    public void GetShowCanvas()
+    {
+        ShowCanvas();
     }
     //checks if all the dropdowns are correct;
     public void Dropdown1(int val)
@@ -119,11 +135,16 @@ public class TypeWriterController : MonoBehaviour
     }
     public void BackToDesk()
     {
+        //Lets the player move after leaving
+        _cameraController.GetComponent<CameraController>().getCanMove();
+
         dropdown1.gameObject.SetActive(false);
         dropdown2.gameObject.SetActive(false);
         dropdown3.gameObject.SetActive(false);
         submit.gameObject.SetActive(false);
         backToDesk.gameObject.SetActive(false);
+        
+        
     }
     public void CorrectOption(EvidenceData evidenceData)
     {

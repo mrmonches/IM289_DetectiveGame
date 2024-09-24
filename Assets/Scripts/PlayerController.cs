@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float CastDistance;
 
-    [SerializeField] private LayerMask LevelMask, EvidenceMask, CabinetMask, FoldersMask, StackMask;
+    [SerializeField] private LayerMask LevelMask, EvidenceMask, CabinetMask, FoldersMask, StackMask, TypewriterMask;
 
     private Vector3 mousePosition;
 
@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
     private CabinetController _cabinetController;
 
     private FolderController _folderController;
+
+    [SerializeField] private GameObject _typeWriterController;
 
     public bool InItemViewer { get => inItemViewer; set => inItemViewer = value; }
     public EvidenceController EvidenceController { get => _evidenceController; set => _evidenceController = value; }
@@ -75,8 +77,8 @@ public class PlayerController : MonoBehaviour
         //For opening/closing the filing cabinet
         if (CurrentStation == PlayerLocation.FilingCabinet && !InItemViewer)
         {
-            RaycastHit hitCabinet, hitFolder;
-            
+            RaycastHit hitFolder;
+            /*
             if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitCabinet, CastDistance, CabinetMask))
             {
                 _cabinetController = hitCabinet.collider.gameObject.GetComponent<CabinetController>();
@@ -87,8 +89,8 @@ public class PlayerController : MonoBehaviour
                 {
                     _cabinetController = null;
                 }
-            }
-            else if(Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitFolder, CastDistance, FoldersMask))
+            }*/
+            if(Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitFolder, CastDistance, FoldersMask))
             {
                 _folderController = hitFolder.collider.gameObject.GetComponent<FolderController>();
 
@@ -97,6 +99,13 @@ public class PlayerController : MonoBehaviour
                 InItemViewer = true;
             }
         }
+        
+            RaycastHit hitTypewriter;
+            if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitTypewriter, CastDistance, TypewriterMask))
+            {
+                _typeWriterController.GetComponent<TypeWriterController>().GetShowCanvas();
+            }
+        
     }
 
     private void leftClickAction_canceled(InputAction.CallbackContext obj)

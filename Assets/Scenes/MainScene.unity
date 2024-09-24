@@ -3616,8 +3616,12 @@ MonoBehaviour:
   StackMask:
     serializedVersion: 2
     m_Bits: 1024
+  TypewriterMask:
+    serializedVersion: 2
+    m_Bits: 2048
   _yarnController: {fileID: 0}
   _cabinetObject: {fileID: 1343546295}
+  _typeWriterController: {fileID: 2066150291}
 --- !u!4 &1046648973
 Transform:
   m_ObjectHideFlags: 0
@@ -6790,7 +6794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -7289,7 +7293,7 @@ GameObject:
   - component: {fileID: 2066150294}
   - component: {fileID: 2066150293}
   - component: {fileID: 2066150292}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Typewriter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7316,6 +7320,7 @@ MonoBehaviour:
   backToDesk: {fileID: 1514186850}
   winLoseText: {fileID: 916852833}
   _evidenceData: {fileID: 0}
+  _cameraController: {fileID: 1750113693}
 --- !u!65 &2066150293
 BoxCollider:
   m_ObjectHideFlags: 0

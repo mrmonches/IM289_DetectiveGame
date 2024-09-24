@@ -18,6 +18,8 @@ public class CameraController : MonoBehaviour
     private int activecamera = 2;
     [SerializeField] private GameObject _playerController;
     [SerializeField] private GameObject _cabinetController;
+    //used to prevent the player from moving while in the typewriter
+    private bool _canMove = true;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +41,7 @@ public class CameraController : MonoBehaviour
     private void CameraRight_started(InputAction.CallbackContext obj)
     {
         //moves camera to the one on the right and keeps track of the active camera
-        if (activecamera == 1)
+        if (activecamera == 1 && _canMove == true)
         {
             LeftCamera.gameObject.SetActive(false);
             MiddleCamera.gameObject.SetActive(true);
@@ -49,7 +51,7 @@ public class CameraController : MonoBehaviour
             _playerController.GetComponent<PlayerController>().StationSetDesk();
 
         }
-        else if(activecamera==2)
+        else if(activecamera==2 && _canMove == true)
         {
             LeftCamera.gameObject.SetActive(false);
             MiddleCamera.gameObject.SetActive(false);
@@ -59,7 +61,7 @@ public class CameraController : MonoBehaviour
             _playerController.GetComponent<PlayerController>().StationSetCabinet();
             _cabinetController.GetComponent<CabinetController>().GetOpen();
         }
-        else if(activecamera==3)
+        else if(activecamera == 3 && _canMove == true)
         {
             LeftCamera.gameObject.SetActive(true);
             MiddleCamera.gameObject.SetActive(false);
@@ -72,7 +74,7 @@ public class CameraController : MonoBehaviour
     private void CameraLeft_started(InputAction.CallbackContext obj)
     {
         //same as above but for the right
-        if(activecamera==2)
+        if(activecamera == 2 && _canMove == true)
         {
             RightCamera.gameObject.SetActive(false);
             MiddleCamera.gameObject.SetActive(false);
@@ -81,7 +83,7 @@ public class CameraController : MonoBehaviour
 
             _playerController.GetComponent<PlayerController>().StationSetBoard();
         }
-        else if(activecamera==3)
+        else if(activecamera == 3 && _canMove == true)
         {
             RightCamera.gameObject.SetActive(false);
             MiddleCamera.gameObject.SetActive(true);
@@ -91,7 +93,7 @@ public class CameraController : MonoBehaviour
             _playerController.GetComponent<PlayerController>().StationSetDesk();
             _cabinetController.GetComponent<CabinetController>().GetClose();
         }
-        else if(activecamera==1)
+        else if(activecamera == 1 && _canMove == true)
         {
             LeftCamera.gameObject.SetActive(false);
             MiddleCamera.gameObject.SetActive(false);
@@ -99,6 +101,29 @@ public class CameraController : MonoBehaviour
             activecamera = 3;
             _playerController.GetComponent<PlayerController>().StationSetCabinet();
         }
+    }
+
+    /// <summary>
+    /// These are used to prevent the player from moving while in the typewriter. 
+    /// </summary>
+    public void getCanMove()
+    {
+        CanMove();
+    }
+
+    public void getCannotMove()
+    {
+        CannotMove();
+    }
+
+    void CanMove()
+    {
+        _canMove = true;
+    }
+
+    void CannotMove()
+    {
+        _canMove= false;
     }
     
 }
