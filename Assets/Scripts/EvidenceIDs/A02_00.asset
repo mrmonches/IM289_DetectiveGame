@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: A02_00
   m_EditorClassIdentifier: 
   _evidenceID: 6
-  _evidenceType: 2
-  correctConnections: 07000000
+  _evidenceType: 0
+  correctConnections: 03000000
   CardInformation: 
-  TypewriterEvidence: 1
+  TypewriterEvidence: 0

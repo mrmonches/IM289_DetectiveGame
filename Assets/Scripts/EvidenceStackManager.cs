@@ -12,6 +12,8 @@ public class EvidenceStackManager : MonoBehaviour
 
     [SerializeField] private Transform EvidenceRotation;
 
+    [SerializeField] private List<GameObject> SpecialCaseItems;
+
     private void Awake()
     {
         _playerController = FindObjectOfType<PlayerController>();
@@ -26,7 +28,16 @@ public class EvidenceStackManager : MonoBehaviour
     {
         if (StackList.Count > 0)
         {
-            GameObject card = Instantiate(EvidenceCardObject, _playerController.GetSelectedPosition(), EvidenceRotation.rotation);
+            GameObject card;
+
+            if (StackList[0].EvidenceType == EvidenceType.Document)
+            {
+                card = Instantiate(EvidenceCardObject, _playerController.GetSelectedPosition(), EvidenceRotation.rotation);
+            }
+            else
+            {
+                card = Instantiate(FindEvidenceItem(StackList[0].EvidenceID), _playerController.GetSelectedPosition(), EvidenceRotation.rotation);
+            }
 
             EvidenceController evidenceController = card.GetComponent<EvidenceController>();
 
@@ -38,5 +49,17 @@ public class EvidenceStackManager : MonoBehaviour
 
             StackList.RemoveAt(0);
         }
+    }
+
+    public GameObject FindEvidenceItem(EvidenceID id)
+    {
+        for (int i = 0; i < SpecialCaseItems.Count; i++)
+        {
+            if (SpecialCaseItems[i].GetComponent<EvidenceController>().EvidenceData.EvidenceID == id)
+            {
+                return SpecialCaseItems[i];
+            }
+        }
+        return EvidenceCardObject;
     }
 }
