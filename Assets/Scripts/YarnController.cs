@@ -19,6 +19,7 @@ public class YarnController : MonoBehaviour
     [SerializeField] private GameObject LineObject;
 
     private PlayerController _playerController;
+    private TypeWriterController _typewriterController;
 
     // Preferences on line renderer, don't change unless you know what you want from the line renderer
     [SerializeField, Tooltip("Sets width of the line renderer")] private float LineWidth;
@@ -34,6 +35,7 @@ public class YarnController : MonoBehaviour
         secondID = EvidenceID.Default;
 
         _playerController = FindObjectOfType<PlayerController>();
+        _typewriterController = FindObjectOfType<TypeWriterController>();
     }
 
     private void CreateLineRender()
@@ -110,6 +112,8 @@ public class YarnController : MonoBehaviour
         if (evidenceID.CheckCorrectConnection(firstID))
         {
             lineRenderer.SetMaterials(GoodConnectionMaterial);
+            
+            _typewriterController.CorrectOption(evidenceID);
         }
         else
         {

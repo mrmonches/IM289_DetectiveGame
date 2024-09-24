@@ -1601,11 +1601,7 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Incorrect
-      m_Image: {fileID: 0}
-    - m_Text: Correct
-      m_Image: {fileID: 0}
-    - m_Text: Incorrect
+    - m_Text: Select Option
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1613,7 +1609,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2066150292}
         m_TargetAssemblyTypeName: TypeWriterController, Assembly-CSharp
         m_MethodName: Dropdown1
-        m_Mode: 0
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1752,7 +1748,7 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: inorrect
+    - m_Text: Select Option
       m_Image: {fileID: 0}
     - m_Text: Incorrect
       m_Image: {fileID: 0}
@@ -1936,7 +1932,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: inorrect
+  m_text: Select Option
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3824,7 +3820,7 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Incorrect
+    - m_Text: Select Option
       m_Image: {fileID: 0}
     - m_Text: Correct
       m_Image: {fileID: 0}
@@ -5324,7 +5320,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Incorrect
+  m_text: Select Option
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6524,7 +6520,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1991054385
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6670,7 +6666,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Incorrect
+  m_text: Select Option
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7104,6 +7100,7 @@ MonoBehaviour:
   submit: {fileID: 278218060}
   backToDesk: {fileID: 1514186850}
   winLoseText: {fileID: 916852833}
+  _evidenceData: {fileID: 0}
 --- !u!65 &2066150293
 BoxCollider:
   m_ObjectHideFlags: 0
