@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Windows;
@@ -125,5 +126,10 @@ public class CameraController : MonoBehaviour
     {
         _canMove= false;
     }
-    
+    private void OnDestroy()
+    {
+        
+        cameraRight.started -= CameraRight_started;
+        cameraLeft.started -= CameraLeft_started;
+    }
 }
