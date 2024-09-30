@@ -1,4 +1,5 @@
 using Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -256,6 +257,14 @@ public class PlayerController : MonoBehaviour
         CurrentStation = PlayerLocation.EvidenceBoard;
     }
 
+    private void OnDestroy()
+    {
+        _clickInputs.DefaultControls.RightClick.started -= rightClickAction_started;
+
+        _clickInputs.DefaultControls.LeftClick.started -= leftClickAction_started;
+        _clickInputs.DefaultControls.LeftClick.canceled -= leftClickAction_canceled;
+    }
+
 }
 
 public enum PlayerLocation
@@ -264,3 +273,4 @@ public enum PlayerLocation
     EvidenceBoard,
     FilingCabinet
 }
+

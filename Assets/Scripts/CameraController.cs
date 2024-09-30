@@ -21,16 +21,20 @@ public class CameraController : MonoBehaviour
     [SerializeField] private GameObject _cabinetController;
     //used to prevent the player from moving while in the typewriter
     private bool _canMove = true;
+    [SerializeField] private Camera mainCamera;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        
         CameraInputs.currentActionMap.Enable();
         cameraLeft = CameraInputs.currentActionMap.FindAction("Left");
         cameraRight = CameraInputs.currentActionMap.FindAction("Right");
 
         cameraLeft.started += CameraLeft_started;
         cameraRight.started += CameraRight_started;
+
+
         LeftCamera.gameObject.SetActive(false);
         RightCamera.gameObject.SetActive(false);
         MiddleCamera.gameObject.SetActive(true);
@@ -128,8 +132,8 @@ public class CameraController : MonoBehaviour
     }
     private void OnDestroy()
     {
-        
         cameraRight.started -= CameraRight_started;
         cameraLeft.started -= CameraLeft_started;
+        
     }
 }
