@@ -5786,6 +5786,7 @@ MonoBehaviour:
   RightCamera: {fileID: 560460234}
   _playerController: {fileID: 1046648971}
   _cabinetController: {fileID: 1905921557}
+  mainCamera: {fileID: 1750113695}
 --- !u!114 &1750113699
 MonoBehaviour:
   m_ObjectHideFlags: 0
