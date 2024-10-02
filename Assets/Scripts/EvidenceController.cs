@@ -42,6 +42,8 @@ public class EvidenceController : MonoBehaviour
 
     [SerializeField] private TMP_Text CardText;
 
+    [SerializeField] private Vector3 CastScale, CastOffsetPos;
+
     private EvidenceID _id;
 
     public bool IsHeld { get => isHeld; set => isHeld = value; }
@@ -102,9 +104,9 @@ public class EvidenceController : MonoBehaviour
     {
         IsHeld = false;
 
-        //if (canPlace)
-        //{
-            transform.position = new Vector3 (_boardManager.EvidencePlacePos1, transform.position.y, transform.position.z);
+        if (canPlace)
+        {
+            transform.position = new Vector3 (transform.position.x, transform.position.y, _boardManager.EvidencePlacePos1);
 
             RecordPlacedPos();
 
@@ -112,11 +114,11 @@ public class EvidenceController : MonoBehaviour
             {
                 _boardManager.UpdateLinePos(gameObject, _id);
             }
-        //}
-        //else
-        //{
-            //transform.position = placedPos;
-        //}
+        }
+        else
+        {
+            transform.position = placedPos;
+        }
     }
 
     public void GiveEvidenceData(EvidenceData data)
@@ -142,9 +144,16 @@ public class EvidenceController : MonoBehaviour
 
     private void CheckPlacePos()
     {
+        Vector3 pos = new Vector3(transform.position.x + CastOffsetPos.x,
+                transform.position.y + CastOffsetPos.y,
+                transform.position.z + CastOffsetPos.z);
+
         RaycastHit hit;
-        if (Physics.BoxCast(transform.position, transform.lossyScale, direction, out hit, transform.rotation, CastDistance, EvidenceMask))
+        if (Physics.BoxCast(pos, CastScale, direction, out hit, transform.rotation, CastDistance, EvidenceMask) && 
+            hit.collider != _boxCollider)
         {
+            print(hit.collider.name);
+
             canPlace = false;
         }
         else
@@ -152,6 +161,31 @@ public class EvidenceController : MonoBehaviour
             canPlace = true;
         }
     }
+
+    //private void OnDrawGizmos()
+    //{
+    //    Vector3 pos = new Vector3 (transform.position.x + CastOffsetPos.x,
+    //        transform.position.y + CastOffsetPos.y,
+    //        transform.position.z + CastOffsetPos.z);
+
+    //    RaycastHit hit;
+    //    if (Physics.BoxCast(pos, CastScale, direction, out hit, transform.rotation, CastDistance, EvidenceMask))
+    //    {
+    //        Gizmos.color = Color.red;
+    //        Gizmos.DrawRay(pos, direction * hit.distance);
+    //        Gizmos.DrawWireCube(pos + direction * hit.distance, CastScale);
+
+    //        canPlace = false;
+    //    }
+    //    else
+    //    {
+    //        Gizmos.color = Color.green;
+    //        Gizmos.DrawRay(pos, direction * CastDistance);
+    //        Gizmos.DrawWireCube(pos + direction * hit.distance, CastScale);
+
+    //        canPlace = true;
+    //    }
+    //}
 
     private void LateUpdate()
     {
@@ -164,7 +198,7 @@ public class EvidenceController : MonoBehaviour
 
             FollowPlayerMouse();
 
-            //CheckPlacePos();
+            CheckPlacePos();
 
             if (isConnected)
             {

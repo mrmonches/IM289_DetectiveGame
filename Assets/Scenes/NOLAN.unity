@@ -167,9 +167,15 @@ MonoBehaviour:
   FoldersMask:
     serializedVersion: 2
     m_Bits: 0
+  StackMask:
+    serializedVersion: 2
+    m_Bits: 0
+  TypewriterMask:
+    serializedVersion: 2
+    m_Bits: 0
   _yarnController: {fileID: 0}
-  _playerController: {fileID: 0}
   _cabinetObject: {fileID: 0}
+  _typeWriterController: {fileID: 0}
 --- !u!114 &42833947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -349,6 +355,8 @@ MonoBehaviour:
   firstObject: {fileID: 0}
   secondObject: {fileID: 0}
   LineObject: {fileID: 5477419112686885290, guid: a0541004dc2003249ae3bc3983ce6761, type: 3}
+  LineWidth: 0
+  LineScale: {x: 0, y: 0}
 --- !u!114 &267577750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,7 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e824196e5f6cf75479fb8880495440fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CastDistance: 2
+  CastDistance: 5
   EvidenceMask:
     serializedVersion: 2
     m_Bits: 128
@@ -369,8 +377,11 @@ MonoBehaviour:
   HoverPos: {x: 0.1, y: 0.1, z: 0}
   SlerpSpeed: 10
   HoverSpeed: 10
+  canPlace: 1
   _childTransform: {fileID: 764364866}
   _evidenceData: {fileID: 11400000, guid: 1f88597f77270e746a4fb3e21aed72ff, type: 2}
+  direction: {x: 0, y: 0, z: -1}
+  CardText: {fileID: 0}
 --- !u!65 &267577751
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -775,8 +786,11 @@ MonoBehaviour:
   HoverPos: {x: 0.1, y: 0.1, z: 0}
   SlerpSpeed: 10
   HoverSpeed: 10
+  canPlace: 1
   _childTransform: {fileID: 740094338}
   _evidenceData: {fileID: 11400000, guid: 220355c2b80a41642b7cd68ee7655fdd, type: 2}
+  direction: {x: 0, y: 0, z: 0}
+  CardText: {fileID: 0}
 --- !u!65 &2144884508
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -885,6 +899,8 @@ MonoBehaviour:
   firstObject: {fileID: 0}
   secondObject: {fileID: 0}
   LineObject: {fileID: 5477419112686885290, guid: a0541004dc2003249ae3bc3983ce6761, type: 3}
+  LineWidth: 0
+  LineScale: {x: 0, y: 0}
 --- !u!1001 &6873987994085020043
 PrefabInstance:
   m_ObjectHideFlags: 0
