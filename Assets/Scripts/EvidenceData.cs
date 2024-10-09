@@ -45,6 +45,8 @@ public enum EvidenceID
     A01_03,
     A01_04,
     A01_05,
+    A01_06,
+    A01_07,
     A02_00,
     A03_00
 }
