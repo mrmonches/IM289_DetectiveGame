@@ -2404,7 +2404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc7548c32554c044abc922617ab1b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  file: {fileID: 2498797163517432, guid: 4fc6023fdba3a1d408a77cf5a39e7170, type: 3}
+  file: {fileID: 3020127176662763268, guid: f0f310e618f9ad740819d9be6541ee8d, type: 3}
   canvas: {fileID: 1492671958}
 --- !u!65 &651253465
 BoxCollider:
@@ -6353,7 +6353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc7548c32554c044abc922617ab1b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  file: {fileID: 2498797163517432, guid: 4fc6023fdba3a1d408a77cf5a39e7170, type: 3}
+  file: {fileID: 3020127176662763268, guid: 0643e27292b60da4ebef149eb31ddd3f, type: 3}
   canvas: {fileID: 1492671958}
 --- !u!65 &1883030430
 BoxCollider:
