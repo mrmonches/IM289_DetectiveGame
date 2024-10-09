@@ -7,13 +7,14 @@ using UnityEngine.UI;
 
 public class TypeWriterController : MonoBehaviour
 {
-    [SerializeField] TMP_Dropdown dropdown1;
-    [SerializeField] TMP_Dropdown dropdown2;
-    [SerializeField] TMP_Dropdown dropdown3;
-    [SerializeField] GameObject typewriter;
-    [SerializeField] Button submit;
-    [SerializeField] Button backToDesk;
-    [SerializeField] TMP_Text winLoseText;
+    [SerializeField] private TMP_Dropdown dropdown1;
+    [SerializeField] private TMP_Dropdown dropdown2;
+    [SerializeField] private TMP_Dropdown dropdown3;
+    [SerializeField] private GameObject typewriter;
+    [SerializeField] private Button submit;
+    [SerializeField] private Button backToDesk;
+    [SerializeField] private TMP_Text winLoseText;
+    [SerializeField] private Image paperSheet;
     private int option1;
     private int option2;
     private int option3;
@@ -38,6 +39,7 @@ public class TypeWriterController : MonoBehaviour
         submit.gameObject.SetActive(false);
         backToDesk.gameObject.SetActive(false);
         winLoseText.gameObject.SetActive(false);
+        paperSheet.gameObject.SetActive(false);
     }
 
     /// <summary>
@@ -53,7 +55,7 @@ public class TypeWriterController : MonoBehaviour
         dropdown3.gameObject.SetActive(true);
         submit.gameObject.SetActive(true);
         backToDesk.gameObject.SetActive(true);
-
+        paperSheet.gameObject.SetActive(true);
     }
 
     public void GetShowCanvas()
