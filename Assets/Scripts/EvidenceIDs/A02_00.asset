@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 547a5cf974b02f846897e5f4bd66bfef, type: 3}
-  m_Name: A01_06
+  m_Name: A02_00
   m_EditorClassIdentifier: 
   _evidenceID: 6
-  _evidenceType: 4
-  correctConnections: 07000000
-  CardInformation: Giuoco Piano
-  TypewriterEvidence: 1
+  _evidenceType: 0
+  correctConnections: 03000000
+  CardInformation: 
+  TypewriterEvidence: 0
