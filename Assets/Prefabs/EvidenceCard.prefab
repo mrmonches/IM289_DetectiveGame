@@ -292,11 +292,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e824196e5f6cf75479fb8880495440fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CastDistance: 2
+  CastDistance: 5
   EvidenceMask:
     serializedVersion: 2
     m_Bits: 128
-  OffsetPos: {x: 0, y: 2, z: 1}
+  OffsetPos: {x: 0, y: 2, z: 3}
   HoverPos: {x: 0, y: 0.1, z: 0.1}
   SlerpSpeed: 10
   HoverSpeed: 10
@@ -306,7 +306,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: -1}
   CardText: {fileID: 6181810085322036513}
   CastScale: {x: 3.5, y: 2.1, z: 0}
-  CastOffsetPos: {x: 0, y: -2, z: 0}
+  CastOffsetPos: {x: 0, y: -2, z: -0.1}
 --- !u!114 &3972007679166344858
 MonoBehaviour:
   m_ObjectHideFlags: 0

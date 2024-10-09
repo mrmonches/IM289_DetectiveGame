@@ -152,8 +152,6 @@ public class EvidenceController : MonoBehaviour
         if (Physics.BoxCast(pos, CastScale, direction, out hit, transform.rotation, CastDistance, EvidenceMask) && 
             hit.collider != _boxCollider)
         {
-            print(hit.collider.name);
-
             canPlace = false;
         }
         else
@@ -162,9 +160,12 @@ public class EvidenceController : MonoBehaviour
         }
     }
 
+
+    // Uncomment this function if the box cast that makes the cards not overlap is not working
+
     //private void OnDrawGizmos()
     //{
-    //    Vector3 pos = new Vector3 (transform.position.x + CastOffsetPos.x,
+    //    Vector3 pos = new Vector3(transform.position.x + CastOffsetPos.x,
     //        transform.position.y + CastOffsetPos.y,
     //        transform.position.z + CastOffsetPos.z);
 
