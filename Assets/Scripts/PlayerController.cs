@@ -7,11 +7,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    private PlayerInput _playerInput;
-
-    private InputAction leftClickAction;
-    private InputAction rightClickAction;
-
     private bool isSelecting;
     private bool inItemViewer;
 
@@ -33,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject _cabinetObject;
 
-    private ClickControls _clickInputs;
+    private PlayerControls _playerInputs;
 
     private CabinetController _cabinetController;
 
@@ -41,19 +36,19 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject _typeWriterController;
 
+    [SerializeField] private CameraController _cameraController;
+
     public bool InItemViewer { get => inItemViewer; set => inItemViewer = value; }
     public EvidenceController EvidenceController { get => _evidenceController; set => _evidenceController = value; }
 
     private void Awake()
     {
-        _clickInputs = new ClickControls();
-        _clickInputs.DefaultControls.Enable();
-        _clickInputs.DefaultControls.RightClick.started += rightClickAction_started;
+        _playerInputs = new PlayerControls();
+        _playerInputs.DefaultControls.Enable();
+        _playerInputs.DefaultControls.RightClick.started += rightClickAction_started;
 
-        _clickInputs.DefaultControls.LeftClick.started += leftClickAction_started;
-        _clickInputs.DefaultControls.LeftClick.canceled += leftClickAction_canceled;
-
-        inItemViewer = false;
+        _playerInputs.DefaultControls.LeftClick.started += leftClickAction_started;
+        _playerInputs.DefaultControls.LeftClick.canceled += leftClickAction_canceled;
     }
 
     private void leftClickAction_started(InputAction.CallbackContext obj)
@@ -147,6 +142,14 @@ public class PlayerController : MonoBehaviour
                     _yarnController.CheckLineStatus(hitObject.ChildTransform.position, hitObject.EvidenceData, hitObject.gameObject);
                 }
             }
+        }
+    }
+
+    private void OnBoardMove(InputValue moveVector)
+    {
+        if (CurrentStation == PlayerLocation.EvidenceBoard)
+        {
+            _cameraController.MoveBoardCamera(moveVector.Get<Vector2>());
         }
     }
 
@@ -259,10 +262,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
-        _clickInputs.DefaultControls.RightClick.started -= rightClickAction_started;
+        _playerInputs.DefaultControls.RightClick.started -= rightClickAction_started;
 
-        _clickInputs.DefaultControls.LeftClick.started -= leftClickAction_started;
-        _clickInputs.DefaultControls.LeftClick.canceled -= leftClickAction_canceled;
+        _playerInputs.DefaultControls.LeftClick.started -= leftClickAction_started;
+        _playerInputs.DefaultControls.LeftClick.canceled -= leftClickAction_canceled;
     }
 
 }

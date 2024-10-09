@@ -1,11 +1,6 @@
 using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Windows;
 
 public class CameraController : MonoBehaviour
 {
@@ -19,27 +14,34 @@ public class CameraController : MonoBehaviour
     private int activecamera = 2;
     [SerializeField] private GameObject _playerController;
     [SerializeField] private GameObject _cabinetController;
+
+    private CinemachineBrain _cinemachineBrain;
+
     //used to prevent the player from moving while in the typewriter
     private bool _canMove = true;
     [SerializeField] private Camera mainCamera;
 
+    // Allows camera to move freely when inside evidence board
+    [SerializeField] private float CameraSpeed;
+    [SerializeField] private Rigidbody _rb;
+
     // Start is called before the first frame update
     void Awake()
     {
-        
         CameraInputs.currentActionMap.Enable();
-        cameraLeft = CameraInputs.currentActionMap.FindAction("Left");
-        cameraRight = CameraInputs.currentActionMap.FindAction("Right");
+        cameraLeft = CameraInputs.currentActionMap.FindAction("StationLeft");
+        cameraRight = CameraInputs.currentActionMap.FindAction("StationRight");
 
         cameraLeft.started += CameraLeft_started;
         cameraRight.started += CameraRight_started;
-
 
         LeftCamera.gameObject.SetActive(false);
         RightCamera.gameObject.SetActive(false);
         MiddleCamera.gameObject.SetActive(true);
 
         _playerController.GetComponent<PlayerController>().StationSetDesk();
+
+        _cinemachineBrain = GetComponent<CinemachineBrain>();
     }
 
     
@@ -54,7 +56,6 @@ public class CameraController : MonoBehaviour
             activecamera = 2;
 
             _playerController.GetComponent<PlayerController>().StationSetDesk();
-
         }
         else if(activecamera==2 && _canMove == true)
         {
@@ -108,6 +109,14 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    public void MoveBoardCamera(Vector2 moveValue)
+    {
+        if (!_cinemachineBrain.IsBlending)
+        {
+            _rb.velocity = new Vector3 (-moveValue.x * CameraSpeed, moveValue.y * CameraSpeed, _rb.velocity.z);
+        }
+    }
+
     /// <summary>
     /// These are used to prevent the player from moving while in the typewriter. 
     /// </summary>
@@ -130,10 +139,10 @@ public class CameraController : MonoBehaviour
     {
         _canMove= false;
     }
+
     private void OnDestroy()
     {
         cameraRight.started -= CameraRight_started;
         cameraLeft.started -= CameraLeft_started;
-        
     }
 }

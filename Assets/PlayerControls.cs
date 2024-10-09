@@ -89,6 +89,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""BoardMove"",
+                    ""type"": ""Value"",
+                    ""id"": ""9ed02cc5-f507-40b9-a5f5-dfdad8be4dc9"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -168,6 +177,61 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""StationRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""c1845dc1-9448-49bd-809f-a413dd562d03"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BoardMove"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""be70a664-3d43-44a8-b91d-3e45a48a41d3"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BoardMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""368ef2c0-9dfa-4d61-8ab0-051f6948df49"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BoardMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""aec61405-06cd-473d-99b5-81bd6859499f"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BoardMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""4d0c3099-ef7b-41f7-a379-038af9583076"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BoardMove"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -183,6 +247,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_DefaultControls_Quit = m_DefaultControls.FindAction("Quit", throwIfNotFound: true);
         m_DefaultControls_StationLeft = m_DefaultControls.FindAction("StationLeft", throwIfNotFound: true);
         m_DefaultControls_StationRight = m_DefaultControls.FindAction("StationRight", throwIfNotFound: true);
+        m_DefaultControls_BoardMove = m_DefaultControls.FindAction("BoardMove", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -251,6 +316,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_DefaultControls_Quit;
     private readonly InputAction m_DefaultControls_StationLeft;
     private readonly InputAction m_DefaultControls_StationRight;
+    private readonly InputAction m_DefaultControls_BoardMove;
     public struct DefaultControlsActions
     {
         private @PlayerControls m_Wrapper;
@@ -262,6 +328,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Quit => m_Wrapper.m_DefaultControls_Quit;
         public InputAction @StationLeft => m_Wrapper.m_DefaultControls_StationLeft;
         public InputAction @StationRight => m_Wrapper.m_DefaultControls_StationRight;
+        public InputAction @BoardMove => m_Wrapper.m_DefaultControls_BoardMove;
         public InputActionMap Get() { return m_Wrapper.m_DefaultControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -292,6 +359,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @StationRight.started += instance.OnStationRight;
             @StationRight.performed += instance.OnStationRight;
             @StationRight.canceled += instance.OnStationRight;
+            @BoardMove.started += instance.OnBoardMove;
+            @BoardMove.performed += instance.OnBoardMove;
+            @BoardMove.canceled += instance.OnBoardMove;
         }
 
         private void UnregisterCallbacks(IDefaultControlsActions instance)
@@ -317,6 +387,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @StationRight.started -= instance.OnStationRight;
             @StationRight.performed -= instance.OnStationRight;
             @StationRight.canceled -= instance.OnStationRight;
+            @BoardMove.started -= instance.OnBoardMove;
+            @BoardMove.performed -= instance.OnBoardMove;
+            @BoardMove.canceled -= instance.OnBoardMove;
         }
 
         public void RemoveCallbacks(IDefaultControlsActions instance)
@@ -343,5 +416,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnQuit(InputAction.CallbackContext context);
         void OnStationLeft(InputAction.CallbackContext context);
         void OnStationRight(InputAction.CallbackContext context);
+        void OnBoardMove(InputAction.CallbackContext context);
     }
 }
