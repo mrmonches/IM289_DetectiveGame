@@ -27,21 +27,6 @@ public class TypeWriterController : MonoBehaviour
     [SerializeField] private GameObject _cameraController;
     
 
-    //Create a List of new Dropdown options
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        dropdown1.gameObject.SetActive(false);
-        dropdown2.gameObject.SetActive(false);
-        dropdown3.gameObject.SetActive(false);
-        submit.gameObject.SetActive(false);
-        backToDesk.gameObject.SetActive(false);
-        winLoseText.gameObject.SetActive(false);
-        paperSheet.gameObject.SetActive(false);
-    }
-
     /// <summary>
     /// Changed this to new input system and moved it's activation to the PlayerController
     /// </summary>
@@ -161,5 +146,14 @@ public class TypeWriterController : MonoBehaviour
             dropdown1.options.Add(new TMP_Dropdown.OptionData("Steven Knight", null));
             dropdown1.RefreshShownValue();
         }
+    }
+    private void Awake()
+    {
+        dropdown1.gameObject.SetActive(false);
+        dropdown2.gameObject.SetActive(false);
+        dropdown3.gameObject.SetActive(false);
+        submit.gameObject.SetActive(false);
+        backToDesk.gameObject.SetActive(false);
+        winLoseText.gameObject.SetActive(false);
     }
 }
