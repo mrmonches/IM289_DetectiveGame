@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -97, y: -197}
+  m_AnchoredPosition: {x: 100, y: -174}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3243711079247893085
@@ -302,8 +302,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -97.624115, y: -221}
-  m_SizeDelta: {x: 371.9418, y: 417.877}
+  m_AnchoredPosition: {x: -106, y: -200}
+  m_SizeDelta: {x: 355.19, y: 417.877}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4880245907203107614
 CanvasRenderer:
@@ -333,14 +333,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "A weapon was found in a nearby dumpster. The weapon is a large frame revolver
-    with a .357 Magnum cartridge, holding up to 8 rounds. The weapon was unloaded.
-    \r\n\r\nLocated in a small pile ten feet away from the victim were 8 .357 casings.
-    \r\n\r\nThere were two bullet punctures in the nearby building. And two in the
-    ground five feet away from the victim's body.\r\n\r\nBlood patterns from the
-    ground indicate that the victim survived several wounds, but was executed while
-    attempting to crawl away. \r\n\r\n*Note: vic\u2019s legal name is Jimmy, it\u2019s
-    not a nickname Todd!.\r\n"
+  m_text: "Crime Scene Report:\r\nA body belonging to Jimmy King was found in an
+    alleyway between Chester Street and Shinda Street.\r\n\r\nThe body was found
+    on the ground laying down sideways. His arms, both intact, are positioned to
+    one reaching out, the other is near his chest, seemingly clutching his heart.
+    One leg is bent inwards. \r\n\r\nThe body was shot 4 times.\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 89db3ff56c24b0f4cb5151639436c5b6, type: 2}
   m_sharedMaterial: {fileID: -2758143518964017550, guid: 89db3ff56c24b0f4cb5151639436c5b6, type: 2}
@@ -367,8 +364,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.18
-  m_fontSizeBase: 18.18
+  m_fontSize: 23.2
+  m_fontSizeBase: 23.2
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -423,7 +420,7 @@ GameObject:
   - component: {fileID: 5746965470326645195}
   - component: {fileID: 4586419730069092788}
   m_Layer: 5
-  m_Name: Evidence_A_05
+  m_Name: Evidence_A_08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -438,7 +435,7 @@ RectTransform:
   m_GameObject: {fileID: 3020127176662763268}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.825, y: 0.825, z: 0.825}
+  m_LocalScale: {x: 0.83331, y: 0.83331, z: 0.83331}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 627622246763635711}
@@ -512,8 +509,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19225cc7ef61ec4e9aad3d52fa501c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nextPage: {fileID: 0}
-  _previousPage: {fileID: 3020127176662763268, guid: 337604615f1992e4e971dcfd2d0e07c3, type: 3}
+  _nextPage: {fileID: 3020127176662763268, guid: 08b165dc0d04de845a9335c04d81653d, type: 3}
+  _previousPage: {fileID: 0}
 --- !u!1 &3276516756628787498
 GameObject:
   m_ObjectHideFlags: 0

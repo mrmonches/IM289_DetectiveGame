@@ -1024,7 +1024,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc7548c32554c044abc922617ab1b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  file: {fileID: 0}
+  file: {fileID: 2498797163517432, guid: 4fc6023fdba3a1d408a77cf5a39e7170, type: 3}
   canvas: {fileID: 0}
 --- !u!1 &316672802
 GameObject:
@@ -2602,7 +2602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc7548c32554c044abc922617ab1b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  file: {fileID: 2498797163517432, guid: 4fc6023fdba3a1d408a77cf5a39e7170, type: 3}
+  file: {fileID: 3020127176662763268, guid: 1d4ae4383caf03f48a61285c57675907, type: 3}
   canvas: {fileID: 1492671958}
 --- !u!65 &651253465
 BoxCollider:
@@ -3608,7 +3608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc7548c32554c044abc922617ab1b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  file: {fileID: 3020127176662763268, guid: 1d4ae4383caf03f48a61285c57675907, type: 3}
+  file: {fileID: 3020127176662763268, guid: 337604615f1992e4e971dcfd2d0e07c3, type: 3}
   canvas: {fileID: 0}
 --- !u!1 &963418717
 GameObject:
@@ -7175,7 +7175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc7548c32554c044abc922617ab1b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  file: {fileID: 3020127176662763268, guid: 337604615f1992e4e971dcfd2d0e07c3, type: 3}
+  file: {fileID: 3020127176662763268, guid: 08b165dc0d04de845a9335c04d81653d, type: 3}
   canvas: {fileID: 0}
 --- !u!1 &1883030425 stripped
 GameObject:
@@ -7194,7 +7194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc7548c32554c044abc922617ab1b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  file: {fileID: 2498797163517432, guid: 4fc6023fdba3a1d408a77cf5a39e7170, type: 3}
+  file: {fileID: 3020127176662763268, guid: 394769375f8240546b0ef85fcfb18371, type: 3}
   canvas: {fileID: 1492671958}
 --- !u!65 &1883030430
 BoxCollider:
