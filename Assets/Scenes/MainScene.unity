@@ -7180,6 +7180,7 @@ MonoBehaviour:
   submit: {fileID: 278218060}
   backToDesk: {fileID: 1514186850}
   winLoseText: {fileID: 916852833}
+  paperSheet: {fileID: 0}
   _evidenceData: {fileID: 0}
   _cameraController: {fileID: 1750113693}
 --- !u!65 &2066150293

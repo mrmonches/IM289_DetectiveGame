@@ -39,7 +39,7 @@ public class TypeWriterController : MonoBehaviour
         submit.gameObject.SetActive(false);
         backToDesk.gameObject.SetActive(false);
         winLoseText.gameObject.SetActive(false);
-        paperSheet.gameObject.SetActive(false);
+        
     }
 
     /// <summary>
