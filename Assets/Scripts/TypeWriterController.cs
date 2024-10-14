@@ -162,4 +162,13 @@ public class TypeWriterController : MonoBehaviour
             dropdown1.RefreshShownValue();
         }
     }
+    private void Awake()
+    {
+        dropdown1.gameObject.SetActive(false);
+        dropdown2.gameObject.SetActive(false);
+        dropdown3.gameObject.SetActive(false);
+        submit.gameObject.SetActive(false);
+        backToDesk.gameObject.SetActive(false);
+        winLoseText.gameObject.SetActive(false);
+    }
 }
