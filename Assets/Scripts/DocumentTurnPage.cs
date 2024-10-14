@@ -25,7 +25,6 @@ public class DocumentTurnPage : MonoBehaviour
 
     public void BackPage()
     {
-        Debug.Log("running properly");
         var openedpage = Instantiate(_previousPage);
         openedpage.transform.SetParent(canvas.transform, false);
 
