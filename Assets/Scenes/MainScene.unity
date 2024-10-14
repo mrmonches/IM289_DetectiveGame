@@ -3733,7 +3733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: e99c083021c70de43ab111795caeca6d, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: fbbd8b804548efc479951db52623b1c5, type: 3}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -3826,6 +3826,87 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1119643702}
   m_CullTransparentMesh: 1
+--- !u!1 &1147212201
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1147212204}
+  - component: {fileID: 1147212203}
+  - component: {fileID: 1147212202}
+  m_Layer: 0
+  m_Name: CameraBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!54 &1147212202
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147212201}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!65 &1147212203
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147212201}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1147212204
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147212201}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 64.6, y: 24.4, z: -11.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1153992657
 GameObject:
   m_ObjectHideFlags: 0
@@ -3870,6 +3951,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5087731523590895417, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
       propertyPath: m_Name
       value: Typewriter
@@ -5993,7 +6078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 3cb2cccada22cba4db706cb74eeea804, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: fbbd8b804548efc479951db52623b1c5, type: 3}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -6008,7 +6093,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: CameraMovement
+  m_DefaultActionMap: DefaultControls
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &1750113698
@@ -6030,8 +6115,10 @@ MonoBehaviour:
   _playerController: {fileID: 1046648971}
   _cabinetController: {fileID: 1905921557}
   mainCamera: {fileID: 1750113695}
-  CameraSpeed: 15
-  _rb: {fileID: 1836611234}
+  BoxSpeed: 10
+  SlerpSpeed: 8
+  _boxRB: {fileID: 1147212202}
+  BoardBox: {fileID: 1147212201}
 --- !u!114 &1750113699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6344,8 +6431,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1836611233}
   - component: {fileID: 1836611232}
-  - component: {fileID: 1836611234}
-  - component: {fileID: 1836611235}
   m_Layer: 0
   m_Name: BoardCameraVC
   m_TagString: Untagged
@@ -6408,54 +6493,6 @@ Transform:
   - {fileID: 1775091949}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!54 &1836611234
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1836611231}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
---- !u!65 &1836611235
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1836611231}
-  m_Material: {fileID: 13400000, guid: 4fa3ee8e476debc4f807257e06824131, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1837723521 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8064742032329532184, guid: 61d9ce95ecba23e4bbede6d743414a9b, type: 3}
@@ -7462,7 +7499,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2066150291}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45af6e2aa23b55b498ca1829d718669f, type: 3}
   m_Name: 
@@ -7474,6 +7511,7 @@ MonoBehaviour:
   submit: {fileID: 278218060}
   backToDesk: {fileID: 1514186850}
   winLoseText: {fileID: 916852833}
+  paperSheet: {fileID: 0}
   _evidenceData: {fileID: 0}
   _cameraController: {fileID: 1750113693}
 --- !u!65 &2066150293
@@ -7917,3 +7955,4 @@ SceneRoots:
   - {fileID: 606831399}
   - {fileID: 335361798}
   - {fileID: 7386394188104476066}
+  - {fileID: 1147212204}

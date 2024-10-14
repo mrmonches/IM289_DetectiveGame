@@ -22,8 +22,10 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Camera mainCamera;
 
     // Allows camera to move freely when inside evidence board
-    [SerializeField] private float CameraSpeed;
-    [SerializeField] private Rigidbody _rb;
+    [SerializeField, Tooltip ("How fast the invisible box is moving around the scene")] private float BoxSpeed;
+    [SerializeField, Tooltip("How fast the camera moves on player input")] private float SlerpSpeed;
+    [SerializeField] private Rigidbody _boxRB;
+    [SerializeField] private GameObject BoardBox;
 
     // Start is called before the first frame update
     void Awake()
@@ -113,7 +115,7 @@ public class CameraController : MonoBehaviour
     {
         if (!_cinemachineBrain.IsBlending)
         {
-            _rb.velocity = new Vector3 (-moveValue.x * CameraSpeed, moveValue.y * CameraSpeed, _rb.velocity.z);
+            _boxRB.velocity = new Vector3 (-moveValue.x * BoxSpeed, moveValue.y * BoxSpeed, _boxRB.velocity.z);
         }
     }
 
@@ -138,6 +140,15 @@ public class CameraController : MonoBehaviour
     void CannotMove()
     {
         _canMove= false;
+    }
+
+    private void LateUpdate()
+    {
+        if (!_cinemachineBrain.IsBlending)
+        {
+            print("Shouldn't be called");
+            LeftCamera.transform.position = Vector3.Slerp(transform.position, BoardBox.transform.position, SlerpSpeed * Time.deltaTime);
+        }
     }
 
     private void OnDestroy()
