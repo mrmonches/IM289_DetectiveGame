@@ -5156,6 +5156,10 @@ MonoBehaviour:
   _playerController: {fileID: 0}
   _cabinetController: {fileID: 0}
   mainCamera: {fileID: 0}
+  BoxSpeed: 0
+  SlerpSpeed: 0
+  _boxRB: {fileID: 0}
+  BoardBox: {fileID: 0}
 --- !u!114 &1750113699
 MonoBehaviour:
   m_ObjectHideFlags: 0
