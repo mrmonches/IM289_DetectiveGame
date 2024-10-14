@@ -8,6 +8,7 @@ public class TitleFadeAway : MonoBehaviour
 {
     [SerializeField] private float fadeTime = 3f;
     [SerializeField] private TextMeshProUGUI titleText;
+    [SerializeField] private TextMeshProUGUI titleText2;
     [SerializeField] private Image titleBackground;
 
     // Start is called before the first frame update
@@ -23,6 +24,7 @@ public class TitleFadeAway : MonoBehaviour
         {
             fadeTime -= Time.deltaTime;
             titleText.color = new Color(titleText.color.r, titleText.color.g, titleText.color.b, fadeTime);
+            titleText2.color = new Color(titleText2.color.r, titleText2.color.g, titleText2.color.b, fadeTime);
             titleBackground.color = new Color(titleBackground.color.r, titleBackground.color.g, titleBackground.color.b, fadeTime);
         }
     }
