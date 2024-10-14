@@ -111,11 +111,15 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This allows the player to move the camera while at the evidence board
+    /// Looks nice and smooth :)
+    /// </summary>
     public void MoveBoardCamera(Vector2 moveValue)
     {
         if (!_cinemachineBrain.IsBlending)
         {
-            _boxRB.velocity = new Vector3 (-moveValue.x * BoxSpeed, moveValue.y * BoxSpeed, _boxRB.velocity.z);
+            _boxRB.velocity = new Vector3(-moveValue.x * BoxSpeed, moveValue.y * BoxSpeed, _boxRB.velocity.z);
         }
     }
 
@@ -142,11 +146,14 @@ public class CameraController : MonoBehaviour
         _canMove= false;
     }
 
-    private void LateUpdate()
+    /// <summary>
+    /// DO NOT CHANGE FROM FIXED UPDATE
+    /// The camera transitions ONLY WORK when this function is called on FixedUpdate
+    /// </summary>
+    private void FixedUpdate()
     {
-        if (!_cinemachineBrain.IsBlending)
+        if (!_cinemachineBrain.IsBlending && activecamera == 1)
         {
-            print("Shouldn't be called");
             LeftCamera.transform.position = Vector3.Slerp(transform.position, BoardBox.transform.position, SlerpSpeed * Time.deltaTime);
         }
     }
