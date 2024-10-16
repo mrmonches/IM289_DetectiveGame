@@ -8,10 +8,15 @@ public class EvidenceCardMenuBehavior : MonoBehaviour
 
     [SerializeField] private Canvas menuCanvas;
 
-    public void ActivateCardMenu()
+    public void SetCardMenuStatus(bool status)
     {
-        menuActive = true;
+        menuActive = status;
 
-        menuCanvas.gameObject.SetActive(true);
+        menuCanvas.gameObject.SetActive(status);
+    }
+
+    public bool GetCardMenuStatus()
+    {
+        return menuActive;
     }
 }
