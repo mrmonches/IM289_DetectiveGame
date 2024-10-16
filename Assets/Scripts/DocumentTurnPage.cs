@@ -7,8 +7,10 @@ public class DocumentTurnPage : MonoBehaviour
     //Written by Quinn 10/4
     [SerializeField] private GameObject _nextPage;
     [SerializeField] private GameObject _previousPage;
+
     private GameObject parent;
     private Canvas canvas;
+    
 
     private void Awake()
     {
@@ -29,5 +31,12 @@ public class DocumentTurnPage : MonoBehaviour
         openedpage.transform.SetParent(canvas.transform, false);
 
         Destroy(gameObject);
+    }
+
+    public void CloseDoc()
+    {
+
+        Destroy(gameObject);
+
     }
 }
