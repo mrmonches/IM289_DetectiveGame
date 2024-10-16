@@ -127,20 +127,22 @@ public class PlayerController : MonoBehaviour
             {
                 EvidenceController hitObject = hit.collider.GetComponent<EvidenceController>();
 
-                if (_yarnController != null && _yarnController.IsConnecting)
-                {
-                    _yarnController.CheckLineStatus(hitObject.ChildTransform.position, hitObject.EvidenceData, hitObject.gameObject);
+                hitObject.MenuBehavior.ActivateCardMenu();
 
-                    _yarnController = null;
-                }
-                else
-                {
-                    _yarnController = hit.collider.gameObject.GetComponent<YarnController>();
+                //if (_yarnController != null && _yarnController.IsConnecting)
+                //{
+                //    _yarnController.CheckLineStatus(hitObject.ChildTransform.position, hitObject.EvidenceData, hitObject.gameObject);
 
-                    _yarnController.IsConnecting = true;
+                //    _yarnController = null;
+                //}
+                //else
+                //{
+                //    _yarnController = hit.collider.gameObject.GetComponent<YarnController>();
 
-                    _yarnController.CheckLineStatus(hitObject.ChildTransform.position, hitObject.EvidenceData, hitObject.gameObject);
-                }
+                //    _yarnController.IsConnecting = true;
+
+                //    _yarnController.CheckLineStatus(hitObject.ChildTransform.position, hitObject.EvidenceData, hitObject.gameObject);
+                //}
             }
         }
     }
