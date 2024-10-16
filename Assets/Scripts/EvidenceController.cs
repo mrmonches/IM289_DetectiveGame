@@ -46,12 +46,15 @@ public class EvidenceController : MonoBehaviour
 
     private EvidenceID _id;
 
+    private EvidenceCardMenuBehavior _menuBehavior;
+
     public bool IsHeld { get => isHeld; set => isHeld = value; }
     public bool IsHover { get => isHover; set => isHover = value; }
     public Transform ChildTransform { get => _childTransform; private set => _childTransform = value; }
     public EvidenceID ID { get => _id; set => _id = value; }
     public EvidenceData EvidenceData { get => _evidenceData; set => _evidenceData = value; }
     public bool IsConnected { get => isConnected; set => isConnected = value; }
+    public EvidenceCardMenuBehavior MenuBehavior { get => _menuBehavior; set => _menuBehavior = value; }
 
     private void Awake()
     {
@@ -62,6 +65,8 @@ public class EvidenceController : MonoBehaviour
         _boardManager = FindObjectOfType<EvidenceBoardManager>();
 
         RecordPlacedPos();
+
+        _menuBehavior = GetComponent<EvidenceCardMenuBehavior>();
     }
 
     /// <summary>
