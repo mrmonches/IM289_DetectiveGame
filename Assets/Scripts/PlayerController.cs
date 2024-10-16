@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private CameraController _cameraController;
 
+    private EvidenceCardMenuBehavior _menuBehavior;
+
     public bool InItemViewer { get => inItemViewer; set => inItemViewer = value; }
     public EvidenceController EvidenceController { get => _evidenceController; set => _evidenceController = value; }
 
@@ -60,13 +62,15 @@ public class PlayerController : MonoBehaviour
 
             if (EvidenceController != null)
             {
+                if (_menuBehavior != null && _menuBehavior.GetCardMenuStatus())
+                {
+                    _menuBehavior.SetCardMenuStatus(false);
+
+                    _menuBehavior = null;
+                }
+
                 EvidenceController.IsHeld = true;
             }  
-
-            if (_stackManager != null)
-            {
-                _stackManager.GivePlayerEvidence();
-            }
         }
 
         //Quinn wrote this. Nolan made edits (9/22/24)
@@ -127,22 +131,9 @@ public class PlayerController : MonoBehaviour
             {
                 EvidenceController hitObject = hit.collider.GetComponent<EvidenceController>();
 
-                hitObject.MenuBehavior.ActivateCardMenu();
+                _menuBehavior = hitObject.MenuBehavior;
 
-                //if (_yarnController != null && _yarnController.IsConnecting)
-                //{
-                //    _yarnController.CheckLineStatus(hitObject.ChildTransform.position, hitObject.EvidenceData, hitObject.gameObject);
-
-                //    _yarnController = null;
-                //}
-                //else
-                //{
-                //    _yarnController = hit.collider.gameObject.GetComponent<YarnController>();
-
-                //    _yarnController.IsConnecting = true;
-
-                //    _yarnController.CheckLineStatus(hitObject.ChildTransform.position, hitObject.EvidenceData, hitObject.gameObject);
-                //}
+                _menuBehavior.SetCardMenuStatus(true);
             }
         }
     }

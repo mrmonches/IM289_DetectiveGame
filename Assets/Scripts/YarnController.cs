@@ -38,6 +38,10 @@ public class YarnController : MonoBehaviour
         _typewriterController = FindObjectOfType<TypeWriterController>();
     }
 
+    /// <summary>
+    /// This creates an empty line renderer
+    /// This also handles most of the default settings for the line renderer
+    /// </summary>
     private void CreateLineRender()
     {
         lineRenderer = Instantiate(LineObject).GetComponent<LineRenderer>();
@@ -54,6 +58,9 @@ public class YarnController : MonoBehaviour
         IsConnecting = true;
     }
 
+    /// <summary>
+    /// Clears all current references so that new connection can be made
+    /// </summary>
     private void ClearCurrentRef()
     {
         boardManager.Connections.Add(new ConnectionData(lineRenderer, firstID, secondID, firstObject, secondObject));
@@ -72,7 +79,11 @@ public class YarnController : MonoBehaviour
         CreateLineRender();
     }
 
-    public void GiveLinePosition(Vector3 pos, EvidenceID evidenceID, GameObject evidence)
+    /// <summary>
+    /// Gives current line position so that a line can be successfully drawn
+    /// Should not directly be called, since there are checks that must be made
+    /// </summary>
+    private void GiveLinePosition(Vector3 pos, EvidenceID evidenceID, GameObject evidence)
     {
         lineRenderer.positionCount++;
 
@@ -94,6 +105,11 @@ public class YarnController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Important check that makes sure:
+    /// The line renderer doesn't have more than three positions
+    /// And if the line renderer is cleared, a new one is created
+    /// </summary>
     private void CheckControllerStatus()
     {
         if (lineRenderer == null)
@@ -107,6 +123,10 @@ public class YarnController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This method makes the line black or red
+    /// Checks if the connection is a "good" or "bad" one
+    /// </summary>
     private void CheckConnectionStatus(EvidenceData evidenceID)
     {
         if (evidenceID.CheckCorrectConnection(firstID))
@@ -121,6 +141,14 @@ public class YarnController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This is the function that should be called if the player is creating a connection
+    /// 
+    /// Conducts most of the checks including:
+    /// Whether or not there is an active line renderer
+    /// If the player is trying to create a self connection
+    /// If the connection has already been made
+    /// </summary>
     public void CheckLineStatus(Vector3 pos, EvidenceData evidenceID, GameObject evidence)
     {
         EvidenceID _id = evidenceID.EvidenceID;
@@ -155,7 +183,7 @@ public class YarnController : MonoBehaviour
         }
     }
 
-    public void CheckSelfConnection(EvidenceID evidenceID)
+    private void CheckSelfConnection(EvidenceID evidenceID)
     {
         if (evidenceID == firstID)
         {

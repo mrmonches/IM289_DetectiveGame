@@ -149,6 +149,7 @@ public class CameraController : MonoBehaviour
     /// <summary>
     /// DO NOT CHANGE FROM FIXED UPDATE
     /// The camera transitions ONLY WORK when this function is called on FixedUpdate
+    /// Thanks - Nolan
     /// </summary>
     private void FixedUpdate()
     {
