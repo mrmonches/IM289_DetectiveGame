@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
 
         //Quinn wrote this. Nolan made edits (9/22/24)
         //For opening/closing the filing cabinet
-        if (CurrentStation == PlayerLocation.FilingCabinet && !InItemViewer)
+        if (CurrentStation == PlayerLocation.FilingCabinet /*&& !InItemViewer*/)
         {
             RaycastHit hitFolder;
             /*
@@ -97,6 +97,8 @@ public class PlayerController : MonoBehaviour
                 _folderController.OpenCloseFile();
 
                 InItemViewer = true;
+
+                Debug.Log("Raycast his the folder");
             }
         }
         
