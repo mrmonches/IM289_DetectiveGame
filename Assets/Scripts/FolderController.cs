@@ -6,6 +6,7 @@ public class FolderController : MonoBehaviour
     //public EvidenceData heldData;
     [SerializeField] private GameObject file;
     [SerializeField] private Canvas canvas;
+ 
 
     private bool folderOpen;
 
@@ -13,8 +14,12 @@ public class FolderController : MonoBehaviour
 
     public void OpenCloseFile()
     {
-        var openedFile = Instantiate(file);
-        openedFile.transform.SetParent(canvas.transform, false);
+
+            var openedFile = Instantiate(file);
+            openedFile.transform.SetParent(canvas.transform, false);
+ 
+
+
         
         //openedFile.GetComponent<FileController>().heldDataFile = heldData;
     }
