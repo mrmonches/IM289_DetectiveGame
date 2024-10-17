@@ -23,6 +23,7 @@ public class CameraController : MonoBehaviour
 
     // Allows camera to move freely when inside evidence board
     [SerializeField, Tooltip ("How fast the invisible box is moving around the scene")] private float BoxSpeed;
+    [SerializeField] private float ScrollSpeed;
     [SerializeField, Tooltip("How fast the camera moves on player input")] private float SlerpSpeed;
     [SerializeField] private Rigidbody _boxRB;
     [SerializeField] private GameObject BoardBox;
@@ -120,6 +121,17 @@ public class CameraController : MonoBehaviour
         if (!_cinemachineBrain.IsBlending)
         {
             _boxRB.velocity = new Vector3(-moveValue.x * BoxSpeed, moveValue.y * BoxSpeed, _boxRB.velocity.z);
+        }
+    }
+
+    /// <summary>
+    /// Overload of previous method so that player can zoom in
+    /// </summary>
+    public void ZoomBoardCamera(float moveValue)
+    {
+        if (!_cinemachineBrain.IsBlending)
+        {
+            _boxRB.velocity = new Vector3(_boxRB.velocity.x, _boxRB.velocity.y, moveValue * ScrollSpeed);
         }
     }
 
