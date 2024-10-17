@@ -183,6 +183,9 @@ public class YarnController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Checks if the connection is trying to connect to itself
+    /// </summary>
     private void CheckSelfConnection(EvidenceID evidenceID)
     {
         if (evidenceID == firstID)

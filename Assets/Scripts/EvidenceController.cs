@@ -1,6 +1,5 @@
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
 
 // By Nolan
 
@@ -164,7 +163,6 @@ public class EvidenceController : MonoBehaviour
             canPlace = true;
         }
     }
-
 
     // Uncomment this function if the box cast that makes the cards not overlap is not working
 

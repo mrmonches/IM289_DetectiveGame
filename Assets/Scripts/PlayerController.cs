@@ -47,10 +47,13 @@ public class PlayerController : MonoBehaviour
     {
         _playerInputs = new PlayerControls();
         _playerInputs.DefaultControls.Enable();
+
         _playerInputs.DefaultControls.RightClick.started += rightClickAction_started;
 
         _playerInputs.DefaultControls.LeftClick.started += leftClickAction_started;
         _playerInputs.DefaultControls.LeftClick.canceled += leftClickAction_canceled;
+
+        //_playerInputs.DefaultControls.
     }
 
     private void leftClickAction_started(InputAction.CallbackContext obj)
@@ -145,6 +148,14 @@ public class PlayerController : MonoBehaviour
         if (CurrentStation == PlayerLocation.EvidenceBoard)
         {
             _cameraController.MoveBoardCamera(moveVector.Get<Vector2>());
+        }
+    }
+
+    private void OnScroll(InputValue scrollFloat)
+    {
+        if (CurrentStation == PlayerLocation.EvidenceBoard)
+        {
+            _cameraController.ZoomBoardCamera(scrollFloat.Get<float>());
         }
     }
 
