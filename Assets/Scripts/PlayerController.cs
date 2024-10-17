@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject _cabinetObject;
 
-    private PlayerControls _playerInputs;
+    private PlayerControls _playerControls;
 
     private CabinetController _cabinetController;
 
@@ -45,15 +45,16 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        _playerInputs = new PlayerControls();
-        _playerInputs.DefaultControls.Enable();
+        _playerControls = new PlayerControls();
+        _playerControls.DefaultControls.Enable();
 
-        _playerInputs.DefaultControls.RightClick.started += rightClickAction_started;
+        _playerControls.DefaultControls.RightClick.started += rightClickAction_started;
 
-        _playerInputs.DefaultControls.LeftClick.started += leftClickAction_started;
-        _playerInputs.DefaultControls.LeftClick.canceled += leftClickAction_canceled;
+        _playerControls.DefaultControls.LeftClick.started += leftClickAction_started;
+        _playerControls.DefaultControls.LeftClick.canceled += leftClickAction_canceled;
 
-        //_playerInputs.DefaultControls.
+        //_playerControls.DefaultControls.Scroll.started += Scroll_started;
+        //_playerControls.DefaultControls.Scroll.canceled += Scroll_canceled;
     }
 
     private void leftClickAction_started(InputAction.CallbackContext obj)
@@ -151,13 +152,29 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnScroll(InputValue scrollFloat)
-    {
-        if (CurrentStation == PlayerLocation.EvidenceBoard)
-        {
-            _cameraController.ZoomBoardCamera(scrollFloat.Get<float>());
-        }
-    }
+    //private void OnScroll(InputValue scrollFloat)
+    //{
+    //    if (CurrentStation == PlayerLocation.EvidenceBoard)
+    //    {
+    //        _cameraController.ZoomBoardCamera(scrollFloat.Get<float>());
+    //    }
+    //}
+    
+    //private void Scroll_started(InputAction.CallbackContext obj)
+    //{
+    //    if (CurrentStation == PlayerLocation.EvidenceBoard)
+    //    {
+    //        _cameraController.IsScrolling = true;
+    //    }
+    //}
+
+    //private void Scroll_canceled(InputAction.CallbackContext obj)
+    //{
+    //    if (CurrentStation == PlayerLocation.EvidenceBoard)
+    //    {
+    //        _cameraController.IsScrolling = false;
+    //    }
+    //}
 
     private void OnMouse(InputValue mousePos)
     {
@@ -268,10 +285,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
-        _playerInputs.DefaultControls.RightClick.started -= rightClickAction_started;
+        _playerControls.DefaultControls.RightClick.started -= rightClickAction_started;
 
-        _playerInputs.DefaultControls.LeftClick.started -= leftClickAction_started;
-        _playerInputs.DefaultControls.LeftClick.canceled -= leftClickAction_canceled;
+        _playerControls.DefaultControls.LeftClick.started -= leftClickAction_started;
+        _playerControls.DefaultControls.LeftClick.canceled -= leftClickAction_canceled;
     }
 
 }
