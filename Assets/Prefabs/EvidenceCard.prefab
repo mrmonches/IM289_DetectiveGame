@@ -413,7 +413,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1660322390839781985}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.012377683, y: -0.70699847, z: -0.012377683, w: 0.70699847}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 85.26, y: 23.69, z: 22.32}
   m_LocalScale: {x: 12, y: 12, z: 12}
   m_ConstrainProportionsScale: 1
@@ -422,7 +422,7 @@ Transform:
   - {fileID: 6722206084264805294}
   - {fileID: 585409312236508802}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: -2.006}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!33 &5210744288731943387
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -510,8 +510,9 @@ MonoBehaviour:
   EvidenceMask:
     serializedVersion: 2
     m_Bits: 128
-  OffsetPos: {x: 0, y: 2, z: 1}
+  OffsetPos: {x: 0, y: 2, z: 1.2}
   HoverPos: {x: 0, y: 0.1, z: 0.1}
+  InHandHoverPos: {x: 0, y: 0.5, z: 0}
   SlerpSpeed: 10
   HoverSpeed: 10
   canPlace: 1

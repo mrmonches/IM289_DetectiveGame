@@ -18,7 +18,7 @@ public class EvidenceStackManager : MonoBehaviour
 
     [SerializeField] private List<GameObject> SpecialCaseItems;
 
-    [SerializeField] private Transform MinPos, MaxPos;
+    [SerializeField] private float CardDistance, CardRotation;
 
     private float posDifference, rotDifference;
 
@@ -43,11 +43,7 @@ public class EvidenceStackManager : MonoBehaviour
 
     private void UpdateStackOrder()
     {
-        posDifference = Vector3.Distance(MinPos.transform.position, MaxPos.transform.position) / CardList.Count;
-
-        print(posDifference);
-
-        //rotDifference = Vector3.Angle(MinPos.transform.rotation, MaxPos.transform.rotation) / CardList.Count;
+        posDifference = CardDistance / CardList.Count;
 
         int count = CardList.Count - 1;
 
@@ -64,14 +60,11 @@ public class EvidenceStackManager : MonoBehaviour
                         CardSpawnPos.transform.position.y, 
                         CardSpawnPos.transform.position.z);
 
-                print("negative " + (posDifference * negativeIncrement));
-
                 negativeIncrement++;
             }
             else if ((float)i == count / 2.0f)
             {
                 CardList[i].transform.position = CardSpawnPos.transform.position;
-                //print("neutral");
             }
             else if ((float)i > count / 2.0f)
             {
@@ -80,21 +73,12 @@ public class EvidenceStackManager : MonoBehaviour
                         CardSpawnPos.transform.position.y, 
                         CardSpawnPos.transform.position.z);
 
-                print("positive " + (posDifference * positiveIncrement));
-
                 positiveIncrement--;
-                //print("positive");
             }
 
             //CardList[i].transform.Rotate(Vector3.forward, rotDifference);
         }
     }
-    // Connection of evidence cards needs to be childed to evidence board camera
-    // Connection need to be added and accessible whenever the camera is active at the evidence board
-    // Whenever the player hovers the mouse cursor over an evidence card, it should move upwards
-    // Whenever the player removes the evidence card from the connection, it will then be "on" the board
-    // If the player places the card where it cannot be placed, return card to collection
-
 
     public void GivePlayerEvidence()
     {

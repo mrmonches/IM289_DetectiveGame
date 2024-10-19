@@ -82,18 +82,7 @@ public class PlayerController : MonoBehaviour
         if (CurrentStation == PlayerLocation.FilingCabinet /*&& !InItemViewer*/)
         {
             RaycastHit hitFolder;
-            /*
-            if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitCabinet, CastDistance, CabinetMask))
-            {
-                _cabinetController = hitCabinet.collider.gameObject.GetComponent<CabinetController>();
 
-                _cabinetController.GetOpenClose();
-
-                if (!_cabinetController.IsOpened)
-                {
-                    _cabinetController = null;
-                }
-            }*/
             if(Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitFolder, CastDistance, FoldersMask))
             {
                 _folderController = hitFolder.collider.gameObject.GetComponent<FolderController>();

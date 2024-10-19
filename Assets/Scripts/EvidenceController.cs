@@ -15,7 +15,7 @@ public class EvidenceController : MonoBehaviour
     [SerializeField] private Vector3 OffsetPos;
 
     [SerializeField, Tooltip("Change this to adjust hover distance")]
-    private Vector3 HoverPos;
+    private Vector3 HoverPos, InHandHoverPos;
 
     [SerializeField, Tooltip("Change this to make evidence follow mouse faster/smoother")] 
     private float SlerpSpeed;
@@ -26,6 +26,7 @@ public class EvidenceController : MonoBehaviour
     private bool isHeld;
     private bool isHover;
     private bool isConnected;
+    [SerializeField] private bool cancelHover;
 
     [SerializeField] private bool canPlace;
 
@@ -105,7 +106,7 @@ public class EvidenceController : MonoBehaviour
     /// </summary>
     private void OnUnhover()
     {
-        transform.position = Vector3.Slerp(transform.position, placedPos, HoverSpeed * Time.deltaTime);
+        transform.position = Vector3.Slerp(transform.position, placedPos, (HoverSpeed * 2) * Time.deltaTime);
     }
 
     public void OnPlace()
@@ -117,6 +118,8 @@ public class EvidenceController : MonoBehaviour
             transform.position = new Vector3 (transform.position.x, transform.position.y, _boardManager.EvidencePlacePos1);
 
             RecordPlacedPos();
+
+            isInHand = false;
 
             if (isConnected)
             {
@@ -219,7 +222,7 @@ public class EvidenceController : MonoBehaviour
             {
                 OnHover();
             }
-            else if (!IsHover && transform.position != placedPos)
+            else if (!IsHover && transform.position != placedPos && !cancelHover)
             {
                 OnUnhover();
             }
