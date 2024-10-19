@@ -47,6 +47,8 @@ public class EvidenceController : MonoBehaviour
 
     private EvidenceCardMenuBehavior _menuBehavior;
 
+    private bool isInHand;
+
     public bool IsHeld { get => isHeld; set => isHeld = value; }
     public bool IsHover { get => isHover; set => isHover = value; }
     public Transform ChildTransform { get => _childTransform; private set => _childTransform = value; }
@@ -55,7 +57,7 @@ public class EvidenceController : MonoBehaviour
     public bool IsConnected { get => isConnected; set => isConnected = value; }
     public EvidenceCardMenuBehavior MenuBehavior { get => _menuBehavior; set => _menuBehavior = value; }
 
-    private void Awake()
+    private void OnEnable()
     {
         _boxCollider = GetComponent<BoxCollider>();
 
@@ -66,6 +68,8 @@ public class EvidenceController : MonoBehaviour
         RecordPlacedPos();
 
         _menuBehavior = GetComponent<EvidenceCardMenuBehavior>();
+
+        isInHand = true;
     }
 
     /// <summary>
@@ -209,7 +213,7 @@ public class EvidenceController : MonoBehaviour
                 _boardManager.UpdateLinePos(gameObject, _id);
             }
         } 
-        else
+        else if (!isInHand)
         {
             if (IsHover && transform.position != placedPos + HoverPos)
             {

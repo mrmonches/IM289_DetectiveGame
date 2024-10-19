@@ -287,6 +287,7 @@ GameObject:
   - component: {fileID: 2831522486966753781}
   - component: {fileID: 7454507109711497776}
   - component: {fileID: 216091086791046313}
+  - component: {fileID: 3590377745978506746}
   m_Layer: 5
   m_Name: CrimeSceneReport1
   m_TagString: Untagged
@@ -369,6 +370,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nextPage: {fileID: 6379107819997921758, guid: 94be8116b28d04340961eff19e8c0c4d, type: 3}
   _previousPage: {fileID: 0}
+--- !u!114 &3590377745978506746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6379107819997921758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c86f9b89ba2e41b4fb6aa79d250088f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6804635878662636871
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,7 +903,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 3590377745978506746}
         m_TargetAssemblyTypeName: FileController, Assembly-CSharp
         m_MethodName: SendToBoard
         m_Mode: 2

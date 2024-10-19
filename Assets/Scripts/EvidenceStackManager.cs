@@ -18,7 +18,7 @@ public class EvidenceStackManager : MonoBehaviour
 
     [SerializeField] private List<GameObject> SpecialCaseItems;
 
-    [SerializeField] private Vector3 MinPos, MinRot, MaxPos, MaxRot;
+    [SerializeField] private Transform MinPos, MaxPos;
 
     private float posDifference, rotDifference;
 
@@ -31,7 +31,11 @@ public class EvidenceStackManager : MonoBehaviour
     {
         StackList.Add(evidenceData);
 
-        CardList.Add(Instantiate(EvidenceCardObject, CardSpawnPos.transform.position, EvidenceRotation.rotation));
+        var newCard = Instantiate(EvidenceCardObject, CardSpawnPos.transform.position, EvidenceRotation.rotation);
+
+        newCard.transform.parent = CardSpawnPos.transform;
+
+        CardList.Add(newCard);
 
         UpdateStackOrder();
     }
@@ -39,15 +43,50 @@ public class EvidenceStackManager : MonoBehaviour
 
     private void UpdateStackOrder()
     {
-        posDifference = Vector3.Distance(MinPos, MaxPos) / CardList.Count;
+        posDifference = Vector3.Distance(MinPos.transform.position, MaxPos.transform.position) / CardList.Count;
 
-        rotDifference = Vector3.Angle(MinRot, MaxRot) / CardList.Count;
+        print(posDifference);
+
+        //rotDifference = Vector3.Angle(MinPos.transform.rotation, MaxPos.transform.rotation) / CardList.Count;
+
+        int count = CardList.Count - 1;
+
+        int negativeIncrement = 1;
+        int positiveIncrement = CardList.Count / 2;
+        
 
         for (int i = 0; i < CardList.Count; i++)
         {
-            CardList[i].transform.position = new Vector3(MinPos.x, MinPos.y, MinPos.z);
+            if ((float)i < count / 2.0f)
+            {
+                CardList[i].transform.position = 
+                    new Vector3(CardSpawnPos.transform.position.x + (posDifference * (negativeIncrement)),
+                        CardSpawnPos.transform.position.y, 
+                        CardSpawnPos.transform.position.z);
 
-            CardList[i].transform.Rotate(Vector3.forward, rotDifference);
+                print("negative " + (posDifference * negativeIncrement));
+
+                negativeIncrement++;
+            }
+            else if ((float)i == count / 2.0f)
+            {
+                CardList[i].transform.position = CardSpawnPos.transform.position;
+                //print("neutral");
+            }
+            else if ((float)i > count / 2.0f)
+            {
+                CardList[i].transform.position = 
+                    new Vector3(CardSpawnPos.transform.position.x - (posDifference * (positiveIncrement)),
+                        CardSpawnPos.transform.position.y, 
+                        CardSpawnPos.transform.position.z);
+
+                print("positive " + (posDifference * positiveIncrement));
+
+                positiveIncrement--;
+                //print("positive");
+            }
+
+            //CardList[i].transform.Rotate(Vector3.forward, rotDifference);
         }
     }
     // Connection of evidence cards needs to be childed to evidence board camera
