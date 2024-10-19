@@ -6,9 +6,11 @@ public class EvidenceCardMenuBehavior : MonoBehaviour
 {
     private bool menuActive;
 
-    private YarnController _yarnController;
+    [SerializeField] private YarnController _yarnController;
 
-    private EvidenceController _evidenceController;
+    [SerializeField] private EvidenceController _evidenceController;
+
+    private PlayerController _playerController;
 
     private EvidenceBoardManager _boardManager;
 
@@ -16,9 +18,11 @@ public class EvidenceCardMenuBehavior : MonoBehaviour
 
     private void OnEnable()
     {
-        _evidenceController = gameObject.GetComponent<EvidenceController>();
+        _evidenceController = GetComponent<EvidenceController>();
 
-        _yarnController = gameObject.GetComponent<YarnController>();
+        _playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+
+        _yarnController = GetComponent<YarnController>();
 
         _boardManager = FindObjectOfType<EvidenceBoardManager>();
     }
@@ -40,13 +44,29 @@ public class EvidenceCardMenuBehavior : MonoBehaviour
 
     public void StartConnectionButton()
     {
-        _yarnController.CheckLineStatus(_evidenceController.ChildTransform.position,
-            _evidenceController.EvidenceData, _evidenceController.gameObject);
+        if (!_playerController.IsConnecting)
+        {
+            _playerController.AssignYarnController(_yarnController);
+
+            _yarnController.CheckLineStatus(_evidenceController.ChildTransform.position,
+                        _evidenceController.EvidenceData, _evidenceController.gameObject);
+        }
+        else
+        {
+            _playerController.GetYarnController().CheckLineStatus(_evidenceController.ChildTransform.position,
+                        _evidenceController.EvidenceData, _evidenceController.gameObject);
+
+            _playerController.UnassignYarnController();
+        }
+
+        SetCardMenuStatus(false);
     }
 
     public void RemoveConnectionsButton()
     {
         _boardManager.RemoveConnectionFromList(_evidenceController.ID);
+
+        SetCardMenuStatus(false);
     }
 
     public void RemoveCardFromBoard()

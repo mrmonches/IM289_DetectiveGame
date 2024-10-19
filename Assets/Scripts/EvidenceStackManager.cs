@@ -33,6 +33,8 @@ public class EvidenceStackManager : MonoBehaviour
 
         var newCard = Instantiate(EvidenceCardObject, CardSpawnPos.transform.position, EvidenceRotation.rotation);
 
+        newCard.GetComponent<EvidenceController>().GiveEvidenceData(evidenceData);
+
         newCard.transform.parent = CardSpawnPos.transform;
 
         CardList.Add(newCard);
@@ -40,8 +42,16 @@ public class EvidenceStackManager : MonoBehaviour
         UpdateStackOrder();
     }
 
+    public void RemoveFromStack(EvidenceData evidenceData, GameObject evidenceObject)
+    {
+        StackList.Remove(evidenceData);
+        CardList.Remove(evidenceObject);
 
-    private void UpdateStackOrder()
+        UpdateStackOrder();
+    }
+
+
+    public void UpdateStackOrder()
     {
         posDifference = CardDistance / CardList.Count;
 
@@ -75,8 +85,6 @@ public class EvidenceStackManager : MonoBehaviour
 
                 positiveIncrement--;
             }
-
-            //CardList[i].transform.Rotate(Vector3.forward, rotDifference);
         }
     }
 

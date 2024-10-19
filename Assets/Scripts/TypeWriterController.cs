@@ -172,6 +172,6 @@ public class TypeWriterController : MonoBehaviour
     }
     private void Awake()
     {
-        typewriterStuff.gameObject.SetActive(false);
+        //typewriterStuff.gameObject.SetActive(false);
     }
 }
