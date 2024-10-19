@@ -842,7 +842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.56078434}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -908,7 +908,7 @@ MonoBehaviour:
         m_MethodName: SendToBoard
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: cf978f8ace4ab7344aed6d56b2bf1855, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 04c1f326727f9c64dac44e8a21e10fdd, type: 2}
           m_ObjectArgumentAssemblyTypeName: EvidenceData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0

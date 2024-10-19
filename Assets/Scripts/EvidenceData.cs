@@ -37,22 +37,28 @@ public enum EvidenceID
 {
     // First letter which case, A-C
     // First set of numbers, which piece of evidence
+    //*Quinn here. I'm not sure the the line above ^^ works
+    //*Some pieces of evidence are on multiple documents. Maybe I'm not reading the documentation right,
+    //* it's a little confusing
     // Second set of numbers, ID for component of evidence
     // If ID ends in 00, means evidence does not have any other components, sent to board 'as is'
     Default,
-    A01_01,
-    A01_02,
-    A01_03,
-    A01_04,
-    A01_05,
-    A01_06,
-    A01_07,
-    A01_08,
-    A01_09,
-    A01_10,
-    A01_11,
-    A01_12,
-    A01_13,
+    A01_01, //Darling King
+    A01_02, //Victims wife
+    A01_03, //Steven Knight
+    A01_04, //Victims close friend
+    A01_05, //Queen Bee
+    A01_06, //Guoco Piano
+    A01_07, //Rookie
+    A01_08, //Map of city street
+    A01_09, //Large frame revolver
+    A01_10, //Victim was intoxicated
+    A01_11, // 0.357 magnun cartridge
+    A01_12, //Jimmy King
+    A01_13, //
+    A01_14, //Bloodloss
+    A01_15, //Watch
+    A01_16, //Wallets Contents
     A02_00,
     A03_00,
     A04_01,
@@ -60,6 +66,7 @@ public enum EvidenceID
 
 public enum EvidenceType
 {
+    //* Quinn here. This needs to be reworked. Several of these are functionally the same and don't need to be seperated. 
     Picture, 
     Blueprint,
     MurderWeapon,
