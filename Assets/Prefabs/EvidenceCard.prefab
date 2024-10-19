@@ -160,7 +160,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 997989888161243501}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0.16}
+  m_LocalPosition: {x: 0, y: 0, z: 0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -191,7 +191,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: -2758143518964017550, guid: 89db3ff56c24b0f4cb5151639436c5b6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -235,8 +235,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 89db3ff56c24b0f4cb5151639436c5b6, type: 2}
+  m_sharedMaterial: {fileID: -2758143518964017550, guid: 89db3ff56c24b0f4cb5151639436c5b6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -515,6 +515,7 @@ MonoBehaviour:
   InHandHoverPos: {x: 0, y: 0.5, z: 0}
   SlerpSpeed: 10
   HoverSpeed: 10
+  cancelHover: 0
   canPlace: 1
   _childTransform: {fileID: 5458507431264335783}
   _evidenceData: {fileID: 0}
@@ -557,6 +558,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb5fb5e646a897943a8a3e9a9090d13d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _yarnController: {fileID: 0}
+  _evidenceController: {fileID: 0}
   menuCanvas: {fileID: 4213046792925016608}
 --- !u!1 &2448950150767980859
 GameObject:
@@ -673,7 +676,7 @@ GameObject:
   - component: {fileID: 3477862607960976336}
   - component: {fileID: 6565441529331983606}
   m_Layer: 7
-  m_Name: Button (1)
+  m_Name: RemoveConnectionsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -780,7 +783,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3477862607960976336}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7764280041389648393}
+        m_TargetAssemblyTypeName: EvidenceCardMenuBehavior, Assembly-CSharp
+        m_MethodName: RemoveConnectionsButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3734282942006718552
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,7 +809,7 @@ GameObject:
   - component: {fileID: 3283309267906009590}
   - component: {fileID: 1645380728492923298}
   m_Layer: 7
-  m_Name: Button
+  m_Name: StartConnectionButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -901,7 +916,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3283309267906009590}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7764280041389648393}
+        m_TargetAssemblyTypeName: EvidenceCardMenuBehavior, Assembly-CSharp
+        m_MethodName: StartConnectionButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4200785523813831996
 GameObject:
   m_ObjectHideFlags: 0
@@ -1266,7 +1293,7 @@ GameObject:
   - component: {fileID: 5941379177511414595}
   - component: {fileID: 5250331148853144355}
   m_Layer: 7
-  m_Name: Button (2)
+  m_Name: RemoveButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1373,4 +1400,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5941379177511414595}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7764280041389648393}
+        m_TargetAssemblyTypeName: EvidenceCardMenuBehavior, Assembly-CSharp
+        m_MethodName: RemoveCardFromBoard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

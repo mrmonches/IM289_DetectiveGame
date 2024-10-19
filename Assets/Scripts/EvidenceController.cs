@@ -57,6 +57,7 @@ public class EvidenceController : MonoBehaviour
     public EvidenceData EvidenceData { get => _evidenceData; set => _evidenceData = value; }
     public bool IsConnected { get => isConnected; set => isConnected = value; }
     public EvidenceCardMenuBehavior MenuBehavior { get => _menuBehavior; set => _menuBehavior = value; }
+    public bool IsInHand { get => isInHand; set => isInHand = value; }
 
     private void OnEnable()
     {
@@ -70,7 +71,7 @@ public class EvidenceController : MonoBehaviour
 
         _menuBehavior = GetComponent<EvidenceCardMenuBehavior>();
 
-        isInHand = true;
+        IsInHand = true;
     }
 
     /// <summary>
@@ -117,9 +118,18 @@ public class EvidenceController : MonoBehaviour
         {
             transform.position = new Vector3 (transform.position.x, transform.position.y, _boardManager.EvidencePlacePos1);
 
+            transform.parent = _boardManager.transform;
+
             RecordPlacedPos();
 
-            isInHand = false;
+            if (IsInHand)
+            {
+                IsInHand = false;
+
+                EvidenceStackManager evidenceStackManager = GameObject.Find("EvidenceWall").GetComponent<EvidenceStackManager>();
+
+                evidenceStackManager.RemoveFromStack(_evidenceData, gameObject);
+            }
 
             if (isConnected)
             {
@@ -211,12 +221,12 @@ public class EvidenceController : MonoBehaviour
 
             CheckPlacePos();
 
-            if (isConnected)
-            {
-                _boardManager.UpdateLinePos(gameObject, _id);
-            }
+            //if (isConnected)
+            //{
+            //    _boardManager.UpdateLinePos(gameObject, _id);
+            //}
         } 
-        else if (!isInHand)
+        else if (!IsInHand)
         {
             if (IsHover && transform.position != placedPos + HoverPos)
             {

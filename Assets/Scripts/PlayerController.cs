@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 {
     private bool isSelecting;
     private bool inItemViewer;
+    private bool isConnecting;
 
     [SerializeField] private PlayerLocation CurrentStation;
     [SerializeField] private Camera SceneCamera;
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
     public bool InItemViewer { get => inItemViewer; set => inItemViewer = value; }
     public EvidenceController EvidenceController { get => _evidenceController; set => _evidenceController = value; }
+    public bool IsConnecting { get => isConnecting; set => isConnecting = value; }
 
     private void Awake()
     {
@@ -52,9 +54,6 @@ public class PlayerController : MonoBehaviour
 
         _playerControls.DefaultControls.LeftClick.started += leftClickAction_started;
         _playerControls.DefaultControls.LeftClick.canceled += leftClickAction_canceled;
-
-        //_playerControls.DefaultControls.Scroll.started += Scroll_started;
-        //_playerControls.DefaultControls.Scroll.canceled += Scroll_canceled;
     }
 
     private void leftClickAction_started(InputAction.CallbackContext obj)
@@ -126,9 +125,12 @@ public class PlayerController : MonoBehaviour
             {
                 EvidenceController hitObject = hit.collider.GetComponent<EvidenceController>();
 
-                _menuBehavior = hitObject.MenuBehavior;
+                if (!hitObject.IsInHand)
+                {
+                    _menuBehavior = hitObject.MenuBehavior;
 
-                _menuBehavior.SetCardMenuStatus(true);
+                    _menuBehavior.SetCardMenuStatus(true);
+                }
             }
         }
     }
@@ -140,30 +142,6 @@ public class PlayerController : MonoBehaviour
             _cameraController.MoveBoardCamera(moveVector.Get<Vector2>());
         }
     }
-
-    //private void OnScroll(InputValue scrollFloat)
-    //{
-    //    if (CurrentStation == PlayerLocation.EvidenceBoard)
-    //    {
-    //        _cameraController.ZoomBoardCamera(scrollFloat.Get<float>());
-    //    }
-    //}
-    
-    //private void Scroll_started(InputAction.CallbackContext obj)
-    //{
-    //    if (CurrentStation == PlayerLocation.EvidenceBoard)
-    //    {
-    //        _cameraController.IsScrolling = true;
-    //    }
-    //}
-
-    //private void Scroll_canceled(InputAction.CallbackContext obj)
-    //{
-    //    if (CurrentStation == PlayerLocation.EvidenceBoard)
-    //    {
-    //        _cameraController.IsScrolling = false;
-    //    }
-    //}
 
     private void OnMouse(InputValue mousePos)
     {
@@ -187,6 +165,25 @@ public class PlayerController : MonoBehaviour
         return lastPosition;
     }
 
+    public void AssignYarnController(YarnController yarn)
+    {
+        _yarnController = yarn;
+
+        isConnecting = true;
+    }
+
+    public void UnassignYarnController()
+    {
+        _yarnController = null;
+
+        isConnecting = false;
+    }
+
+    public YarnController GetYarnController()
+    {
+        return _yarnController;
+    }
+
     /// <summary>
     /// Responsible for handling assigning references to evidence and handling hover functions
     /// </summary>
@@ -206,13 +203,6 @@ public class PlayerController : MonoBehaviour
             if (!EvidenceController.IsHover)
             {
                 EvidenceController.IsHover = true;
-            }
-        }
-        else if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, StackMask))
-        {
-            if (_stackManager == null)
-            {
-                _stackManager = hit.collider.gameObject.GetComponent<EvidenceStackManager>();
             }
         }
         else
@@ -252,6 +242,15 @@ public class PlayerController : MonoBehaviour
 
                 }
                 break;
+        }
+
+        if (CurrentStation != PlayerLocation.EvidenceBoard && isConnecting)
+        {
+            _yarnController.ClearUnfinishedConnection();
+
+            UnassignYarnController();
+
+            print("called");
         }
     }
     /// <summary>
