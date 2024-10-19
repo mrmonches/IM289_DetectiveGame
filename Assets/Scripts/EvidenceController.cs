@@ -15,7 +15,7 @@ public class EvidenceController : MonoBehaviour
     [SerializeField] private Vector3 OffsetPos;
 
     [SerializeField, Tooltip("Change this to adjust hover distance")]
-    private Vector3 HoverPos;
+    private Vector3 HoverPos, InHandHoverPos;
 
     [SerializeField, Tooltip("Change this to make evidence follow mouse faster/smoother")] 
     private float SlerpSpeed;
@@ -26,6 +26,7 @@ public class EvidenceController : MonoBehaviour
     private bool isHeld;
     private bool isHover;
     private bool isConnected;
+    [SerializeField] private bool cancelHover;
 
     [SerializeField] private bool canPlace;
 
@@ -47,6 +48,8 @@ public class EvidenceController : MonoBehaviour
 
     private EvidenceCardMenuBehavior _menuBehavior;
 
+    private bool isInHand;
+
     public bool IsHeld { get => isHeld; set => isHeld = value; }
     public bool IsHover { get => isHover; set => isHover = value; }
     public Transform ChildTransform { get => _childTransform; private set => _childTransform = value; }
@@ -55,7 +58,7 @@ public class EvidenceController : MonoBehaviour
     public bool IsConnected { get => isConnected; set => isConnected = value; }
     public EvidenceCardMenuBehavior MenuBehavior { get => _menuBehavior; set => _menuBehavior = value; }
 
-    private void Awake()
+    private void OnEnable()
     {
         _boxCollider = GetComponent<BoxCollider>();
 
@@ -66,6 +69,8 @@ public class EvidenceController : MonoBehaviour
         RecordPlacedPos();
 
         _menuBehavior = GetComponent<EvidenceCardMenuBehavior>();
+
+        isInHand = true;
     }
 
     /// <summary>
@@ -101,7 +106,7 @@ public class EvidenceController : MonoBehaviour
     /// </summary>
     private void OnUnhover()
     {
-        transform.position = Vector3.Slerp(transform.position, placedPos, HoverSpeed * Time.deltaTime);
+        transform.position = Vector3.Slerp(transform.position, placedPos, (HoverSpeed * 2) * Time.deltaTime);
     }
 
     public void OnPlace()
@@ -113,6 +118,8 @@ public class EvidenceController : MonoBehaviour
             transform.position = new Vector3 (transform.position.x, transform.position.y, _boardManager.EvidencePlacePos1);
 
             RecordPlacedPos();
+
+            isInHand = false;
 
             if (isConnected)
             {
@@ -209,13 +216,13 @@ public class EvidenceController : MonoBehaviour
                 _boardManager.UpdateLinePos(gameObject, _id);
             }
         } 
-        else
+        else if (!isInHand)
         {
             if (IsHover && transform.position != placedPos + HoverPos)
             {
                 OnHover();
             }
-            else if (!IsHover && transform.position != placedPos)
+            else if (!IsHover && transform.position != placedPos && !cancelHover)
             {
                 OnUnhover();
             }
