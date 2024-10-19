@@ -18,7 +18,7 @@ public class EvidenceStackManager : MonoBehaviour
 
     [SerializeField] private List<GameObject> SpecialCaseItems;
 
-    [SerializeField] private Vector3 MinPos, MinRot, MaxPos, MaxRot;
+    [SerializeField] private float CardDistance, CardRotation;
 
     private float posDifference, rotDifference;
 
@@ -31,31 +31,62 @@ public class EvidenceStackManager : MonoBehaviour
     {
         StackList.Add(evidenceData);
 
-        CardList.Add(Instantiate(EvidenceCardObject, CardSpawnPos.transform.position, EvidenceRotation.rotation));
+        var newCard = Instantiate(EvidenceCardObject, CardSpawnPos.transform.position, EvidenceRotation.rotation);
+
+        newCard.GetComponent<EvidenceController>().GiveEvidenceData(evidenceData);
+
+        newCard.transform.parent = CardSpawnPos.transform;
+
+        CardList.Add(newCard);
+
+        UpdateStackOrder();
+    }
+
+    public void RemoveFromStack(EvidenceData evidenceData, GameObject evidenceObject)
+    {
+        StackList.Remove(evidenceData);
+        CardList.Remove(evidenceObject);
 
         UpdateStackOrder();
     }
 
 
-    private void UpdateStackOrder()
+    public void UpdateStackOrder()
     {
-        posDifference = Vector3.Distance(MinPos, MaxPos) / CardList.Count;
+        posDifference = CardDistance / CardList.Count;
 
-        rotDifference = Vector3.Angle(MinRot, MaxRot) / CardList.Count;
+        int count = CardList.Count - 1;
+
+        int negativeIncrement = 1;
+        int positiveIncrement = CardList.Count / 2;
+        
 
         for (int i = 0; i < CardList.Count; i++)
         {
-            CardList[i].transform.position = new Vector3(MinPos.x, MinPos.y, MinPos.z);
+            if ((float)i < count / 2.0f)
+            {
+                CardList[i].transform.position = 
+                    new Vector3(CardSpawnPos.transform.position.x + (posDifference * (negativeIncrement)),
+                        CardSpawnPos.transform.position.y, 
+                        CardSpawnPos.transform.position.z);
 
-            CardList[i].transform.Rotate(Vector3.forward, rotDifference);
+                negativeIncrement++;
+            }
+            else if ((float)i == count / 2.0f)
+            {
+                CardList[i].transform.position = CardSpawnPos.transform.position;
+            }
+            else if ((float)i > count / 2.0f)
+            {
+                CardList[i].transform.position = 
+                    new Vector3(CardSpawnPos.transform.position.x - (posDifference * (positiveIncrement)),
+                        CardSpawnPos.transform.position.y, 
+                        CardSpawnPos.transform.position.z);
+
+                positiveIncrement--;
+            }
         }
     }
-    // Connection of evidence cards needs to be childed to evidence board camera
-    // Connection need to be added and accessible whenever the camera is active at the evidence board
-    // Whenever the player hovers the mouse cursor over an evidence card, it should move upwards
-    // Whenever the player removes the evidence card from the connection, it will then be "on" the board
-    // If the player places the card where it cannot be placed, return card to collection
-
 
     public void GivePlayerEvidence()
     {

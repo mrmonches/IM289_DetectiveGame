@@ -10,19 +10,23 @@ public class TypeWriterController : MonoBehaviour
     [SerializeField] private TMP_Dropdown dropdown1;
     [SerializeField] private TMP_Dropdown dropdown2;
     [SerializeField] private TMP_Dropdown dropdown3;
+    [SerializeField] private TMP_Dropdown dropdown4;
+    [SerializeField] private TMP_Dropdown dropdown5;
     [SerializeField] private GameObject typewriter;
     [SerializeField] private Button submit;
     [SerializeField] private Button backToDesk;
     [SerializeField] private TMP_Text winLoseText;
-    [SerializeField] private Image paperSheet;
     private int option1;
     private int option2;
     private int option3;
     private bool correctCheck1=false;
     private bool correctCheck2=false;
     private bool correctCheck3=false;
+    private bool crorrectCheck4 = false;
+    private bool crorrectCheck5 = false;
     private bool finalCorrectCheck=false;
     [SerializeField] private EvidenceData _evidenceData;
+    [SerializeField] private GameObject typewriterStuff;
     //This is used to prevent moving between stations when in the typewriter 
     [SerializeField] private GameObject _cameraController;
     
@@ -33,19 +37,14 @@ public class TypeWriterController : MonoBehaviour
     private void ShowCanvas()
     {
         _cameraController.GetComponent<CameraController>().getCannotMove();
-
-        winLoseText.gameObject.SetActive(false);
-        dropdown1.gameObject.SetActive(true);
-        dropdown2.gameObject.SetActive(true);
-        dropdown3.gameObject.SetActive(true);
-        submit.gameObject.SetActive(true);
-        backToDesk.gameObject.SetActive(true);
-        paperSheet.gameObject.SetActive(true);
+        typewriterStuff.gameObject.SetActive(true);
+        
     }
 
     public void GetShowCanvas()
     {
         ShowCanvas();
+        typewriterStuff.gameObject.SetActive(true); 
     }
     //checks if all the dropdowns are correct;
     public void Dropdown1(int val)
@@ -92,6 +91,38 @@ public class TypeWriterController : MonoBehaviour
             
         }
     }
+    public void Dropdown4(int val)
+    {
+        int selectedIndex = dropdown4.value;
+        string selectedOption = dropdown1.options[selectedIndex].text;
+
+        if (selectedOption == "Steven Knight")
+        {
+            correctCheck1 = true;
+
+
+        }
+        else
+        {
+            correctCheck1 = false;
+        }
+    }
+    public void Dropdown5(int val)
+    {
+        int selectedIndex = dropdown5.value;
+        string selectedOption = dropdown1.options[selectedIndex].text;
+
+        if (selectedOption == "Steven Knight")
+        {
+            correctCheck1 = true;
+
+
+        }
+        else
+        {
+            correctCheck1 = false;
+        }
+    }
     public void SubmitConclusion()
     {
         if (correctCheck1 == true && correctCheck2 == true && correctCheck3 == true)
@@ -103,11 +134,7 @@ public class TypeWriterController : MonoBehaviour
         {
             finalCorrectCheck = false;
         }
-        dropdown1.gameObject.SetActive(false);
-        dropdown2.gameObject.SetActive(false);
-        dropdown3.gameObject.SetActive(false);
-        submit.gameObject.SetActive(false);
-        backToDesk.gameObject.SetActive(false);
+        typewriterStuff.gameObject.SetActive(false);
         //replaced with newspaper past prototype
 
         if (finalCorrectCheck == true)
@@ -125,11 +152,7 @@ public class TypeWriterController : MonoBehaviour
         //Lets the player move after leaving
         _cameraController.GetComponent<CameraController>().getCanMove();
 
-        dropdown1.gameObject.SetActive(false);
-        dropdown2.gameObject.SetActive(false);
-        dropdown3.gameObject.SetActive(false);
-        submit.gameObject.SetActive(false);
-        backToDesk.gameObject.SetActive(false);
+        typewriterStuff.gameObject.SetActive(false);
         
         
     }
@@ -149,11 +172,6 @@ public class TypeWriterController : MonoBehaviour
     }
     private void Awake()
     {
-        dropdown1.gameObject.SetActive(false);
-        dropdown2.gameObject.SetActive(false);
-        dropdown3.gameObject.SetActive(false);
-        submit.gameObject.SetActive(false);
-        backToDesk.gameObject.SetActive(false);
-        winLoseText.gameObject.SetActive(false);
+        //typewriterStuff.gameObject.SetActive(false);
     }
 }

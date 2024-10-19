@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 {
     private bool isSelecting;
     private bool inItemViewer;
+    private bool isConnecting;
 
     [SerializeField] private PlayerLocation CurrentStation;
     [SerializeField] private Camera SceneCamera;
@@ -28,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject _cabinetObject;
 
-    private PlayerControls _playerInputs;
+    private PlayerControls _playerControls;
 
     private CabinetController _cabinetController;
 
@@ -42,15 +43,17 @@ public class PlayerController : MonoBehaviour
 
     public bool InItemViewer { get => inItemViewer; set => inItemViewer = value; }
     public EvidenceController EvidenceController { get => _evidenceController; set => _evidenceController = value; }
+    public bool IsConnecting { get => isConnecting; set => isConnecting = value; }
 
     private void Awake()
     {
-        _playerInputs = new PlayerControls();
-        _playerInputs.DefaultControls.Enable();
-        _playerInputs.DefaultControls.RightClick.started += rightClickAction_started;
+        _playerControls = new PlayerControls();
+        _playerControls.DefaultControls.Enable();
 
-        _playerInputs.DefaultControls.LeftClick.started += leftClickAction_started;
-        _playerInputs.DefaultControls.LeftClick.canceled += leftClickAction_canceled;
+        _playerControls.DefaultControls.RightClick.started += rightClickAction_started;
+
+        _playerControls.DefaultControls.LeftClick.started += leftClickAction_started;
+        _playerControls.DefaultControls.LeftClick.canceled += leftClickAction_canceled;
     }
 
     private void leftClickAction_started(InputAction.CallbackContext obj)
@@ -78,18 +81,7 @@ public class PlayerController : MonoBehaviour
         if (CurrentStation == PlayerLocation.FilingCabinet /*&& !InItemViewer*/)
         {
             RaycastHit hitFolder;
-            /*
-            if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitCabinet, CastDistance, CabinetMask))
-            {
-                _cabinetController = hitCabinet.collider.gameObject.GetComponent<CabinetController>();
 
-                _cabinetController.GetOpenClose();
-
-                if (!_cabinetController.IsOpened)
-                {
-                    _cabinetController = null;
-                }
-            }*/
             if(Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitFolder, CastDistance, FoldersMask))
             {
                 _folderController = hitFolder.collider.gameObject.GetComponent<FolderController>();
@@ -133,9 +125,12 @@ public class PlayerController : MonoBehaviour
             {
                 EvidenceController hitObject = hit.collider.GetComponent<EvidenceController>();
 
-                _menuBehavior = hitObject.MenuBehavior;
+                if (!hitObject.IsInHand)
+                {
+                    _menuBehavior = hitObject.MenuBehavior;
 
-                _menuBehavior.SetCardMenuStatus(true);
+                    _menuBehavior.SetCardMenuStatus(true);
+                }
             }
         }
     }
@@ -170,6 +165,25 @@ public class PlayerController : MonoBehaviour
         return lastPosition;
     }
 
+    public void AssignYarnController(YarnController yarn)
+    {
+        _yarnController = yarn;
+
+        isConnecting = true;
+    }
+
+    public void UnassignYarnController()
+    {
+        _yarnController = null;
+
+        isConnecting = false;
+    }
+
+    public YarnController GetYarnController()
+    {
+        return _yarnController;
+    }
+
     /// <summary>
     /// Responsible for handling assigning references to evidence and handling hover functions
     /// </summary>
@@ -189,13 +203,6 @@ public class PlayerController : MonoBehaviour
             if (!EvidenceController.IsHover)
             {
                 EvidenceController.IsHover = true;
-            }
-        }
-        else if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, StackMask))
-        {
-            if (_stackManager == null)
-            {
-                _stackManager = hit.collider.gameObject.GetComponent<EvidenceStackManager>();
             }
         }
         else
@@ -236,6 +243,15 @@ public class PlayerController : MonoBehaviour
                 }
                 break;
         }
+
+        if (CurrentStation != PlayerLocation.EvidenceBoard && isConnecting)
+        {
+            _yarnController.ClearUnfinishedConnection();
+
+            UnassignYarnController();
+
+            print("called");
+        }
     }
     /// <summary>
     /// Quinn - I don't know how switch statements work. This is fed through the Camera Controller
@@ -257,10 +273,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnDestroy()
     {
-        _playerInputs.DefaultControls.RightClick.started -= rightClickAction_started;
+        _playerControls.DefaultControls.RightClick.started -= rightClickAction_started;
 
-        _playerInputs.DefaultControls.LeftClick.started -= leftClickAction_started;
-        _playerInputs.DefaultControls.LeftClick.canceled -= leftClickAction_canceled;
+        _playerControls.DefaultControls.LeftClick.started -= leftClickAction_started;
+        _playerControls.DefaultControls.LeftClick.canceled -= leftClickAction_canceled;
     }
 
 }

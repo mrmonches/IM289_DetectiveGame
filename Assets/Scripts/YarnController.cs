@@ -120,6 +120,13 @@ public class YarnController : MonoBehaviour
         if (lineRenderer.positionCount >= 2)
         {
             ClearCurrentRef();
+
+            _playerController.IsConnecting = false;
+        }
+
+        if (lineRenderer.positionCount == 0 && !isConnecting)
+        {
+            isConnecting = true;
         }
     }
 
@@ -183,6 +190,9 @@ public class YarnController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Checks if the connection is trying to connect to itself
+    /// </summary>
     private void CheckSelfConnection(EvidenceID evidenceID)
     {
         if (evidenceID == firstID)
@@ -195,5 +205,16 @@ public class YarnController : MonoBehaviour
         {
             IsConnecting = true;
         }
+    }
+
+    public void ClearUnfinishedConnection()
+    {
+        firstID = EvidenceID.Default;
+        secondID = EvidenceID.Default;
+
+        firstObject = null;
+        secondObject = null;
+
+        lineRenderer.positionCount = 0;
     }
 }

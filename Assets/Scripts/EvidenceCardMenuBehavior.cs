@@ -1,13 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+
+// By Nolan
 
 public class EvidenceCardMenuBehavior : MonoBehaviour
 {
     private bool menuActive;
 
+    [SerializeField] private YarnController _yarnController;
+
+    [SerializeField] private EvidenceController _evidenceController;
+
+    private PlayerController _playerController;
+
+    private EvidenceBoardManager _boardManager;
+
     [SerializeField] private Canvas menuCanvas;
 
+    private void OnEnable()
+    {
+        _evidenceController = GetComponent<EvidenceController>();
+
+        _playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+
+        _yarnController = GetComponent<YarnController>();
+
+        _boardManager = FindObjectOfType<EvidenceBoardManager>();
+    }
+
+    /// <summary>
+    /// Sets the card menu to active or inactive - depending on status
+    /// </summary>
     public void SetCardMenuStatus(bool status)
     {
         menuActive = status;
@@ -18,5 +40,39 @@ public class EvidenceCardMenuBehavior : MonoBehaviour
     public bool GetCardMenuStatus()
     {
         return menuActive;
+    }
+
+    public void StartConnectionButton()
+    {
+        if (!_playerController.IsConnecting)
+        {
+            _playerController.AssignYarnController(_yarnController);
+
+            _yarnController.CheckLineStatus(_evidenceController.ChildTransform.position,
+                        _evidenceController.EvidenceData, _evidenceController.gameObject);
+        }
+        else
+        {
+            _playerController.GetYarnController().CheckLineStatus(_evidenceController.ChildTransform.position,
+                        _evidenceController.EvidenceData, _evidenceController.gameObject);
+
+            _playerController.UnassignYarnController();
+        }
+
+        SetCardMenuStatus(false);
+    }
+
+    public void RemoveConnectionsButton()
+    {
+        _boardManager.RemoveConnectionFromList(_evidenceController.ID);
+
+        SetCardMenuStatus(false);
+    }
+
+    public void RemoveCardFromBoard()
+    {
+        RemoveConnectionsButton();
+
+        Destroy(gameObject);
     }
 }

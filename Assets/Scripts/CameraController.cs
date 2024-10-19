@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private PlayerInput CameraInputs;
+    private PlayerControls _playerControls;
     private InputAction cameraLeft;
     private InputAction cameraRight;
     [SerializeField] private CinemachineVirtualCamera LeftCamera;
@@ -23,19 +24,33 @@ public class CameraController : MonoBehaviour
 
     // Allows camera to move freely when inside evidence board
     [SerializeField, Tooltip ("How fast the invisible box is moving around the scene")] private float BoxSpeed;
+    [SerializeField] private float ScrollSpeed;
+    private bool isScrolling;
+    private float scrollValue;
     [SerializeField, Tooltip("How fast the camera moves on player input")] private float SlerpSpeed;
     [SerializeField] private Rigidbody _boxRB;
     [SerializeField] private GameObject BoardBox;
 
+    public bool IsScrolling { get => isScrolling; set => isScrolling = value; }
+
     // Start is called before the first frame update
     void Awake()
     {
-        CameraInputs.currentActionMap.Enable();
-        cameraLeft = CameraInputs.currentActionMap.FindAction("StationLeft");
-        cameraRight = CameraInputs.currentActionMap.FindAction("StationRight");
+        _playerControls = new PlayerControls();
+        _playerControls.DefaultControls.Enable();
 
-        cameraLeft.started += CameraLeft_started;
-        cameraRight.started += CameraRight_started;
+        _playerControls.DefaultControls.StationLeft.started += StationLeft_started;
+        _playerControls.DefaultControls.StationRight.started += StationRight_started;
+
+        _playerControls.DefaultControls.Scroll.started += Scroll_started;
+        _playerControls.DefaultControls.Scroll.canceled += Scroll_canceled;
+
+        //CameraInputs.currentActionMap.Enable();
+        //cameraLeft = CameraInputs.currentActionMap.FindAction("StationLeft");
+        //cameraRight = CameraInputs.currentActionMap.FindAction("StationRight");
+
+        //cameraLeft.started += CameraLeft_started;
+        //cameraRight.started += CameraRight_started;
 
         LeftCamera.gameObject.SetActive(false);
         RightCamera.gameObject.SetActive(false);
@@ -47,7 +62,7 @@ public class CameraController : MonoBehaviour
     }
 
     
-    private void CameraRight_started(InputAction.CallbackContext obj)
+    private void StationRight_started(InputAction.CallbackContext obj)
     {
         //moves camera to the one on the right and keeps track of the active camera
         if (activecamera == 1 && _canMove == true)
@@ -79,7 +94,7 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    private void CameraLeft_started(InputAction.CallbackContext obj)
+    private void StationLeft_started(InputAction.CallbackContext obj)
     {
         //same as above but for the right
         if(activecamera == 2 && _canMove == true)
@@ -115,11 +130,42 @@ public class CameraController : MonoBehaviour
     /// This allows the player to move the camera while at the evidence board
     /// Looks nice and smooth :)
     /// </summary>
-    public void MoveBoardCamera(Vector2 moveValue)
+    public void MoveBoardCamera(Vector3 moveValue)
     {
         if (!_cinemachineBrain.IsBlending)
         {
             _boxRB.velocity = new Vector3(-moveValue.x * BoxSpeed, moveValue.y * BoxSpeed, _boxRB.velocity.z);
+        }
+    }
+
+    /// <summary>
+    /// Overload of previous method so that player can zoom in
+    /// </summary>
+    public void ZoomBoardCamera(float moveValue)
+    {
+        if (!_cinemachineBrain.IsBlending)
+        {
+            _boxRB.velocity = new Vector3(_boxRB.velocity.x, _boxRB.velocity.y, Mathf.Clamp(moveValue * ScrollSpeed, -ScrollSpeed, ScrollSpeed));
+        }
+    }
+
+    private void Scroll_started(InputAction.CallbackContext obj)
+    {
+        if (activecamera == 1)
+        {
+            isScrolling = true;
+
+            scrollValue = obj.ReadValue<float>();
+        }
+    }
+
+    private void Scroll_canceled(InputAction.CallbackContext obj)
+    {
+        if (activecamera == 1)
+        {
+            isScrolling = false;
+
+            scrollValue = 0f;
         }
     }
 
@@ -156,12 +202,17 @@ public class CameraController : MonoBehaviour
         if (!_cinemachineBrain.IsBlending && activecamera == 1)
         {
             LeftCamera.transform.position = Vector3.Slerp(transform.position, BoardBox.transform.position, SlerpSpeed * Time.deltaTime);
+
+            ZoomBoardCamera(scrollValue);
         }
     }
 
     private void OnDestroy()
     {
-        cameraRight.started -= CameraRight_started;
-        cameraLeft.started -= CameraLeft_started;
+        _playerControls.DefaultControls.StationLeft.started -= StationLeft_started;
+        _playerControls.DefaultControls.StationRight.started -= StationRight_started;
+
+        _playerControls.DefaultControls.Scroll.started -= Scroll_started;
+        _playerControls.DefaultControls.Scroll.canceled -= Scroll_canceled;
     }
 }

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Data;
 using UnityEngine;
 
 //By Nolan
@@ -19,7 +18,6 @@ public class EvidenceBoardManager : MonoBehaviour
 
     public void CheckConnectionList(EvidenceID firstID, EvidenceID secondID, YarnController yarn)
     {
-        print(connections.Count);
         for (int i = 0; i < connections.Count; i++)
         {
             bool firstCheck = false;
@@ -28,7 +26,6 @@ public class EvidenceBoardManager : MonoBehaviour
             if (firstID == connections[i].FirstID || firstID == connections[i].SecondID)
             {
                 firstCheck = true;
-                
             }
             else
             {
@@ -38,7 +35,6 @@ public class EvidenceBoardManager : MonoBehaviour
             if (secondID == connections[i].FirstID || secondID == connections[i].SecondID)
             {
                 secondCheck = true;
-                
             }
             else
             {
@@ -50,6 +46,19 @@ public class EvidenceBoardManager : MonoBehaviour
                 yarn.IsConnecting = false;
 
                 i = connections.Count + 1;
+            }
+        }
+    }
+
+    public void RemoveConnectionFromList(EvidenceID id)
+    {
+        for (int i = 0; i < connections.Count; i++)
+        {
+            if (id == connections[i].FirstID || id == connections[i].SecondID)
+            {
+                Destroy(connections[i].LineRenderer);
+                connections.RemoveAt(i);
+                i--;
             }
         }
     }

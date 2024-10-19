@@ -9,9 +9,9 @@ public class FileController : MonoBehaviour
 
     private PlayerController _playerController;
 
-    private EvidenceStackManager _evidenceStackManager;
+    [SerializeField] private EvidenceStackManager _evidenceStackManager;
 
-    private void Awake()
+    private void OnEnable()
     {
         _playerController = FindObjectOfType<PlayerController>();
 
