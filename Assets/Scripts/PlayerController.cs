@@ -62,8 +62,6 @@ public class PlayerController : MonoBehaviour
 
     private void leftClickAction_started(InputAction.CallbackContext obj)
     {
-        _audioSource.PlayOneShot(ClickClip);
-
         switch (CurrentStation)
         {
             case PlayerLocation.EvidenceBoard:
@@ -79,6 +77,8 @@ public class PlayerController : MonoBehaviour
                     }
 
                     EvidenceController.IsHeld = true;
+
+                    _audioSource.PlayOneShot(ClickClip);
                 }
                 break;
 
@@ -87,6 +87,8 @@ public class PlayerController : MonoBehaviour
                 if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitTypewriter, CastDistance, TypewriterMask))
                 {
                     _typeWriterController.GetComponent<TypeWriterController>().GetShowCanvas();
+
+                    _audioSource.PlayOneShot(ClickClip);
                 }
 
                 break;
@@ -99,6 +101,8 @@ public class PlayerController : MonoBehaviour
                     if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitFolder, CastDistance, FoldersMask))
                     {
                         _folderController = hitFolder.collider.gameObject.GetComponent<FolderController>();
+
+                        _audioSource.PlayOneShot(ClickClip);
 
                         _folderController.OpenCloseFile();
 
