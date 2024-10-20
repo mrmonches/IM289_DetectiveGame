@@ -29,6 +29,10 @@ public class TypeWriterController : MonoBehaviour
     [SerializeField] private GameObject typewriterStuff;
     //This is used to prevent moving between stations when in the typewriter 
     [SerializeField] private GameObject _cameraController;
+
+    private AudioSource _audioSource;
+
+    [SerializeField] private AudioClip TypewriterClip;
     
 
     /// <summary>
@@ -46,6 +50,12 @@ public class TypeWriterController : MonoBehaviour
         ShowCanvas();
         typewriterStuff.gameObject.SetActive(true); 
     }
+
+    public void PlayTypewriterSound()
+    {
+        _audioSource.PlayOneShot(TypewriterClip);
+    }
+
     //checks if all the dropdowns are correct;
     public void Dropdown1(int val)
     {

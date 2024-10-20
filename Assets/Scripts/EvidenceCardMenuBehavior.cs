@@ -18,7 +18,7 @@ public class EvidenceCardMenuBehavior : MonoBehaviour
 
     private AudioSource _audioSource;
 
-    private AudioClip CutClip;
+    [SerializeField] private AudioClip CutClip;
 
     private void OnEnable()
     {
