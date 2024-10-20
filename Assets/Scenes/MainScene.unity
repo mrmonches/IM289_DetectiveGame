@@ -2256,7 +2256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc7548c32554c044abc922617ab1b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  file: {fileID: 2498797163517432, guid: 4fc6023fdba3a1d408a77cf5a39e7170, type: 3}
+  file: {fileID: 6379107819997921758, guid: ccc25e5e89cc52645b0bd1614bf90de9, type: 3}
   canvas: {fileID: 1492671958}
 --- !u!65 &297328770
 BoxCollider:
@@ -5802,6 +5802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb9e674d984d0c4380e858a726b765c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inItemViewer: 0
   CurrentStation: 1
   SceneCamera: {fileID: 1750113695}
   CastDistance: 40
@@ -10253,7 +10254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc7548c32554c044abc922617ab1b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  file: {fileID: 3020127176662763268, guid: 08b165dc0d04de845a9335c04d81653d, type: 3}
+  file: {fileID: 6379107819997921758, guid: 25fe762a22ecc99418e4cbb2e2eff80f, type: 3}
   canvas: {fileID: 1492671958}
 --- !u!65 &1837723529
 BoxCollider:

@@ -506,7 +506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e19225cc7ef61ec4e9aad3d52fa501c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nextPage: {fileID: 6379107819997921758, guid: 902464579dbc17b4e979af601c8b7d09, type: 3}
+  _nextPage: {fileID: 6379107819997921758, guid: 2bbe530b16fd78140882fdb077aa0d3d, type: 3}
   _previousPage: {fileID: 0}
 --- !u!114 &6681817093942700711
 MonoBehaviour:
@@ -520,6 +520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c86f9b89ba2e41b4fb6aa79d250088f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _evidenceStackManager: {fileID: 0}
 --- !u!1 &6804635878662636871
 GameObject:
   m_ObjectHideFlags: 0
