@@ -2257,7 +2257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   file: {fileID: 2498797163517432, guid: 4fc6023fdba3a1d408a77cf5a39e7170, type: 3}
-  canvas: {fileID: 0}
+  canvas: {fileID: 1492671958}
 --- !u!65 &297328770
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8439,9 +8439,9 @@ Canvas:
   m_GameObject: {fileID: 1492671955}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_RenderMode: 1
+  m_Camera: {fileID: 1750113695}
+  m_PlaneDistance: 2
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -10254,7 +10254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   file: {fileID: 3020127176662763268, guid: 08b165dc0d04de845a9335c04d81653d, type: 3}
-  canvas: {fileID: 0}
+  canvas: {fileID: 1492671958}
 --- !u!65 &1837723529
 BoxCollider:
   m_ObjectHideFlags: 0
