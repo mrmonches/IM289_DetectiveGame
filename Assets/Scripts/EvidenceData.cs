@@ -60,8 +60,18 @@ public enum EvidenceID
     A01_15, //Watch
     A01_16, //Wallets Contents
     A02_00,
+    A02_01, //Alleyway
+    A02_02, //Picture of King's Body
+    A02_03, //Victim was executed
     A03_00,
+    A03_01, //1471 Diamond St. (Personal Residence)
+    A03_02, //Personal Chest
     A04_01,
+    A04_02, //Rat
+    A04_03, //Childhood Friend
+    A04_04, //Made a move
+    A04_05, //The Red Stiletto
+
 }
 
 public enum EvidenceType
