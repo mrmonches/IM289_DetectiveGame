@@ -11404,17 +11404,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45af6e2aa23b55b498ca1829d718669f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropdown1: {fileID: 0}
-  dropdown2: {fileID: 0}
-  dropdown3: {fileID: 0}
-  dropdown4: {fileID: 0}
-  dropdown5: {fileID: 0}
+  dropdown1: {fileID: 1106724506}
+  dropdown2: {fileID: 1408832011}
+  dropdown3: {fileID: 1578272632}
+  dropdown4: {fileID: 861230557}
+  dropdown5: {fileID: 2086469127}
   typewriter: {fileID: 2066150291}
-  submit: {fileID: 0}
-  backToDesk: {fileID: 0}
-  winLoseText: {fileID: 0}
+  submit: {fileID: 1374880153}
+  backToDesk: {fileID: 1654467128}
+  winLoseText: {fileID: 1575502983}
   _evidenceData: {fileID: 0}
-  typewriterStuff: {fileID: 0}
+  typewriterStuff: {fileID: 1374802377}
   _cameraController: {fileID: 1750113693}
 --- !u!65 &2066150293
 BoxCollider:

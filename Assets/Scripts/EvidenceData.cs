@@ -13,6 +13,7 @@ public class EvidenceData : ScriptableObject
     private string CardInformation;
 
     [SerializeField] private bool TypewriterEvidence;
+    private TypeWriterController _typewriterController;
 
     public EvidenceID EvidenceID { get => _evidenceID; set => _evidenceID = value; }
     public EvidenceType EvidenceType { get => _evidenceType; set => _evidenceType = value; }
@@ -25,6 +26,7 @@ public class EvidenceData : ScriptableObject
         {
             if (correctConnections[i] == evidenceID)
             {
+                
                 return true;
             }
         }
