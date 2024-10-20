@@ -252,6 +252,11 @@ public class PlayerController : MonoBehaviour
 
             print("called");
         }
+
+        if (CurrentStation != PlayerLocation.FilingCabinet && inItemViewer)
+        {
+            _folderController.FileControl.CloseFile();
+        }
     }
     /// <summary>
     /// Quinn - I don't know how switch statements work. This is fed through the Camera Controller
