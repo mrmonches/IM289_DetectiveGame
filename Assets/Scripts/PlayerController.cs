@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     private bool isSelecting;
-    private bool inItemViewer;
+    [SerializeField] private bool inItemViewer;
     private bool isConnecting;
 
     [SerializeField] private PlayerLocation CurrentStation;
@@ -76,9 +76,9 @@ public class PlayerController : MonoBehaviour
             }  
         }
 
-        //Quinn wrote this. Nolan made edits (9/22/24)
+        //Quinn wrote this. Nolan made edits (10/20/24)
         //For opening/closing the filing cabinet
-        if (CurrentStation == PlayerLocation.FilingCabinet /*&& !InItemViewer*/)
+        if (CurrentStation == PlayerLocation.FilingCabinet && !InItemViewer)
         {
             RaycastHit hitFolder;
 
