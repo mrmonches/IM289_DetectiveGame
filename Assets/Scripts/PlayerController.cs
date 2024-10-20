@@ -41,6 +41,10 @@ public class PlayerController : MonoBehaviour
 
     private EvidenceCardMenuBehavior _menuBehavior;
 
+    [SerializeField] private AudioSource _audioSource;
+
+    [SerializeField] private AudioClip ClickClip;
+
     public bool InItemViewer { get => inItemViewer; set => inItemViewer = value; }
     public EvidenceController EvidenceController { get => _evidenceController; set => _evidenceController = value; }
     public bool IsConnecting { get => isConnecting; set => isConnecting = value; }
@@ -58,48 +62,100 @@ public class PlayerController : MonoBehaviour
 
     private void leftClickAction_started(InputAction.CallbackContext obj)
     {
-        // Allows left-click to not call the following code if set to EvidenceBoard
-        if (CurrentStation == PlayerLocation.EvidenceBoard)
+        _audioSource.PlayOneShot(ClickClip);
+
+        switch (CurrentStation)
         {
-            isSelecting = true;
+            case PlayerLocation.EvidenceBoard:
+                isSelecting = true;
 
-            if (EvidenceController != null)
-            {
-                if (_menuBehavior != null && _menuBehavior.GetCardMenuStatus())
+                if (EvidenceController != null)
                 {
-                    _menuBehavior.SetCardMenuStatus(false);
+                    if (_menuBehavior != null && _menuBehavior.GetCardMenuStatus())
+                    {
+                        _menuBehavior.SetCardMenuStatus(false);
 
-                    _menuBehavior = null;
+                        _menuBehavior = null;
+                    }
+
+                    EvidenceController.IsHeld = true;
+                }
+                break;
+
+            case PlayerLocation.Desk:
+                RaycastHit hitTypewriter;
+                if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitTypewriter, CastDistance, TypewriterMask))
+                {
+                    _typeWriterController.GetComponent<TypeWriterController>().GetShowCanvas();
                 }
 
-                EvidenceController.IsHeld = true;
-            }  
+                break;
+
+            case PlayerLocation.FilingCabinet:
+                if (!InItemViewer)
+                {
+                    RaycastHit hitFolder;
+
+                    if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitFolder, CastDistance, FoldersMask))
+                    {
+                        _folderController = hitFolder.collider.gameObject.GetComponent<FolderController>();
+
+                        _folderController.OpenCloseFile();
+
+                        InItemViewer = true;
+
+                        Debug.Log("Raycast his the folder");
+                    }
+                }
+
+                break;
+
+            default: break;
+
         }
+
+
+        // Allows left-click to not call the following code if set to EvidenceBoard
+        //if (CurrentStation == PlayerLocation.EvidenceBoard)
+        //{
+        //    isSelecting = true;
+
+        //    if (EvidenceController != null)
+        //    {
+        //        if (_menuBehavior != null && _menuBehavior.GetCardMenuStatus())
+        //        {
+        //            _menuBehavior.SetCardMenuStatus(false);
+
+        //            _menuBehavior = null;
+        //        }
+
+        //        EvidenceController.IsHeld = true;
+        //    }  
+        //}
 
         //Quinn wrote this. Nolan made edits (10/20/24)
         //For opening/closing the filing cabinet
-        if (CurrentStation == PlayerLocation.FilingCabinet && !InItemViewer)
-        {
-            RaycastHit hitFolder;
+        //if (CurrentStation == PlayerLocation.FilingCabinet && !InItemViewer)
+        //{
+        //    RaycastHit hitFolder;
 
-            if(Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitFolder, CastDistance, FoldersMask))
-            {
-                _folderController = hitFolder.collider.gameObject.GetComponent<FolderController>();
+        //    if(Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitFolder, CastDistance, FoldersMask))
+        //    {
+        //        _folderController = hitFolder.collider.gameObject.GetComponent<FolderController>();
 
-                _folderController.OpenCloseFile();
+        //        _folderController.OpenCloseFile();
 
-                InItemViewer = true;
+        //        InItemViewer = true;
 
-                Debug.Log("Raycast his the folder");
-            }
-        }
+        //        Debug.Log("Raycast his the folder");
+        //    }
+        //}
         
-            RaycastHit hitTypewriter;
-            if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitTypewriter, CastDistance, TypewriterMask))
-            {
-                _typeWriterController.GetComponent<TypeWriterController>().GetShowCanvas();
-            }
-        
+            //RaycastHit hitTypewriter;
+            //if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitTypewriter, CastDistance, TypewriterMask))
+            //{
+            //    _typeWriterController.GetComponent<TypeWriterController>().GetShowCanvas();
+            //}
     }
 
     private void leftClickAction_canceled(InputAction.CallbackContext obj)
