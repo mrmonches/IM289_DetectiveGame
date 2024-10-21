@@ -16,6 +16,10 @@ public class EvidenceCardMenuBehavior : MonoBehaviour
 
     [SerializeField] private Canvas menuCanvas;
 
+    private AudioSource _audioSource;
+
+    [SerializeField] private AudioClip CutClip;
+
     private void OnEnable()
     {
         _evidenceController = GetComponent<EvidenceController>();
@@ -25,6 +29,8 @@ public class EvidenceCardMenuBehavior : MonoBehaviour
         _yarnController = GetComponent<YarnController>();
 
         _boardManager = FindObjectOfType<EvidenceBoardManager>();
+
+        _audioSource = GetComponent<AudioSource>();
     }
 
     /// <summary>
@@ -65,6 +71,8 @@ public class EvidenceCardMenuBehavior : MonoBehaviour
     public void RemoveConnectionsButton()
     {
         _boardManager.RemoveConnectionFromList(_evidenceController.ID);
+
+        _audioSource.PlayOneShot(CutClip);
 
         SetCardMenuStatus(false);
     }

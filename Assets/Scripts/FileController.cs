@@ -11,11 +11,17 @@ public class FileController : MonoBehaviour
 
     [SerializeField] private EvidenceStackManager _evidenceStackManager;
 
+    private AudioSource _audioSource;
+
+    [SerializeField] private AudioClip WriteClip;
+
     private void OnEnable()
     {
         _playerController = FindObjectOfType<PlayerController>();
 
         _evidenceStackManager = FindObjectOfType<EvidenceStackManager>();
+
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public void CloseFile()
@@ -27,6 +33,8 @@ public class FileController : MonoBehaviour
 
     public void SendToBoard(EvidenceData evidenceData)
     {
+        _audioSource.PlayOneShot(WriteClip);
+
         _evidenceStackManager.AddToStack(evidenceData);
     }
 }

@@ -139,8 +139,8 @@ public class YarnController : MonoBehaviour
         if (evidenceID.CheckCorrectConnection(firstID))
         {
             lineRenderer.SetMaterials(GoodConnectionMaterial);
-            
-            _typewriterController.CorrectOption(evidenceID);
+            _typewriterController.CorrectOption(firstID,evidenceID);
+
         }
         else
         {

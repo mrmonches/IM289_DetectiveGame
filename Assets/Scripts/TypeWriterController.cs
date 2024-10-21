@@ -29,6 +29,10 @@ public class TypeWriterController : MonoBehaviour
     [SerializeField] private GameObject typewriterStuff;
     //This is used to prevent moving between stations when in the typewriter 
     [SerializeField] private GameObject _cameraController;
+
+    private AudioSource _audioSource;
+
+    [SerializeField] private AudioClip TypewriterClip;
     
 
     /// <summary>
@@ -46,6 +50,12 @@ public class TypeWriterController : MonoBehaviour
         ShowCanvas();
         typewriterStuff.gameObject.SetActive(true); 
     }
+
+    public void PlayTypewriterSound()
+    {
+        _audioSource.PlayOneShot(TypewriterClip);
+    }
+
     //checks if all the dropdowns are correct;
     public void Dropdown1(int val)
     {
@@ -65,7 +75,9 @@ public class TypeWriterController : MonoBehaviour
     }
     public void Dropdown2(int val)
     {
-        if (val == 1)
+        int selectedIndex = dropdown1.value;
+        string selectedOption = dropdown1.options[selectedIndex].text;
+        if (selectedOption== "The Alleway")
         {
             correctCheck2 = true;
            
@@ -79,7 +91,9 @@ public class TypeWriterController : MonoBehaviour
     }
     public void Dropdown3(int val)
     {
-        if (val == 2)
+        int selectedIndex = dropdown1.value;
+        string selectedOption = dropdown1.options[selectedIndex].text;
+        if (selectedOption== "A large frame revolver")
         {
             correctCheck3 = true;
             
@@ -96,7 +110,7 @@ public class TypeWriterController : MonoBehaviour
         int selectedIndex = dropdown4.value;
         string selectedOption = dropdown1.options[selectedIndex].text;
 
-        if (selectedOption == "Steven Knight")
+        if (selectedOption == "Friday 13th 1942")
         {
             correctCheck1 = true;
 
@@ -112,7 +126,7 @@ public class TypeWriterController : MonoBehaviour
         int selectedIndex = dropdown5.value;
         string selectedOption = dropdown1.options[selectedIndex].text;
 
-        if (selectedOption == "Steven Knight")
+        if (selectedOption == "Jealous of Kings Life")
         {
             correctCheck1 = true;
 
@@ -156,22 +170,58 @@ public class TypeWriterController : MonoBehaviour
         
         
     }
-    public void CorrectOption(EvidenceData evidenceData)
+    public void CorrectOption(EvidenceID FirstID,EvidenceData SecondData)
     {
-        EvidenceID _id = evidenceData.EvidenceID;
-        if (_id == EvidenceID.A01_01|| _id == EvidenceID.A01_02)
+        //yeahh this code is horrible sorry Zach. I amn going to improve it in a later milestone
+        EvidenceID SecondID = SecondData.EvidenceID;
+        if ( FirstID== EvidenceID.A01_02 || SecondID== EvidenceID.A01_02)
         {
-            dropdown1.options.Add(new TMP_Dropdown.OptionData("Queen Bee", null));
+            dropdown1.options.Add(new TMP_Dropdown.OptionData("Darling King", null));
             dropdown1.RefreshShownValue();
         }
-        else if (_id == EvidenceID.A01_03|| _id == EvidenceID.A01_04)
+        else if (FirstID== EvidenceID.A01_04 || SecondID == EvidenceID.A01_04)
         {
             dropdown1.options.Add(new TMP_Dropdown.OptionData("Steven Knight", null));
             dropdown1.RefreshShownValue();
         }
+        else if (FirstID == EvidenceID.A01_07 || SecondID == EvidenceID.A01_07)
+        {
+            dropdown1.options.Add(new TMP_Dropdown.OptionData("Guioco Piano", null));
+            dropdown1.RefreshShownValue();
+        }
+        else if (FirstID == EvidenceID.A04_02||SecondID==EvidenceID.A04_02)
+        {
+            dropdown5.options.Add(new TMP_Dropdown.OptionData("was a rat", null));
+            dropdown5.RefreshShownValue();
+        }
+        else if(FirstID==EvidenceID.A03_02||SecondID==EvidenceID.A03_02 || FirstID == EvidenceID.A03_01 || SecondID == EvidenceID.A03_01)
+        {
+            dropdown5.options.Add(new TMP_Dropdown.OptionData("Wanted their inheritance from King", null));
+            dropdown5.RefreshShownValue();
+        }
+        else if(FirstID==EvidenceID.A04_05||SecondID==EvidenceID.A04_05)
+        {
+            dropdown3.options.Add(new TMP_Dropdown.OptionData("The Red Stiletto", null));
+            dropdown3.RefreshShownValue();
+        }
+        else if (FirstID == EvidenceID.A02_01 || SecondID == EvidenceID.A02_01)
+        {
+            dropdown3.options.Add(new TMP_Dropdown.OptionData("The Alleway", null));
+            dropdown3.RefreshShownValue();
+        }
+        else if (FirstID == EvidenceID.A01_09 || SecondID == EvidenceID.A01_09)
+        {
+            dropdown4.options.Add(new TMP_Dropdown.OptionData("A large frame revolver", null));
+            dropdown4.RefreshShownValue();
+        }
+        else if (FirstID == EvidenceID.A04_04 || SecondID == EvidenceID.A04_04)
+        {
+            dropdown4.options.Add(new TMP_Dropdown.OptionData("Jealous of Kings Life", null));
+            dropdown4.RefreshShownValue();
+        }
     }
     private void Awake()
     {
-        //typewriterStuff.gameObject.SetActive(false);
+        typewriterStuff.gameObject.SetActive(false);
     }
 }

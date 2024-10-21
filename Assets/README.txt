@@ -1,7 +1,6 @@
-READ ME Doc for Black & Red
-Prototype
+READ ME for Black & Red
+Vertical Slice
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Move around using Q&E Keys
+Use WASD on the Murderboard to move your camera
 You'll need to click around on objects
-
-Some of the Evidence types don't have an example. 
-They are mechanically the same to ones that do. 

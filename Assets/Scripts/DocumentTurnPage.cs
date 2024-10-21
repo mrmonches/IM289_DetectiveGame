@@ -17,6 +17,7 @@ public class DocumentTurnPage : MonoBehaviour
         canvas = FindObjectOfType<Canvas>();
         gameObject.GetComponentInParent<DocumentTurnPage>();
     }
+
     public void TurnPage()
     {
         var openedpage = Instantiate(_nextPage);
@@ -35,8 +36,8 @@ public class DocumentTurnPage : MonoBehaviour
 
     public void CloseDoc()
     {
+        GameObject.Find("Player").GetComponent<PlayerController>().InItemViewer = false;
 
         Destroy(gameObject);
-
     }
 }
