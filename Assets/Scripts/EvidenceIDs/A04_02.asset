@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _evidenceID: 25
   _evidenceType: 4
-  correctConnections: 
+  correctConnections: 06000000
   CardInformation: The Rat
   TypewriterEvidence: 0

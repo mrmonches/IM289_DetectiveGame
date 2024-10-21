@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _evidenceID: 12
   _evidenceType: 4
-  correctConnections: 0a000000
+  correctConnections: 0a00000016000000
   CardInformation: Jimmy King
   TypewriterEvidence: 0

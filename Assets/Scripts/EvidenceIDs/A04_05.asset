@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _evidenceID: 28
   _evidenceType: 4
-  correctConnections: 
+  correctConnections: 01000000
   CardInformation: The Red Stiletto
   TypewriterEvidence: 0
