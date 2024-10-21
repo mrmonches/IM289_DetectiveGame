@@ -12,7 +12,7 @@ public class TitleFadeAway : MonoBehaviour
     [SerializeField] private Image titleBackground;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         
     }
@@ -26,6 +26,15 @@ public class TitleFadeAway : MonoBehaviour
             titleText.color = new Color(titleText.color.r, titleText.color.g, titleText.color.b, fadeTime);
             titleText2.color = new Color(titleText2.color.r, titleText2.color.g, titleText2.color.b, fadeTime);
             titleBackground.color = new Color(titleBackground.color.r, titleBackground.color.g, titleBackground.color.b, fadeTime);
+        }
+    }
+
+   public void fadein(bool correct)
+    {
+       while(fadeTime<3)
+        {
+           titleBackground.color = new Color(titleBackground.color.r, titleBackground.color.g, titleBackground.color.b, fadeTime);
+            fadeTime += Time.deltaTime;
         }
     }
 }
