@@ -73,6 +73,7 @@ public class CameraController : MonoBehaviour
             activecamera = 2;
 
             _playerController.GetComponent<PlayerController>().StationSetDesk();
+            _cabinetController.GetComponent<CabinetController>().GetClose();
         }
         else if(activecamera==2 && _canMove == true)
         {
@@ -91,6 +92,7 @@ public class CameraController : MonoBehaviour
             RightCamera.gameObject.SetActive(false);
             activecamera = 1;
             _playerController.GetComponent<PlayerController>().StationSetBoard();
+            _cabinetController.GetComponent<CabinetController>().GetClose();
         }
     }
 
@@ -105,6 +107,7 @@ public class CameraController : MonoBehaviour
             activecamera = 1;
 
             _playerController.GetComponent<PlayerController>().StationSetBoard();
+            _cabinetController.GetComponent<CabinetController>().GetClose();
         }
         else if(activecamera == 3 && _canMove == true)
         {
@@ -123,6 +126,7 @@ public class CameraController : MonoBehaviour
             RightCamera.gameObject.SetActive(true);
             activecamera = 3;
             _playerController.GetComponent<PlayerController>().StationSetCabinet();
+            _cabinetController.GetComponent<CabinetController>().GetOpen();
         }
     }
 
