@@ -13,7 +13,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: M_Clipboard_Notepad_1024
-    second: {fileID: 2100000, guid: aae50f3eda056bf4abb86cc1771b0057, type: 2}
+    second: {fileID: 2100000, guid: fa07ebc828563154bb5df4fbe83cb82b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -38,7 +38,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: M_Office_PinBoard_Photo_Notepad_1024
-    second: {fileID: 2100000, guid: d152845428a1eb944b7f9ae4e0f5fed7, type: 2}
+    second: {fileID: 2100000, guid: b85c6282b5c52c042a701e5d0879f1c0, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
