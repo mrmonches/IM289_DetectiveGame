@@ -16,4 +16,4 @@ MonoBehaviour:
   _evidenceType: 2
   correctConnections: 0b000000
   CardInformation: large frame revolver
-  TypewriterEvidence: 0
+  TypewriterEvidence: 1
