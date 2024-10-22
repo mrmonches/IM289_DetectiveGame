@@ -89,7 +89,9 @@ public class PlayerController : MonoBehaviour
                 if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitTypewriter, CastDistance, TypewriterMask))
                 {
                     _typeWriterController.GetComponent<TypeWriterController>().GetShowCanvas();
-                    _titleFadeAway.disabletitle();
+                    //!Quinn here. I commented this out for VertSlice because it was throwing errors. Kindy re-enable it 
+                    //! when the fading title is back in game
+                    //_titleFadeAway.disabletitle();
 
                     _audioSource.PlayOneShot(ClickClip);
                 }
