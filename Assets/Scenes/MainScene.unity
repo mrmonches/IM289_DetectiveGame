@@ -2371,7 +2371,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &329623288
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3796,6 +3796,7 @@ MonoBehaviour:
   - {fileID: 1660322390839781985, guid: cee3d4c47d6b4eb48a2710c9e64e2be2, type: 3}
   - {fileID: 1660322390839781985, guid: 773ccd57649387248a99eb1c289117e7, type: 3}
   - {fileID: 1660322390839781985, guid: 5d74d5e4779ba8541a5195400f4c8e93, type: 3}
+  - {fileID: 1660322390839781985, guid: c4d06b265a311944f91cff570c414881, type: 3}
   CardDistance: 10
   CardRotation: 60
 --- !u!1 &611907280
@@ -8438,7 +8439,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1449052081
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8474,6 +8475,9 @@ MonoBehaviour:
   titleText: {fileID: 1463486953}
   titleText2: {fileID: 329623289}
   titleBackground: {fileID: 1449052083}
+  fadeInTime: 0
+  newspaperCorrect: {fileID: 0}
+  newspaperIncorrect: {fileID: 0}
 --- !u!114 &1449052083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8887,7 +8891,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1463486952
 RectTransform:
   m_ObjectHideFlags: 0
