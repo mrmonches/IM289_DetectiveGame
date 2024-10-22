@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private AudioClip ClickClip;
 
+    private TitleFadeAway _titleFadeAway;
     public bool InItemViewer { get => inItemViewer; set => inItemViewer = value; }
     public EvidenceController EvidenceController { get => _evidenceController; set => _evidenceController = value; }
     public bool IsConnecting { get => isConnecting; set => isConnecting = value; }
@@ -58,6 +59,7 @@ public class PlayerController : MonoBehaviour
 
         _playerControls.DefaultControls.LeftClick.started += leftClickAction_started;
         _playerControls.DefaultControls.LeftClick.canceled += leftClickAction_canceled;
+        _titleFadeAway= FindObjectOfType<TitleFadeAway>();
     }
 
     private void leftClickAction_started(InputAction.CallbackContext obj)
@@ -87,6 +89,7 @@ public class PlayerController : MonoBehaviour
                 if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitTypewriter, CastDistance, TypewriterMask))
                 {
                     _typeWriterController.GetComponent<TypeWriterController>().GetShowCanvas();
+                    _titleFadeAway.disabletitle();
 
                     _audioSource.PlayOneShot(ClickClip);
                 }
