@@ -22,13 +22,14 @@ public class TypeWriterController : MonoBehaviour
     private bool correctCheck1=false;
     private bool correctCheck2=false;
     private bool correctCheck3=false;
-    private bool crorrectCheck4 = false;
-    private bool crorrectCheck5 = false;
+    private bool correctCheck4 = false;
+    private bool correctCheck5 = false;
     private bool finalCorrectCheck=false;
     [SerializeField] private EvidenceData _evidenceData;
     [SerializeField] private GameObject typewriterStuff;
     //This is used to prevent moving between stations when in the typewriter 
     [SerializeField] private GameObject _cameraController;
+    private TitleFadeAway _titleFadeAway;
 
     private AudioSource _audioSource;
 
@@ -53,7 +54,7 @@ public class TypeWriterController : MonoBehaviour
 
     public void PlayTypewriterSound()
     {
-        _audioSource.PlayOneShot(TypewriterClip);
+       // _audioSource.PlayOneShot(TypewriterClip);
     }
 
     //checks if all the dropdowns are correct;
@@ -70,16 +71,18 @@ public class TypeWriterController : MonoBehaviour
         }
         else
         {
-            correctCheck1 = false;            
+            correctCheck1 = false;
+            
         }
     }
     public void Dropdown2(int val)
     {
-        int selectedIndex = dropdown1.value;
-        string selectedOption = dropdown1.options[selectedIndex].text;
-        if (selectedOption== "The Alleway")
+        int selectedIndex = dropdown2.value;
+        string selectedOption = dropdown2.options[selectedIndex].text;
+        if (selectedOption== "The Alleyway")
         {
             correctCheck2 = true;
+            
            
 
         }
@@ -91,10 +94,11 @@ public class TypeWriterController : MonoBehaviour
     }
     public void Dropdown3(int val)
     {
-        int selectedIndex = dropdown1.value;
-        string selectedOption = dropdown1.options[selectedIndex].text;
-        if (selectedOption== "A large frame revolver")
+        int selectedIndex = dropdown3.value;
+        string selectedOption = dropdown3.options[selectedIndex].text;
+        if (selectedOption== "Friday 13th 1942")
         {
+            
             correctCheck3 = true;
             
 
@@ -108,56 +112,57 @@ public class TypeWriterController : MonoBehaviour
     public void Dropdown4(int val)
     {
         int selectedIndex = dropdown4.value;
-        string selectedOption = dropdown1.options[selectedIndex].text;
+        string selectedOption = dropdown4.options[selectedIndex].text;
 
-        if (selectedOption == "Friday 13th 1942")
+        if (selectedOption == "A large frame revolver")
         {
-            correctCheck1 = true;
+            
+            correctCheck4 = true;
 
 
         }
         else
         {
-            correctCheck1 = false;
+            correctCheck4 = false;
         }
     }
     public void Dropdown5(int val)
     {
         int selectedIndex = dropdown5.value;
-        string selectedOption = dropdown1.options[selectedIndex].text;
+        string selectedOption = dropdown5.options[selectedIndex].text;
 
-        if (selectedOption == "Jealous of Kings Life")
+        if (selectedOption == "jealous of Kings life")
         {
-            correctCheck1 = true;
+            
+            correctCheck5 = true;
 
 
         }
         else
         {
-            correctCheck1 = false;
+            correctCheck5 = false;
         }
     }
     public void SubmitConclusion()
     {
-        if (correctCheck1 == true && correctCheck2 == true && correctCheck3 == true)
+        
+        typewriterStuff.gameObject.SetActive(false);
+        //replaced with newspaper past prototype
+        if (correctCheck1 == true&& correctCheck2 == true && correctCheck3 == true && correctCheck4 == true && correctCheck5 == true)
         {
             finalCorrectCheck = true;
-           
         }
         else
         {
             finalCorrectCheck = false;
         }
-        typewriterStuff.gameObject.SetActive(false);
-        //replaced with newspaper past prototype
-
         if (finalCorrectCheck == true)
         {
-            winLoseText.text = "You locked the criminal behind bars!";
+            _titleFadeAway.fadein(true);
         }
         else if(finalCorrectCheck==false)
         {
-            winLoseText.text = "Looks like the criminal got away";
+            _titleFadeAway.fadein(false);
         }
         winLoseText.gameObject.SetActive(true);
     }
@@ -191,7 +196,7 @@ public class TypeWriterController : MonoBehaviour
         }
         else if (FirstID == EvidenceID.A04_02||SecondID==EvidenceID.A04_02)
         {
-            dropdown5.options.Add(new TMP_Dropdown.OptionData("was a rat", null));
+            dropdown5.options.Add(new TMP_Dropdown.OptionData("a rat", null));
             dropdown5.RefreshShownValue();
         }
         else if(FirstID==EvidenceID.A03_02||SecondID==EvidenceID.A03_02 || FirstID == EvidenceID.A03_01 || SecondID == EvidenceID.A03_01)
@@ -206,7 +211,7 @@ public class TypeWriterController : MonoBehaviour
         }
         else if (FirstID == EvidenceID.A02_01 || SecondID == EvidenceID.A02_01)
         {
-            dropdown3.options.Add(new TMP_Dropdown.OptionData("The Alleway", null));
+            dropdown3.options.Add(new TMP_Dropdown.OptionData("The Alleyway", null));
             dropdown3.RefreshShownValue();
         }
         else if (FirstID == EvidenceID.A01_09 || SecondID == EvidenceID.A01_09)
@@ -216,12 +221,13 @@ public class TypeWriterController : MonoBehaviour
         }
         else if (FirstID == EvidenceID.A04_04 || SecondID == EvidenceID.A04_04)
         {
-            dropdown4.options.Add(new TMP_Dropdown.OptionData("Jealous of Kings Life", null));
+            dropdown4.options.Add(new TMP_Dropdown.OptionData("jealous of Kings life", null));
             dropdown4.RefreshShownValue();
         }
     }
     private void Awake()
     {
         typewriterStuff.gameObject.SetActive(false);
+        _titleFadeAway = FindObjectOfType<TitleFadeAway>();
     }
 }
