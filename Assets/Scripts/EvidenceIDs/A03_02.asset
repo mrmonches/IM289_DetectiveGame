@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 547a5cf974b02f846897e5f4bd66bfef, type: 3}
   m_Name: A03_02
   m_EditorClassIdentifier: 
-  _evidenceID: 23
+  _evidenceID: 24
   _evidenceType: 4
   correctConnections: 03000000
   CardInformation: Personal Chest
-  TypewriterEvidence: 0
+  TypewriterEvidence: 1

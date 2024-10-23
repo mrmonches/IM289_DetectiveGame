@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 547a5cf974b02f846897e5f4bd66bfef, type: 3}
   m_Name: A04_04
   m_EditorClassIdentifier: 
-  _evidenceID: 27
+  _evidenceID: 28
   _evidenceType: 4
   correctConnections: 0100000003000000
   CardInformation: Made a Move
-  TypewriterEvidence: 0
+  TypewriterEvidence: 1
