@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 547a5cf974b02f846897e5f4bd66bfef, type: 3}
   m_Name: A04_03
   m_EditorClassIdentifier: 
-  _evidenceID: 26
+  _evidenceID: 27
   _evidenceType: 4
-  correctConnections: 
+  correctConnections: 03000000
   CardInformation: Childhood Friend
   TypewriterEvidence: 0

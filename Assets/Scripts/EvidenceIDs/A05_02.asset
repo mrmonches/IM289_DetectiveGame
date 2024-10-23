@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 547a5cf974b02f846897e5f4bd66bfef, type: 3}
   m_Name: A05_02
   m_EditorClassIdentifier: 
-  _evidenceID: 30
-  _evidenceType: 3
-  correctConnections: 
+  _evidenceID: 31
+  _evidenceType: 4
+  correctConnections: 1f000000030000000c000000
   CardInformation: Went Out Drinking
   TypewriterEvidence: 0

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1026947867894727018}
   - component: {fileID: 1838615830225264482}
   m_Layer: 5
-  m_Name: Jimmy King (2)
+  m_Name: Blackout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,7 +125,7 @@ MonoBehaviour:
         m_MethodName: SendToBoard
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: ab905087daeab294aba845dc4d5a7bef, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 94c3f4fa98f90d3408b2cc0a15caf7db, type: 2}
           m_ObjectArgumentAssemblyTypeName: EvidenceData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -934,7 +934,7 @@ MonoBehaviour:
         m_MethodName: SendToBoard
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 94c3f4fa98f90d3408b2cc0a15caf7db, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 6dd7bc316d969bf4c963ac11cad6f97c, type: 2}
           m_ObjectArgumentAssemblyTypeName: EvidenceData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0

@@ -140,7 +140,6 @@ public class YarnController : MonoBehaviour
         {
             lineRenderer.SetMaterials(GoodConnectionMaterial);
             _typewriterController.CorrectOption(firstID,evidenceID);
-
         }
         else
         {
