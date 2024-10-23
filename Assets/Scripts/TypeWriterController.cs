@@ -155,11 +155,11 @@ public class TypeWriterController : MonoBehaviour
         }
         if (finalCorrectCheck == true)
         {
-            //_titleFadeAway.fadein(true);
+            _titleFadeAway.fadein(true);
         }
         else if(finalCorrectCheck==false)
         {
-            //_titleFadeAway.fadein(false);
+            _titleFadeAway.fadein(false);
         }
         winLoseText.gameObject.SetActive(true);
     }
