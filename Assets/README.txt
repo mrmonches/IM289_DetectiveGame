@@ -9,3 +9,5 @@ You'll need to click around on objects
 Known Issues:
 Duplicate cards break interactions
 Removing a card does not remove it as an option in the typewriter
+Text on some cards will spill over
+Creating and Destroying Card connections repeatedly creates multiple instances in the typewriter. 
