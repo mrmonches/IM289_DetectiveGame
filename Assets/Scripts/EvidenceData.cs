@@ -74,6 +74,8 @@ public enum EvidenceID
     A04_04, //Made a move
     A04_05, //The Red Stiletto
     A05_01, //CityMap
+    A05_02, //When out drinking
+    A05_03, //Blackout Bar
 
 }
 
