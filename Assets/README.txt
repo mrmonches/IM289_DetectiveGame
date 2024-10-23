@@ -1,6 +1,7 @@
 READ ME for Black & Red
 Vertical Slice
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Esc to close. R to restart current scene. 
 Move around using Q&E Keys
 Use WASD on the Murderboard to move your camera
 Click on the Typewriter to access it. Nothing else on the desk is interactable. 
