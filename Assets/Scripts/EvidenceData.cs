@@ -61,6 +61,7 @@ public enum EvidenceID
     A01_14, //Bloodloss
     A01_15, //Watch
     A01_16, //Wallets Contents
+    A01_17, //Date of Death
     A02_00,
     A02_01, //Alleyway
     A02_02, //Picture of King's Body
@@ -74,6 +75,9 @@ public enum EvidenceID
     A04_04, //Made a move
     A04_05, //The Red Stiletto
     A05_01, //CityMap
+    A05_02, //When out drinking
+    A05_03, //Blackout Bar
+    A05_04  //Jealous
 
 }
 

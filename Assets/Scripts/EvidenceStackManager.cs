@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EvidenceStackManager : MonoBehaviour
@@ -31,7 +29,7 @@ public class EvidenceStackManager : MonoBehaviour
     {
         StackList.Add(evidenceData);
 
-        var newCard = Instantiate(EvidenceCardObject, CardSpawnPos.transform.position, EvidenceRotation.rotation);
+        var newCard = Instantiate(FindEvidenceItem(evidenceData.EvidenceID), CardSpawnPos.transform.position, EvidenceRotation.rotation);
 
         newCard.GetComponent<EvidenceController>().GiveEvidenceData(evidenceData);
 
@@ -129,6 +127,7 @@ public class EvidenceStackManager : MonoBehaviour
                 return SpecialCaseItems[i];
             }
         }
+
         return EvidenceCardObject;
     }
 }

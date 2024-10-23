@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _evidenceID: 19
   _evidenceType: 0
-  correctConnections: 
+  correctConnections: 0c000000
   CardInformation: Picture of Kings Body
   TypewriterEvidence: 0

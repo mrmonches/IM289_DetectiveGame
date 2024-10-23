@@ -295,7 +295,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3102428467369444584
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1052,8 +1052,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -330, y: 310}
-  m_SizeDelta: {x: 250, y: 30}
+  m_AnchoredPosition: {x: 82, y: -304}
+  m_SizeDelta: {x: 170, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8246580297696492611
 CanvasRenderer:
@@ -1142,7 +1142,7 @@ MonoBehaviour:
         m_MethodName: SendToBoard
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: cf978f8ace4ab7344aed6d56b2bf1855, type: 2}
+          m_ObjectArgument: {fileID: 11400000, guid: 7399a4368c212ed42a92454e1caf527e, type: 2}
           m_ObjectArgumentAssemblyTypeName: EvidenceData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
