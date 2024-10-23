@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _evidenceID: 30
   _evidenceType: 3
-  correctConnections: 
+  correctConnections: 1f000000030000000c000000
   CardInformation: Went Out Drinking
   TypewriterEvidence: 0

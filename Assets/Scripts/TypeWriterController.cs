@@ -66,13 +66,10 @@ public class TypeWriterController : MonoBehaviour
         if (selectedOption=="Steven Knight")
         { 
             correctCheck1 = true;
-            
-            
         }
         else
         {
             correctCheck1 = false;
-            
         }
     }
     public void Dropdown2(int val)
@@ -96,7 +93,7 @@ public class TypeWriterController : MonoBehaviour
     {
         int selectedIndex = dropdown3.value;
         string selectedOption = dropdown3.options[selectedIndex].text;
-        if (selectedOption== "Friday 13th 1942")
+        if (selectedOption== "11:22PM")
         {
             
             correctCheck3 = true;
@@ -179,17 +176,17 @@ public class TypeWriterController : MonoBehaviour
     {
         //yeahh this code is horrible sorry Zach. I amn going to improve it in a later milestone
         EvidenceID SecondID = SecondData.EvidenceID;
-        if ( FirstID== EvidenceID.A01_02 || SecondID== EvidenceID.A01_02)
+        if ( FirstID== EvidenceID.A01_01 || SecondID== EvidenceID.A01_01)
         {
             dropdown1.options.Add(new TMP_Dropdown.OptionData("Darling King", null));
             dropdown1.RefreshShownValue();
         }
-        else if (FirstID== EvidenceID.A01_04 || SecondID == EvidenceID.A01_04)
+        else if (FirstID== EvidenceID.A01_03 || SecondID == EvidenceID.A01_03)
         {
             dropdown1.options.Add(new TMP_Dropdown.OptionData("Steven Knight", null));
             dropdown1.RefreshShownValue();
         }
-        else if (FirstID == EvidenceID.A01_07 || SecondID == EvidenceID.A01_07)
+        else if (FirstID == EvidenceID.A01_06 || SecondID == EvidenceID.A01_06)
         {
             dropdown1.options.Add(new TMP_Dropdown.OptionData("Guioco Piano", null));
             dropdown1.RefreshShownValue();
@@ -221,8 +218,8 @@ public class TypeWriterController : MonoBehaviour
         }
         else if (FirstID == EvidenceID.A04_04 || SecondID == EvidenceID.A04_04)
         {
-            dropdown4.options.Add(new TMP_Dropdown.OptionData("jealous of Kings life", null));
-            dropdown4.RefreshShownValue();
+            dropdown5.options.Add(new TMP_Dropdown.OptionData("jealous of Kings life", null));
+            dropdown5.RefreshShownValue();
         }
     }
     private void Awake()
