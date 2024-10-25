@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour
 
     private void leftClickAction_started(InputAction.CallbackContext obj)
     {
+        _titleFadeAway.disabletitle();
         switch (CurrentStation)
         {
             case PlayerLocation.EvidenceBoard:

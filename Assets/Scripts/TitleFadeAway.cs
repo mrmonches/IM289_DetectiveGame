@@ -19,6 +19,7 @@ public class TitleFadeAway : MonoBehaviour
     void Awake()
     {
         newspaperCorrect.gameObject.SetActive(false);
+
         newspaperIncorrect.gameObject.SetActive(false);
     }
 
