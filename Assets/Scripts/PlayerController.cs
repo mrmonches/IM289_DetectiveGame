@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float CastDistance;
 
-    [SerializeField] private LayerMask LevelMask, EvidenceMask, CabinetMask, FoldersMask, StackMask, TypewriterMask;
+    [SerializeField] private LayerMask LevelMask, EvidenceMask, CabinetMask, FoldersMask, StackMask, TypewriterMask, UIMask;
 
     private Vector3 mousePosition;
 
@@ -70,15 +70,19 @@ public class PlayerController : MonoBehaviour
             case PlayerLocation.EvidenceBoard:
                 isSelecting = true;
 
-                if (EvidenceController != null)
+                if (_menuBehavior != null && _menuBehavior.GetCardMenuStatus())
                 {
-                    if (_menuBehavior != null && _menuBehavior.GetCardMenuStatus())
+                    RaycastHit hitCardMenu;
+                    if (!Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitCardMenu, CastDistance, UIMask)) 
                     {
                         _menuBehavior.SetCardMenuStatus(false);
 
                         _menuBehavior = null;
                     }
+                }
 
+                if (EvidenceController != null)
+                {
                     EvidenceController.IsHeld = true;
 
                     _audioSource.PlayOneShot(ClickClip);
@@ -120,7 +124,6 @@ public class PlayerController : MonoBehaviour
                 break;
 
             default: break;
-
         }
 
 
@@ -192,9 +195,29 @@ public class PlayerController : MonoBehaviour
 
                 if (!hitObject.IsInHand)
                 {
-                    _menuBehavior = hitObject.MenuBehavior;
+                    if (_menuBehavior == null)
+                    {
+                        _menuBehavior = hitObject.MenuBehavior;
 
-                    _menuBehavior.SetCardMenuStatus(true);
+                        _menuBehavior.SetCardMenuStatus(true);
+                    }
+                    else if (_menuBehavior != null && _menuBehavior != hitObject)
+                    {
+                        _menuBehavior.SetCardMenuStatus(false);
+
+                        _menuBehavior = hitObject.MenuBehavior;
+
+                        _menuBehavior.SetCardMenuStatus(true);
+                    }
+                }
+            }
+            else
+            {
+                if (_menuBehavior != null && _menuBehavior.GetCardMenuStatus())
+                {
+                    _menuBehavior.SetCardMenuStatus(false);
+
+                    _menuBehavior = null;
                 }
             }
         }
@@ -263,12 +286,19 @@ public class PlayerController : MonoBehaviour
                 EvidenceController.IsHover = false;
             }
 
-            EvidenceController = hit.collider.gameObject.GetComponent<EvidenceController>();
+            RaycastHit hitCardMenu;
 
-            if (!EvidenceController.IsHover)
+            if (!Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitCardMenu, CastDistance, UIMask))
             {
-                EvidenceController.IsHover = true;
+                EvidenceController = hit.collider.gameObject.GetComponent<EvidenceController>();
+
+                if (!EvidenceController.IsHover)
+                {
+                    EvidenceController.IsHover = true;
+                }
             }
+
+
         }
         else
         {
