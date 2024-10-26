@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 // By Nolan
@@ -15,6 +16,10 @@ public class EvidenceCardMenuBehavior : MonoBehaviour
     private EvidenceBoardManager _boardManager;
 
     [SerializeField] private Canvas menuCanvas;
+
+    [SerializeField] private TMP_Text ConnectionButtonText;
+
+    [SerializeField] private string StartConnectionText, EndConnectionText;
 
     private AudioSource _audioSource;
 
@@ -41,6 +46,15 @@ public class EvidenceCardMenuBehavior : MonoBehaviour
         menuActive = status;
 
         menuCanvas.gameObject.SetActive(status);
+
+        if (!_playerController.IsConnecting)
+        {
+            ConnectionButtonText.text = StartConnectionText;
+        }
+        else
+        {
+            ConnectionButtonText.text = EndConnectionText;
+        }
     }
 
     public bool GetCardMenuStatus()

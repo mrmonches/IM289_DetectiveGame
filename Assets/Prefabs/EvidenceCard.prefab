@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3532158228783264883}
   - component: {fileID: 1321373291095616604}
   - component: {fileID: 5411283534781145672}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 8854542385476065641}
   - component: {fileID: 4322701485975594138}
   - component: {fileID: 4183141446073593154}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -562,6 +562,9 @@ MonoBehaviour:
   _yarnController: {fileID: 0}
   _evidenceController: {fileID: 0}
   menuCanvas: {fileID: 4213046792925016608}
+  ConnectionButtonText: {fileID: 1548103747739371528}
+  StartConnectionText: Start Connection
+  EndConnectionText: End Connection
   CutClip: {fileID: 8300000, guid: 2878d4150e02c5440beba26d16d341fe, type: 3}
 --- !u!82 &1860642865020078743
 AudioSource:
@@ -671,7 +674,8 @@ GameObject:
   - component: {fileID: 4213046792925016608}
   - component: {fileID: 8995996725969985091}
   - component: {fileID: 218788658492300435}
-  m_Layer: 7
+  - component: {fileID: 1384645347899830510}
+  m_Layer: 14
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -761,6 +765,27 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!65 &1384645347899830510
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2448950150767980859}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 32755
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6.8, y: 6, z: 0.25}
+  m_Center: {x: 6.75, y: 0, z: -0.0000015968546}
 --- !u!1 &3343054324290577825
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,7 +798,7 @@ GameObject:
   - component: {fileID: 8824103967854161996}
   - component: {fileID: 3477862607960976336}
   - component: {fileID: 6565441529331983606}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: RemoveConnectionsButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -906,7 +931,7 @@ GameObject:
   - component: {fileID: 1807305743394728757}
   - component: {fileID: 3283309267906009590}
   - component: {fileID: 1645380728492923298}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: StartConnectionButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1121,7 +1146,7 @@ GameObject:
   - component: {fileID: 7017716216641109808}
   - component: {fileID: 1308123961428257963}
   - component: {fileID: 1548103747739371528}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1255,7 +1280,7 @@ GameObject:
   - component: {fileID: 4740544636335710547}
   - component: {fileID: 4136392256897667873}
   - component: {fileID: 1992972053675719001}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1390,7 +1415,7 @@ GameObject:
   - component: {fileID: 219425201740219817}
   - component: {fileID: 5941379177511414595}
   - component: {fileID: 5250331148853144355}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: RemoveButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}

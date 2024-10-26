@@ -6783,6 +6783,9 @@ MonoBehaviour:
   TypewriterMask:
     serializedVersion: 2
     m_Bits: 2048
+  UIMask:
+    serializedVersion: 2
+    m_Bits: 16384
   _yarnController: {fileID: 0}
   _cabinetObject: {fileID: 1343546295}
   _typeWriterController: {fileID: 2066150291}
