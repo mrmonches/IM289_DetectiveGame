@@ -430,7 +430,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20, y: -20}
+  m_AnchoredPosition: {x: 40, y: -40}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &7046535497639722070
@@ -461,15 +461,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Autopsy Report\r\nJimmy King\r\nRace: Caucasian            Sex: Male           
-    \tAge:38\r\nHistory of High Blood Pressure \t\r\nVictim was intoxicated\r\n\r\nIn
+  m_text: "<b>Autopsy Report\r</b>\nJimmy King\r\nRace: Caucasian      Sex: Male  
+    \tAge:38\r\nPrevious medical history: High Blood Pressure \t\r\nVictim was intoxicated\r\n\r\nIn
     His Right Pocket was a Watch\r\nIn His Left Pocket was a Wallet and Lighter\r\n\r\nWallet
-    contents:\nDriver\u2019s License\r\n$30 in cash\r\nCharge card\r\nVictim has
-    6 bullet wounds. \nBullet in left leg, No exit wound.\nBullet in Right Shoulder,
-    No exit wound.\nEntry and Exit wounds in abdomin. \nEntry and Exit wounds in
-    \n\r\nGiven the number of bullet wounds and their\ndistribution, I find it likely
-    that the assailant\nwas either as blind as a mole rat, or drunk. \r\n\r\nCause
-    of Death: Blood loss resulting from firearm\nwounds. \r\n\nTime of Death: 11:22PM\n"
+    Contained: drivers license, 28$ worth of\ncash, charge card\n\n<b>The coroner
+    found 6 bullet wounds. </b>\nLeft Leg, No exit.\nRight Shoulder, no exit.\nAbdomin,
+    entry & exit. \nGroin, entry & exit. \n\r\nCoroner's analysis [...]\nGiven the
+    number of bullet wounds and their\ndistribution, I find it likely that the assailant\nwas
+    either as blind as a mole rat, or drunk. [...]\n\nCause of Death: Blood loss
+    resulting from \nfirearm wounds. \r\n\nTime of Death: 11:22PM to 12:00PM"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 89db3ff56c24b0f4cb5151639436c5b6, type: 2}
   m_sharedMaterial: {fileID: -2758143518964017550, guid: 89db3ff56c24b0f4cb5151639436c5b6, type: 2}
