@@ -51,7 +51,7 @@ public class EvidenceCardMenuBehavior : MonoBehaviour
         {
             ConnectionButtonText.text = StartConnectionText;
         }
-        else
+        else 
         {
             ConnectionButtonText.text = EndConnectionText;
         }

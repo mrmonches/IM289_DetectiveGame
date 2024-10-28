@@ -277,9 +277,10 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void EvidenceSelect()
     {
-        RaycastHit hit;
+        RaycastHit hit, UIHit;
 
-        if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, EvidenceMask))
+        if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, EvidenceMask) && 
+            !Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out UIHit, CastDistance, UIMask))
         {
             if (EvidenceController != null && EvidenceController != hit.collider.gameObject.GetComponent<EvidenceController>())
             {
@@ -297,8 +298,6 @@ public class PlayerController : MonoBehaviour
                     EvidenceController.IsHover = true;
                 }
             }
-
-
         }
         else
         {
