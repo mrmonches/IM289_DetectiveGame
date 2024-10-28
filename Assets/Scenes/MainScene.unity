@@ -7477,6 +7477,202 @@ PrefabInstance:
       propertyPath: _cameraController
       value: 
       objectReference: {fileID: 1750113693}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterID.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterText.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterID.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterID.Array.data[1]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterID.Array.data[2]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterID.Array.data[3]
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterID.Array.data[4]
+      value: 29
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterID.Array.data[5]
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterID.Array.data[6]
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterID.Array.data[7]
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterID.Array.data[8]
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterID.Array.data[9]
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typeweiterNumber.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterID.Array.data[10]
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterNumber.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterText.Array.data[0]
+      value: Darling King
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterText.Array.data[1]
+      value: Steven Knight
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterText.Array.data[2]
+      value: Guioco Piano
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterText.Array.data[3]
+      value: 11:22PM
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterText.Array.data[4]
+      value: The Red Stiletto
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterText.Array.data[5]
+      value: The Alleyway
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterText.Array.data[6]
+      value: A large frame revolver
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterText.Array.data[7]
+      value: A rat
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterText.Array.data[8]
+      value: Wanted a personal chest from King
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterText.Array.data[9]
+      value: Wanted their inheritance from King
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterText.Array.data[10]
+      value: Jealous of Kings life
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterText.Array.data[11]
+      value: Jealous of Kings life
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typeweiterNumber.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typeweiterNumber.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typeweiterNumber.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typeweiterNumber.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typeweiterNumber.Array.data[4]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typeweiterNumber.Array.data[5]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typeweiterNumber.Array.data[6]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typeweiterNumber.Array.data[7]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typeweiterNumber.Array.data[8]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typeweiterNumber.Array.data[9]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterNumber.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterNumber.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterNumber.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterNumber.Array.data[3]
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterNumber.Array.data[4]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterNumber.Array.data[5]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterNumber.Array.data[6]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterNumber.Array.data[7]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterNumber.Array.data[8]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterNumber.Array.data[9]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typeweiterNumber.Array.data[10]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3155964341410781663, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
+      propertyPath: typewriterNumber.Array.data[10]
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5087731523590895417, guid: 97d517fd8ff06ed4f8ffd6fd903ab349, type: 3}
       propertyPath: m_Name
       value: Typewriter
@@ -13440,6 +13636,20 @@ MonoBehaviour:
   typewriterStuff: {fileID: 1374802377}
   _cameraController: {fileID: 1750113693}
   TypewriterClip: {fileID: 8300000, guid: c29e33287c17c3c47b2bec18cd30fb00, type: 3}
+  typewriterID: 010000000300000006000000110000001d00000012000000090000001a000000180000001700000021000000
+  typewriterText:
+  - Darling King
+  - Steven Knight
+  - Guioco Piano
+  - 11:22PM
+  - The Red Stiletto
+  - The Alleyway
+  - A large frame revolver
+  - a rat
+  - Wanted a personal chest from King
+  - Wanted their inheritance from King
+  - Jealous of Kings life
+  typewriterNumber: 0100000001000000010000000300000002000000020000000400000005000000050000000500000005000000
 --- !u!65 &2066150293
 BoxCollider:
   m_ObjectHideFlags: 0
