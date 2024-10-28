@@ -390,6 +390,9 @@ MonoBehaviour:
   _yarnController: {fileID: 0}
   _evidenceController: {fileID: 0}
   menuCanvas: {fileID: 4213046792925016608}
+  ConnectionButtonText: {fileID: 1548103747739371528}
+  StartConnectionText: Start Connection
+  EndConnectionText: End Connection
   CutClip: {fileID: 8300000, guid: 2878d4150e02c5440beba26d16d341fe, type: 3}
 --- !u!82 &1860642865020078743
 AudioSource:

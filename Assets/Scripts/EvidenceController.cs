@@ -221,11 +221,11 @@ public class EvidenceController : MonoBehaviour
 
             CheckPlacePos();
 
-            //if (isConnected)
-            //{
-            //    _boardManager.UpdateLinePos(gameObject, _id);
-            //}
-        } 
+            if (isConnected)
+            {
+                _boardManager.UpdateLinePos(gameObject, _id);
+            }
+        }
         else if (!IsInHand)
         {
             if (IsHover && transform.position != placedPos + HoverPos)
