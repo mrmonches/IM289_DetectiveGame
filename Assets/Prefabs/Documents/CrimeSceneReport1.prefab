@@ -167,7 +167,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 20, y: -20}
+  m_AnchoredPosition: {x: 40, y: -40}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &7046535497639722070
@@ -199,14 +199,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "<b>Gambit City Police Dpt</b>\nCrime Scene Report:\r \nA body belonging
-    to Jimmy King was found in an \nalleyway between Chester and Shinda Street.\r\n\r\nHis
-    body was found on the ground laying down\nsideways. His arms, both intact, are
-    positioned to\none reaching out, the other is near his chest, \nseemingly clutching
-    his heart. One leg is bent \ninwards. \r\n\n\n\n\n\nThe victims body was shot
-    4 times.\r\nA weapon was found in a nearby dumpster, a large \nframe revolver
-    with .357 Magnum cartridges, \nholding up to 8 rounds. The weapon was unloaded.
-    \r\n\nLocated in a small pile ten feet away from the \nvictim were eight .357
-    casings. \r\n\r\n\n"
+    to Jimmy King was found in the \nalleyway between Chester and Shinda Street.\r\n\r\nThe
+    body was found lying on the pavers face down. \nLeft arm is reaching outward.
+    Right arm is\nclutching the chest. One leg is bent inwards. \r\n\n\n\n\n\n\nThe
+    body was shot four times.\r\nA weapon was found in a nearby dumpster, a large
+    \nframe revolver with .357 Magnum cartridges, \nholding up to 8 rounds. The weapon
+    was unloaded. \r\n\nLocated in a small pile ten feet away from the \nvictim were
+    eight .357 casings. \r\n\r\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 89db3ff56c24b0f4cb5151639436c5b6, type: 2}
   m_sharedMaterial: {fileID: -2758143518964017550, guid: 89db3ff56c24b0f4cb5151639436c5b6, type: 2}
@@ -310,7 +309,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -300, y: 30}
+  m_AnchoredPosition: {x: -282, y: 62}
   m_SizeDelta: {x: 300, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3717017472158024251
@@ -334,7 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.56078434}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
