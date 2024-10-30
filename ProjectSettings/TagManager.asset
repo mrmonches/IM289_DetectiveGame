@@ -21,8 +21,8 @@ TagManager:
   - Barrier
   - Camera
   - CardMenu
-  - 
-  - 
+  - LineRenderer
+  - Glass
   - 
   - 
   - 

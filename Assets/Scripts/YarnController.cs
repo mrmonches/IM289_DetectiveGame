@@ -21,6 +21,8 @@ public class YarnController : MonoBehaviour
     private PlayerController _playerController;
     private TypeWriterController _typewriterController;
 
+    [SerializeField] private LayerMask _lineMask;
+
     // Preferences on line renderer, don't change unless you know what you want from the line renderer
     [SerializeField, Tooltip("Sets width of the line renderer")] private float LineWidth;
     [SerializeField, Tooltip("Adjusts texture stretch of line renderer")] private Vector2 LineScale;
@@ -54,6 +56,8 @@ public class YarnController : MonoBehaviour
         lineRenderer.endWidth = LineWidth;
 
         lineRenderer.textureScale = LineScale;
+
+        lineRenderer.gameObject.layer = 15;
 
         IsConnecting = true;
     }

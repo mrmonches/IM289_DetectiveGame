@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float CastDistance;
 
-    [SerializeField] private LayerMask LevelMask, EvidenceMask, CabinetMask, FoldersMask, StackMask, TypewriterMask, UIMask;
+    [SerializeField] private LayerMask LevelMask, EvidenceMask, CabinetMask, FoldersMask, StackMask, TypewriterMask, UIMask, LineMask;
 
     private Vector3 mousePosition;
 
@@ -69,6 +69,12 @@ public class PlayerController : MonoBehaviour
         {
             case PlayerLocation.EvidenceBoard:
                 isSelecting = true;
+
+                //RaycastHit hit;
+                //if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, LineMask))
+                //{
+                //    print("hit line");
+                //}
 
                 if (_menuBehavior != null && _menuBehavior.GetCardMenuStatus())
                 {
