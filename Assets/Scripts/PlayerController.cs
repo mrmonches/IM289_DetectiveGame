@@ -212,31 +212,37 @@ public class PlayerController : MonoBehaviour
 
                 if (!hitObject.IsInHand)
                 {
-                    if (_menuBehavior == null)
-                    {
-                        _menuBehavior = hitObject.MenuBehavior;
+                    _yarnController = hitObject.GetComponent<YarnController>();
 
-                        _menuBehavior.SetCardMenuStatus(true);
-                    }
-                    else if (_menuBehavior != null && _menuBehavior != hitObject)
-                    {
-                        _menuBehavior.SetCardMenuStatus(false);
+                    _yarnController.CheckLineStatus(hitObject.ChildTransform.position, hitObject.EvidenceData, hitObject.gameObject);
 
-                        _menuBehavior = hitObject.MenuBehavior;
+                    isConnecting = true;
 
-                        _menuBehavior.SetCardMenuStatus(true);
-                    }
+                    //if (_menuBehavior == null)
+                    //{
+                    //    _menuBehavior = hitObject.MenuBehavior;
+
+                    //    _menuBehavior.SetCardMenuStatus(true);
+                    //}
+                    //else if (_menuBehavior != null && _menuBehavior != hitObject)
+                    //{
+                    //    _menuBehavior.SetCardMenuStatus(false);
+
+                    //    _menuBehavior = hitObject.MenuBehavior;
+
+                    //    _menuBehavior.SetCardMenuStatus(true);
+                    //}
                 }
             }
-            else
-            {
-                if (_menuBehavior != null && _menuBehavior.GetCardMenuStatus())
-                {
-                    _menuBehavior.SetCardMenuStatus(false);
+            //else
+            //{
+            //    if (_menuBehavior != null && _menuBehavior.GetCardMenuStatus())
+            //    {
+            //        _menuBehavior.SetCardMenuStatus(false);
 
-                    _menuBehavior = null;
-                }
-            }
+            //        _menuBehavior = null;
+            //    }
+            //}
         }
     }
 
@@ -258,6 +264,29 @@ public class PlayerController : MonoBehaviour
                 {
                     isCutting = false;
                 }
+            }
+
+            if (isConnecting)
+            {
+                RaycastHit hit;
+
+                if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, EvidenceMask))
+                {
+                    EvidenceController hitObject = hit.collider.GetComponent<EvidenceController>();
+
+                    if (!hitObject.IsInHand)
+                    {
+                        _yarnController.CheckLineStatus(hitObject.ChildTransform.position, hitObject.EvidenceData, hitObject.gameObject);
+                    }
+                }
+                else
+                {
+                    _yarnController.ClearUnfinishedConnection();
+                }
+
+                _yarnController = null;
+
+                isConnecting = false;
             }
         }
     }
@@ -368,6 +397,20 @@ public class PlayerController : MonoBehaviour
                 {
                     EvidenceSelect();
                 }
+
+                if (isConnecting)
+                {
+                    _yarnController.LineFollowMouse(GetSelectedPosition());
+                }
+
+                //if (isConnecting && EvidenceController == null)
+                //{
+                //    _yarnController.LineFollowMouse(GetSelectedPosition());
+                //}
+                //else if (isConnecting && EvidenceController != null)
+                //{
+                //    _yarnController.LineFollowMouse(EvidenceController.ChildTransform.position);
+                //}
                 break;
             case PlayerLocation.FilingCabinet:
                 if (!isSelecting)

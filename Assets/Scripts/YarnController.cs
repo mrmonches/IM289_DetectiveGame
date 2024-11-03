@@ -27,6 +27,8 @@ public class YarnController : MonoBehaviour
     [SerializeField, Tooltip("Sets width of the line renderer")] private float LineWidth;
     [SerializeField, Tooltip("Adjusts texture stretch of line renderer")] private Vector2 LineScale;
 
+    [SerializeField] private Vector3 OffsetPos;
+
     public bool IsConnecting { get => isConnecting; set => isConnecting = value; }
 
     private void Awake()
@@ -71,7 +73,7 @@ public class YarnController : MonoBehaviour
     {
         boardManager.Connections.Add(new ConnectionData(lineRenderer, firstID, secondID, firstObject, secondObject));
 
-        lineRenderer.transform.GetComponent<YarnCollision>().enabled = true;
+        lineRenderer.transform.GetComponent<YarnCollision>().StartCalculating = true;
 
         lineRenderer = null;
 
@@ -93,7 +95,15 @@ public class YarnController : MonoBehaviour
     /// </summary>
     private void GiveLinePosition(Vector3 pos, EvidenceID evidenceID, GameObject evidence)
     {
-        lineRenderer.positionCount++;
+        if (firstID == EvidenceID.Default)
+        {
+            lineRenderer.positionCount = 1;
+        }
+        else if (secondID == EvidenceID.Default)
+        {
+            lineRenderer.positionCount = 2;
+        }
+        
 
         lineRenderer.SetPosition(lineRenderer.positionCount - 1, pos);
 
@@ -125,7 +135,7 @@ public class YarnController : MonoBehaviour
             CreateLineRender();
         }
 
-        if (lineRenderer.positionCount >= 2)
+        if (lineRenderer.positionCount >= 2 && secondID != EvidenceID.Default)
         {
             ClearCurrentRef();
 
@@ -223,5 +233,15 @@ public class YarnController : MonoBehaviour
         secondObject = null;
 
         lineRenderer.positionCount = 0;
+    }
+
+    public void LineFollowMouse(Vector3 pos)
+    {
+        if (lineRenderer.positionCount <= 1)
+        {
+            lineRenderer.positionCount = 2;
+        }
+
+        lineRenderer.SetPosition(1, new Vector3(pos.x + OffsetPos.x, pos.y + OffsetPos.y, pos.z + OffsetPos.z));
     }
 }
