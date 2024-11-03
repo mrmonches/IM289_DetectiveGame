@@ -11,6 +11,10 @@ public class YarnCollision : MonoBehaviour
 
     private PolygonCollider2D _polygonCollider;
 
+    private bool startCalculating;
+
+    public bool StartCalculating { get => startCalculating; set => startCalculating = value; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,9 +26,12 @@ public class YarnCollision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        collisionPoints = CalculateColliderPoints();
+        if (startCalculating)
+        {
+            collisionPoints = CalculateColliderPoints();
 
-        _polygonCollider.SetPath(0, collisionPoints.ConvertAll(p => (Vector2)transform.InverseTransformPoint(p)));
+            _polygonCollider.SetPath(0, collisionPoints.ConvertAll(p => (Vector2)transform.InverseTransformPoint(p)));
+        }
     }
 
     /// <summary>
