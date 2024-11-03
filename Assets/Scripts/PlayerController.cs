@@ -1,5 +1,3 @@
-using Cinemachine;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,6 +8,7 @@ public class PlayerController : MonoBehaviour
     private bool isSelecting;
     [SerializeField] private bool inItemViewer;
     private bool isConnecting;
+    private bool isCutting;
 
     [SerializeField] private PlayerLocation CurrentStation;
     [SerializeField] private Camera SceneCamera;
@@ -35,6 +34,8 @@ public class PlayerController : MonoBehaviour
 
     private FolderController _folderController;
 
+    private EvidenceBoardManager _boardManager;
+
     [SerializeField] private GameObject _typeWriterController;
 
     [SerializeField] private CameraController _cameraController;
@@ -56,10 +57,13 @@ public class PlayerController : MonoBehaviour
         _playerControls.DefaultControls.Enable();
 
         _playerControls.DefaultControls.RightClick.started += rightClickAction_started;
+        _playerControls.DefaultControls.RightClick.canceled += RightClickAction_canceled;
 
         _playerControls.DefaultControls.LeftClick.started += leftClickAction_started;
         _playerControls.DefaultControls.LeftClick.canceled += leftClickAction_canceled;
         _titleFadeAway= FindObjectOfType<TitleFadeAway>();
+
+        _boardManager = FindObjectOfType<EvidenceBoardManager>();
     }
 
     private void leftClickAction_started(InputAction.CallbackContext obj)
@@ -69,12 +73,6 @@ public class PlayerController : MonoBehaviour
         {
             case PlayerLocation.EvidenceBoard:
                 isSelecting = true;
-
-                //RaycastHit hit;
-                //if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, LineMask))
-                //{
-                //    print("hit line");
-                //}
 
                 if (_menuBehavior != null && _menuBehavior.GetCardMenuStatus())
                 {
@@ -193,6 +191,19 @@ public class PlayerController : MonoBehaviour
     {
         if (CurrentStation == PlayerLocation.EvidenceBoard) 
         {
+            if (_boardManager.Connections.Count > 0)
+            {
+                Ray ray = SceneCamera.ScreenPointToRay(mousePosition);
+                RaycastHit2D hit2D = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
+
+                if (hit2D.collider != null && hit2D.transform.CompareTag("LineRenderer"))
+                {
+                    print("hitLine");
+
+                    isCutting = true;
+                }
+            }
+
             RaycastHit hit;
 
             if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, EvidenceMask))
@@ -224,6 +235,28 @@ public class PlayerController : MonoBehaviour
                     _menuBehavior.SetCardMenuStatus(false);
 
                     _menuBehavior = null;
+                }
+            }
+        }
+    }
+
+    private void RightClickAction_canceled(InputAction.CallbackContext obj)
+    {
+        if (CurrentStation == PlayerLocation.EvidenceBoard)
+        {
+            if (_boardManager.Connections.Count > 0)
+            {
+                Ray ray = SceneCamera.ScreenPointToRay(mousePosition);
+                RaycastHit2D hit2D = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
+
+                if (hit2D.collider != null && hit2D.transform.CompareTag("LineRenderer") && isCutting)
+                {
+                    YarnCollision yc = hit2D.collider.GetComponent<YarnCollision>();
+                    yc.EndCollisions();
+                }
+                else
+                {
+                    isCutting = false;
                 }
             }
         }

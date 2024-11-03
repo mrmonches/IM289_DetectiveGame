@@ -63,6 +63,19 @@ public class EvidenceBoardManager : MonoBehaviour
         }
     }
 
+    public void RemoveConnectionFromList(LineRenderer lr)
+    {
+        for (int i = 0; i < connections.Count; i++)
+        {
+            if (lr == connections[i].LineRenderer)
+            {
+                Destroy(connections[i].LineRenderer);
+                connections.RemoveAt(i);
+                i--;
+            }
+        }
+    }
+
     public void CheckCount()
     {
         ListCount = connections.Count;

@@ -50,6 +50,8 @@ public class YarnController : MonoBehaviour
 
         lineRenderer.gameObject.transform.parent = gameObject.transform;
 
+        lineRenderer.transform.localPosition = Vector3.zero;
+
         lineRenderer.positionCount = 0;
 
         lineRenderer.startWidth = LineWidth;
@@ -68,6 +70,8 @@ public class YarnController : MonoBehaviour
     private void ClearCurrentRef()
     {
         boardManager.Connections.Add(new ConnectionData(lineRenderer, firstID, secondID, firstObject, secondObject));
+
+        lineRenderer.transform.GetComponent<YarnCollision>().enabled = true;
 
         lineRenderer = null;
 
