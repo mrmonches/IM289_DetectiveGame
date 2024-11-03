@@ -21,6 +21,8 @@ public class YarnController : MonoBehaviour
     private PlayerController _playerController;
     private TypeWriterController _typewriterController;
 
+    [SerializeField] private LayerMask _lineMask;
+
     // Preferences on line renderer, don't change unless you know what you want from the line renderer
     [SerializeField, Tooltip("Sets width of the line renderer")] private float LineWidth;
     [SerializeField, Tooltip("Adjusts texture stretch of line renderer")] private Vector2 LineScale;
@@ -48,12 +50,16 @@ public class YarnController : MonoBehaviour
 
         lineRenderer.gameObject.transform.parent = gameObject.transform;
 
+        lineRenderer.transform.localPosition = Vector3.zero;
+
         lineRenderer.positionCount = 0;
 
         lineRenderer.startWidth = LineWidth;
         lineRenderer.endWidth = LineWidth;
 
         lineRenderer.textureScale = LineScale;
+
+        lineRenderer.gameObject.layer = 15;
 
         IsConnecting = true;
     }
@@ -64,6 +70,8 @@ public class YarnController : MonoBehaviour
     private void ClearCurrentRef()
     {
         boardManager.Connections.Add(new ConnectionData(lineRenderer, firstID, secondID, firstObject, secondObject));
+
+        lineRenderer.transform.GetComponent<YarnCollision>().enabled = true;
 
         lineRenderer = null;
 

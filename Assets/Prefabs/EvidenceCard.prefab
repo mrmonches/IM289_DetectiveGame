@@ -576,6 +576,9 @@ MonoBehaviour:
   firstObject: {fileID: 0}
   secondObject: {fileID: 0}
   LineObject: {fileID: 5477419112686885290, guid: a0541004dc2003249ae3bc3983ce6761, type: 3}
+  _lineMask:
+    serializedVersion: 2
+    m_Bits: 32768
   LineWidth: 0.15
   LineScale: {x: 1, y: -0.06}
 --- !u!114 &7764280041389648393
