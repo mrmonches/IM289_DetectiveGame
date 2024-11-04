@@ -14,6 +14,7 @@ public class SystemManager : MonoBehaviour
     private InputAction _restartAction;
 
     private DebugControls _debugInputs;
+
     private bool paperopen;
     private TypeWriterController _typeWriterController;
     private DocumentTurnPage _documentTurnPage;
