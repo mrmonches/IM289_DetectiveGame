@@ -30,6 +30,7 @@ public class CameraController : MonoBehaviour
     [SerializeField, Tooltip("How fast the camera moves on player input")] private float SlerpSpeed;
     [SerializeField] private Rigidbody _boxRB;
     [SerializeField] private GameObject BoardBox;
+    private bool paused = false;
 
     public bool IsScrolling { get => isScrolling; set => isScrolling = value; }
 
@@ -64,69 +65,75 @@ public class CameraController : MonoBehaviour
     
     private void StationRight_started(InputAction.CallbackContext obj)
     {
-        //moves camera to the one on the right and keeps track of the active camera
-        if (activecamera == 1 && _canMove == true)
+        if (paused == false)
         {
-            LeftCamera.gameObject.SetActive(false);
-            MiddleCamera.gameObject.SetActive(true);
-            RightCamera.gameObject.SetActive(false);
-            activecamera = 2;
+            //moves camera to the one on the right and keeps track of the active camera
+            if (activecamera == 1 && _canMove == true)
+            {
+                LeftCamera.gameObject.SetActive(false);
+                MiddleCamera.gameObject.SetActive(true);
+                RightCamera.gameObject.SetActive(false);
+                activecamera = 2;
 
-            _playerController.GetComponent<PlayerController>().StationSetDesk();
-            _cabinetController.GetComponent<CabinetController>().GetClose();
-        }
-        else if(activecamera==2 && _canMove == true)
-        {
-            LeftCamera.gameObject.SetActive(false);
-            MiddleCamera.gameObject.SetActive(false);
-            RightCamera.gameObject.SetActive(true);
-            activecamera = 3;
+                _playerController.GetComponent<PlayerController>().StationSetDesk();
+                _cabinetController.GetComponent<CabinetController>().GetClose();
+            }
+            else if (activecamera == 2 && _canMove == true)
+            {
+                LeftCamera.gameObject.SetActive(false);
+                MiddleCamera.gameObject.SetActive(false);
+                RightCamera.gameObject.SetActive(true);
+                activecamera = 3;
 
-            _playerController.GetComponent<PlayerController>().StationSetCabinet();
-            _cabinetController.GetComponent<CabinetController>().GetOpen();
-        }
-        else if(activecamera == 3 && _canMove == true)
-        {
-            LeftCamera.gameObject.SetActive(true);
-            MiddleCamera.gameObject.SetActive(false);
-            RightCamera.gameObject.SetActive(false);
-            activecamera = 1;
-            _playerController.GetComponent<PlayerController>().StationSetBoard();
-            _cabinetController.GetComponent<CabinetController>().GetClose();
+                _playerController.GetComponent<PlayerController>().StationSetCabinet();
+                _cabinetController.GetComponent<CabinetController>().GetOpen();
+            }
+            else if (activecamera == 3 && _canMove == true)
+            {
+                LeftCamera.gameObject.SetActive(true);
+                MiddleCamera.gameObject.SetActive(false);
+                RightCamera.gameObject.SetActive(false);
+                activecamera = 1;
+                _playerController.GetComponent<PlayerController>().StationSetBoard();
+                _cabinetController.GetComponent<CabinetController>().GetClose();
+            }
         }
     }
 
     private void StationLeft_started(InputAction.CallbackContext obj)
     {
-        //same as above but for the right
-        if(activecamera == 2 && _canMove == true)
+        if (paused == false)
         {
-            RightCamera.gameObject.SetActive(false);
-            MiddleCamera.gameObject.SetActive(false);
-            LeftCamera.gameObject.SetActive(true);
-            activecamera = 1;
+            //same as above but for the right
+            if (activecamera == 2 && _canMove == true)
+            {
+                RightCamera.gameObject.SetActive(false);
+                MiddleCamera.gameObject.SetActive(false);
+                LeftCamera.gameObject.SetActive(true);
+                activecamera = 1;
 
-            _playerController.GetComponent<PlayerController>().StationSetBoard();
-            _cabinetController.GetComponent<CabinetController>().GetClose();
-        }
-        else if(activecamera == 3 && _canMove == true)
-        {
-            RightCamera.gameObject.SetActive(false);
-            MiddleCamera.gameObject.SetActive(true);
-            LeftCamera.gameObject.SetActive(false);
-            activecamera = 2;
+                _playerController.GetComponent<PlayerController>().StationSetBoard();
+                _cabinetController.GetComponent<CabinetController>().GetClose();
+            }
+            else if (activecamera == 3 && _canMove == true)
+            {
+                RightCamera.gameObject.SetActive(false);
+                MiddleCamera.gameObject.SetActive(true);
+                LeftCamera.gameObject.SetActive(false);
+                activecamera = 2;
 
-            _playerController.GetComponent<PlayerController>().StationSetDesk();
-            _cabinetController.GetComponent<CabinetController>().GetClose();
-        }
-        else if(activecamera == 1 && _canMove == true)
-        {
-            LeftCamera.gameObject.SetActive(false);
-            MiddleCamera.gameObject.SetActive(false);
-            RightCamera.gameObject.SetActive(true);
-            activecamera = 3;
-            _playerController.GetComponent<PlayerController>().StationSetCabinet();
-            _cabinetController.GetComponent<CabinetController>().GetOpen();
+                _playerController.GetComponent<PlayerController>().StationSetDesk();
+                _cabinetController.GetComponent<CabinetController>().GetClose();
+            }
+            else if (activecamera == 1 && _canMove == true)
+            {
+                LeftCamera.gameObject.SetActive(false);
+                MiddleCamera.gameObject.SetActive(false);
+                RightCamera.gameObject.SetActive(true);
+                activecamera = 3;
+                _playerController.GetComponent<PlayerController>().StationSetCabinet();
+                _cabinetController.GetComponent<CabinetController>().GetOpen();
+            }
         }
     }
 
@@ -136,9 +143,12 @@ public class CameraController : MonoBehaviour
     /// </summary>
     public void MoveBoardCamera(Vector3 moveValue)
     {
-        if (!_cinemachineBrain.IsBlending)
+        if (paused == false)
         {
-            _boxRB.velocity = new Vector3(-moveValue.x * BoxSpeed, moveValue.y * BoxSpeed, _boxRB.velocity.z);
+            if (!_cinemachineBrain.IsBlending)
+            {
+                _boxRB.velocity = new Vector3(-moveValue.x * BoxSpeed, moveValue.y * BoxSpeed, _boxRB.velocity.z);
+            }
         }
     }
 
@@ -147,20 +157,29 @@ public class CameraController : MonoBehaviour
     /// </summary>
     public void ZoomBoardCamera(float moveValue)
     {
-        if (!_cinemachineBrain.IsBlending)
+        if (paused == false)
         {
-            _boxRB.velocity = new Vector3(_boxRB.velocity.x, _boxRB.velocity.y, Mathf.Clamp(moveValue * ScrollSpeed, -ScrollSpeed, ScrollSpeed));
+            if (!_cinemachineBrain.IsBlending)
+            {
+                _boxRB.velocity = new Vector3(_boxRB.velocity.x, _boxRB.velocity.y, Mathf.Clamp(moveValue * ScrollSpeed, -ScrollSpeed, ScrollSpeed));
+            }
         }
     }
 
     private void Scroll_started(InputAction.CallbackContext obj)
     {
-        if (activecamera == 1)
+        if (paused == false)
         {
-            isScrolling = true;
 
-            scrollValue = obj.ReadValue<float>();
+
+            if (activecamera == 1)
+            {
+                isScrolling = true;
+
+                scrollValue = obj.ReadValue<float>();
+            }
         }
+
     }
 
     private void Scroll_canceled(InputAction.CallbackContext obj)
@@ -218,5 +237,9 @@ public class CameraController : MonoBehaviour
 
         _playerControls.DefaultControls.Scroll.started -= Scroll_started;
         _playerControls.DefaultControls.Scroll.canceled -= Scroll_canceled;
+    }
+    public void updatePause(bool input)
+    {
+        paused = input;
     }
 }

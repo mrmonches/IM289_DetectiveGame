@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float CastDistance;
 
-    [SerializeField] private LayerMask LevelMask, EvidenceMask, CabinetMask, FoldersMask, StackMask, TypewriterMask, UIMask, LineMask;
+    [SerializeField] private LayerMask LevelMask, EvidenceMask, CabinetMask, FoldersMask, StackMask, TypewriterMask, UIMask, LineMask,RecordMask;
 
     private Vector3 mousePosition;
 
@@ -40,16 +41,22 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private CameraController _cameraController;
 
+    private SystemManager _systemManager;
+
     private EvidenceCardMenuBehavior _menuBehavior;
 
     [SerializeField] private AudioSource _audioSource;
 
     [SerializeField] private AudioClip ClickClip;
 
+    [SerializeField] private AudioClip MainMusic;
+
     private TitleFadeAway _titleFadeAway;
     public bool InItemViewer { get => inItemViewer; set => inItemViewer = value; }
     public EvidenceController EvidenceController { get => _evidenceController; set => _evidenceController = value; }
     public bool IsConnecting { get => isConnecting; set => isConnecting = value; }
+
+    private bool musicOn = true;
 
     private void Awake()
     {
@@ -64,6 +71,7 @@ public class PlayerController : MonoBehaviour
         _titleFadeAway= FindObjectOfType<TitleFadeAway>();
 
         _boardManager = FindObjectOfType<EvidenceBoardManager>();
+        _systemManager = FindObjectOfType<SystemManager>();
     }
 
     private void leftClickAction_started(InputAction.CallbackContext obj)
@@ -122,6 +130,9 @@ public class PlayerController : MonoBehaviour
                         InItemViewer = true;
 
                         Debug.Log("Raycast his the folder");
+
+                        _systemManager.updatePaperOpen(true,"Doc");
+                        
                     }
                 }
 
@@ -246,6 +257,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void unityIsABitch()
+    {
+        _systemManager.unPause();
+    }
     private void RightClickAction_canceled(InputAction.CallbackContext obj)
     {
         if (CurrentStation == PlayerLocation.EvidenceBoard)
@@ -468,4 +483,5 @@ public enum PlayerLocation
     EvidenceBoard,
     FilingCabinet
 }
+
 
