@@ -10,12 +10,15 @@ public class DocumentTurnPage : MonoBehaviour
 
     private GameObject parent;
     private Canvas canvas;
+
+    private SystemManager _systemManager;
     
 
     private void Awake()
     {
         canvas = FindObjectOfType<Canvas>();
         gameObject.GetComponentInParent<DocumentTurnPage>();
+        _systemManager = FindObjectOfType<SystemManager>();
     }
 
     public void TurnPage()
@@ -30,14 +33,14 @@ public class DocumentTurnPage : MonoBehaviour
     {
         var openedpage = Instantiate(_previousPage);
         openedpage.transform.SetParent(canvas.transform, false);
-
+        
         Destroy(gameObject);
     }
 
     public void CloseDoc()
     {
         GameObject.Find("Player").GetComponent<PlayerController>().InItemViewer = false;
-
+        _systemManager.updatePaperOpen(false,"null");
         Destroy(gameObject);
     }
 }
