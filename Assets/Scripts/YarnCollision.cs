@@ -56,7 +56,11 @@ public class YarnCollision : MonoBehaviour
         offset[1] = new Vector3(deltaX, -deltaY);
 
         // Add Collider Points
-        List<Vector2> collisionPoints = new List<Vector2> {positions[0] + offset[0], positions[1] + offset[0], positions[1] + offset[1], positions[0] + offset[1]};
+        List<Vector2> collisionPoints = new List<Vector2> 
+           {positions[0] + offset[0], 
+            positions[1] + offset[0], 
+            positions[1] + offset[1], 
+            positions[0] + offset[1]};
 
         return collisionPoints;
     }
