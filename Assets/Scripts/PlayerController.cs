@@ -70,6 +70,7 @@ public class PlayerController : MonoBehaviour
         _playerControls.DefaultControls.LeftClick.canceled += leftClickAction_canceled;
         _titleFadeAway= FindObjectOfType<TitleFadeAway>();
 
+
         _boardManager = FindObjectOfType<EvidenceBoardManager>();
         _systemManager = FindObjectOfType<SystemManager>();
     }

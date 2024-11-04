@@ -20,6 +20,7 @@ public class FolderController : MonoBehaviour
         var openedFile = Instantiate(file);
         openedFile.transform.SetParent(canvas.transform, false);
         _systemManager.getOpenDoc(openedFile);
+
         _fileController = openedFile.GetComponent<FileController>();
         
         //openedFile.GetComponent<FileController>().heldDataFile = heldData;

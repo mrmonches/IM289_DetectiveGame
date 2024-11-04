@@ -67,6 +67,7 @@ public class CameraController : MonoBehaviour
     {
         if (paused == false)
         {
+
             //moves camera to the one on the right and keeps track of the active camera
             if (activecamera == 1 && _canMove == true)
             {

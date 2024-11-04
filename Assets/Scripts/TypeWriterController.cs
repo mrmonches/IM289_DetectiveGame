@@ -231,6 +231,7 @@ public class TypeWriterController : MonoBehaviour
                     dropdown5.options.Add(new TMP_Dropdown.OptionData(typewriterText[i], null));
                     typewriterID.RemoveAt(i);
                     typewriterText.RemoveAt(i);
+
                     typewriterNumber.RemoveAt(i);
                     dropdown5.RefreshShownValue();
                 }
@@ -244,3 +245,4 @@ public class TypeWriterController : MonoBehaviour
         _systemManager = FindObjectOfType<SystemManager>();
     }
 }
+
