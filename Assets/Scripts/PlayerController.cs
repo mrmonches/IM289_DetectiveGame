@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float CastDistance;
 
-    [SerializeField] private LayerMask LevelMask, EvidenceMask, CabinetMask, FoldersMask, StackMask, TypewriterMask, UIMask, LineMask,RecordMask;
+    [SerializeField] private LayerMask LevelMask, EvidenceMask, CabinetMask, FoldersMask, StackMask, TypewriterMask, UIMask, LineMask, RecordMask, TrashMask;
 
     private Vector3 mousePosition;
 
@@ -190,6 +190,17 @@ public class PlayerController : MonoBehaviour
     {
         if (CurrentStation == PlayerLocation.EvidenceBoard)
         {
+            RaycastHit hit;
+
+            if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, TrashMask) && isSelecting)
+            { 
+                DiscardScript _discardScript = hit.transform.GetComponent<DiscardScript>();
+
+                _discardScript.DiscardCard(EvidenceController.ID, EvidenceController.gameObject);
+
+                EvidenceController = null;
+            }
+
             isSelecting = false;
 
             if (EvidenceController != null)
@@ -229,32 +240,8 @@ public class PlayerController : MonoBehaviour
                     _yarnController.CheckLineStatus(hitObject.ChildTransform.position, hitObject.EvidenceData, hitObject.gameObject);
 
                     isConnecting = true;
-
-                    //if (_menuBehavior == null)
-                    //{
-                    //    _menuBehavior = hitObject.MenuBehavior;
-
-                    //    _menuBehavior.SetCardMenuStatus(true);
-                    //}
-                    //else if (_menuBehavior != null && _menuBehavior != hitObject)
-                    //{
-                    //    _menuBehavior.SetCardMenuStatus(false);
-
-                    //    _menuBehavior = hitObject.MenuBehavior;
-
-                    //    _menuBehavior.SetCardMenuStatus(true);
-                    //}
                 }
             }
-            //else
-            //{
-            //    if (_menuBehavior != null && _menuBehavior.GetCardMenuStatus())
-            //    {
-            //        _menuBehavior.SetCardMenuStatus(false);
-
-            //        _menuBehavior = null;
-            //    }
-            //}
         }
     }
 

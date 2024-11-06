@@ -56,7 +56,7 @@ public class EvidenceBoardManager : MonoBehaviour
         {
             if (id == connections[i].FirstID || id == connections[i].SecondID)
             {
-                Destroy(connections[i].LineRenderer);
+                Destroy(connections[i].LineObject);
                 connections.RemoveAt(i);
                 i--;
             }
@@ -69,7 +69,7 @@ public class EvidenceBoardManager : MonoBehaviour
         {
             if (lr == connections[i].LineRenderer)
             {
-                Destroy(connections[i].LineRenderer);
+                Destroy(connections[i].LineObject);
                 connections.RemoveAt(i);
                 i--;
             }
