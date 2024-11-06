@@ -71,7 +71,7 @@ public class YarnController : MonoBehaviour
     /// </summary>
     private void ClearCurrentRef()
     {
-        boardManager.Connections.Add(new ConnectionData(lineRenderer, firstID, secondID, firstObject, secondObject));
+        boardManager.Connections.Add(new ConnectionData(lineRenderer, lineRenderer.gameObject, firstID, secondID, firstObject, secondObject));
 
         lineRenderer.transform.GetComponent<YarnCollision>().StartCalculating = true;
 
