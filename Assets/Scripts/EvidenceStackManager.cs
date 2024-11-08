@@ -25,6 +25,11 @@ public class EvidenceStackManager : MonoBehaviour
         _playerController = FindObjectOfType<PlayerController>();
     }
 
+    public int GetStackCount()
+    {
+        return StackList.Count;
+    }
+
     public void AddToStack(EvidenceData evidenceData)
     {
         StackList.Add(evidenceData);
