@@ -33,8 +33,15 @@ public class FileController : MonoBehaviour
 
     public void SendToBoard(EvidenceData evidenceData)
     {
-        _audioSource.PlayOneShot(WriteClip);
+        if (_evidenceStackManager.GetStackCount() < 5)
+        {
+            _audioSource.PlayOneShot(WriteClip);
 
-        _evidenceStackManager.AddToStack(evidenceData);
+            _evidenceStackManager.AddToStack(evidenceData);
+        }
+        else
+        {
+            print("Too many cards");
+        }
     }
 }
