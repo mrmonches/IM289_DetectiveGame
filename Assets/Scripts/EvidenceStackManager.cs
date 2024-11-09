@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using UnityEngine;
 
 public class EvidenceStackManager : MonoBehaviour
@@ -17,6 +18,11 @@ public class EvidenceStackManager : MonoBehaviour
     [SerializeField] private List<GameObject> SpecialCaseItems;
 
     [SerializeField] private float CardDistance, CardRotation;
+
+    [SerializeField] private Vector3[] OddCardPos = new Vector3[5];
+    [SerializeField] private Vector3[] EvenCardPos = new Vector3[4];
+
+    private int CardMax = 5;
 
     private float posDifference, rotDifference;
 
@@ -53,9 +59,14 @@ public class EvidenceStackManager : MonoBehaviour
         UpdateStackOrder();
     }
 
-
+    /// <summary>
+    /// I promise, I am going to try and get a more modular version of this
+    /// My brain is not working and I need to get this done
+    /// - Nolan
+    /// </summary>
     public void UpdateStackOrder()
     {
+        /*
         posDifference = CardDistance / CardList.Count;
 
         int count = CardList.Count - 1;
@@ -89,6 +100,108 @@ public class EvidenceStackManager : MonoBehaviour
                 positiveIncrement--;
             }
         }
+        */
+
+        /*// Calculate offset so cards are positioned correctly
+        int offset = (CardMax - StackList.Count) / 2;
+
+        if (StackList.Count % 2 == 0)
+        {
+            GameObject[] tempList = CalculateTempList(offset, true);
+            
+
+
+            foreach (var stack in tempList)
+            {
+                if (stack == null)
+                {
+                    continue;
+                }
+                else
+                {
+                    stack.
+                }
+            }
+        }
+        else
+        {
+            foreach (var stack in StackList)
+            {
+
+            }
+        }*/
+
+        switch (StackList.Count)
+        {
+            case 1:
+                CardList[1].transform.position = OddCardPos[2];
+                break;
+            case 2:
+                CardList[1].transform.position = EvenCardPos[1];
+                CardList[2].transform.position = EvenCardPos[2];
+                break;
+            case 3:
+                CardList[1].transform.position = OddCardPos[1];
+                CardList[2].transform.position = OddCardPos[2];
+                CardList[3].transform.position = OddCardPos[3];
+                break;
+            case 4:
+                int i = 0;
+                foreach (var card in CardList) 
+                {
+                    card.transform.position = EvenCardPos[i];
+                    i++;
+                }
+                break;
+            case 5:
+                int x = 0;
+                foreach (var card in CardList)
+                {
+                    card.transform.position = OddCardPos[x];
+                    x++;
+                }
+                break;
+            default:
+                print("No cards");
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Part of UpdateStackOrder that needs to be corrected
+    /// </summary>
+    /// <param name="offset"></param>
+    /// <param name="isOdd"></param>
+    /// <returns></returns>
+    private GameObject[] CalculateTempList(int offset, bool isOdd)
+    {
+        GameObject[] tempList;
+
+        if (isOdd)
+        {
+            tempList = new GameObject[5];
+        }
+        else
+        {
+            tempList = new GameObject[4];
+        }
+
+        int x = 0;
+
+        // Assigns values before center cards as null
+        for (int i = 0; i < offset; i++)
+        {
+            tempList[i] = null;
+
+            x = i;
+        }
+
+        for (int i = x; i < StackList.Count; i++)
+        {
+            tempList[i] = CardList[i];
+        }
+
+        return tempList;
     }
 
     public void GivePlayerEvidence()
