@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class FileController : MonoBehaviour
@@ -9,11 +10,14 @@ public class FileController : MonoBehaviour
 
     private PlayerController _playerController;
 
-    [SerializeField] private EvidenceStackManager _evidenceStackManager;
+    private EvidenceStackManager _evidenceStackManager;
 
-    private AudioSource _audioSource;
+    private SoundManager _soundManager;
 
-    [SerializeField] private AudioClip WriteClip;
+    private RedCircle _redCircle;
+    private bool _isOnBoard = false;
+
+    private EvidenceController _createdCard;
 
     private void OnEnable()
     {
@@ -21,27 +25,64 @@ public class FileController : MonoBehaviour
 
         _evidenceStackManager = FindObjectOfType<EvidenceStackManager>();
 
-        _audioSource = GetComponent<AudioSource>();
-    }
+        _soundManager = FindObjectOfType<SoundManager>();
 
-    public void CloseFile()
-    {
-        _playerController.InItemViewer = false;
-
-        Destroy(gameObject);
+        _redCircle = GetComponentInChildren<RedCircle>(true);
+        if( _redCircle != null )
+        {
+            Debug.Log("Red Circle is assigned");
+        }
+        else
+        {
+            Debug.Log("Red Circle is not assigned");
+        }
     }
 
     public void SendToBoard(EvidenceData evidenceData)
     {
         if (_evidenceStackManager.GetStackCount() < 5)
         {
-            _audioSource.PlayOneShot(WriteClip);
+            if(_isOnBoard != true)
+            {
+                _soundManager.PlayWritingClip();
 
-            _evidenceStackManager.AddToStack(evidenceData);
+                _evidenceStackManager.AddToStack(evidenceData);
+                _redCircle.Appear();
+                _isOnBoard = true;
+            }
+            else
+            {
+                //Deactivate card
+                //locate created card
+                
+                FindCreatedCard(evidenceData);
+                //destroy card
+                _redCircle.Disappear();
+                _isOnBoard = false;
+            }
+            
         }
         else
         {
             print("Too many cards");
         }
+
+    }
+
+    private void FindCreatedCard(EvidenceData evidenceData)
+    {
+        //_createdCard = FindObjectOfType<EvidenceController>().EvidenceData == evidenceData;
+        EvidenceController[] evidenceControllers = FindObjectsOfType<EvidenceController>();
+
+        foreach(EvidenceController controller in evidenceControllers)
+        {
+            EvidenceController thisEvidenceController = controller as EvidenceController;
+            if (thisEvidenceController != null && thisEvidenceController.EvidenceData == evidenceData) 
+            {
+                _createdCard = thisEvidenceController;
+                break;
+            }
+        }
+
     }
 }

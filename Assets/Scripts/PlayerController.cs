@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour
 
                         _audioSource.PlayOneShot(ClickClip);
 
-                        _folderController.OpenCloseFile();
+                        _folderController.OpenFile();
 
                         InItemViewer = true;
 
@@ -434,7 +434,7 @@ public class PlayerController : MonoBehaviour
 
         if (CurrentStation != PlayerLocation.FilingCabinet && inItemViewer)
         {
-            _folderController.FileControl.CloseFile();
+            _folderController.CloseFile();
         }
     }
     /// <summary>

@@ -9,24 +9,32 @@ public class FolderController : MonoBehaviour
 
     private FileController _fileController;
     private SystemManager _systemManager;
+    private PlayerController _playerController;
+
 
     private bool folderOpen;
 
     public bool FolderOpen { get => folderOpen; set => folderOpen = value; }
     public FileController FileControl { get => _fileController; set => _fileController = value; }
 
-    public void OpenCloseFile()
+    public void OpenFile()
     {
-        var openedFile = Instantiate(file);
-        openedFile.transform.SetParent(canvas.transform, false);
-        _systemManager.getOpenDoc(openedFile);
-
-        _fileController = openedFile.GetComponent<FileController>();
+        file.SetActive(true);
+        _systemManager.getOpenDoc(file);
         
         //openedFile.GetComponent<FileController>().heldDataFile = heldData;
     }
+
+    public void CloseFile()
+    {
+        _playerController.InItemViewer = false;
+        file.SetActive(false);
+    }
+
     private void Awake()
     {
         _systemManager = FindObjectOfType<SystemManager>();
+
+        _playerController = FindObjectOfType<PlayerController>();
     }
 }
