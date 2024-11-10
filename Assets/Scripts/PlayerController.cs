@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using FMODUnity;
 
 // By Nolan
 
@@ -47,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private AudioSource _audioSource;
 
-    [SerializeField] private AudioClip ClickClip;
+    [SerializeField] private EventReference ClickSound;
 
     [SerializeField] private AudioClip MainMusic;
 
@@ -98,7 +99,7 @@ public class PlayerController : MonoBehaviour
                 {
                     EvidenceController.IsHeld = true;
 
-                    _audioSource.PlayOneShot(ClickClip);
+                    AudioManager.instance.PlayOneShot(ClickSound, SceneCamera.transform.position);
                 }
                 break;
 
@@ -110,7 +111,7 @@ public class PlayerController : MonoBehaviour
 
                     _titleFadeAway.disabletitle();
 
-                    _audioSource.PlayOneShot(ClickClip);
+                    AudioManager.instance.PlayOneShot(ClickSound, SceneCamera.transform.position);
                 }
 
                 break;
@@ -124,7 +125,7 @@ public class PlayerController : MonoBehaviour
                     {
                         _folderController = hitFolder.collider.gameObject.GetComponent<FolderController>();
 
-                        _audioSource.PlayOneShot(ClickClip);
+                        AudioManager.instance.PlayOneShot(ClickSound, SceneCamera.transform.position);
 
                         _folderController.OpenFile();
 
