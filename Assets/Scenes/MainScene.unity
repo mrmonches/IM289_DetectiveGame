@@ -4185,16 +4185,16 @@ MonoBehaviour:
   CardDistance: 10
   CardRotation: 60
   OddCardPos:
+  - {x: -3, y: 0, z: -3}
+  - {x: -1, y: 0, z: -1}
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  - {x: 1, y: 0, z: 1}
+  - {x: 3, y: 0, z: 3}
   EvenCardPos:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  - {x: -2, y: 0, z: -2}
+  - {x: -0.5, y: 0, z: -0.5}
+  - {x: 0.5, y: 0, z: 0.5}
+  - {x: 2, y: 0, z: 2}
 --- !u!1 &611907280
 GameObject:
   m_ObjectHideFlags: 0
