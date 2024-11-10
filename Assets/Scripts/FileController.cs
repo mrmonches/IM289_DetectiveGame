@@ -28,14 +28,15 @@ public class FileController : MonoBehaviour
         _soundManager = FindObjectOfType<SoundManager>();
 
         _redCircle = GetComponentInChildren<RedCircle>(true);
-        if( _redCircle != null )
+
+        /*if( _redCircle != null )
         {
             Debug.Log("Red Circle is assigned");
         }
         else
         {
             Debug.Log("Red Circle is not assigned");
-        }
+        }*/
     }
 
     public void SendToBoard(EvidenceData evidenceData)
@@ -80,6 +81,10 @@ public class FileController : MonoBehaviour
             if (thisEvidenceController != null && thisEvidenceController.EvidenceData == evidenceData) 
             {
                 _createdCard = thisEvidenceController;
+                //This removes the card
+                EvidenceCardMenuBehavior _createdCardMenuBehavior = _createdCard.GetComponentInParent<EvidenceCardMenuBehavior>();
+                _createdCardMenuBehavior.RemoveCardFromBoard();
+                
                 break;
             }
         }
