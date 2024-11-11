@@ -45,7 +45,8 @@ public class FileController : MonoBehaviour
         {
             if(_isOnBoard != true)
             {
-                _soundManager.PlayWritingClip();
+                //Turned off for FMOD
+                //_soundManager.PlayWritingClip();
 
                 _evidenceStackManager.AddToStack(evidenceData);
                 _redCircle.Appear();

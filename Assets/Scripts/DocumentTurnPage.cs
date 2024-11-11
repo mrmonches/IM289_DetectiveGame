@@ -23,24 +23,22 @@ public class DocumentTurnPage : MonoBehaviour
 
     public void TurnPage()
     {
-        var openedpage = Instantiate(_nextPage);
-        openedpage.transform.SetParent(canvas.transform, false);
+        _nextPage.SetActive(true);
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     public void BackPage()
     {
-        var openedpage = Instantiate(_previousPage);
-        openedpage.transform.SetParent(canvas.transform, false);
+        _previousPage.SetActive(true);
         
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     public void CloseDoc()
     {
         GameObject.Find("Player").GetComponent<PlayerController>().InItemViewer = false;
         _systemManager.updatePaperOpen(false,"null");
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
