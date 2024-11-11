@@ -30,7 +30,7 @@ public class TypeWriterController : MonoBehaviour
     //This is used to prevent moving between stations when in the typewriter 
     [SerializeField] private GameObject _cameraController;
     private TitleFadeAway _titleFadeAway;
-    private SystemManager _systemManager;
+    private PlayerController _playerController;
 
     private AudioSource _audioSource;
 
@@ -51,7 +51,7 @@ public class TypeWriterController : MonoBehaviour
     {
         _cameraController.GetComponent<CameraController>().getCannotMove();
         typewriterStuff.gameObject.SetActive(true);
-        _systemManager.updatePaperOpen(true,"TypeWriter");
+        _playerController.updatePaperOpen(true,"TypeWriter");
         
     }
 
@@ -178,7 +178,7 @@ public class TypeWriterController : MonoBehaviour
         _cameraController.GetComponent<CameraController>().getCanMove();
 
         typewriterStuff.gameObject.SetActive(false);
-        _systemManager.updatePaperOpen(false,"null");
+        _playerController.updatePaperOpen(false,"null");
         
         
     }
@@ -242,7 +242,7 @@ public class TypeWriterController : MonoBehaviour
     {
         typewriterStuff.gameObject.SetActive(false);
         _titleFadeAway = FindObjectOfType<TitleFadeAway>();
-        _systemManager = FindObjectOfType<SystemManager>();
+        _playerController = FindObjectOfType <PlayerController>();
     }
 }
 
