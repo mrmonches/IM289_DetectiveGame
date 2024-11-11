@@ -2,6 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using FMODUnity;
+using Unity.VisualScripting.Antlr3.Runtime;
 
 // By Nolan
 
@@ -52,6 +53,14 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private AudioClip MainMusic;
 
+    private bool paperopen;
+    private TypeWriterController typeWriterController;
+    private DocumentTurnPage _documentTurnPage;
+    private string openDoc;
+    private GameObject openEvidence;
+    [SerializeField] private GameObject pausemenu;
+    private bool paused = false;
+
     private TitleFadeAway _titleFadeAway;
     public bool InItemViewer { get => inItemViewer; set => inItemViewer = value; }
     public EvidenceController EvidenceController { get => _evidenceController; set => _evidenceController = value; }
@@ -69,12 +78,73 @@ public class PlayerController : MonoBehaviour
 
         _playerControls.DefaultControls.LeftClick.started += leftClickAction_started;
         _playerControls.DefaultControls.LeftClick.canceled += leftClickAction_canceled;
-        _titleFadeAway= FindObjectOfType<TitleFadeAway>();
+        _playerControls.DefaultControls.Quit.started += Quit_started;
+        _titleFadeAway = FindObjectOfType<TitleFadeAway>();
 
 
         _boardManager = FindObjectOfType<EvidenceBoardManager>();
         _systemManager = FindObjectOfType<SystemManager>();
+        typeWriterController = FindObjectOfType<TypeWriterController>();
+
     }
+
+    private void Quit_started(InputAction.CallbackContext obj)
+    {
+
+        if (paperopen == true)
+        {
+            if (openDoc == "TypeWriter")
+            {
+                typeWriterController.BackToDesk();
+            }
+            else if (openDoc == "Doc")
+            {
+                _folderController.CloseFile();
+            }
+
+
+            updatePaperOpen(false, "null");
+
+        }
+        else if (paused == true)
+        {
+            pausemenu.gameObject.SetActive(false);
+            _cameraController.updatePause(false);
+            paused = false;
+        }
+        else
+        {
+            pausemenu.gameObject.SetActive(true);
+            _cameraController.updatePause(true);
+            paused = true;
+
+        }
+    }
+    public void unPause()
+    {
+        pausemenu.gameObject.SetActive(false);
+        _cameraController.updatePause(false);
+        paused = false;
+    }
+    public void updatePaperOpen(bool input, string inputS)
+    {
+        if (input == true)
+        {
+            paperopen = true;
+        }
+        else
+        {
+            paperopen = false;
+        }
+        openDoc = inputS;
+
+    }
+
+    public void getOpenDoc(GameObject input)
+    {
+        openEvidence = input;
+    }
+
 
     private void leftClickAction_started(InputAction.CallbackContext obj)
     {
@@ -138,7 +208,7 @@ public class PlayerController : MonoBehaviour
 
                         Debug.Log("Raycast his the folder");
 
-                        _systemManager.updatePaperOpen(true,"Doc");
+                        updatePaperOpen(true,"Doc");
                         
                     }
                 }
@@ -251,10 +321,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void unityIsABitch()
-    {
-        _systemManager.unPause();
-    }
     private void RightClickAction_canceled(InputAction.CallbackContext obj)
     {
         if (CurrentStation == PlayerLocation.EvidenceBoard)
