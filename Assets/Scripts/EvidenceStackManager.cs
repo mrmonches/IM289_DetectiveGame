@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.Design;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EvidenceStackManager : MonoBehaviour
@@ -19,8 +20,8 @@ public class EvidenceStackManager : MonoBehaviour
 
     [SerializeField] private float CardDistance, CardRotation;
 
-    [SerializeField] private Vector3[] OddCardPos = new Vector3[5];
-    [SerializeField] private Vector3[] EvenCardPos = new Vector3[4];
+    [SerializeField] private GameObject[] OddCardPos = new GameObject[5];
+    [SerializeField] private GameObject[] EvenCardPos = new GameObject[4];
 
     private int CardMax = 5;
 
@@ -134,22 +135,22 @@ public class EvidenceStackManager : MonoBehaviour
         switch (StackList.Count)
         {
             case 1:
-                CardList[0].transform.position = OddCardPos[2];
+                CardList[0].transform.position = OddCardPos[2].transform.position;
                 break;
             case 2:
-                CardList[0].transform.position = EvenCardPos[1];
-                CardList[1].transform.position = EvenCardPos[2];
+                CardList[0].transform.position = EvenCardPos[1].transform.position;
+                CardList[1].transform.position = EvenCardPos[2].transform.position;
                 break;
             case 3:
-                CardList[0].transform.position = OddCardPos[1];
-                CardList[1].transform.position = OddCardPos[2];
-                CardList[2].transform.position = OddCardPos[3];
+                CardList[0].transform.position = OddCardPos[1].transform.position;
+                CardList[1].transform.position = OddCardPos[2].transform.position;
+                CardList[2].transform.position = OddCardPos[3].transform.position;
                 break;
             case 4:
                 int i = 0;
                 foreach (var card in CardList) 
                 {
-                    card.transform.position = EvenCardPos[i];
+                    card.transform.position = EvenCardPos[i].transform.position;
                     i++;
                 }
                 break;
@@ -157,7 +158,7 @@ public class EvidenceStackManager : MonoBehaviour
                 int x = 0;
                 foreach (var card in CardList)
                 {
-                    card.transform.position = OddCardPos[x];
+                    card.transform.position = OddCardPos[x].transform.position;
                     x++;
                 }
                 break;
