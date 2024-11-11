@@ -1623,7 +1623,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &192660171
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7641,7 +7641,7 @@ MonoBehaviour:
   LineMask:
     serializedVersion: 2
     m_Bits: 32768
-  RecordMask:
+  InteractionMask:
     serializedVersion: 2
     m_Bits: 0
   TrashMask:
@@ -9106,7 +9106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1303512080
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11068,7 +11068,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Case 1:'
+  m_text: 'Your Case:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 89db3ff56c24b0f4cb5151639436c5b6, type: 2}
   m_sharedMaterial: {fileID: -2758143518964017550, guid: 89db3ff56c24b0f4cb5151639436c5b6, type: 2}
@@ -11111,7 +11111,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
