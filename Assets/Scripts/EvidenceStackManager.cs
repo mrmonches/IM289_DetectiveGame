@@ -134,16 +134,16 @@ public class EvidenceStackManager : MonoBehaviour
         switch (StackList.Count)
         {
             case 1:
-                CardList[1].transform.position = OddCardPos[2];
+                CardList[0].transform.position = OddCardPos[2];
                 break;
             case 2:
-                CardList[1].transform.position = EvenCardPos[1];
-                CardList[2].transform.position = EvenCardPos[2];
+                CardList[0].transform.position = EvenCardPos[1];
+                CardList[1].transform.position = EvenCardPos[2];
                 break;
             case 3:
-                CardList[1].transform.position = OddCardPos[1];
-                CardList[2].transform.position = OddCardPos[2];
-                CardList[3].transform.position = OddCardPos[3];
+                CardList[0].transform.position = OddCardPos[1];
+                CardList[1].transform.position = OddCardPos[2];
+                CardList[2].transform.position = OddCardPos[3];
                 break;
             case 4:
                 int i = 0;
