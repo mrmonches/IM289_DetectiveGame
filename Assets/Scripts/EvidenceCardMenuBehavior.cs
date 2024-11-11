@@ -86,7 +86,7 @@ public class EvidenceCardMenuBehavior : MonoBehaviour
     {
         _boardManager.RemoveConnectionFromList(_evidenceController.ID);
 
-        _audioSource.PlayOneShot(CutClip);
+        //_audioSource.PlayOneShot(CutClip);
 
         SetCardMenuStatus(false);
     }

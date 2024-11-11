@@ -55,10 +55,7 @@ public class FileController : MonoBehaviour
             else
             {
                 //Deactivate card
-                //locate created card
-                
-                FindCreatedCard(evidenceData);
-                //destroy card
+                DestroyCreatedCard(evidenceData);
                 _redCircle.Disappear();
                 _isOnBoard = false;
             }
@@ -71,7 +68,7 @@ public class FileController : MonoBehaviour
 
     }
 
-    private void FindCreatedCard(EvidenceData evidenceData)
+    private void DestroyCreatedCard(EvidenceData evidenceData)
     {
         //_createdCard = FindObjectOfType<EvidenceController>().EvidenceData == evidenceData;
         EvidenceController[] evidenceControllers = FindObjectsOfType<EvidenceController>();
