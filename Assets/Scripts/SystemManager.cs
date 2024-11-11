@@ -47,6 +47,7 @@ public class SystemManager : MonoBehaviour
 
     private void Quit_started(InputAction.CallbackContext obj)
     {
+        Debug.Log("test 2");
         if(paperopen==true)
         {
             if(openDoc=="TypeWriter")

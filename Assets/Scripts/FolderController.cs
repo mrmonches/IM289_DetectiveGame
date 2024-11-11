@@ -20,7 +20,7 @@ public class FolderController : MonoBehaviour
     public void OpenFile()
     {
         file.SetActive(true);
-        _systemManager.getOpenDoc(file);
+        _playerController.getOpenDoc(file);
         
         //openedFile.GetComponent<FileController>().heldDataFile = heldData;
     }
