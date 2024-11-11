@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float CastDistance;
 
-    [SerializeField] private LayerMask LevelMask, EvidenceMask, CabinetMask, FoldersMask, StackMask, TypewriterMask, UIMask, LineMask, RecordMask, TrashMask;
+    [SerializeField] private LayerMask LevelMask, EvidenceMask, CabinetMask, FoldersMask, StackMask, TypewriterMask, UIMask, LineMask, InteractionMask, TrashMask;
 
     private Vector3 mousePosition;
 
@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
                 break;
 
             case PlayerLocation.Desk:
-                RaycastHit hitTypewriter;
+                RaycastHit hitTypewriter, hitInteractable;
                 if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitTypewriter, CastDistance, TypewriterMask))
                 {
                     _typeWriterController.GetComponent<TypeWriterController>().GetShowCanvas();
@@ -113,6 +113,11 @@ public class PlayerController : MonoBehaviour
 
                     AudioManager.instance.PlayOneShot(ClickSound, SceneCamera.transform.position);
                 }
+                else if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitTypewriter, CastDistance, InteractionMask))
+                {
+
+                }
+
 
                 break;
 
