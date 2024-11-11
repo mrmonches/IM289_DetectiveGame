@@ -79,7 +79,7 @@ public class PlayerController : MonoBehaviour
         _playerControls.DefaultControls.LeftClick.started += leftClickAction_started;
         _playerControls.DefaultControls.LeftClick.canceled += leftClickAction_canceled;
         _playerControls.DefaultControls.Quit.started += Quit_started;
-        _titleFadeAway= FindObjectOfType<TitleFadeAway>();
+        _titleFadeAway = FindObjectOfType<TitleFadeAway>();
 
 
         _boardManager = FindObjectOfType<EvidenceBoardManager>();
@@ -120,6 +120,12 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+    public void unPause()
+    {
+        pausemenu.gameObject.SetActive(false);
+        _cameraController.updatePause(false);
+        paused = false;
+    }
     public void updatePaperOpen(bool input, string inputS)
     {
         if (input == true)
@@ -133,14 +139,10 @@ public class PlayerController : MonoBehaviour
         openDoc = inputS;
 
     }
+
     public void getOpenDoc(GameObject input)
     {
         openEvidence = input;
-    }
-    public void unPause()
-    {
-        pausemenu.gameObject.SetActive(false);
-        _cameraController.updatePause(false);
     }
 
 
@@ -319,10 +321,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void unityIsABitch()
-    {
-        _systemManager.unPause();
-    }
     private void RightClickAction_canceled(InputAction.CallbackContext obj)
     {
         if (CurrentStation == PlayerLocation.EvidenceBoard)
