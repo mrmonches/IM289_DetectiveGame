@@ -6,9 +6,12 @@ public class DiscardScript : MonoBehaviour
 {
     private EvidenceBoardManager _boardManager;
 
+    private EvidenceStackManager _stackManager;
+
     private void Awake()
     {
         _boardManager = FindObjectOfType<EvidenceBoardManager>();
+        _stackManager = FindObjectOfType<EvidenceStackManager>();
     }
 
     public void DiscardCard(EvidenceID id, GameObject card)
