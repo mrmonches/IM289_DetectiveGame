@@ -18,6 +18,9 @@ public class DiscardScript : MonoBehaviour
     {
         _boardManager.RemoveConnectionFromList(id);
 
+        if (_stackManager.CheckInStack(card))
+            _stackManager.RemoveFromStack(card.GetComponent<EvidenceController>().EvidenceData, card);
+
         Destroy(card);
     }
 }
