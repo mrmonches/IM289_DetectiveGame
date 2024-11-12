@@ -21,4 +21,15 @@ public class AudioManager : MonoBehaviour
     {
         RuntimeManager.PlayOneShot(sound);
     }
+
+    public void PlayEvent(StudioEventEmitter emitter, EventReference sound)
+    {
+        emitter.EventReference = sound;
+        emitter.Play();
+    }
+
+    public void StopEvent(StudioEventEmitter emitter)
+    {
+        emitter.Stop();
+    }
 }
