@@ -53,6 +53,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private AudioClip MainMusic;
 
+    private GameObject interactionObject;
+
     private bool paperopen;
     private TypeWriterController typeWriterController;
     private DocumentTurnPage _documentTurnPage;
@@ -174,8 +176,8 @@ public class PlayerController : MonoBehaviour
                 break;
 
             case PlayerLocation.Desk:
-                RaycastHit hitTypewriter, hitInteractable;
-                if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitTypewriter, CastDistance, TypewriterMask))
+                RaycastHit hit;
+                if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, TypewriterMask))
                 {
                     _typeWriterController.GetComponent<TypeWriterController>().GetShowCanvas();
 
@@ -183,9 +185,9 @@ public class PlayerController : MonoBehaviour
 
                     AudioManager.instance.PlayOneShot(ClickSound, SceneCamera.transform.position);
                 }
-                else if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitTypewriter, CastDistance, InteractionMask))
+                else if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, InteractionMask))
                 {
-
+                    interactionObject = hit.transform.gameObject;
                 }
 
 
@@ -282,6 +284,23 @@ public class PlayerController : MonoBehaviour
             if (EvidenceController != null)
             {
                 EvidenceController.OnPlace();
+            }
+        }
+        else if (CurrentStation == PlayerLocation.Desk)
+        {
+            RaycastHit hit;
+
+            if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, InteractionMask))
+            {
+                if (interactionObject != null && interactionObject.Equals(hit.transform.gameObject))
+                {
+                    interactionObject.GetComponent<InteractionManager>().CallInteraction();
+                }
+            }
+
+            if (interactionObject != null)
+            {
+                interactionObject = null;
             }
         }
     }
