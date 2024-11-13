@@ -6,6 +6,7 @@ using UnityEngine;
 public class PhoneManager : MonoBehaviour
 {
     [SerializeField] private float BeginTimer;
+    [SerializeField] private float PhoneTimer;
 
     [SerializeField] private Animator PhoneAnimator;
 
@@ -39,18 +40,18 @@ public class PhoneManager : MonoBehaviour
     {
         IsRinging = true;
 
+        AudioManager.instance.PlayEvent(_eventEmitter, RingEvent);
+
         PhoneAnimator.SetTrigger("Ring");
 
         StartCoroutine("RingTimer");
-
-        AudioManager.instance.PlayEvent(_eventEmitter, RingEvent);
     }
 
     private IEnumerator RingTimer()
     {
         if (true)
         {
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(PhoneTimer);
 
             isRinging = false;
 
