@@ -14,4 +14,5 @@ Removing a card does not remove it as an option in the typewriter
 Creating and Destroying Card connections repeatedly creates multiple instances in the typewriter. 
 Some Cards don't have a red connection like they logically should. This is a design issue not a coding one. 
 Typewriter is not obviously the most important item on the Desk. 
-Documents arent labelled in the Filing Cabinet, only when reading them. 
+Documents are not labelled in the filing cabinet, only after opening them do their names appear. 
+Player can move while a document is open. 
