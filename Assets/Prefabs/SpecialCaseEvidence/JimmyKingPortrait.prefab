@@ -464,7 +464,7 @@ MonoBehaviour:
   OffsetPos: {x: 0, y: 2, z: 1.2}
   HoverPos: {x: 0, y: 0.1, z: 0.1}
   InHandHoverPos: {x: 0, y: 0.5, z: 0}
-  SlerpSpeed: 10
+  SlerpSpeed: 50
   HoverSpeed: 10
   cancelHover: 0
   canPlace: 1
@@ -474,6 +474,7 @@ MonoBehaviour:
   CardText: {fileID: 5828270636037776436}
   CastScale: {x: 3.5, y: 2.1, z: 0}
   CastOffsetPos: {x: 0, y: -2, z: -0.1}
+  CantDelete: 0
 --- !u!114 &4226511571698744990
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -270,8 +270,10 @@ public class PlayerController : MonoBehaviour
         {
             RaycastHit hit;
 
-            if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, TrashMask) && isSelecting)
+            if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, TrashMask) && 
+                isSelecting && !EvidenceController.DeleteStatus())
             { 
+
                 DiscardScript _discardScript = hit.transform.GetComponent<DiscardScript>();
 
                 _discardScript.DiscardCard(EvidenceController.ID, EvidenceController.gameObject);
