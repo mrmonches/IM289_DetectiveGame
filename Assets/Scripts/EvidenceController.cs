@@ -23,7 +23,7 @@ public class EvidenceController : MonoBehaviour
     [SerializeField, Tooltip("Change this to make evidence hover faster/smoother")]
     private float HoverSpeed;
 
-    private bool isHeld;
+    [SerializeField] private bool isHeld;
     private bool isHover;
     private bool isConnected;
     [SerializeField] private bool cancelHover;
@@ -73,7 +73,10 @@ public class EvidenceController : MonoBehaviour
 
         _menuBehavior = GetComponent<EvidenceCardMenuBehavior>();
 
-        IsInHand = true;
+        if (!CantDelete)
+        {
+            IsInHand = true;
+        }
     }
 
     /// <summary>
