@@ -77,7 +77,11 @@ public enum EvidenceID
     A05_01, //CityMap
     A05_02, //When out drinking
     A05_03, //Blackout Bar
-    A05_04  //Jealous
+    A05_04,  //Jealous
+    DarlingPortrait,
+    JimmyPortrait,
+    PianoPortrait,
+    StevenPortrait
 
 }
 
