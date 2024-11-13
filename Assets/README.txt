@@ -1,19 +1,17 @@
 READ ME for Black & Red
 Vertical Slice
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-Esc to close. R to restart current scene. 
+Esc to open the pause menu. R to restart current scene. 
 Move around using Q&E Keys
 Use WASD on the Murderboard to move your camera
 Click on the Typewriter to access it. Nothing else on the desk is interactable. 
 You'll need to click around on objects
-Duplicate Cards have multiple issues, so only use 1 of a Card. 
 
 
 Known Issues:
-Duplicate cards break interactions
+Occasionally, it becomes impossible to remove cards from the documents. 
 Removing a card does not remove it as an option in the typewriter
-Text on some cards will spill over
 Creating and Destroying Card connections repeatedly creates multiple instances in the typewriter. 
-Some Cards dohn't have a red connection like they logically should. This is a design issue not a coding one. 
+Some Cards don't have a red connection like they logically should. This is a design issue not a coding one. 
 Typewriter is not obviously the most important item on the Desk. 
 Documents arent labelled in the Filing Cabinet, only when reading them. 
