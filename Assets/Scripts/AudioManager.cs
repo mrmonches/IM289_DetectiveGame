@@ -22,16 +22,6 @@ public class AudioManager : MonoBehaviour
         RuntimeManager.PlayOneShot(sound);
     }
 
-    public void pauseMusic(StudioEventEmitter emitter)
-    {
-            emitter.EventInstance.setPaused(true);
-        
-    }
-    public void unpauseMusic(StudioEventEmitter emitter)
-    {
-        emitter.EventInstance.setPaused(false);
-    }
-
     public void PlayEvent(StudioEventEmitter emitter, EventReference sound)
     {
         emitter.EventReference = sound;
