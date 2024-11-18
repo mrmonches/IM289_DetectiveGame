@@ -545,7 +545,7 @@ MonoBehaviour:
   OffsetPos: {x: 0, y: 2, z: 1.2}
   HoverPos: {x: 0, y: 0.1, z: 0.1}
   InHandHoverPos: {x: 0, y: 0.5, z: 0}
-  SlerpSpeed: 10
+  SlerpSpeed: 50
   HoverSpeed: 10
   cancelHover: 0
   canPlace: 1

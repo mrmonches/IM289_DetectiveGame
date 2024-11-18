@@ -53,6 +53,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private AudioClip MainMusic;
 
+    private GameObject interactionObject;
+
     private bool paperopen;
     private TypeWriterController typeWriterController;
     private DocumentTurnPage _documentTurnPage;
@@ -79,7 +81,7 @@ public class PlayerController : MonoBehaviour
         _playerControls.DefaultControls.LeftClick.started += leftClickAction_started;
         _playerControls.DefaultControls.LeftClick.canceled += leftClickAction_canceled;
         _playerControls.DefaultControls.Quit.started += Quit_started;
-        _titleFadeAway= FindObjectOfType<TitleFadeAway>();
+        _titleFadeAway = FindObjectOfType<TitleFadeAway>();
 
 
         _boardManager = FindObjectOfType<EvidenceBoardManager>();
@@ -120,6 +122,12 @@ public class PlayerController : MonoBehaviour
 
         }
     }
+    public void unPause()
+    {
+        pausemenu.gameObject.SetActive(false);
+        _cameraController.updatePause(false);
+        paused = false;
+    }
     public void updatePaperOpen(bool input, string inputS)
     {
         if (input == true)
@@ -133,14 +141,10 @@ public class PlayerController : MonoBehaviour
         openDoc = inputS;
 
     }
+
     public void getOpenDoc(GameObject input)
     {
         openEvidence = input;
-    }
-    public void unPause()
-    {
-        pausemenu.gameObject.SetActive(false);
-        _cameraController.updatePause(false);
     }
 
 
@@ -172,8 +176,8 @@ public class PlayerController : MonoBehaviour
                 break;
 
             case PlayerLocation.Desk:
-                RaycastHit hitTypewriter, hitInteractable;
-                if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitTypewriter, CastDistance, TypewriterMask))
+                RaycastHit hit;
+                if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, TypewriterMask))
                 {
                     _typeWriterController.GetComponent<TypeWriterController>().GetShowCanvas();
 
@@ -181,9 +185,9 @@ public class PlayerController : MonoBehaviour
 
                     AudioManager.instance.PlayOneShot(ClickSound, SceneCamera.transform.position);
                 }
-                else if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitTypewriter, CastDistance, InteractionMask))
+                else if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, InteractionMask))
                 {
-
+                    interactionObject = hit.transform.gameObject;
                 }
 
 
@@ -266,8 +270,10 @@ public class PlayerController : MonoBehaviour
         {
             RaycastHit hit;
 
-            if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, TrashMask) && isSelecting)
+            if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, TrashMask) && 
+                isSelecting && !EvidenceController.DeleteStatus())
             { 
+
                 DiscardScript _discardScript = hit.transform.GetComponent<DiscardScript>();
 
                 _discardScript.DiscardCard(EvidenceController.ID, EvidenceController.gameObject);
@@ -280,6 +286,23 @@ public class PlayerController : MonoBehaviour
             if (EvidenceController != null)
             {
                 EvidenceController.OnPlace();
+            }
+        }
+        else if (CurrentStation == PlayerLocation.Desk)
+        {
+            RaycastHit hit;
+
+            if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, InteractionMask))
+            {
+                if (interactionObject != null && interactionObject.Equals(hit.transform.gameObject))
+                {
+                    interactionObject.GetComponent<InteractionManager>().CallInteraction();
+                }
+            }
+
+            if (interactionObject != null)
+            {
+                interactionObject = null;
             }
         }
     }
@@ -319,10 +342,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void unityIsABitch()
-    {
-        _systemManager.unPause();
-    }
     private void RightClickAction_canceled(InputAction.CallbackContext obj)
     {
         if (CurrentStation == PlayerLocation.EvidenceBoard)

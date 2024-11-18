@@ -426,7 +426,7 @@ GameObject:
   - component: {fileID: 6681817093942700711}
   - component: {fileID: -6819473008247279435}
   m_Layer: 5
-  m_Name: DarlingInterrogation2
+  m_Name: DarlingInt2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -60,6 +60,17 @@ public class EvidenceStackManager : MonoBehaviour
         UpdateStackOrder();
     }
 
+    public bool CheckInStack(GameObject card)
+    {
+        foreach (var item in CardList)
+        {
+            if (item == card) 
+                return true;
+        }
+
+        return false;
+    }
+
     /// <summary>
     /// I promise, I am going to try and get a more modular version of this
     /// My brain is not working and I need to get this done

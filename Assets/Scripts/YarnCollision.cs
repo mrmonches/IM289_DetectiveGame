@@ -11,6 +11,8 @@ public class YarnCollision : MonoBehaviour
 
     private PolygonCollider2D _polygonCollider;
 
+    [SerializeField] private float WidthOffset;
+
     private bool startCalculating;
 
     public bool StartCalculating { get => startCalculating; set => startCalculating = value; }
@@ -43,7 +45,7 @@ public class YarnCollision : MonoBehaviour
     {
         Vector3[] positions = GetPositions();
 
-        float width = _lineRenderer.startWidth;
+        float width = _lineRenderer.startWidth + WidthOffset;
 
         // Equations getting the slope between the points so that the collision points can be set
         float m = (positions[1].y - positions[0].y) / (positions[1].x - positions[0].x);

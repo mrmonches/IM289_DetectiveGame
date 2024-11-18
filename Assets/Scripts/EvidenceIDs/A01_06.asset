@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _evidenceID: 6
   _evidenceType: 4
-  correctConnections: 0700000019000000
+  correctConnections: 070000001900000024000000
   CardInformation: Giuoco Piano
   TypewriterEvidence: 1
