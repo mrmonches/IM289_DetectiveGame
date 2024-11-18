@@ -242,14 +242,5 @@ public class CameraController : MonoBehaviour
     public void updatePause(bool input)
     {
         paused = input;
-
-        if (paused)
-        {
-            Time.timeScale = 0f;
-        }
-        else
-        {
-            Time.timeScale = 1f;
-        }
     }
 }
