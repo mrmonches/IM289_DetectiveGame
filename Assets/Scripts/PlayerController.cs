@@ -195,7 +195,7 @@ public class PlayerController : MonoBehaviour
                 {
                     interactionObject = hit.transform.gameObject;
                 }
-                else if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, Mask))
+                else if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, InteractionMask))
                 {
                   //  AudioManager.instance.pauseMusic();
                 }
