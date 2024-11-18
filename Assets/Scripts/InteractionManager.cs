@@ -1,3 +1,4 @@
+using FMOD.Studio;
 using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,14 +13,15 @@ public class InteractionManager : MonoBehaviour
     private PhoneManager _phoneManager;
     private StudioEventEmitter _studioEventEmitter;
     private PlayerController _playerController;
-    private AudioManager _audioManager;
-
+    private RecordController _recordController;
+    private bool paused = false;
+  
     private void OnEnable()
     {
         switch(Name)
         {
             case InteractionName.Phone: _phoneManager = GetComponent<PhoneManager>(); break;
-            case InteractionName.RecordPlayer: _studioEventEmitter = GetComponent<StudioEventEmitter>();_playerController = GetComponent<PlayerController>();_audioManager = GetComponent<AudioManager>(); break;
+            case InteractionName.RecordPlayer: _studioEventEmitter = GetComponent<StudioEventEmitter>();_recordController = GetComponent<RecordController>(); break;
 
             default: break;
         }
@@ -40,10 +42,17 @@ public class InteractionManager : MonoBehaviour
                     _phoneManager.PickupPhone();
                 break;
             case InteractionName.RecordPlayer:
-                if (_playerController.MusicPaused)
-                    _audioManager.pauseMusic(_studioEventEmitter);
+                if (paused == false)
+                {
+
+                    _recordController.pauseMusic();
+                    paused = true;
+                }
                 else
-                    _audioManager.unpauseMusic(_studioEventEmitter);
+                {
+                    _recordController.unpauseMusic();
+                    paused = false;
+                }
                 break;
                     
             default: break;

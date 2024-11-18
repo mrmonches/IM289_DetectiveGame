@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
 
     private void Quit_started(InputAction.CallbackContext obj)
     {
-
+        Debug.Log("It still gets the input");
         if (paperopen == true)
         {
             if (openDoc == "TypeWriter")
@@ -304,6 +304,7 @@ public class PlayerController : MonoBehaviour
 
             if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, InteractionMask))
             {
+                
                 if (interactionObject != null && interactionObject.Equals(hit.transform.gameObject))
                 {
                     interactionObject.GetComponent<InteractionManager>().CallInteraction();

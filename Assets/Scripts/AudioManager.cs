@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
+using FMOD.Studio;
 
 public class AudioManager : MonoBehaviour
 {
@@ -22,10 +23,12 @@ public class AudioManager : MonoBehaviour
         RuntimeManager.PlayOneShot(sound);
     }
 
-    public void pauseMusic(StudioEventEmitter emitter)
+    public void pauseMusic(EventInstance music)
     {
-            emitter.EventInstance.setPaused(true);
-        
+        // emitter.EventInstance.setPaused(true);
+        music.setPaused(true);
+
+
     }
     public void unpauseMusic(StudioEventEmitter emitter)
     {

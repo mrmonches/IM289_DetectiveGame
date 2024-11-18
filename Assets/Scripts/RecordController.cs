@@ -6,13 +6,19 @@ using UnityEngine;
 
 public class RecordController : MonoBehaviour
 {
-    public FMOD.Studio.EventInstance jazzMusic;
+    [SerializeField] private FMOD.Studio.EventInstance music;
+
+    private void Awake()
+    {
+        music = FMODUnity.RuntimeManager.CreateInstance("event:/JazzEvent");
+        music.start();
+    }
     public void pauseMusic()
     {
-        jazzMusic.setPaused(true);
+       music.setPaused(true);
     }
     public void unpauseMusic()
     {
-        jazzMusic.setPaused(false);
+        music.setPaused(false);
     }
 }
