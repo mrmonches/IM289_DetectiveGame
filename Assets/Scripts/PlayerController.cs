@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using FMODUnity;
 using Unity.VisualScripting.Antlr3.Runtime;
+using Palmmedia.ReportGenerator.Core.Reporting.Builders;
 
 // By Nolan
 
@@ -19,7 +20,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float CastDistance;
 
-    [SerializeField] private LayerMask LevelMask, EvidenceMask, CabinetMask, FoldersMask, StackMask, TypewriterMask, UIMask, LineMask, InteractionMask, TrashMask;
+    [SerializeField] private LayerMask LevelMask, EvidenceMask, CabinetMask, FoldersMask, StackMask, TypewriterMask, UIMask, LineMask, InteractionMask, TrashMask,RecordMask;
 
     private Vector3 mousePosition;
 
@@ -51,9 +52,14 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private EventReference ClickSound;
 
+    [SerializeField] private EventReference jazzEvent;
+
     [SerializeField] private AudioClip MainMusic;
 
     private GameObject interactionObject;
+
+    [SerializeField] private GameObject reccordPlayer;
+    public bool MusicPaused = false;
 
     private bool paperopen;
     private TypeWriterController typeWriterController;
@@ -188,6 +194,10 @@ public class PlayerController : MonoBehaviour
                 else if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, InteractionMask))
                 {
                     interactionObject = hit.transform.gameObject;
+                }
+                else if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, Mask))
+                {
+                  //  AudioManager.instance.pauseMusic();
                 }
 
 
