@@ -14,15 +14,23 @@ public class InteractionManager : MonoBehaviour
     private StudioEventEmitter _studioEventEmitter;
     private PlayerController _playerController;
     private RecordController _recordController;
+    private LampController _lampController;
     private bool paused = false;
   
     private void OnEnable()
     {
         switch(Name)
         {
-            case InteractionName.Phone: _phoneManager = GetComponent<PhoneManager>(); break;
-            case InteractionName.RecordPlayer: _studioEventEmitter = GetComponent<StudioEventEmitter>();_recordController = GetComponent<RecordController>(); break;
-
+            case InteractionName.Phone: 
+                _phoneManager = GetComponent<PhoneManager>(); 
+                break;
+            case InteractionName.RecordPlayer: 
+                _studioEventEmitter = GetComponent<StudioEventEmitter>(); 
+                _recordController = GetComponent<RecordController>();
+                break;
+            case InteractionName.Lamp:
+                _lampController = GetComponent<LampController>();
+                break;
             default: break;
         }
     }
@@ -30,7 +38,8 @@ public class InteractionManager : MonoBehaviour
     private enum InteractionName
     {
         Phone,
-        RecordPlayer
+        RecordPlayer,
+        Lamp
     }
 
     public void CallInteraction()
@@ -42,9 +51,8 @@ public class InteractionManager : MonoBehaviour
                     _phoneManager.PickupPhone();
                 break;
             case InteractionName.RecordPlayer:
-                if (paused == false)
+                if (!paused)
                 {
-
                     _recordController.pauseMusic();
                     paused = true;
                 }
@@ -54,6 +62,8 @@ public class InteractionManager : MonoBehaviour
                     paused = false;
                 }
                 break;
+            case InteractionName.Lamp:
+
                     
             default: break;
         }
