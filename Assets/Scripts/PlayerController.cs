@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
     public EvidenceController EvidenceController { get => _evidenceController; set => _evidenceController = value; }
     public bool IsConnecting { get => isConnecting; set => isConnecting = value; }
 
-    private bool musicOn = true;
+    //private bool musicOn = true;
 
     private void Awake()
     {
@@ -81,6 +81,7 @@ public class PlayerController : MonoBehaviour
         _playerControls.DefaultControls.LeftClick.started += leftClickAction_started;
         _playerControls.DefaultControls.LeftClick.canceled += leftClickAction_canceled;
         _playerControls.DefaultControls.Quit.started += Quit_started;
+        _playerControls.DefaultControls.Quit.canceled += Quit_canceled;
         _titleFadeAway = FindObjectOfType<TitleFadeAway>();
 
 
@@ -90,9 +91,14 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void Quit_canceled(InputAction.CallbackContext obj)
+    {
+        
+    }
+
     private void Quit_started(InputAction.CallbackContext obj)
     {
-        Debug.Log("It still gets the input");
+       
         if (paperopen == true)
         {
             if (openDoc == "TypeWriter")

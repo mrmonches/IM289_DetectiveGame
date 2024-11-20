@@ -29,7 +29,7 @@ public class SystemManager : MonoBehaviour
     {
         _debugInputs = new DebugControls();
         _debugInputs.Debug.Enable();
-        _debugInputs.Debug.Quit.started += Quit_started;
+       // _debugInputs.Debug.Quit.started += Quit_started;
         _debugInputs.Debug.Restart.started += Restart_started;
         _documentTurnPage = FindObjectOfType<DocumentTurnPage>();
         _typeWriterController = FindObjectOfType<TypeWriterController>();
@@ -45,7 +45,7 @@ public class SystemManager : MonoBehaviour
         SceneManager.LoadScene(currentSceneName);
     }
 
-    private void Quit_started(InputAction.CallbackContext obj)
+   /* private void Quit_started(InputAction.CallbackContext obj)
     {
         Debug.Log("test 2");
         if(paperopen==true)
@@ -77,7 +77,7 @@ public class SystemManager : MonoBehaviour
             paused = true;
 
         }
-    }
+    }*/
     public void updatePaperOpen(bool input, string inputS)
     {
         if(input==true)

@@ -23,7 +23,7 @@ public class EvidenceStackManager : MonoBehaviour
     [SerializeField] private GameObject[] OddCardPos = new GameObject[5];
     [SerializeField] private GameObject[] EvenCardPos = new GameObject[4];
 
-    private int CardMax = 5;
+    //private int CardMax = 5;
 
     private float posDifference, rotDifference;
 
