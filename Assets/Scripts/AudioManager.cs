@@ -1,8 +1,9 @@
-using System.Collections;
+using FMOD.Studio;
+using FMODUnity;
 using System.Collections.Generic;
 using UnityEngine;
-using FMODUnity;
-using FMOD.Studio;
+
+// Created by Nolan, additions by Jack
 
 public class AudioManager : MonoBehaviour
 {
@@ -16,23 +17,13 @@ public class AudioManager : MonoBehaviour
         }
 
         instance = this;
+
+        RuntimeManager.LoadBank("Master");
     }
 
     public void PlayOneShot(EventReference sound, Vector3 pos)
     {
         RuntimeManager.PlayOneShot(sound);
-    }
-
-    public void pauseMusic(EventInstance music)
-    {
-        // emitter.EventInstance.setPaused(true);
-        music.setPaused(true);
-
-
-    }
-    public void unpauseMusic(StudioEventEmitter emitter)
-    {
-        emitter.EventInstance.setPaused(false);
     }
 
     public void PlayEvent(StudioEventEmitter emitter, EventReference sound)
@@ -44,5 +35,10 @@ public class AudioManager : MonoBehaviour
     public void StopEvent(StudioEventEmitter emitter)
     {
         emitter.Stop();
+    }
+
+    public void ControlAllEvents(bool status)
+    {
+        RuntimeManager.PauseAllEvents(status);
     }
 }
