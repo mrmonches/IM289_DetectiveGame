@@ -16442,7 +16442,6 @@ MonoBehaviour:
   titleText: {fileID: 1463486953}
   titleText2: {fileID: 329623289}
   titleBackground: {fileID: 1449052083}
-  fadeInTime: 0
   newspaperCorrect: {fileID: 1303512081}
   newspaperIncorrect: {fileID: 192660172}
 --- !u!114 &1449052083
@@ -23317,7 +23316,7 @@ MonoBehaviour:
   typewriterStuff: {fileID: 1374802377}
   _cameraController: {fileID: 1750113693}
   TypewriterClip: {fileID: 8300000, guid: c29e33287c17c3c47b2bec18cd30fb00, type: 3}
-  typewriterID: 010000000300000006000000110000001d00000012000000090000001a000000180000001700000021000000
+  typewriterID: 010000000300000006000000110000001d00000012000000090000001a0000001800000017000000210000000c000000
   typewriterText:
   - Darling King
   - Steven Knight
@@ -23330,7 +23329,8 @@ MonoBehaviour:
   - Wanted a personal chest from King
   - Wanted their inheritance from King
   - Jealous of Kings life
-  typewriterNumber: 0100000001000000010000000300000002000000020000000400000005000000050000000500000005000000
+  - Jimmy King
+  typewriterNumber: 010000000100000001000000030000000200000002000000040000000500000005000000050000000500000001000000
 --- !u!65 &2066150293
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -23,7 +23,7 @@ public class EvidenceStackManager : MonoBehaviour
     [SerializeField] private GameObject[] OddCardPos = new GameObject[5];
     [SerializeField] private GameObject[] EvenCardPos = new GameObject[4];
 
-    private int CardMax = 5;
+    //private int CardMax = 5;
 
     private float posDifference, rotDifference;
 
@@ -78,71 +78,6 @@ public class EvidenceStackManager : MonoBehaviour
     /// </summary>
     public void UpdateStackOrder()
     {
-        /*
-        posDifference = CardDistance / CardList.Count;
-
-        int count = CardList.Count - 1;
-
-        int negativeIncrement = 1;
-        int positiveIncrement = CardList.Count / 2;
-        
-
-        for (int i = 0; i < CardList.Count; i++)
-        {
-            if ((float)i < count / 2.0f)
-            {
-                CardList[i].transform.position = 
-                    new Vector3(CardSpawnPos.transform.position.x + (posDifference * (negativeIncrement)),
-                        CardSpawnPos.transform.position.y, 
-                        CardSpawnPos.transform.position.z);
-
-                negativeIncrement++;
-            }
-            else if ((float)i == count / 2.0f)
-            {
-                CardList[i].transform.position = CardSpawnPos.transform.position;
-            }
-            else if ((float)i > count / 2.0f)
-            {
-                CardList[i].transform.position = 
-                    new Vector3(CardSpawnPos.transform.position.x - (posDifference * (positiveIncrement)),
-                        CardSpawnPos.transform.position.y, 
-                        CardSpawnPos.transform.position.z);
-
-                positiveIncrement--;
-            }
-        }
-        */
-
-        /*// Calculate offset so cards are positioned correctly
-        int offset = (CardMax - StackList.Count) / 2;
-
-        if (StackList.Count % 2 == 0)
-        {
-            GameObject[] tempList = CalculateTempList(offset, true);
-            
-
-
-            foreach (var stack in tempList)
-            {
-                if (stack == null)
-                {
-                    continue;
-                }
-                else
-                {
-                    stack.
-                }
-            }
-        }
-        else
-        {
-            foreach (var stack in StackList)
-            {
-
-            }
-        }*/
-
         switch (StackList.Count)
         {
             case 1:

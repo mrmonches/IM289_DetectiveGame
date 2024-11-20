@@ -26,7 +26,6 @@ public class EvidenceData : ScriptableObject
         {
             if (correctConnections[i] == evidenceID)
             {
-                
                 return true;
             }
         }
@@ -83,7 +82,6 @@ public enum EvidenceID
     JimmyPortrait,
     PianoPortrait,
     StevenPortrait
-
 }
 
 public enum EvidenceType

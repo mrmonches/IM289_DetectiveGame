@@ -242,5 +242,6 @@ public class CameraController : MonoBehaviour
     public void updatePause(bool input)
     {
         paused = input;
+        AudioManager.instance.ControlAllEvents(input);
     }
 }

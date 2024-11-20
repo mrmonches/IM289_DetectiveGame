@@ -93,6 +93,7 @@ public class EvidenceBoardManager : MonoBehaviour
     {
         for(int i = 0; i < connections.Count; i++)
         {
+            print(connections[i].FirstID + " " + connections[i].SecondID + " " + evidenceID);
             if (connections[i].FirstID == evidenceID)
             {
                 connections[i].LineRenderer.SetPosition(0, evidence.transform.position);
