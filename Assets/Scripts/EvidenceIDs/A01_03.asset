@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _evidenceID: 3
   _evidenceType: 4
-  correctConnections: 1f00000004000000180000001f000000210000001c00000025000000
+  correctConnections: 04000000180000001c0000001f0000002100000025000000
   CardInformation: Steven Knight
   TypewriterEvidence: 1
