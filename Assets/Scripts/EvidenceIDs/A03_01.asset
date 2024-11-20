@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _evidenceID: 23
   _evidenceType: 4
-  correctConnections: 01000000
+  correctConnections: 010000000c000000
   CardInformation: '1471 Diamond St. '
   TypewriterEvidence: 1

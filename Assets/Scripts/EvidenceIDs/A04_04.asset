@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _evidenceID: 28
   _evidenceType: 4
-  correctConnections: 0100000003000000
+  correctConnections: 03000000
   CardInformation: Made a Move
   TypewriterEvidence: 1
