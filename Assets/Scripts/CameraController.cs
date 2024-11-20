@@ -65,9 +65,8 @@ public class CameraController : MonoBehaviour
     
     private void StationRight_started(InputAction.CallbackContext obj)
     {
-        if (paused == false)
+        if (!paused && !_cinemachineBrain.IsBlending)
         {
-
             //moves camera to the one on the right and keeps track of the active camera
             if (activecamera == 1 && _canMove == true)
             {
@@ -103,7 +102,7 @@ public class CameraController : MonoBehaviour
 
     private void StationLeft_started(InputAction.CallbackContext obj)
     {
-        if (paused == false)
+        if (!paused && !_cinemachineBrain.IsBlending)
         {
             //same as above but for the right
             if (activecamera == 2 && _canMove == true)
