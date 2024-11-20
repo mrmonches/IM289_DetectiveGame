@@ -77,6 +77,13 @@ public class EvidenceController : MonoBehaviour
         {
             IsInHand = true;
         }
+        else
+        {
+            isInHand = false;
+            OnPlace();
+        }
+
+        _id = EvidenceData.EvidenceID;
     }
 
     /// <summary>
@@ -144,6 +151,11 @@ public class EvidenceController : MonoBehaviour
         else
         {
             transform.position = placedPos;
+
+            if (isConnected)
+            {
+                _boardManager.UpdateLinePos(gameObject, _id);
+            }
         }
     }
 
