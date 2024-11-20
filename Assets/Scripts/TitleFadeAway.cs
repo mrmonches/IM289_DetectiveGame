@@ -10,7 +10,6 @@ public class TitleFadeAway : MonoBehaviour
     [SerializeField] private TextMeshProUGUI titleText;
     [SerializeField] private TextMeshProUGUI titleText2;
     [SerializeField] private Image titleBackground;
-    [SerializeField] private float fadeInTime = 0f;
     [SerializeField] private Image newspaperCorrect;
     [SerializeField] private Image newspaperIncorrect;
     private bool fade_in = false;
