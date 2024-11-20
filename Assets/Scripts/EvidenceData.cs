@@ -78,6 +78,7 @@ public enum EvidenceID
     A05_02, //When out drinking
     A05_03, //Blackout Bar
     A05_04,  //Jealous
+    A05_05, //Vincent Romano
     DarlingPortrait,
     JimmyPortrait,
     PianoPortrait,
