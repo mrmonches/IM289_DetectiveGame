@@ -73,43 +73,56 @@ public class TypeWriterController : MonoBehaviour
         string selectedOption = dropdown1.options[selectedIndex].text;
         
         if (selectedOption=="Steven Knight")
-        { 
+        {
+            
             correctCheck1 = true;
+            
+
         }
         else
         {
+            
             correctCheck1 = false;
+            
         }
     }
     public void Dropdown2(int val)
     {
         int selectedIndex = dropdown2.value;
         string selectedOption = dropdown2.options[selectedIndex].text;
-        if (selectedOption== "11:22PM")
+           
+        if (selectedOption== "The Alleyway")
         {
-            correctCheck2 = true;
             
+            correctCheck2 = true;
+            correctCheck2 = true;
            
 
+
+
         }
-        else if (val == 0||val==2)
+        else
         {
             correctCheck2 = false;
            
+
         }
     }
     public void Dropdown3(int val)
     {
         int selectedIndex = dropdown3.value;
         string selectedOption = dropdown3.options[selectedIndex].text;
-        if (selectedOption== "The Alleyway")
+       
+        if (selectedOption== "11:22PM")
         {
             
             correctCheck3 = true;
             
 
+
+
         }
-        else if(val==1||val==0)
+        else
         {
             correctCheck3 = false;
             
@@ -124,12 +137,14 @@ public class TypeWriterController : MonoBehaviour
         {
             
             correctCheck4 = true;
+            
 
 
         }
         else
         {
             correctCheck4 = false;
+            
         }
     }
     public void Dropdown5(int val)
@@ -137,16 +152,17 @@ public class TypeWriterController : MonoBehaviour
         int selectedIndex = dropdown5.value;
         string selectedOption = dropdown5.options[selectedIndex].text;
 
-        if (selectedOption == "jealous of Kings life")
+        if (selectedOption == "Jealous of Kings life")
         {
             
             correctCheck5 = true;
-
+            
 
         }
         else
         {
             correctCheck5 = false;
+            
         }
     }
     public void SubmitConclusion()
@@ -157,6 +173,7 @@ public class TypeWriterController : MonoBehaviour
         if (correctCheck1 == true&& correctCheck2 == true && correctCheck3 == true && correctCheck4 == true && correctCheck5 == true)
         {
             finalCorrectCheck = true;
+            
         }
         else
         {
