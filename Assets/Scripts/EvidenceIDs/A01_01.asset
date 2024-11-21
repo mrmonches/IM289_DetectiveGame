@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _evidenceID: 1
   _evidenceType: 4
-  correctConnections: 02000000050000001700000022000000
+  correctConnections: 0200000005000000170000001d000000
   CardInformation: Darling King
   TypewriterEvidence: 1
