@@ -182,6 +182,12 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    private void HaltCameraMove()
+    {
+        BoardBox.transform.position = LeftCamera.transform.position;
+        _boxRB.velocity = Vector3.zero;
+    }
+
     /// <summary>
     /// These are used to prevent the player from moving while in the typewriter. 
     /// </summary>
@@ -225,8 +231,7 @@ public class CameraController : MonoBehaviour
         }
         else if (activecamera != 1 && LeftCamera.transform.position != BoardBox.transform.position)
         {
-            BoardBox.transform.position = LeftCamera.transform.position;
-            _boxRB.velocity = Vector3.zero;
+            HaltCameraMove();
         }
     }
 
@@ -243,5 +248,10 @@ public class CameraController : MonoBehaviour
     {
         paused = input;
         AudioManager.instance.ControlAllEvents(input);
+        
+        if (activecamera == 1)
+        {
+            HaltCameraMove();
+        }
     }
 }
