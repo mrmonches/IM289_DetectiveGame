@@ -59,7 +59,6 @@ public class FileController : MonoBehaviour
                 _redCircle.Disappear();
                 _isOnBoard = false;
             }
-            
         }
         else
         {
