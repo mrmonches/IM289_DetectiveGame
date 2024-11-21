@@ -118,6 +118,7 @@ public class PlayerController : MonoBehaviour
         {
             pausemenu.gameObject.SetActive(false);
             _cameraController.updatePause(false);
+
             paused = false;
         }
         else
