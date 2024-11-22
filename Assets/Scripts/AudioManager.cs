@@ -9,6 +9,8 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance { get; private set; }
 
+    private StudioEventEmitter emitter;
+
     private void Awake()
     {
         if (instance != null)
@@ -17,6 +19,8 @@ public class AudioManager : MonoBehaviour
         }
 
         instance = this;
+
+        emitter = GetComponent<StudioEventEmitter>();
 
         RuntimeManager.LoadBank("Master");
     }
@@ -30,6 +34,15 @@ public class AudioManager : MonoBehaviour
     {
         emitter.EventReference = sound;
         emitter.Play();
+    }
+
+    public void PlayEvent(EventReference sound)
+    {
+        if (!emitter.IsPlaying())
+        {
+            emitter.EventReference = sound;
+            emitter.Play();
+        }
     }
 
     public void StopEvent(StudioEventEmitter emitter)
