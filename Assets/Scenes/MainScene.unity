@@ -565,11 +565,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1647378415
+      Data2: 1197317342
+      Data3: -819127658
+      Data4: 61654001
+    Path: event:/NegativeFilingCabinetEvent
 --- !u!1 &30530111
 GameObject:
   m_ObjectHideFlags: 0
@@ -1728,6 +1728,26 @@ PrefabInstance:
     - target: {fileID: 6525109112017564169, guid: 8864252b6bcef194ca911a2264ab2518, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -55.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681817093942700711, guid: 8864252b6bcef194ca911a2264ab2518, type: 3}
+      propertyPath: DialogueEvent.Path
+      value: event:/NegativeFilingCabinetEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681817093942700711, guid: 8864252b6bcef194ca911a2264ab2518, type: 3}
+      propertyPath: DialogueEvent.Guid.Data1
+      value: -1647378415
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681817093942700711, guid: 8864252b6bcef194ca911a2264ab2518, type: 3}
+      propertyPath: DialogueEvent.Guid.Data2
+      value: 1197317342
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681817093942700711, guid: 8864252b6bcef194ca911a2264ab2518, type: 3}
+      propertyPath: DialogueEvent.Guid.Data3
+      value: -819127658
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681817093942700711, guid: 8864252b6bcef194ca911a2264ab2518, type: 3}
+      propertyPath: DialogueEvent.Guid.Data4
+      value: 61654001
       objectReference: {fileID: 0}
     - target: {fileID: 7454507109711497776, guid: 8864252b6bcef194ca911a2264ab2518, type: 3}
       propertyPath: m_Sprite
@@ -2964,6 +2984,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 3.9
       objectReference: {fileID: 0}
+    - target: {fileID: 1973467744168877998, guid: 25fe762a22ecc99418e4cbb2e2eff80f, type: 3}
+      propertyPath: DialogueEvent.Path
+      value: event:/NegativeFilingCabinetEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973467744168877998, guid: 25fe762a22ecc99418e4cbb2e2eff80f, type: 3}
+      propertyPath: DialogueEvent.Guid.Data1
+      value: -1647378415
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973467744168877998, guid: 25fe762a22ecc99418e4cbb2e2eff80f, type: 3}
+      propertyPath: DialogueEvent.Guid.Data2
+      value: 1197317342
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973467744168877998, guid: 25fe762a22ecc99418e4cbb2e2eff80f, type: 3}
+      propertyPath: DialogueEvent.Guid.Data3
+      value: -819127658
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973467744168877998, guid: 25fe762a22ecc99418e4cbb2e2eff80f, type: 3}
+      propertyPath: DialogueEvent.Guid.Data4
+      value: 61654001
+      objectReference: {fileID: 0}
     - target: {fileID: 2531271125583911787, guid: 25fe762a22ecc99418e4cbb2e2eff80f, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -2982,7 +3022,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2531271125583911787, guid: 25fe762a22ecc99418e4cbb2e2eff80f, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3105413066444043952, guid: 25fe762a22ecc99418e4cbb2e2eff80f, type: 3}
+      propertyPath: DialogueEvent.Path
+      value: event:/NegativeFilingCabinetEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 3105413066444043952, guid: 25fe762a22ecc99418e4cbb2e2eff80f, type: 3}
+      propertyPath: DialogueEvent.Guid.Data1
+      value: -1647378415
+      objectReference: {fileID: 0}
+    - target: {fileID: 3105413066444043952, guid: 25fe762a22ecc99418e4cbb2e2eff80f, type: 3}
+      propertyPath: DialogueEvent.Guid.Data2
+      value: 1197317342
+      objectReference: {fileID: 0}
+    - target: {fileID: 3105413066444043952, guid: 25fe762a22ecc99418e4cbb2e2eff80f, type: 3}
+      propertyPath: DialogueEvent.Guid.Data3
+      value: -819127658
+      objectReference: {fileID: 0}
+    - target: {fileID: 3105413066444043952, guid: 25fe762a22ecc99418e4cbb2e2eff80f, type: 3}
+      propertyPath: DialogueEvent.Guid.Data4
+      value: 61654001
       objectReference: {fileID: 0}
     - target: {fileID: 4617231294682885751, guid: 25fe762a22ecc99418e4cbb2e2eff80f, type: 3}
       propertyPath: m_SizeDelta.x
@@ -4999,11 +5059,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1647378415
+      Data2: 1197317342
+      Data3: -819127658
+      Data4: 61654001
+    Path: event:/NegativeFilingCabinetEvent
 --- !u!1 &391476123
 GameObject:
   m_ObjectHideFlags: 0
@@ -5089,11 +5149,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1647378415
+      Data2: 1197317342
+      Data3: -819127658
+      Data4: 61654001
+    Path: event:/NegativeFilingCabinetEvent
 --- !u!114 &394018626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6830,11 +6890,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1647378415
+      Data2: 1197317342
+      Data3: -819127658
+      Data4: 61654001
+    Path: event:/NegativeFilingCabinetEvent
 --- !u!114 &489221713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6849,11 +6909,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1647378415
+      Data2: 1197317342
+      Data3: -819127658
+      Data4: 61654001
+    Path: event:/NegativeFilingCabinetEvent
 --- !u!1 &497684717
 GameObject:
   m_ObjectHideFlags: 0
@@ -8362,11 +8422,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1647378415
+      Data2: 1197317342
+      Data3: -819127658
+      Data4: 61654001
+    Path: event:/NegativeFilingCabinetEvent
 --- !u!114 &651253464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10079,6 +10139,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 6681817093942700711, guid: 50cf8972c999cc248b1861b7757b4c78, type: 3}
+      propertyPath: DialogueEvent.Path
+      value: event:/NegativeFilingCabinetEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681817093942700711, guid: 50cf8972c999cc248b1861b7757b4c78, type: 3}
+      propertyPath: DialogueEvent.Guid.Data1
+      value: -1647378415
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681817093942700711, guid: 50cf8972c999cc248b1861b7757b4c78, type: 3}
+      propertyPath: DialogueEvent.Guid.Data2
+      value: 1197317342
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681817093942700711, guid: 50cf8972c999cc248b1861b7757b4c78, type: 3}
+      propertyPath: DialogueEvent.Guid.Data3
+      value: -819127658
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681817093942700711, guid: 50cf8972c999cc248b1861b7757b4c78, type: 3}
+      propertyPath: DialogueEvent.Guid.Data4
+      value: 61654001
+      objectReference: {fileID: 0}
     - target: {fileID: 6872326626024038742, guid: 50cf8972c999cc248b1861b7757b4c78, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -10223,11 +10303,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1647378415
+      Data2: 1197317342
+      Data3: -819127658
+      Data4: 61654001
+    Path: event:/NegativeFilingCabinetEvent
 --- !u!114 &852624312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11276,11 +11356,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1647378415
+      Data2: 1197317342
+      Data3: -819127658
+      Data4: 61654001
+    Path: event:/NegativeFilingCabinetEvent
 --- !u!224 &883866361 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6175329432081578447, guid: e7d99b050adb3714bb68a8eb55ef50ef, type: 3}
@@ -11305,11 +11385,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1647378415
+      Data2: 1197317342
+      Data3: -819127658
+      Data4: 61654001
+    Path: event:/NegativeFilingCabinetEvent
 --- !u!1 &890569001
 GameObject:
   m_ObjectHideFlags: 0
@@ -11564,11 +11644,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1647378415
+      Data2: 1197317342
+      Data3: -819127658
+      Data4: 61654001
+    Path: event:/NegativeFilingCabinetEvent
 --- !u!1 &937233411
 GameObject:
   m_ObjectHideFlags: 0
@@ -13009,11 +13089,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1647378415
+      Data2: 1197317342
+      Data3: -819127658
+      Data4: 61654001
+    Path: event:/NegativeFilingCabinetEvent
 --- !u!1 &1143152025
 GameObject:
   m_ObjectHideFlags: 0
@@ -13496,11 +13576,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1647378415
+      Data2: 1197317342
+      Data3: -819127658
+      Data4: 61654001
+    Path: event:/NegativeFilingCabinetEvent
 --- !u!1 &1190502798
 GameObject:
   m_ObjectHideFlags: 0
@@ -14684,6 +14764,26 @@ PrefabInstance:
     - target: {fileID: 6379107819997921758, guid: 2bbe530b16fd78140882fdb077aa0d3d, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681817093942700711, guid: 2bbe530b16fd78140882fdb077aa0d3d, type: 3}
+      propertyPath: DialogueEvent.Path
+      value: event:/NegativeFilingCabinetEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681817093942700711, guid: 2bbe530b16fd78140882fdb077aa0d3d, type: 3}
+      propertyPath: DialogueEvent.Guid.Data1
+      value: -1647378415
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681817093942700711, guid: 2bbe530b16fd78140882fdb077aa0d3d, type: 3}
+      propertyPath: DialogueEvent.Guid.Data2
+      value: 1197317342
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681817093942700711, guid: 2bbe530b16fd78140882fdb077aa0d3d, type: 3}
+      propertyPath: DialogueEvent.Guid.Data3
+      value: -819127658
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681817093942700711, guid: 2bbe530b16fd78140882fdb077aa0d3d, type: 3}
+      propertyPath: DialogueEvent.Guid.Data4
+      value: 61654001
       objectReference: {fileID: 0}
     - target: {fileID: 6872326626024038742, guid: 2bbe530b16fd78140882fdb077aa0d3d, type: 3}
       propertyPath: m_fontAsset
@@ -17907,11 +18007,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1647378415
+      Data2: 1197317342
+      Data3: -819127658
+      Data4: 61654001
+    Path: event:/NegativeFilingCabinetEvent
 --- !u!1 &1519258490
 GameObject:
   m_ObjectHideFlags: 0
@@ -18014,11 +18114,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1647378415
+      Data2: 1197317342
+      Data3: -819127658
+      Data4: 61654001
+    Path: event:/NegativeFilingCabinetEvent
 --- !u!1 &1545064391
 GameObject:
   m_ObjectHideFlags: 0
@@ -18938,11 +19038,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1647378415
+      Data2: 1197317342
+      Data3: -819127658
+      Data4: 61654001
+    Path: event:/NegativeFilingCabinetEvent
 --- !u!114 &1591046687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18957,11 +19057,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1647378415
+      Data2: 1197317342
+      Data3: -819127658
+      Data4: 61654001
+    Path: event:/NegativeFilingCabinetEvent
 --- !u!1 &1595876789
 GameObject:
   m_ObjectHideFlags: 0
@@ -20750,11 +20850,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1647378415
+      Data2: 1197317342
+      Data3: -819127658
+      Data4: 61654001
+    Path: event:/NegativeFilingCabinetEvent
 --- !u!1 &1740903011
 GameObject:
   m_ObjectHideFlags: 0
@@ -23212,11 +23312,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1647378415
+      Data2: 1197317342
+      Data3: -819127658
+      Data4: 61654001
+    Path: event:/NegativeFilingCabinetEvent
 --- !u!1 &2047328188
 GameObject:
   m_ObjectHideFlags: 0
