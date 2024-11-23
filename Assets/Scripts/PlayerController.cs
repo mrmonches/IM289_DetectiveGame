@@ -118,6 +118,7 @@ public class PlayerController : MonoBehaviour
         {
             pausemenu.gameObject.SetActive(false);
             _cameraController.updatePause(false);
+
             paused = false;
         }
         else
@@ -396,9 +397,13 @@ public class PlayerController : MonoBehaviour
 
     private void OnBoardMove(InputValue moveVector)
     {
-        if (CurrentStation == PlayerLocation.EvidenceBoard)
+        if (CurrentStation == PlayerLocation.EvidenceBoard && !_cameraController.GetBlendStatus())
         {
             _cameraController.MoveBoardCamera(moveVector.Get<Vector2>());
+        }
+        else if (CurrentStation == PlayerLocation.EvidenceBoard && _cameraController.GetBlendStatus())
+        {
+            _cameraController.MoveBoardCamera(Vector3.zero);
         }
     }
 
@@ -505,15 +510,6 @@ public class PlayerController : MonoBehaviour
                 {
                     _yarnController.LineFollowMouse(GetSelectedPosition());
                 }
-
-                //if (isConnecting && EvidenceController == null)
-                //{
-                //    _yarnController.LineFollowMouse(GetSelectedPosition());
-                //}
-                //else if (isConnecting && EvidenceController != null)
-                //{
-                //    _yarnController.LineFollowMouse(EvidenceController.ChildTransform.position);
-                //}
                 break;
             case PlayerLocation.FilingCabinet:
                 if (!isSelecting)

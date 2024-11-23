@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+using FMOD.Studio;
+using FMODUnity;
 using UnityEngine;
 
 public class FileController : MonoBehaviour
@@ -18,6 +17,8 @@ public class FileController : MonoBehaviour
     private bool _isOnBoard = false;
 
     private EvidenceController _createdCard;
+
+    [SerializeField] private EventReference DialogueEvent;
 
     private void OnEnable()
     {
@@ -59,11 +60,11 @@ public class FileController : MonoBehaviour
                 _redCircle.Disappear();
                 _isOnBoard = false;
             }
-            
         }
         else
         {
             print("Too many cards");
+            AudioManager.instance.PlayEvent(DialogueEvent);
         }
 
     }

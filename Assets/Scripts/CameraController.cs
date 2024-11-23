@@ -46,13 +46,6 @@ public class CameraController : MonoBehaviour
         _playerControls.DefaultControls.Scroll.started += Scroll_started;
         _playerControls.DefaultControls.Scroll.canceled += Scroll_canceled;
 
-        //CameraInputs.currentActionMap.Enable();
-        //cameraLeft = CameraInputs.currentActionMap.FindAction("StationLeft");
-        //cameraRight = CameraInputs.currentActionMap.FindAction("StationRight");
-
-        //cameraLeft.started += CameraLeft_started;
-        //cameraRight.started += CameraRight_started;
-
         LeftCamera.gameObject.SetActive(false);
         RightCamera.gameObject.SetActive(false);
         MiddleCamera.gameObject.SetActive(true);
@@ -145,7 +138,7 @@ public class CameraController : MonoBehaviour
     {
         if (paused == false)
         {
-            if (!_cinemachineBrain.IsBlending)
+            if (!_cinemachineBrain.IsBlending && activecamera == 1)
             {
                 _boxRB.velocity = new Vector3(-moveValue.x * BoxSpeed, moveValue.y * BoxSpeed, _boxRB.velocity.z);
             }
@@ -159,7 +152,7 @@ public class CameraController : MonoBehaviour
     {
         if (paused == false)
         {
-            if (!_cinemachineBrain.IsBlending)
+            if (!_cinemachineBrain.IsBlending && activecamera == 1)
             {
                 _boxRB.velocity = new Vector3(_boxRB.velocity.x, _boxRB.velocity.y, Mathf.Clamp(moveValue * ScrollSpeed, -ScrollSpeed, ScrollSpeed));
             }
@@ -170,8 +163,6 @@ public class CameraController : MonoBehaviour
     {
         if (paused == false)
         {
-
-
             if (activecamera == 1)
             {
                 isScrolling = true;
@@ -179,7 +170,6 @@ public class CameraController : MonoBehaviour
                 scrollValue = obj.ReadValue<float>();
             }
         }
-
     }
 
     private void Scroll_canceled(InputAction.CallbackContext obj)
@@ -190,6 +180,12 @@ public class CameraController : MonoBehaviour
 
             scrollValue = 0f;
         }
+    }
+
+    private void HaltCameraMove()
+    {
+        BoardBox.transform.position = LeftCamera.transform.position;
+        _boxRB.velocity = Vector3.zero;
     }
 
     /// <summary>
@@ -215,6 +211,11 @@ public class CameraController : MonoBehaviour
         _canMove= false;
     }
 
+    public bool GetBlendStatus()
+    {
+        return _cinemachineBrain.IsBlending;
+    }
+
     /// <summary>
     /// DO NOT CHANGE FROM FIXED UPDATE
     /// The camera transitions ONLY WORK when this function is called on FixedUpdate
@@ -228,6 +229,10 @@ public class CameraController : MonoBehaviour
 
             ZoomBoardCamera(scrollValue);
         }
+        else if (activecamera != 1 && LeftCamera.transform.position != BoardBox.transform.position)
+        {
+            HaltCameraMove();
+        }
     }
 
     private void OnDestroy()
@@ -238,9 +243,15 @@ public class CameraController : MonoBehaviour
         _playerControls.DefaultControls.Scroll.started -= Scroll_started;
         _playerControls.DefaultControls.Scroll.canceled -= Scroll_canceled;
     }
+
     public void updatePause(bool input)
     {
         paused = input;
         AudioManager.instance.ControlAllEvents(input);
+        
+        if (activecamera == 1)
+        {
+            HaltCameraMove();
+        }
     }
 }

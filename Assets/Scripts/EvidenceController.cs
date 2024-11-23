@@ -81,9 +81,8 @@ public class EvidenceController : MonoBehaviour
         {
             isInHand = false;
             OnPlace();
+            _id = EvidenceData.EvidenceID;
         }
-
-        _id = EvidenceData.EvidenceID;
     }
 
     /// <summary>
