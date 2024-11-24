@@ -1,18 +1,22 @@
 READ ME for Black & Red
-Vertical Slice
+Beta
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 Esc to open the pause menu. R to restart current scene. 
+Click on the paper at your desk to read it. 
 Move around using Q&E Keys
-Use WASD on the Murderboard to move your camera
-Click on the Typewriter to access it. Nothing else on the desk is interactable. 
-You'll need to click around on objects
-
+Click on highlighted words in the documents to bring them over to the Murderboard. 
+Use WASD on the Murderboard to move your camera. 
+Click on the typewriter to open it. 
 
 Known Issues:
-Occasionally, it becomes impossible to remove cards from the documents. 
+Music & audio continues to play after a restart. 
+Occasionally, it becomes impossible to remove cards while in the documents. 
 Removing a card does not remove it as an option in the typewriter
 Creating and Destroying Card connections repeatedly creates multiple instances in the typewriter. 
-Some Cards don't have a red connection like they logically should. This is a design issue not a coding one. 
 Typewriter is not obviously the most important item on the Desk. 
-Documents are not labelled in the filing cabinet, only after opening them do their names appear. 
-Player can move while a document is open. 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Playtesting Feedback
+https://forms.gle/WSU7xQkAFCd9reCTA
+or
+https://docs.google.com/forms/d/e/1FAIpQLSeceorxcHrk0nW6EZ29R5TtKGQwzQRzi0yEOpNeHc7G3KFy1g/viewform?usp=sf_link
