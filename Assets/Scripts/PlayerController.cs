@@ -88,7 +88,6 @@ public class PlayerController : MonoBehaviour
         _boardManager = FindObjectOfType<EvidenceBoardManager>();
         _systemManager = FindObjectOfType<SystemManager>();
         typeWriterController = FindObjectOfType<TypeWriterController>();
-
     }
 
     private void Quit_canceled(InputAction.CallbackContext obj)
@@ -196,24 +195,37 @@ public class PlayerController : MonoBehaviour
                 {
                     interactionObject = hit.transform.gameObject;
                 }
+                else if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, FoldersMask) && !typeWriterController.GetTypewriterStatus())
+                {
+                    _folderController = hit.collider.gameObject.GetComponent<FolderController>();
+
+                    AudioManager.instance.PlayOneShot(ClickSound, SceneCamera.transform.position);
+
+                    _folderController.OpenFile();
+
+                    InItemViewer = true;
+
+                    Debug.Log("Raycast his the folder");
+
+                    updatePaperOpen(true, "Doc");
+                }
 
                 //Quinn. This is here in order to access the intro letter, which is on the desk. 
-                    RaycastHit letterHit;
-                    if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out letterHit, CastDistance, FoldersMask))
-                    {
-                        _folderController = letterHit.collider.gameObject.GetComponent<FolderController>();
+                    //RaycastHit letterHit;
+                    //if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out letterHit, CastDistance, FoldersMask) && )
+                    //{
+                    //    _folderController = letterHit.collider.gameObject.GetComponent<FolderController>();
 
-                        AudioManager.instance.PlayOneShot(ClickSound, SceneCamera.transform.position);
+                    //    AudioManager.instance.PlayOneShot(ClickSound, SceneCamera.transform.position);
 
-                        _folderController.OpenFile();
+                    //    _folderController.OpenFile();
 
-                        InItemViewer = true;
+                    //    InItemViewer = true;
 
-                        Debug.Log("Raycast his the folder");
+                    //    Debug.Log("Raycast his the folder");
 
-                        updatePaperOpen(true, "Doc");
-
-                    }
+                    //    updatePaperOpen(true, "Doc");
+                    //}
                 break;
 
             case PlayerLocation.FilingCabinet:

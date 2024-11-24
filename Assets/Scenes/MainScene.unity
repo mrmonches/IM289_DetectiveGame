@@ -11061,7 +11061,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4073338392830643507, guid: 3088d2bdea6394b4e884bc294159eb61, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4263767550948375086, guid: 3088d2bdea6394b4e884bc294159eb61, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26759,6 +26759,10 @@ PrefabInstance:
     - target: {fileID: 3833302446117184532, guid: 026eaf61af528f24285310ae82e31f29, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267239718953246829, guid: 026eaf61af528f24285310ae82e31f29, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7358832791685477627, guid: 026eaf61af528f24285310ae82e31f29, type: 3}
       propertyPath: m_Name
