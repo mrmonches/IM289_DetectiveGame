@@ -133,6 +133,7 @@ public class CameraController : MonoBehaviour
     /// <summary>
     /// This allows the player to move the camera while at the evidence board
     /// Looks nice and smooth :)
+    /// <3
     /// </summary>
     public void MoveBoardCamera(Vector3 moveValue)
     {

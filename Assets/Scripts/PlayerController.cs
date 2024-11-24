@@ -197,7 +197,23 @@ public class PlayerController : MonoBehaviour
                     interactionObject = hit.transform.gameObject;
                 }
 
+                //Quinn. This is here in order to access the intro letter, which is on the desk. 
+                    RaycastHit letterHit;
+                    if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out letterHit, CastDistance, FoldersMask))
+                    {
+                        _folderController = letterHit.collider.gameObject.GetComponent<FolderController>();
 
+                        AudioManager.instance.PlayOneShot(ClickSound, SceneCamera.transform.position);
+
+                        _folderController.OpenFile();
+
+                        InItemViewer = true;
+
+                        Debug.Log("Raycast his the folder");
+
+                        updatePaperOpen(true, "Doc");
+
+                    }
                 break;
 
             case PlayerLocation.FilingCabinet:
@@ -530,7 +546,8 @@ public class PlayerController : MonoBehaviour
 
         if (CurrentStation != PlayerLocation.FilingCabinet && inItemViewer)
         {
-            _folderController.CloseFile();
+            //Quinn. Commented this out because there is now a file on the desk
+            //_folderController.CloseFile();
         }
     }
     /// <summary>
