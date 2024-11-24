@@ -34,6 +34,8 @@ public class TypeWriterController : MonoBehaviour
 
     private AudioSource _audioSource;
 
+    private bool isActive;
+
     [SerializeField] private AudioClip TypewriterClip;
     //Keep all the lists in the same order as put below the code will not work properly if all the indexes are not in the correct order
     //EvidenceID.A01_01, EvidenceID.A01_03, EvidenceID.A01_06, EvidenceID.A01_17, EvidenceID.A04_05,EvidenceID.A02_00, EvidenceID.A01_09, EvidenceID.A04_02, EvidenceID.A03_02, EvidenceID.A03_01, EvidenceID.A05_04
@@ -52,7 +54,8 @@ public class TypeWriterController : MonoBehaviour
         _cameraController.GetComponent<CameraController>().getCannotMove();
         typewriterStuff.gameObject.SetActive(true);
         _playerController.updatePaperOpen(true,"TypeWriter");
-        
+
+        isActive = true;
     }
 
     public void GetShowCanvas()
@@ -196,8 +199,8 @@ public class TypeWriterController : MonoBehaviour
 
         typewriterStuff.gameObject.SetActive(false);
         _playerController.updatePaperOpen(false,"null");
-        
-        
+
+        isActive = false;
     }
     public void CorrectOption(EvidenceID FirstID,EvidenceData SecondData)
     {
@@ -260,6 +263,11 @@ public class TypeWriterController : MonoBehaviour
         typewriterStuff.gameObject.SetActive(false);
         _titleFadeAway = FindObjectOfType<TitleFadeAway>();
         _playerController = FindObjectOfType <PlayerController>();
+    }
+
+    public bool GetTypewriterStatus()
+    {
+        return isActive;
     }
 }
 

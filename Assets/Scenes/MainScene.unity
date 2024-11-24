@@ -11061,7 +11061,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4073338392830643507, guid: 3088d2bdea6394b4e884bc294159eb61, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4263767550948375086, guid: 3088d2bdea6394b4e884bc294159eb61, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11870,7 +11870,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6525109112017564169, guid: e7d99b050adb3714bb68a8eb55ef50ef, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 620.2
+      value: 613.03
       objectReference: {fileID: 0}
     - target: {fileID: 6525109112017564169, guid: e7d99b050adb3714bb68a8eb55ef50ef, type: 3}
       propertyPath: m_SizeDelta.y
@@ -16135,7 +16135,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1297397489}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1.000204, y: 1.0002041, z: 1.0002043}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16143,8 +16143,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 31.6, y: 3.3}
-  m_SizeDelta: {x: 816.1, y: 148}
+  m_AnchoredPosition: {x: -15.7, y: 0.89}
+  m_SizeDelta: {x: 750.9, y: 144.77}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1297397491
 MonoBehaviour:
@@ -16173,7 +16173,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 83.1, y: 47.93, z: 60.3, w: 51.12}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -21765,7 +21765,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1685120559}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -26759,6 +26759,10 @@ PrefabInstance:
     - target: {fileID: 3833302446117184532, guid: 026eaf61af528f24285310ae82e31f29, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267239718953246829, guid: 026eaf61af528f24285310ae82e31f29, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7358832791685477627, guid: 026eaf61af528f24285310ae82e31f29, type: 3}
       propertyPath: m_Name
