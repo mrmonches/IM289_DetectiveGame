@@ -5062,6 +5062,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SendToBoard
       objectReference: {fileID: 0}
+    - target: {fileID: 7889740119620348739, guid: 5a3826104e6ff2945a1a9ce26269f57d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8663493053044154362, guid: 5a3826104e6ff2945a1a9ce26269f57d, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -21738,7 +21742,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1685120560
 RectTransform:
   m_ObjectHideFlags: 0
