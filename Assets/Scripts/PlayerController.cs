@@ -162,17 +162,6 @@ public class PlayerController : MonoBehaviour
             case PlayerLocation.EvidenceBoard:
                 isSelecting = true;
 
-                if (_menuBehavior != null && _menuBehavior.GetCardMenuStatus())
-                {
-                    RaycastHit hitCardMenu;
-                    if (!Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitCardMenu, CastDistance, UIMask)) 
-                    {
-                        _menuBehavior.SetCardMenuStatus(false);
-
-                        _menuBehavior = null;
-                    }
-                }
-
                 if (EvidenceController != null)
                 {
                     EvidenceController.IsHeld = true;
@@ -481,10 +470,9 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void EvidenceSelect()
     {
-        RaycastHit hit, UIHit;
+        RaycastHit hit;
 
-        if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, EvidenceMask) && 
-            !Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out UIHit, CastDistance, UIMask))
+        if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, EvidenceMask))
         {
             if (EvidenceController != null && EvidenceController != hit.collider.gameObject.GetComponent<EvidenceController>())
             {
@@ -496,6 +484,11 @@ public class PlayerController : MonoBehaviour
             if (!Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hitCardMenu, CastDistance, UIMask))
             {
                 EvidenceController = hit.collider.gameObject.GetComponent<EvidenceController>();
+
+                if (EvidenceController.GetIsImageLabel)
+                {
+                    EvidenceController = EvidenceController.GetParentObject.GetComponent<EvidenceController>();
+                }
 
                 if (!EvidenceController.IsHover)
                 {
