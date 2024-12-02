@@ -14,7 +14,7 @@ public class FileController : MonoBehaviour
     private SoundManager _soundManager;
 
     private RedCircle _redCircle;
-    private bool _isOnBoard = false;
+    private bool _isOnBoard;
 
     private EvidenceController _createdCard;
 
@@ -53,7 +53,7 @@ public class FileController : MonoBehaviour
                 _redCircle.Appear();
                 _isOnBoard = true;
             }
-            else
+            else if (_isOnBoard != false) 
             {
                 //Deactivate card
                 DestroyCreatedCard(evidenceData);
@@ -72,7 +72,7 @@ public class FileController : MonoBehaviour
     private void DestroyCreatedCard(EvidenceData evidenceData)
     {
         //_createdCard = FindObjectOfType<EvidenceController>().EvidenceData == evidenceData;
-        EvidenceController[] evidenceControllers = FindObjectsOfType<EvidenceController>();
+        EvidenceController[] evidenceControllers = FindObjectsOfType<EvidenceController>(true);
 
         foreach(EvidenceController controller in evidenceControllers)
         {
@@ -81,7 +81,7 @@ public class FileController : MonoBehaviour
             {
                 _createdCard = thisEvidenceController;
                 //This removes the card
-                EvidenceCardMenuBehavior _createdCardMenuBehavior = _createdCard.GetComponentInParent<EvidenceCardMenuBehavior>();
+                EvidenceCardMenuBehavior _createdCardMenuBehavior = _createdCard.GetComponentInParent<EvidenceCardMenuBehavior>(true);
                 _createdCardMenuBehavior.RemoveCardFromBoard();
                 
                 break;
