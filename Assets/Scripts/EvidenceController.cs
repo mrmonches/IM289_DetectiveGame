@@ -52,6 +52,12 @@ public class EvidenceController : MonoBehaviour
 
     [SerializeField] private bool CantDelete;
 
+    [Header("Image Label Settings")]
+
+    [SerializeField] private bool IsImageLabel;
+    [SerializeField] private GameObject ParentObject;
+    [SerializeField] private GameObject ChildObject;
+
     public bool IsHeld { get => isHeld; set => isHeld = value; }
     public bool IsHover { get => isHover; set => isHover = value; }
     public Transform ChildTransform { get => _childTransform; private set => _childTransform = value; }
@@ -60,6 +66,10 @@ public class EvidenceController : MonoBehaviour
     public bool IsConnected { get => isConnected; set => isConnected = value; }
     public EvidenceCardMenuBehavior MenuBehavior { get => _menuBehavior; set => _menuBehavior = value; }
     public bool IsInHand { get => isInHand; set => isInHand = value; }
+    public bool GetIsImageLabel { get => IsImageLabel; set => IsImageLabel = value; }
+    public GameObject GetParentObject { get => ParentObject; set => ParentObject = value; }
+    public GameObject GetChildObject { get => ChildObject; set => ChildObject = value; }
+    public bool CanPlace { get => canPlace; set => canPlace = value; }
 
     private void OnEnable()
     {
@@ -81,7 +91,10 @@ public class EvidenceController : MonoBehaviour
         {
             isInHand = false;
             OnPlace();
-            _id = EvidenceData.EvidenceID;
+            if (!IsImageLabel)
+            {
+                _id = EvidenceData.EvidenceID;
+            }
         }
     }
 
@@ -129,7 +142,10 @@ public class EvidenceController : MonoBehaviour
         {
             transform.position = new Vector3 (transform.position.x, transform.position.y, _boardManager.EvidencePlacePos1);
 
-            transform.parent = _boardManager.transform;
+            if (!IsImageLabel)
+            {
+                transform.parent = _boardManager.transform;
+            }
 
             RecordPlacedPos();
 
@@ -179,7 +195,7 @@ public class EvidenceController : MonoBehaviour
         placedPos = transform.position;
     }
 
-    private void CheckPlacePos()
+    public void CheckPlacePos()
     {
         Vector3 pos = new Vector3(transform.position.x + CastOffsetPos.x,
                 transform.position.y + CastOffsetPos.y,
@@ -189,11 +205,32 @@ public class EvidenceController : MonoBehaviour
         if (Physics.BoxCast(pos, CastScale, direction, out hit, transform.rotation, CastDistance, EvidenceMask) && 
             hit.collider != _boxCollider)
         {
-            canPlace = false;
+            if (ParentObject != null && ParentObject != hit.collider.gameObject)
+            {
+                canPlace = false;
+            }
+            else if (ParentObject != null && ParentObject == hit.collider.gameObject)
+            {
+                canPlace = true;
+            }
+            else
+            {
+                canPlace = false;
+            }
         }
         else
         {
             canPlace = true;
+        }
+
+        if (ChildObject != null)
+        {
+            ChildObject.GetComponent<EvidenceController>().CheckPlacePos();
+
+            if (!ChildObject.GetComponent<EvidenceController>().CanPlace)
+            {
+                canPlace = false;
+            }
         }
     }
 
@@ -247,7 +284,7 @@ public class EvidenceController : MonoBehaviour
                 _boardManager.UpdateLinePos(gameObject, _id);
             }
         }
-        else if (!IsInHand)
+        else if (!IsInHand && !IsImageLabel)
         {
             if (IsHover && transform.position != placedPos + HoverPos)
             {
