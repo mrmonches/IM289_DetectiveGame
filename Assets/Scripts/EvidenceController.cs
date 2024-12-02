@@ -57,6 +57,7 @@ public class EvidenceController : MonoBehaviour
     [SerializeField] private bool IsImageLabel;
     [SerializeField] private GameObject ParentObject;
     [SerializeField] private GameObject ChildObject;
+    [SerializeField] private float LabelOffset;
 
     public bool IsHeld { get => isHeld; set => isHeld = value; }
     public bool IsHover { get => isHover; set => isHover = value; }
@@ -140,7 +141,14 @@ public class EvidenceController : MonoBehaviour
 
         if (canPlace)
         {
-            transform.position = new Vector3 (transform.position.x, transform.position.y, _boardManager.EvidencePlacePos1);
+            if (!IsImageLabel)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, _boardManager.EvidencePlacePos1);
+            }
+            else
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, _boardManager.EvidencePlacePos1 + LabelOffset);
+            }
 
             if (!IsImageLabel)
             {
