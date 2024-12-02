@@ -5,6 +5,7 @@ using UnityEngine;
 
 // Created by Nolan, additions by Jack
 
+
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance { get; private set; }
