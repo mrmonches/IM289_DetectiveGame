@@ -10,6 +10,8 @@ public class EvidenceBoardManager : MonoBehaviour
 
     [SerializeField] private int ListCount;
 
+    [SerializeField] private float YarnOffset;
+
     private bool hasShortList;
 
     public float EvidencePlacePos1 { get => EvidencePlacePos; private set => EvidencePlacePos = value; }
@@ -93,14 +95,16 @@ public class EvidenceBoardManager : MonoBehaviour
     {
         for(int i = 0; i < connections.Count; i++)
         {
-            print(connections[i].FirstID + " " + connections[i].SecondID + " " + evidenceID);
+            //print(connections[i].FirstID + " " + connections[i].SecondID + " " + evidenceID);
             if (connections[i].FirstID == evidenceID)
             {
-                connections[i].LineRenderer.SetPosition(0, evidence.transform.position);
+                connections[i].LineRenderer.SetPosition(0, new Vector3(evidence.transform.position.x,
+                    evidence.transform.position.y, evidence.transform.position.z + YarnOffset));
             }
             else if (connections[i].SecondID == evidenceID)
             {
-                connections[i].LineRenderer.SetPosition(1, evidence.transform.position);
+                connections[i].LineRenderer.SetPosition(1, new Vector3(evidence.transform.position.x,
+                    evidence.transform.position.y, evidence.transform.position.z + YarnOffset));
             }
         }
     }

@@ -160,13 +160,16 @@ public class PlayerController : MonoBehaviour
         switch (CurrentStation)
         {
             case PlayerLocation.EvidenceBoard:
-                isSelecting = true;
-
-                if (EvidenceController != null)
+                if (!isConnecting)
                 {
-                    EvidenceController.IsHeld = true;
+                    isSelecting = true;
 
-                    AudioManager.instance.PlayOneShot(ClickSound, SceneCamera.transform.position);
+                    if (EvidenceController != null)
+                    {
+                        EvidenceController.IsHeld = true;
+
+                        AudioManager.instance.PlayOneShot(ClickSound, SceneCamera.transform.position);
+                    }
                 }
                 break;
 
@@ -336,32 +339,35 @@ public class PlayerController : MonoBehaviour
     {
         if (CurrentStation == PlayerLocation.EvidenceBoard) 
         {
-            if (_boardManager.Connections.Count > 0)
+            if (!isSelecting)
             {
-                Ray ray = SceneCamera.ScreenPointToRay(mousePosition);
-                RaycastHit2D hit2D = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
-
-                if (hit2D.collider != null && hit2D.transform.CompareTag("LineRenderer"))
+                if (_boardManager.Connections.Count > 0)
                 {
-                    print("hitLine");
+                    Ray ray = SceneCamera.ScreenPointToRay(mousePosition);
+                    RaycastHit2D hit2D = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
 
-                    isCutting = true;
+                    if (hit2D.collider != null && hit2D.transform.CompareTag("LineRenderer"))
+                    {
+                        //print("hitLine");
+
+                        isCutting = true;
+                    }
                 }
-            }
+            
+                RaycastHit hit;
 
-            RaycastHit hit;
-
-            if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, EvidenceMask))
-            {
-                EvidenceController hitObject = hit.collider.GetComponent<EvidenceController>();
-
-                if (!hitObject.IsInHand)
+                if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, EvidenceMask))
                 {
-                    _yarnController = hitObject.GetComponent<YarnController>();
+                    EvidenceController hitObject = hit.collider.GetComponent<EvidenceController>();
 
-                    _yarnController.CheckLineStatus(hitObject.ChildTransform.position, hitObject.EvidenceData, hitObject.gameObject);
+                    if (!hitObject.IsInHand)
+                    {
+                        _yarnController = hitObject.GetComponent<YarnController>();
 
-                    isConnecting = true;
+                        _yarnController.CheckLineStatus(hitObject.ChildTransform.position, hitObject.EvidenceData, hitObject.gameObject);
+
+                        isConnecting = true;
+                    }
                 }
             }
         }

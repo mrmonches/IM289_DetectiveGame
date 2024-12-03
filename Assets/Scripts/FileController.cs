@@ -1,4 +1,3 @@
-using FMOD.Studio;
 using FMODUnity;
 using UnityEngine;
 
@@ -44,7 +43,7 @@ public class FileController : MonoBehaviour
     {
         if (_evidenceStackManager.GetStackCount() < 5)
         {
-            if(_isOnBoard != true)
+            if(_isOnBoard == false)
             {
                 //Turned off for FMOD
                 //_soundManager.PlayWritingClip();
@@ -53,9 +52,10 @@ public class FileController : MonoBehaviour
                 _redCircle.Appear();
                 _isOnBoard = true;
             }
-            else if (_isOnBoard != false) 
+            else if (_isOnBoard == true) 
             {
                 //Deactivate card
+
                 DestroyCreatedCard(evidenceData);
                 _redCircle.Disappear();
                 _isOnBoard = false;
@@ -84,6 +84,11 @@ public class FileController : MonoBehaviour
                 EvidenceCardMenuBehavior _createdCardMenuBehavior = _createdCard.GetComponentInParent<EvidenceCardMenuBehavior>(true);
                 _createdCardMenuBehavior.RemoveCardFromBoard();
                 
+                if (_isOnBoard)
+                {
+                    _evidenceStackManager.RemoveFromStack(thisEvidenceController.EvidenceData, thisEvidenceController.gameObject);
+                }
+
                 break;
             }
         }
