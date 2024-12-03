@@ -72,9 +72,7 @@ public class EvidenceStackManager : MonoBehaviour
     }
 
     /// <summary>
-    /// I promise, I am going to try and get a more modular version of this
-    /// My brain is not working and I need to get this done
-    /// - Nolan
+    /// This is a very manual function that works, just never had enough time to make it less manual
     /// </summary>
     public void UpdateStackOrder()
     {
