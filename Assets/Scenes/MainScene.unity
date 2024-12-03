@@ -8567,6 +8567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EvidencePlacePos: -43
   ListCount: 0
+  YarnOffset: 0.2
 --- !u!65 &606831398
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27978,6 +27979,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 606831399}
     m_Modifications:
+    - target: {fileID: 4226511571698744990, guid: b92f4f69dabbe134c8e2921c9cee9fef, type: 3}
+      propertyPath: YarnOffset
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 4805961752235777818, guid: b92f4f69dabbe134c8e2921c9cee9fef, type: 3}
       propertyPath: m_Name
       value: JimmyKingPortrait
@@ -28675,6 +28680,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 606831399}
     m_Modifications:
+    - target: {fileID: 3555371103364050235, guid: b2ee8b0c00551ab47a50f758006a6179, type: 3}
+      propertyPath: YarnOffset
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7187737784535702339, guid: b2ee8b0c00551ab47a50f758006a6179, type: 3}
       propertyPath: m_Name
       value: DarlingKingPortrait
@@ -28743,6 +28752,10 @@ PrefabInstance:
       propertyPath: ChildObject
       value: 
       objectReference: {fileID: 42094512}
+    - target: {fileID: 8438556950693875420, guid: b2ee8b0c00551ab47a50f758006a6179, type: 3}
+      propertyPath: OffsetPos.z
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8438556950693875420, guid: b2ee8b0c00551ab47a50f758006a6179, type: 3}
       propertyPath: _evidenceData
       value: 

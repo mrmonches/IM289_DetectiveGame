@@ -103,7 +103,6 @@ public class YarnController : MonoBehaviour
         {
             lineRenderer.positionCount = 2;
         }
-        
 
         lineRenderer.SetPosition(lineRenderer.positionCount - 1, pos);
 
