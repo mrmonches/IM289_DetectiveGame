@@ -17,3 +17,4 @@ MonoBehaviour:
   correctConnections: 0c000000
   CardInformation: 'Victim was intoxicated '
   TypewriterEvidence: 0
+  FontSize: 0.8

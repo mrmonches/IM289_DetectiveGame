@@ -192,6 +192,11 @@ public class EvidenceController : MonoBehaviour
         {
             CardText.text = _evidenceData.GetCardInformation;
         }
+
+        if (_evidenceData.GetFontSize != 0)
+        {
+            CardText.fontSize = _evidenceData.GetFontSize;
+        }
     }
 
     /// <summary>
