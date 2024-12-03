@@ -15,10 +15,14 @@ public class EvidenceData : ScriptableObject
     [SerializeField] private bool TypewriterEvidence;
     private TypeWriterController _typewriterController;
 
+    [SerializeField, Tooltip("This should only be filled out if the text is going off of the card, new font size should be less than 1")]
+    private float FontSize;
+
     public EvidenceID EvidenceID { get => _evidenceID; set => _evidenceID = value; }
     public EvidenceType EvidenceType { get => _evidenceType; set => _evidenceType = value; }
     public bool TypewriterEvidence1 { get => TypewriterEvidence; set => TypewriterEvidence = value; }
     public string GetCardInformation { get => CardInformation; private set => CardInformation = value; }
+    public float GetFontSize { get => FontSize; set => FontSize = value; }
 
     public bool CheckCorrectConnection(EvidenceID evidenceID)
     {

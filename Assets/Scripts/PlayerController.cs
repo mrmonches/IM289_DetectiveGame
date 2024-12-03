@@ -395,6 +395,11 @@ public class PlayerController : MonoBehaviour
                 {
                     EvidenceController hitObject = hit.collider.GetComponent<EvidenceController>();
 
+                    if (hitObject.GetIsImageLabel)
+                    {
+                        hitObject = hitObject.GetParentObject.GetComponent<EvidenceController>();
+                    }
+
                     if (!hitObject.IsInHand)
                     {
                         _yarnController.CheckLineStatus(hitObject.ChildTransform.position, hitObject.EvidenceData, hitObject.gameObject);
