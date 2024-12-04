@@ -22,7 +22,7 @@ public class SystemManager : MonoBehaviour
     private GameObject openEvidence;
     [SerializeField] private GameObject pausemenu;
     private CameraController _cameraController;
-    private bool paused = false;
+    //private bool paused = false;
     //[SerializeField] private 
     // Start is called before the first frame update
     void Start()
@@ -100,7 +100,4 @@ public class SystemManager : MonoBehaviour
         pausemenu.gameObject.SetActive(false);
         _cameraController.updatePause(false);
     }
-
-
-    
 }

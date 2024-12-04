@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class MouseManager : MonoBehaviour
 {
@@ -21,9 +20,15 @@ public class MouseManager : MonoBehaviour
 
     [SerializeField] private PhoneManager _phoneManager;
 
+    [SerializeField] private GraphicRaycaster _graphicRaycaster;
+
+    private EventSystem _eventSystem;
+
     private void OnEnable()
     {
         _playerController = FindObjectOfType<PlayerController>();
+
+        _eventSystem = FindObjectOfType<EventSystem>();
     }
 
     private void CheckMouseStatus()
@@ -50,6 +55,23 @@ public class MouseManager : MonoBehaviour
         {
             SetDefaultCursor();
         }
+
+        //if (!_playerController.GetPlayerStatus())
+        //{
+        //    PointerEventData eventData = new PointerEventData(_eventSystem);
+
+        //    List<RaycastResult> results = new List<RaycastResult>();
+
+        //    _graphicRaycaster.Raycast(eventData, results);
+
+        //    foreach (RaycastResult result in results)
+        //    {
+        //        if (result.gameObject.GetComponent<FileController>() != null)
+        //        {
+        //            SetHoverCursor();
+        //        }
+        //    }
+        //}
     }
 
     private void SetDefaultCursor()
