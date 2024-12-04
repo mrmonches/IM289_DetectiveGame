@@ -52,6 +52,8 @@ public class EvidenceController : MonoBehaviour
 
     [SerializeField] private bool CantDelete;
 
+    private FileController _fileController;
+
     [Header("Image Label Settings")]
 
     [SerializeField] private bool IsImageLabel;
@@ -71,6 +73,7 @@ public class EvidenceController : MonoBehaviour
     public GameObject GetParentObject { get => ParentObject; set => ParentObject = value; }
     public GameObject GetChildObject { get => ChildObject; set => ChildObject = value; }
     public bool CanPlace { get => canPlace; set => canPlace = value; }
+    public FileController GetFileController { get => _fileController; set => _fileController = value; }
 
     private void OnEnable()
     {
@@ -182,9 +185,11 @@ public class EvidenceController : MonoBehaviour
         }
     }
 
-    public void GiveEvidenceData(EvidenceData data)
+    public void GiveEvidenceData(EvidenceData data, FileController file)
     {
         _evidenceData = data;
+
+        _fileController = file;
 
         _id = _evidenceData.EvidenceID;
 

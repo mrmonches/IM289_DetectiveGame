@@ -241,7 +241,6 @@ public class PlayerController : MonoBehaviour
                         Debug.Log("Raycast his the folder");
 
                         updatePaperOpen(true,"Doc");
-                        
                     }
                 }
 

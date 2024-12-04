@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -37,13 +36,15 @@ public class EvidenceStackManager : MonoBehaviour
         return StackList.Count;
     }
 
-    public void AddToStack(EvidenceData evidenceData)
+    public void AddToStack(EvidenceData evidenceData, FileController fileController)
     {
         StackList.Add(evidenceData);
 
         var newCard = Instantiate(FindEvidenceItem(evidenceData.EvidenceID), CardSpawnPos.transform.position, EvidenceRotation.rotation);
 
-        newCard.GetComponent<EvidenceController>().GiveEvidenceData(evidenceData);
+        EvidenceController evidenceController = newCard.GetComponent<EvidenceController>();
+
+        evidenceController.GiveEvidenceData(evidenceData, fileController);
 
         newCard.transform.parent = CardSpawnPos.transform;
 
@@ -149,32 +150,33 @@ public class EvidenceStackManager : MonoBehaviour
         return tempList;
     }
 
-    public void GivePlayerEvidence()
-    {
-        if (StackList.Count > 0)
-        {
-            GameObject card;
+    // Not being used
+    //public void GivePlayerEvidence()
+    //{
+    //    if (StackList.Count > 0)
+    //    {
+    //        GameObject card;
 
-            if (StackList[0].EvidenceType == EvidenceType.Document)
-            {
-                card = Instantiate(EvidenceCardObject, _playerController.GetSelectedPosition(), EvidenceRotation.rotation);
-            }
-            else
-            {
-                card = Instantiate(FindEvidenceItem(StackList[0].EvidenceID), _playerController.GetSelectedPosition(), EvidenceRotation.rotation);
-            }
+    //        if (StackList[0].EvidenceType == EvidenceType.Document)
+    //        {
+    //            card = Instantiate(EvidenceCardObject, _playerController.GetSelectedPosition(), EvidenceRotation.rotation);
+    //        }
+    //        else
+    //        {
+    //            card = Instantiate(FindEvidenceItem(StackList[0].EvidenceID), _playerController.GetSelectedPosition(), EvidenceRotation.rotation);
+    //        }
 
-            EvidenceController evidenceController = card.GetComponent<EvidenceController>();
+    //        EvidenceController evidenceController = card.GetComponent<EvidenceController>();
 
-            _playerController.EvidenceController = evidenceController;
+    //        _playerController.EvidenceController = evidenceController;
 
-            evidenceController.IsHeld = true;
+    //        evidenceController.IsHeld = true;
 
-            evidenceController.GiveEvidenceData(StackList[0]);
+    //        evidenceController.GiveEvidenceData(StackList[0], );
 
-            StackList.RemoveAt(0);
-        }
-    }
+    //        StackList.RemoveAt(0);
+    //    }
+    //}
 
     /// <summary>
     /// Function meant to behave differently whenever a non-document is grabbed
