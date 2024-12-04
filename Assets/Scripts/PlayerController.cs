@@ -43,6 +43,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private CameraController _cameraController;
 
+    [SerializeField] private PhoneManager _phoneManager;
+
     private SystemManager _systemManager;
 
     private EvidenceCardMenuBehavior _menuBehavior;
@@ -67,6 +69,7 @@ public class PlayerController : MonoBehaviour
     public bool InItemViewer { get => inItemViewer; set => inItemViewer = value; }
     public EvidenceController EvidenceController { get => _evidenceController; set => _evidenceController = value; }
     public bool IsConnecting { get => isConnecting; set => isConnecting = value; }
+    public Vector3 GetMousePosition { get => mousePosition; set => mousePosition = value; }
 
     //private bool musicOn = true;
 
@@ -300,7 +303,6 @@ public class PlayerController : MonoBehaviour
             if (Physics.Raycast(SceneCamera.ScreenPointToRay(mousePosition), out hit, CastDistance, TrashMask) && 
                 isSelecting && !EvidenceController.DeleteStatus())
             { 
-
                 DiscardScript _discardScript = hit.transform.GetComponent<DiscardScript>();
 
                 _discardScript.DiscardCard(EvidenceController.ID, EvidenceController.gameObject);
@@ -584,6 +586,18 @@ public class PlayerController : MonoBehaviour
         CurrentStation = PlayerLocation.EvidenceBoard;
     }
 
+    public bool GetPlayerStatus()
+    {
+        if (inItemViewer || typeWriterController.IsActive)
+        {
+            return false;
+        }
+        else 
+        {
+            return true;
+        }
+    }
+
     private void OnDestroy()
     {
         _playerControls.DefaultControls.RightClick.started -= rightClickAction_started;
@@ -591,7 +605,6 @@ public class PlayerController : MonoBehaviour
         _playerControls.DefaultControls.LeftClick.started -= leftClickAction_started;
         _playerControls.DefaultControls.LeftClick.canceled -= leftClickAction_canceled;
     }
-
 }
 
 public enum PlayerLocation
