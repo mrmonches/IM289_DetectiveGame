@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -44,6 +42,8 @@ public class TypeWriterController : MonoBehaviour
     [SerializeField] private List<string> typewriterText = new List<string>();
     //1,1,1,3,2,2,4,5,5,5,5
     [SerializeField] private List<int> typewriterNumber = new List<int>();
+
+    public bool IsActive { get => isActive; set => isActive = value; }
 
 
     /// <summary>
@@ -204,9 +204,6 @@ public class TypeWriterController : MonoBehaviour
     }
     public void CorrectOption(EvidenceID FirstID,EvidenceData SecondData)
     {
-
-        
-      
         EvidenceID SecondID = SecondData.EvidenceID;
 
         for(int i=0;i<typewriterID.Count;i++)
