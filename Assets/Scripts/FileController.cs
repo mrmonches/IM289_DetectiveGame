@@ -19,6 +19,8 @@ public class FileController : MonoBehaviour
 
     [SerializeField] private EventReference DialogueEvent;
 
+    private CardWarningScript _warningScript;
+
     private void OnEnable()
     {
         _playerController = FindObjectOfType<PlayerController>();
@@ -28,6 +30,8 @@ public class FileController : MonoBehaviour
         _soundManager = FindObjectOfType<SoundManager>();
 
         _redCircle = GetComponentInChildren<RedCircle>(true);
+
+        _warningScript = FindObjectOfType<CardWarningScript>();
 
         /*if( _redCircle != null )
         {
@@ -65,6 +69,8 @@ public class FileController : MonoBehaviour
         {
             print("Too many cards");
             AudioManager.instance.PlayEvent(DialogueEvent);
+
+            _warningScript.ActivateWarning();
         }
 
     }
