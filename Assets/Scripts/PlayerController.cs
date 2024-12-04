@@ -571,6 +571,11 @@ public class PlayerController : MonoBehaviour
         {
             _documentTurnPage.CloseDoc();
         }
+
+        if (CurrentStation != PlayerLocation.Desk && typeWriterController.IsActive)
+        {
+            typeWriterController.BackToDesk();
+        }
     }
     /// <summary>
     /// Quinn - I don't know how switch statements work. This is fed through the Camera Controller

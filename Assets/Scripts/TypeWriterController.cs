@@ -51,7 +51,7 @@ public class TypeWriterController : MonoBehaviour
     /// </summary>
     private void ShowCanvas()
     {
-        _cameraController.GetComponent<CameraController>().getCannotMove();
+        //_cameraController.GetComponent<CameraController>().getCannotMove();
         typewriterStuff.gameObject.SetActive(true);
         _playerController.updatePaperOpen(true,"TypeWriter");
 
