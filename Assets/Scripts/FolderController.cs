@@ -20,6 +20,9 @@ public class FolderController : MonoBehaviour
     public void OpenFile()
     {
         file.SetActive(true);
+
+        _playerController.SetDocument(file.GetComponent<DocumentTurnPage>());
+
         _playerController.getOpenDoc(file);
         
         //openedFile.GetComponent<FileController>().heldDataFile = heldData;

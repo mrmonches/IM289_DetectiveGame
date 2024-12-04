@@ -52,7 +52,7 @@ public class FileController : MonoBehaviour
                 //Turned off for FMOD
                 //_soundManager.PlayWritingClip();
 
-                _evidenceStackManager.AddToStack(evidenceData);
+                _evidenceStackManager.AddToStack(evidenceData, this);
                 _redCircle.Appear();
                 _isOnBoard = true;
             }
