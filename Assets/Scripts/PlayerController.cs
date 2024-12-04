@@ -478,6 +478,11 @@ public class PlayerController : MonoBehaviour
         return _yarnController;
     }
 
+    public void SetDocument(DocumentTurnPage document)
+    {
+        _documentTurnPage = document;
+    }
+
     /// <summary>
     /// Responsible for handling assigning references to evidence and handling hover functions
     /// </summary>
@@ -564,8 +569,12 @@ public class PlayerController : MonoBehaviour
 
         if (CurrentStation != PlayerLocation.FilingCabinet && inItemViewer)
         {
-            //Quinn. Commented this out because there is now a file on the desk
-            //_folderController.CloseFile();
+            _documentTurnPage.CloseDoc();
+        }
+
+        if (CurrentStation != PlayerLocation.Desk && typeWriterController.IsActive)
+        {
+            typeWriterController.BackToDesk();
         }
     }
     /// <summary>

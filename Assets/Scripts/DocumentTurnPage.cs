@@ -12,18 +12,24 @@ public class DocumentTurnPage : MonoBehaviour
     private Canvas canvas;
 
     private SystemManager _systemManager;
+
+    private PlayerController _playerController;
     
 
-    private void Awake()
+    private void OnEnable()
     {
         canvas = FindObjectOfType<Canvas>();
         gameObject.GetComponentInParent<DocumentTurnPage>();
         _systemManager = FindObjectOfType<SystemManager>();
+
+        _playerController = FindObjectOfType<PlayerController>();
     }
 
     public void TurnPage()
     {
         _nextPage.SetActive(true);
+
+        GivePlayerDocument(_nextPage);
 
         gameObject.SetActive(false);
     }
@@ -31,8 +37,15 @@ public class DocumentTurnPage : MonoBehaviour
     public void BackPage()
     {
         _previousPage.SetActive(true);
-        
+
+        GivePlayerDocument(_previousPage);
+
         gameObject.SetActive(false);
+    }
+
+    private void GivePlayerDocument(GameObject newPage)
+    {
+        _playerController.SetDocument(newPage.GetComponent<DocumentTurnPage>());
     }
 
     public void CloseDoc()
