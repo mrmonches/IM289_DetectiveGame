@@ -1616,12 +1616,18 @@ MonoBehaviour:
 
     https://indieground.net/product/vintage-paper-textures/
 
+    Arrow
+    Cursor Mouse: Image by OpenClipart-Vectors from Pixabay
+
+    Cursor Finger Hand:
+    Image by OpenClipart-Vectors from Pixabay
+
 
     Audio:
 
-    Scissors
-    Snipping in Air 170427_1458 .wav by megashroom -- https://freesound.org/s/390169/
-    -- License: Creative Commons 0
+    Scissors Snipping
+    in Air 170427_1458 .wav by megashroom -- https://freesound.org/s/390169/ -- License:
+    Creative Commons 0
 
     Pen on Paper 04 by Aiwha -- https://freesound.org/s/496159/
     -- License: Attribution 4.0
@@ -1671,8 +1677,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 9
-  m_fontSizeBase: 9
+  m_fontSize: 8
+  m_fontSizeBase: 8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
