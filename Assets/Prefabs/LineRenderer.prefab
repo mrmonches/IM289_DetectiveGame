@@ -201,3 +201,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WidthOffset: 0.25
+  CutReference:
+    Guid:
+      Data1: 1697947881
+      Data2: 1082640646
+      Data3: -1028609350
+      Data4: 148320062
+    Path: event:/LineSnipEvent

@@ -18,6 +18,7 @@ public class FileController : MonoBehaviour
     private EvidenceController _createdCard;
 
     [SerializeField] private EventReference DialogueEvent;
+    [SerializeField] private EventReference WritingEvent;
 
     private CardWarningScript _warningScript;
 
@@ -51,6 +52,8 @@ public class FileController : MonoBehaviour
             {
                 //Turned off for FMOD
                 //_soundManager.PlayWritingClip();
+
+                AudioManager.instance.PlayOneShot(WritingEvent, transform.position);
 
                 _evidenceStackManager.AddToStack(evidenceData, this);
                 _redCircle.Appear();

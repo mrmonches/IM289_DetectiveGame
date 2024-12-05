@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,8 @@ public class YarnCollision : MonoBehaviour
     private PolygonCollider2D _polygonCollider;
 
     [SerializeField] private float WidthOffset;
+
+    [SerializeField] private EventReference CutReference;
 
     private bool startCalculating;
 
@@ -82,6 +85,8 @@ public class YarnCollision : MonoBehaviour
         EvidenceBoardManager _boardManager = FindObjectOfType<EvidenceBoardManager>();
 
         _boardManager.RemoveConnectionFromList(_lineRenderer);
+
+        AudioManager.instance.PlayOneShot(CutReference, transform.position);
 
         Destroy(gameObject);
     }
