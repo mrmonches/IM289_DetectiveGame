@@ -24,11 +24,20 @@ public class MouseManager : MonoBehaviour
 
     private EventSystem _eventSystem;
 
+    [SerializeField] private bool inTitleScene;
+
     private void OnEnable()
     {
-        _playerController = FindObjectOfType<PlayerController>();
+        if (!inTitleScene)
+        {
+            _playerController = FindObjectOfType<PlayerController>();
 
-        _eventSystem = FindObjectOfType<EventSystem>();
+            _eventSystem = FindObjectOfType<EventSystem>();
+        }
+        else
+        {
+            SetDefaultCursor();
+        }
     }
 
     private void CheckMouseStatus()
@@ -86,6 +95,9 @@ public class MouseManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        CheckMouseStatus();
+        if (!inTitleScene)
+        {
+            CheckMouseStatus();
+        }
     }
 }
