@@ -2024,15 +2024,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'When the mouse changes shape that object can be
-
-    clicked on. You can
-    also click bold items in documents
-
-    to add evidence to your hand. Evidence
-    on the board
-
-    can be clicked and dragged as well.'
+  m_text: "When the mouse changes shape that object can be\nclicked on. You can also
+    click bold items in \ndocuments to add evidence to your hand. \nEvidence on the
+    board can be clicked and dragged \nas well."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 89db3ff56c24b0f4cb5151639436c5b6, type: 2}
   m_sharedMaterial: {fileID: -2758143518964017550, guid: 89db3ff56c24b0f4cb5151639436c5b6, type: 2}
