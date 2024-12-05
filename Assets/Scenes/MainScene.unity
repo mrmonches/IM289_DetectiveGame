@@ -11301,7 +11301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6181810085322036513, guid: cd0a998fd71238c4c9ce8137037af907, type: 3}
       propertyPath: m_text
-      value: 'Giuoco
+      value: 'Guoco
 
         Piano'
       objectReference: {fileID: 0}
