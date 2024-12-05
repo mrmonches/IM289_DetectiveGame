@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (openDoc == "Doc")
             {
-                _folderController.CloseFile();
+                _documentTurnPage.CloseDoc();
             }
 
 
