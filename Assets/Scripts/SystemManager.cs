@@ -41,8 +41,8 @@ public class SystemManager : MonoBehaviour
     {
         //Currently reloads the scene you're in. This is known to cause errors in the gameplay scene. They don't appear to 
         //be fatal. 
-        string currentSceneName = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene(currentSceneName);
+        //string currentSceneName = SceneManager.GetActiveScene().name;
+        //SceneManager.LoadScene(currentSceneName);
     }
 
    /* private void Quit_started(InputAction.CallbackContext obj)
