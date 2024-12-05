@@ -18,6 +18,10 @@ public class TitleController : MonoBehaviour
     {
         Application.Quit();
     }
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("TitleScene");
+    }
     public void ShowControls()
     {
         mainTitle.gameObject.SetActive(false);
