@@ -14,7 +14,10 @@ public class DocumentTurnPage : MonoBehaviour
     private SystemManager _systemManager;
 
     private PlayerController _playerController;
-    
+
+    [SerializeField] private bool isIntroBook;
+
+    public bool IsIntroBook { get => isIntroBook; set => isIntroBook = value; }
 
     private void OnEnable()
     {
