@@ -15625,6 +15625,7 @@ MonoBehaviour:
   HoverOffset: {x: 6, y: 0}
   _phoneManager: {fileID: 854417408}
   _graphicRaycaster: {fileID: 1492671956}
+  inTitleScene: 0
 --- !u!1 &1243337638
 GameObject:
   m_ObjectHideFlags: 0
@@ -15742,6 +15743,10 @@ PrefabInstance:
       propertyPath: _nextPage
       value: 
       objectReference: {fileID: 1432935737}
+    - target: {fileID: 216091086791046313, guid: f3896b9c246f7f947bc127897ff16a50, type: 3}
+      propertyPath: isIntroBook
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 216091086791046313, guid: f3896b9c246f7f947bc127897ff16a50, type: 3}
       propertyPath: _previousPage
       value: 
@@ -18477,6 +18482,10 @@ PrefabInstance:
     - target: {fileID: 216091086791046313, guid: f3896b9c246f7f947bc127897ff16a50, type: 3}
       propertyPath: _nextPage
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 216091086791046313, guid: f3896b9c246f7f947bc127897ff16a50, type: 3}
+      propertyPath: isIntroBook
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 216091086791046313, guid: f3896b9c246f7f947bc127897ff16a50, type: 3}
       propertyPath: _previousPage

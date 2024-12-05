@@ -566,7 +566,12 @@ public class PlayerController : MonoBehaviour
             print("called");
         }
 
-        if (CurrentStation != PlayerLocation.FilingCabinet && inItemViewer)
+        if (CurrentStation != PlayerLocation.FilingCabinet && inItemViewer && !_documentTurnPage.IsIntroBook)
+        {
+            _documentTurnPage.CloseDoc();
+        }
+
+        if (CurrentStation != PlayerLocation.Desk && inItemViewer && _documentTurnPage.IsIntroBook)
         {
             _documentTurnPage.CloseDoc();
         }
