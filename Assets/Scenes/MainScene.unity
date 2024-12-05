@@ -570,6 +570,13 @@ MonoBehaviour:
       Data3: -819127658
       Data4: 61654001
     Path: event:/NegativeFilingCabinetEvent
+  WritingEvent:
+    Guid:
+      Data1: 68706701
+      Data2: 1304920046
+      Data3: 1413427615
+      Data4: 557669928
+    Path: event:/WritingEvent
 --- !u!1 &30530111
 GameObject:
   m_ObjectHideFlags: 0
@@ -3282,8 +3289,28 @@ PrefabInstance:
       value: 3.9
       objectReference: {fileID: 0}
     - target: {fileID: 1973467744168877998, guid: 25fe762a22ecc99418e4cbb2e2eff80f, type: 3}
+      propertyPath: WritingEvent.Path
+      value: event:/WritingEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973467744168877998, guid: 25fe762a22ecc99418e4cbb2e2eff80f, type: 3}
       propertyPath: DialogueEvent.Path
       value: event:/NegativeFilingCabinetEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973467744168877998, guid: 25fe762a22ecc99418e4cbb2e2eff80f, type: 3}
+      propertyPath: WritingEvent.Guid.Data1
+      value: 68706701
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973467744168877998, guid: 25fe762a22ecc99418e4cbb2e2eff80f, type: 3}
+      propertyPath: WritingEvent.Guid.Data2
+      value: 1304920046
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973467744168877998, guid: 25fe762a22ecc99418e4cbb2e2eff80f, type: 3}
+      propertyPath: WritingEvent.Guid.Data3
+      value: 1413427615
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973467744168877998, guid: 25fe762a22ecc99418e4cbb2e2eff80f, type: 3}
+      propertyPath: WritingEvent.Guid.Data4
+      value: 557669928
       objectReference: {fileID: 0}
     - target: {fileID: 1973467744168877998, guid: 25fe762a22ecc99418e4cbb2e2eff80f, type: 3}
       propertyPath: DialogueEvent.Guid.Data1
@@ -4814,6 +4841,13 @@ MonoBehaviour:
       Data3: -819127658
       Data4: 61654001
     Path: event:/NegativeFilingCabinetEvent
+  WritingEvent:
+    Guid:
+      Data1: 68706701
+      Data2: 1304920046
+      Data3: 1413427615
+      Data4: 557669928
+    Path: event:/WritingEvent
 --- !u!1 &348437247
 GameObject:
   m_ObjectHideFlags: 0
@@ -5454,6 +5488,13 @@ MonoBehaviour:
       Data3: -819127658
       Data4: 61654001
     Path: event:/NegativeFilingCabinetEvent
+  WritingEvent:
+    Guid:
+      Data1: 68706701
+      Data2: 1304920046
+      Data3: 1413427615
+      Data4: 557669928
+    Path: event:/WritingEvent
 --- !u!1 &391476123
 GameObject:
   m_ObjectHideFlags: 0
@@ -5544,6 +5585,13 @@ MonoBehaviour:
       Data3: -819127658
       Data4: 61654001
     Path: event:/NegativeFilingCabinetEvent
+  WritingEvent:
+    Guid:
+      Data1: 68706701
+      Data2: 1304920046
+      Data3: 1413427615
+      Data4: 557669928
+    Path: event:/WritingEvent
 --- !u!114 &394018626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7028,6 +7076,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1492671959}
     m_Modifications:
+    - target: {fileID: 977610585327855874, guid: f3896b9c246f7f947bc127897ff16a50, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1651088315906766164, guid: f3896b9c246f7f947bc127897ff16a50, type: 3}
       propertyPath: m_SizeDelta.x
       value: 260.4
@@ -7434,6 +7486,13 @@ MonoBehaviour:
       Data3: -819127658
       Data4: 61654001
     Path: event:/NegativeFilingCabinetEvent
+  WritingEvent:
+    Guid:
+      Data1: 68706701
+      Data2: 1304920046
+      Data3: 1413427615
+      Data4: 557669928
+    Path: event:/WritingEvent
 --- !u!1 &497684717
 GameObject:
   m_ObjectHideFlags: 0
@@ -8978,6 +9037,13 @@ MonoBehaviour:
       Data3: -819127658
       Data4: 61654001
     Path: event:/NegativeFilingCabinetEvent
+  WritingEvent:
+    Guid:
+      Data1: 68706701
+      Data2: 1304920046
+      Data3: 1413427615
+      Data4: 557669928
+    Path: event:/WritingEvent
 --- !u!114 &651253464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11405,6 +11471,13 @@ MonoBehaviour:
       Data3: -819127658
       Data4: 61654001
     Path: event:/NegativeFilingCabinetEvent
+  WritingEvent:
+    Guid:
+      Data1: 68706701
+      Data2: 1304920046
+      Data3: 1413427615
+      Data4: 557669928
+    Path: event:/WritingEvent
 --- !u!114 &852624312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12535,6 +12608,13 @@ MonoBehaviour:
       Data3: -819127658
       Data4: 61654001
     Path: event:/NegativeFilingCabinetEvent
+  WritingEvent:
+    Guid:
+      Data1: 68706701
+      Data2: 1304920046
+      Data3: 1413427615
+      Data4: 557669928
+    Path: event:/WritingEvent
 --- !u!1 &890569001
 GameObject:
   m_ObjectHideFlags: 0
@@ -12794,6 +12874,13 @@ MonoBehaviour:
       Data3: -819127658
       Data4: 61654001
     Path: event:/NegativeFilingCabinetEvent
+  WritingEvent:
+    Guid:
+      Data1: 68706701
+      Data2: 1304920046
+      Data3: 1413427615
+      Data4: 557669928
+    Path: event:/WritingEvent
 --- !u!1 &937233411
 GameObject:
   m_ObjectHideFlags: 0
@@ -14283,11 +14370,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogueEvent:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1647378415
+      Data2: 1197317342
+      Data3: -819127658
+      Data4: 61654001
+    Path: event:/NegativeFilingCabinetEvent
+  WritingEvent:
+    Guid:
+      Data1: 68706701
+      Data2: 1304920046
+      Data3: 1413427615
+      Data4: 557669928
+    Path: event:/WritingEvent
 --- !u!1 &1114695372 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6379107819997921758, guid: 2b2f5fb736fc96943975f6248b0b4de6, type: 3}
@@ -14312,6 +14406,13 @@ MonoBehaviour:
       Data3: -819127658
       Data4: 61654001
     Path: event:/NegativeFilingCabinetEvent
+  WritingEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!1 &1143152025
 GameObject:
   m_ObjectHideFlags: 0
@@ -14837,6 +14938,13 @@ MonoBehaviour:
       Data3: -819127658
       Data4: 61654001
     Path: event:/NegativeFilingCabinetEvent
+  WritingEvent:
+    Guid:
+      Data1: 68706701
+      Data2: 1304920046
+      Data3: 1413427615
+      Data4: 557669928
+    Path: event:/WritingEvent
 --- !u!1 &1190502798
 GameObject:
   m_ObjectHideFlags: 0
@@ -20131,6 +20239,13 @@ MonoBehaviour:
       Data3: -819127658
       Data4: 61654001
     Path: event:/NegativeFilingCabinetEvent
+  WritingEvent:
+    Guid:
+      Data1: 68706701
+      Data2: 1304920046
+      Data3: 1413427615
+      Data4: 557669928
+    Path: event:/WritingEvent
 --- !u!1 &1521368712 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3222393374951320923, guid: 8864252b6bcef194ca911a2264ab2518, type: 3}
@@ -20155,6 +20270,13 @@ MonoBehaviour:
       Data3: -819127658
       Data4: 61654001
     Path: event:/NegativeFilingCabinetEvent
+  WritingEvent:
+    Guid:
+      Data1: 68706701
+      Data2: 1304920046
+      Data3: 1413427615
+      Data4: 557669928
+    Path: event:/WritingEvent
 --- !u!114 &1536438254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20174,6 +20296,13 @@ MonoBehaviour:
       Data3: -819127658
       Data4: 61654001
     Path: event:/NegativeFilingCabinetEvent
+  WritingEvent:
+    Guid:
+      Data1: 68706701
+      Data2: 1304920046
+      Data3: 1413427615
+      Data4: 557669928
+    Path: event:/WritingEvent
 --- !u!1 &1545064391
 GameObject:
   m_ObjectHideFlags: 0
@@ -21403,6 +21532,13 @@ MonoBehaviour:
       Data3: -819127658
       Data4: 61654001
     Path: event:/NegativeFilingCabinetEvent
+  WritingEvent:
+    Guid:
+      Data1: 68706701
+      Data2: 1304920046
+      Data3: 1413427615
+      Data4: 557669928
+    Path: event:/WritingEvent
 --- !u!114 &1591046687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21422,6 +21558,13 @@ MonoBehaviour:
       Data3: -819127658
       Data4: 61654001
     Path: event:/NegativeFilingCabinetEvent
+  WritingEvent:
+    Guid:
+      Data1: 68706701
+      Data2: 1304920046
+      Data3: 1413427615
+      Data4: 557669928
+    Path: event:/WritingEvent
 --- !u!1 &1595876789
 GameObject:
   m_ObjectHideFlags: 0
@@ -23268,6 +23411,13 @@ MonoBehaviour:
       Data3: -819127658
       Data4: 61654001
     Path: event:/NegativeFilingCabinetEvent
+  WritingEvent:
+    Guid:
+      Data1: 68706701
+      Data2: 1304920046
+      Data3: 1413427615
+      Data4: 557669928
+    Path: event:/WritingEvent
 --- !u!1 &1740903011
 GameObject:
   m_ObjectHideFlags: 0
@@ -23415,6 +23565,13 @@ MonoBehaviour:
       Data3: -819127658
       Data4: 61654001
     Path: event:/NegativeFilingCabinetEvent
+  WritingEvent:
+    Guid:
+      Data1: 68706701
+      Data2: 1304920046
+      Data3: 1413427615
+      Data4: 557669928
+    Path: event:/WritingEvent
 --- !u!114 &1747800710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25928,6 +26085,13 @@ MonoBehaviour:
       Data3: -819127658
       Data4: 61654001
     Path: event:/NegativeFilingCabinetEvent
+  WritingEvent:
+    Guid:
+      Data1: 68706701
+      Data2: 1304920046
+      Data3: 1413427615
+      Data4: 557669928
+    Path: event:/WritingEvent
 --- !u!1 &2047328188
 GameObject:
   m_ObjectHideFlags: 0
@@ -26570,6 +26734,13 @@ MonoBehaviour:
       Data3: -819127658
       Data4: 61654001
     Path: event:/NegativeFilingCabinetEvent
+  WritingEvent:
+    Guid:
+      Data1: 68706701
+      Data2: 1304920046
+      Data3: 1413427615
+      Data4: 557669928
+    Path: event:/WritingEvent
 --- !u!1 &2080386606 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6379107819997921758, guid: e7d99b050adb3714bb68a8eb55ef50ef, type: 3}
