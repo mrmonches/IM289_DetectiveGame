@@ -244,8 +244,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 85.26, y: 23.69, z: 22.32}
-  m_LocalScale: {x: 12, y: 12, z: 12}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 12, y: 20, z: 12}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5458507431264335783}
   - {fileID: 585409312236508802}
@@ -279,7 +279,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: afaca1a666476b341ac67fd9737fe85d, type: 2}
+  - {fileID: 2100000, guid: 19ab8f5b6e9e93943b708e186bf5869e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -343,6 +343,7 @@ MonoBehaviour:
   InHandHoverPos: {x: 0, y: 0.5, z: 0}
   SlerpSpeed: 50
   HoverSpeed: 10
+  isHeld: 0
   cancelHover: 0
   canPlace: 1
   _childTransform: {fileID: 5458507431264335783}
@@ -352,6 +353,10 @@ MonoBehaviour:
   CastScale: {x: 3.5, y: 2.1, z: 0}
   CastOffsetPos: {x: 0, y: -2, z: -0.1}
   CantDelete: 0
+  IsImageLabel: 0
+  ParentObject: {fileID: 0}
+  ChildObject: {fileID: 0}
+  LabelOffset: 0
 --- !u!114 &3972007679166344858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -794,8 +799,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5005802, y: -0.4833533, z: -0.5166452, w: -0.49886557}
   m_LocalPosition: {x: 0.00893044, y: -0.015671488, z: 0.01026535}
-  m_LocalScale: {x: 1.6666665, y: 1.6666664, z: 1.6666662}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1.6666665, y: 1.6666664, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 378398007062402715}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -279,7 +279,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fee75251c9bb3ef49bc2e531e2d77405, type: 2}
+  - {fileID: 2100000, guid: a010259b01cab6e4d85432cc482fdc36, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -343,6 +343,7 @@ MonoBehaviour:
   InHandHoverPos: {x: 0, y: 0.5, z: 0}
   SlerpSpeed: 50
   HoverSpeed: 10
+  isHeld: 0
   cancelHover: 0
   canPlace: 1
   _childTransform: {fileID: 5458507431264335783}
@@ -352,6 +353,10 @@ MonoBehaviour:
   CastScale: {x: 3.5, y: 2.1, z: 0}
   CastOffsetPos: {x: 0, y: -2, z: -0.1}
   CantDelete: 0
+  IsImageLabel: 0
+  ParentObject: {fileID: 0}
+  ChildObject: {fileID: 0}
+  LabelOffset: 0
 --- !u!114 &3972007679166344858
 MonoBehaviour:
   m_ObjectHideFlags: 0
